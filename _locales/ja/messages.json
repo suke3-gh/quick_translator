@@ -1,0 +1,76 @@
+{
+  "extensionDescription":
+  {
+    "message": "コンテキストメニューに翻訳の補助をする項目を追加するAdd-onです."
+  },
+
+  "menuTextTitle01":
+  {
+    "message": "選択されているテキストを翻訳"
+  },
+
+  "menuTextTitle02":
+  {
+    "message": "このウェブページを翻訳"
+  },
+
+  "notificationTextNotSet":
+  {
+    "message": "設定に不備があるので正常に動作していません。 このAdd-onの詳細ページで設定を行ってください。"
+  },
+
+  "optionpageBehaviorWhen":
+  {
+    "message": "翻訳するときの動作"
+  },
+
+  "optionpageCaseOfText":
+  {
+    "message": "テキストの場合"
+  },
+
+  "optionpageCaseOfWebsite":
+  {
+    "message": "ウェブサイトの場合"
+  },
+
+  "optionpageIfSetEn":
+  {
+    "message": "仮に\"en - English\"に設定した場合、テキストやウェブサイトは英語に翻訳されます。"
+  },
+
+  "optionpageLanguageOf":
+  {
+    "message": "翻訳先の言語"
+  },
+
+  "optionpageOpenByNewTab":
+  {
+    "message": "新しいタブで開く"
+  },
+
+  "optionpageOpenByNewWindow":
+  {
+    "message": "新しいウィンドウで開く"
+  },
+
+  "optionpageSizeOfNewWindow":
+  {
+    "message": "新しいウィンドウのサイズ"
+  },
+
+  "optionpageSpecifySize":
+  {
+    "message": "ウィンドウのサイズを指定"
+  },
+
+  "optionpageWhenSetWH":
+  {
+    "message": "width:800 height:720 ...と設定した時、 新しいウィンドウのサイズは800x720となります。 この設定はチェックを入れているときのみ反映されます。"
+  },
+
+  "tooltipTitle":
+  {
+    "message": "このウェブページを翻訳"
+  }
+}

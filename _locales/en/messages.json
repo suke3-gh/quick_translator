@@ -1,0 +1,76 @@
+{
+  "extensionDescription":
+  {
+    "message": "This add-on adds an item to assist translation to the context menu."
+  },
+
+  "menuTextTitle01":
+  {
+    "message": "Translate selected text"
+  },
+
+  "menuTextTitle02":
+  {
+    "message": "Translate this web page"
+  },
+
+  "notificationTextNotSet":
+  {
+    "message": "It is not working properly because there is a deficiency in the setting. Please make settings on this add-on's details page."
+  },
+
+  "optionpageBehaviorWhen":
+  {
+    "message": "Behavior when translating"
+  },
+
+  "optionpageCaseOfText":
+  {
+    "message": "Case of text"
+  },
+
+  "optionpageCaseOfWebsite":
+  {
+    "message": "Case of website"
+  },
+
+  "optionpageLanguageOf":
+  {
+    "message": "Language of the translated destination"
+  },
+
+  "optionpageIfSetEn":
+  {
+    "message": "If set to \"en - English\"\u002C texts and websites will be translated into English."
+  },
+
+  "optionpageOpenByNewTab":
+  {
+    "message": "Open by new tab"
+  },
+
+  "optionpageOpenByNewWindow":
+  {
+    "message": "Open by new window"
+  },
+
+  "optionpageSizeOfNewWindow":
+  {
+    "message": "Size of new window"
+  },
+
+  "optionpageSpecifySize":
+  {
+    "message": "Specify the size of window"
+  },
+
+  "optionpageWhenSetWH":
+  {
+    "message": "When set width:800 and height:720, a size of new window is 800x720. This setting is reflected only when checked."
+  },
+
+  "tooltipTitle":
+  {
+    "message": "Translate this web page"
+  }
+}

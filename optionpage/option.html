@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body>
+    <h1>Setting list</h1>
+      <h2><div id="divBehaviorWhen" class="BG-dddddd">Behavior when translating</div></h2>
+        <div style="font-size: 132%;">
+          <strong id="strongCaseOfText" style="float:left;">Case of text</strong><hr class="hr1px1em">
+          <form id="formOM_text" style="clear:left;">
+            <input type="radio" id="HTO_text0" name="howToOpenText" value="tab">
+              <label id="labelOpenByNewTab_A" for="HTO_text0">Open by new tab</label><br>
+            <input type="radio" id="HTO_text1" name="howToOpenText" value="window">
+              <label id="labelOpenByNewWindow_A" for="HTO_text1">Open by new window</label><br>
+          </form>
+          <br>
+          <strong id="strongCaseOfWebsite" style="float:left;">Case of website</strong><hr class="hr1px1em">
+          <form id="formOM_website" style="clear:left;">
+            <input type="radio" id="HTO_website0" name="howToOpenWebsite" value="tab">
+              <label id="labelOpenByNewTab_B" for="HTO_website0">Open by new tab</label><br>
+            <input type="radio" id="HTO_website1" name="howToOpenWebsite" value="window">
+              <label id="labelOpenByNewWindow_B" for="HTO_website1">Open by new window</label><br>
+          </form>
+          <br>
+          <strong id="strongSizeOfNewWindow" style="float:left;">Size of new window</strong><hr class="hr1px1em">
+          <form id="formOM_specifySize" style="clear:left;">
+            <input type="checkbox" id="HTO_specifySize" name="howToOpenSpecifySize">
+              <label id="labelSpecifySize" for="HTO_specifySize">Specify the size of window</label><br>
+            width:<input type="number" id="SOW_width" placeholder="px" min="0">,
+            height:<input type="number" id="SOW_height" placeholder="px" min="0">
+          </form>
+          <p id="pWhenSetWH" class="descriptionText">When set width:800 and height:720, a size of new window is 800x720. This setting is reflected only when checked.</p>
+          <br>
+        </div>
+      <br>
+      <h2><div id="divLanguageOf" class="BG-dddddd">Language of the translated destination</div></h2>
+        <div style="font-size: 132%;">
+          <form id="formLC">Language code:
+            <select id="languageCode">
+              <option value="00">-select-</option>
+              <option value="af">af - Afrikaans</option>
+              <option value="am">am - አማርኛ</option>
+              <option value="ar">ar - العربية</option>
+              <option value="az">az - Azərbaycan</option>
+              <option value="be">be - беларускі</option>
+              <option value="bg">bg - български</option>
+              <option value="bn">bn - বাংলা ভাষা</option>
+              <option value="bs">bs - Bosanski</option>
+              <option value="ca">ca - Llengua catalana</option>
+              <option value="ceb">ceb - Cebuano</option>
+              <option value="co">co - Corsa</option>
+              <option value="cs">cs - Česky</option>
+              <option value="cy">cy - Cymraeg</option>
+              <option value="da">da - dansk</option>
+              <option value="de">de - Deutsch</option>
+              <option value="el">el - Ελληνικά</option>
+              <option value="en">en - English</option>
+              <option value="eo">eo - Esperanto</option>
+              <option value="es">es - Español</option>
+              <option value="et">et - Eesti keel</option>
+              <option value="eu">eu - Euskara</option>
+              <option value="fa">fa - فارسی</option>
+              <option value="fi">fi - suomalainen</option>
+              <option value="fr">fr - Français</option>
+              <option value="fy">fy - Western Frisian</option>
+              <option value="ga">ga - Gaeilge</option>
+              <option value="gd">gd - Gàidhlig na h-Alba</option>
+              <option value="gl">gl - Galego</option>
+              <option value="gu">gu - ગુજરાતી</option>
+              <option value="ha">ha - Harshen Hausa</option>
+              <option value="haw">haw - Hawaiian</option>
+              <option value="hi">hi - हिन्दी</option>
+              <option value="hmn">hmn - Tshaj tawm</option>
+              <option value="hr">hr - hrvatski</option>
+              <option value="ht">ht - Ayisyen</option>
+              <option value="hu">hu - magyar</option>
+              <option value="hy">hy - Հայերեն</option>
+              <option value="id">id - Bahasa indonesia</option>
+              <option value="ig">ig - Asụsụ Igbo</option>
+              <option value="is">is - Íslensku</option>
+              <option value="it">it - italiano</option>
+              <option value="iw">iw - עברית</option>
+              <option value="ja">ja - 日本語</option>
+              <option value="jw">jw - Wong Jawa</option>
+              <option value="ka">ka - საქართველო (ქართული) ენა</option>
+              <option value="kk">kk - Қазақ тілі</option>
+              <option value="km">km - ភាសាខ្មែរ</option>
+              <option value="kn">kn - ಕನ್ನಡ</option>
+              <option value="ko">ko - 한국</option>
+              <option value="ku">ku - Kurdî</option>
+              <option value="ky">ky - Kirghiz</option>
+              <option value="la">la - Latine</option>
+              <option value="lb">lb - Lëtzebuergesch</option>
+              <option value="lo">lo - ລາວ</option>
+              <option value="lt">lt - Lietuviškai</option>
+              <option value="lv">lv - Latviešu</option>
+              <option value="mg">mg - Malagasy</option>
+              <option value="mi">mi - Reo Maori</option>
+              <option value="mk">mk - Македонски</option>
+              <option value="ml">ml - മലയാളം</option>
+              <option value="mn">mn - Монгол хэл</option>
+              <option value="mr">mr - मराठी</option>
+              <option value="ms">ms - Bahasa Melayu</option>
+              <option value="mt">mt - Malti</option>
+              <option value="my">my - မြန်မာ</option>
+              <option value="ne">ne - नेपाली</option>
+              <option value="nl">nl - Nederlands</option>
+              <option value="no">no - norsk</option>
+              <option value="ny">ny - Chewa</option>
+              <option value="pa">pa - ਪੰਜਾਬੀ</option>
+              <option value="pl">pl - Polski</option>
+              <option value="ps">ps - پښتو</option>
+              <option value="pt">pt - Português</option>
+              <option value="ro">ro - românesc</option>
+              <option value="ru">ru - Русский язык</option>
+              <option value="sd">sd - سنڌي</option>
+              <option value="si">si - සිංහල</option>
+              <option value="sk">sk - slovenský</option>
+              <option value="sl">sl - Slovenija</option>
+              <option value="sm">sm - Samoa</option>
+              <option value="sn">sn - Shona</option>
+              <option value="so">so - Afka Soomaaliga</option>
+              <option value="sq">sq - shqiptar</option>
+              <option value="sr">sr - Српски</option>
+              <option value="st">st - Sotho</option>
+              <option value="su">su - Sunda</option>
+              <option value="sv">sv - svenska</option>
+              <option value="sw">sw - Kiswahili</option>
+              <option value="ta">ta - தமிழ் மொழி</option>
+              <option value="te">te - తెలుగు</option>
+              <option value="tg">tg - Тоҷикӣ</option>
+              <option value="th">th - ภาษาไทย</option>
+              <option value="tl">tl - Tagalog</option>
+              <option value="tr">tr - Türk</option>
+              <option value="uk">uk - Українська</option>
+              <option value="ur">ur - اردو</option>
+              <option value="uz">uz - O'zbek</option>
+              <option value="vi">vi - Người việt nam</option>
+              <option value="xh">xh - Xosa</option>
+              <option value="yi">yi - ייִדיש</option>
+              <option value="yo">yo - Yorùbá</option>
+              <option value="zh-CN">zh-CN - 中文(简体)</option>
+              <option value="zh-TW">zh-TW - 中文(繁体)</option>
+              <option value="zu">zu - Zulu</option>
+            </select>
+          </form>
+          <p id="pIfSetToEn" class="descriptionText">If set to \"en - English\"\u002C texts and websites will be translated into English.</p>
+        </div>
+
+    <h1>License</h1>
+      <div style="font-size: 132%;">
+        <details>
+          <object data="../License.txt" type="text/plain" width="100%" height="200"></object>
+        </details>
+      </div>
+    <script src="options.js"></script>
+  </body>
+
+</html>

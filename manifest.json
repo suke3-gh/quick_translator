@@ -1,0 +1,35 @@
+{
+  "applications":
+  {
+    "gecko":
+    {
+      "id": "da486ed70ee0a721c84734f9aa89c74d964dbaad@temporary-addon",
+      "strict_min_version": "60.0a1"
+    }
+  },
+  "background":
+  {
+    "scripts": ["addMenu.js"]
+  },
+  "default_locale": "en",
+  "description": "__MSG_extensionDescription__",
+  "icons":
+  {
+    "48": "icons/ic_translate_black_48dp.png",
+    "96": "icons/ic_translate_black_96dp.png"
+  },
+  "manifest_version": 2,
+  "name": "Quick translator",
+  "options_ui":
+  {
+    "page": "optionpage/option.html"
+  },
+  "page_action": {
+    "browser_style": true,
+    "default_icon": "icons/ic_translate_black_48dp.png",
+    "default_title": "__MSG_tooltipTitle__",
+    "show_matches": ["<all_urls>"]
+  },
+  "permissions": ["menus", "notifications", "storage", "tabs"],
+  "version": "1.3.0.0"
+}
