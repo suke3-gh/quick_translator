@@ -40,6 +40,7 @@ function notificationNotSet() {
 browser.menus.onClicked.addListener((info) => {
   function menuBehavior(obj) {
     switch (info.menuItemId) {
+      // transrate a text
       case ID01:
         if ( (obj.openMethod_text == null) || (obj.languageCode == null) ) {
           notificationNotSet();
@@ -55,6 +56,7 @@ browser.menus.onClicked.addListener((info) => {
             break;
         }
         break;
+      // transrate a web site
       case ID02:
         if ( (obj.openMethod_website == null) || (obj.languageCode == null) ) {
           notificationNotSet();

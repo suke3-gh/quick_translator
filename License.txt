@@ -1,7 +1,7 @@
 
 1.  This software is published under the MIT License.
 
-  Copyright (c) 2018 sukesan-jp
+  Copyright (c) 2018 sukesan
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
@@ -21,5 +21,6 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
-2.  This software use a contents published under the Apache license version 2.0. Image file name changed for use.
+2.  This software use a contents published under the Apache license version 2.0.
+  Image file name changed for use.
   Quote source: https://material.io/tools/icons/?style=baseline

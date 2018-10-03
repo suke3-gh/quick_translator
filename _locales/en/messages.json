@@ -34,14 +34,14 @@
     "message": "Case of website"
   },
 
-  "optionpageLanguageOf":
-  {
-    "message": "Language of the translated destination"
-  },
-
   "optionpageIfSetEn":
   {
     "message": "If set to \"en - English\"\u002C texts and websites will be translated into English."
+  },
+
+  "optionpageLanguageOf":
+  {
+    "message": "Language of the translated destination"
   },
 
   "optionpageOpenByNewTab":
@@ -66,7 +66,7 @@
 
   "optionpageWhenSetWH":
   {
-    "message": "When set width:800 and height:720, a size of new window is 800x720. This setting is reflected only when checked."
+    "message": "When set \"width:800 and height:720\", a size of new window is 800x720. This setting is reflected only when checked."
   },
 
   "tooltipTitle":

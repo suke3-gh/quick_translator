@@ -1,0 +1,76 @@
+{
+  "extensionDescription":
+  {
+    "message": "Les modules complémentaires ajoutent des éléments pour aider à traduire le menu contextuel."
+  },
+
+  "menuTextTitle01":
+  {
+    "message": "Traduire le texte sélectionné"
+  },
+
+  "menuTextTitle02":
+  {
+    "message": "Traduire cette page web"
+  },
+
+  "notificationTextNotSet":
+  {
+    "message": "Le réglage est incomplet et ne fonctionnera pas correctement. Veuillez effectuer les réglages sur la page de détails de ce module complémentaire."
+  },
+
+  "optionpageBehaviorWhen":
+  {
+    "message": "Comportement de traduction"
+  },
+
+  "optionpageCaseOfText":
+  {
+    "message": "Pour le texte"
+  },
+
+  "optionpageCaseOfWebsite":
+  {
+    "message": "Pour site web"
+  },
+
+  "optionpageIfSetEn":
+  {
+    "message": "\"en - English\", le texte et le site Web seront traduits en anglais."
+  },
+
+  "optionpageLanguageOf":
+  {
+    "message": "Langue de la destination de la traduction"
+  },
+
+  "optionpageOpenByNewTab":
+  {
+    "message": "Ouvrir dans un nouvel onglet"
+  },
+
+  "optionpageOpenByNewWindow":
+  {
+    "message": "Ouvrir dans une nouvelle fenêtre"
+  },
+
+  "optionpageSizeOfNewWindow":
+  {
+    "message": "Taille de la nouvelle fenêtre"
+  },
+
+  "optionpageSpecifySize":
+  {
+    "message": "Spécifiez la taille de la fenêtre"
+  },
+
+  "optionpageWhenSetWH":
+  {
+    "message": "\"widht: 800 height: 720\", la taille de la nouvelle fenêtre sera de 800 x 720. Ce paramètre n'est reflété que lorsqu'il est coché."
+  },
+
+  "tooltipTitle":
+  {
+    "message": "Traduire cette page web"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "extensionDescription":
+  {
+    "message": "El complemento agrega un elemento para ayudar a la traducción al menú contextual."
+  },
+
+  "menuTextTitle01":
+  {
+    "message": "Traducir texto seleccionado"
+  },
+
+  "menuTextTitle02":
+  {
+    "message": "Traducir esta página web"
+  },
+
+  "notificationTextNotSet":
+  {
+    "message": "No funciona correctamente porque no está completo en la configuración. Realice la configuración en esta página de detalles del complemento."
+  },
+
+  "optionpageBehaviorWhen":
+  {
+    "message": "Comportamiento al traducir"
+  },
+
+  "optionpageCaseOfText":
+  {
+    "message": "Para texto"
+  },
+
+  "optionpageCaseOfWebsite":
+  {
+    "message": "Para sitio web"
+  },
+
+  "optionpageIfSetEn":
+  {
+    "message": "Si se establece en \"en - English\", los textos y sitios web se traducirán al inglés."
+  },
+
+  "optionpageLanguageOf":
+  {
+    "message": "Idioma del destino de la traducción"
+  },
+
+  "optionpageOpenByNewTab":
+  {
+    "message": "Abrir en una nueva pestaña"
+  },
+
+  "optionpageOpenByNewWindow":
+  {
+    "message": "Abrir en una nueva ventana"
+  },
+
+  "optionpageSizeOfNewWindow":
+  {
+    "message": "Tamaño de la nueva ventana"
+  },
+
+  "optionpageSpecifySize":
+  {
+    "message": "Especifique el tamaño de la ventana"
+  },
+
+  "optionpageWhenSetWH":
+  {
+    "message": "\"width：800 height：720\" Si está configurado, el tamaño de la nueva ventana será de 800 x 720. Esta configuración se refleja solo cuando está marcada."
+  },
+
+  "tooltipTitle":
+  {
+    "message": "Traducir esta página web"
+  }
+}
