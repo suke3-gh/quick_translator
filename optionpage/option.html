@@ -8,39 +8,39 @@
 
   <body>
     <h1>Setting list</h1>
-      <h2><div id="divBehaviorWhen" class="BG-dddddd">Behavior when translating</div></h2>
+      <h2><div id="div_behaviorWhen" class="BG-dddddd">Behavior when translating</div></h2>
         <div style="font-size: 132%;">
-          <strong id="strongCaseOfText" style="float:left;">Case of text</strong><hr class="hr1px1em">
-          <form id="formOM_text" style="clear:left;">
-            <input type="radio" id="HTO_text0" name="howToOpenText" value="tab">
-              <label id="labelOpenByNewTab_A" for="HTO_text0">Open by new tab</label><br>
-            <input type="radio" id="HTO_text1" name="howToOpenText" value="window">
-              <label id="labelOpenByNewWindow_A" for="HTO_text1">Open by new window</label><br>
+          <strong id="strong_caseOfText" style="float:left;">Case of text</strong><hr class="hr1px1em">
+          <form id="form_openMethod_text" style="clear:left;">
+            <input type="radio" id="input_text_openByNewTab" name="name_translateText" value="tab">
+              <label id="label_text_openByNewTab" for="input_text_openByNewTab">Open by new tab</label><br>
+            <input type="radio" id="input_text_openByNewWindow" name="name_translateText" value="window">
+              <label id="label_text_openByNewWindow" for="input_text_openByNewWindow">Open by new window</label><br>
           </form>
           <br>
-          <strong id="strongCaseOfWebsite" style="float:left;">Case of website</strong><hr class="hr1px1em">
-          <form id="formOM_website" style="clear:left;">
-            <input type="radio" id="HTO_website0" name="howToOpenWebsite" value="tab">
-              <label id="labelOpenByNewTab_B" for="HTO_website0">Open by new tab</label><br>
-            <input type="radio" id="HTO_website1" name="howToOpenWebsite" value="window">
-              <label id="labelOpenByNewWindow_B" for="HTO_website1">Open by new window</label><br>
+          <strong id="strong_caseOfWebsite" style="float:left;">Case of website</strong><hr class="hr1px1em">
+          <form id="form_openMethod_website" style="clear:left;">
+            <input type="radio" id="input_website_openByNewTab" name="name_translateWebsite" value="tab">
+              <label id="label_website_openByNewTab" for="input_website_openByNewTab">Open by new tab</label><br>
+            <input type="radio" id="input_website_openByNewWindow" name="name_translateWebsite" value="window">
+              <label id="label_website_openByNewWindow" for="input_website_openByNewWindow">Open by new window</label><br>
           </form>
           <br>
-          <strong id="strongSizeOfNewWindow" style="float:left;">Size of new window</strong><hr class="hr1px1em">
-          <form id="formOM_specifySize" style="clear:left;">
-            <input type="checkbox" id="HTO_specifySize" name="howToOpenSpecifySize">
-              <label id="labelSpecifySize" for="HTO_specifySize">Specify the size of window</label><br>
-            width:<input type="number" id="SOW_width" placeholder="px" min="0">,
-            height:<input type="number" id="SOW_height" placeholder="px" min="0">
+          <strong id="strong_sizeOfNewWindow" style="float:left;">Size of new window</strong><hr class="hr1px1em">
+          <form id="form_openMethod_specifySize" style="clear:left;">
+            <input type="checkbox" id="input_specifySize" name="name_specifySize">
+              <label id="label_specifySize" for="input_specifySize">Specify the size of window</label><br>
+            width:<input type="number" id="input_sizeOfNewWindow_width" placeholder="px" min="0">
+            height:<input type="number" id="input_sizeOfNewWindow_height" placeholder="px" min="0">
           </form>
-          <p id="pWhenSetWH" class="descriptionText">When set width:800 and height:720, a size of new window is 800x720. This setting is reflected only when checked.</p>
+          <p id="p_whenSetWH" class="descriptionText">When set width:800 and height:720, a size of new window is 800x720. This setting is reflected only when checked.</p>
           <br>
         </div>
       <br>
-      <h2><div id="divLanguageOf" class="BG-dddddd">Language of the translated destination</div></h2>
+      <h2><div id="div_languageOf" class="BG-dddddd">Language of the translated destination</div></h2>
         <div style="font-size: 132%;">
-          <form id="formLC">Language code:
-            <select id="languageCode">
+          <form id="form_languageCode">Language code:
+            <select id="select_languageCode">
               <option value="00">-select-</option>
               <option value="af">af - Afrikaans</option>
               <option value="am">am - አማርኛ</option>
@@ -148,7 +148,7 @@
               <option value="zu">zu - Zulu</option>
             </select>
           </form>
-          <p id="pIfSetToEn" class="descriptionText">If set to \"en - English\"\u002C texts and websites will be translated into English.</p>
+          <p id="p_ifSetToEn" class="descriptionText">If set to \"en - English\"\u002C texts and websites will be translated into English.</p>
         </div>
 
     <h1>License</h1>

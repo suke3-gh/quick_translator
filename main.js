@@ -31,7 +31,7 @@ function openByNewTab(URL) {
 function notificationNotSet() {
   browser.notifications.create('notificationNS', {
     'type'   : 'basic',
-    'title'  : 'Notification: \"Quick translate from context menu\"',
+    'title'  : 'Notification: addon \"Quick translate\"',
     'message': browser.i18n.getMessage('notificationTextNotSet')
   });
   setTimeout(function(){ browser.notifications.clear('notificationNS'); }, 6000);
@@ -40,41 +40,37 @@ function notificationNotSet() {
 browser.menus.onClicked.addListener((info) => {
   function menuBehavior(obj) {
     switch (info.menuItemId) {
-      // transrate a text
-      case ID01:
+      case ID01: // transrate a text
         if ( (obj.openMethod_text == null) || (obj.languageCode == null) ) {
           notificationNotSet();
         }
-        const URL01 = 'https://translate.google.com/#auto/'+obj.languageCode+'/'+info.selectionText
-                     .replace(/\%/g, '%25').replace(/\//g, '%2F').replace(/\|/g, '%7C');
+        const URL_translateText = 'https://translate.google.com/#view=home&op=translate&sl=auto&tl='+obj.languageCode+'&text='+info.selectionText
+                                  .replace(/\%/g, '%25').replace(/\//g, '%2F').replace(/\|/g, '%7C');
         switch (obj.openMethod_text) {
           case 'window':
-            openByNewWindow(URL01, obj.specifySize, obj.sizeWidth, obj.sizeHeight);
+            openByNewWindow(URL_translateText, obj.specifySize, obj.sizeWidth, obj.sizeHeight);
             break;
           case 'tab':
-            openByNewTab(URL01);
+            openByNewTab(URL_translateText);
             break;
         }
         break;
-      // transrate a web site
-      case ID02:
+      case ID02: // transrate a web site
         if ( (obj.openMethod_website == null) || (obj.languageCode == null) ) {
           notificationNotSet();
         }
-        const URL02 = 'https://translate.google.com/translate?hl='+obj.languageCode+'&sl=auto&tl='
-                     +obj.languageCode+'&u='+info.pageUrl;
+        const URL_translateWebsite = 'https://translate.google.com/translate?&sl=auto&tl='+obj.languageCode+'&u='+info.pageUrl;
         switch (obj.openMethod_website) {
           case 'window':
-            openByNewWindow(URL02, obj.specifySize, obj.sizeWidth, obj.sizeHeight);
+            openByNewWindow(URL_translateWebsite, obj.specifySize, obj.sizeWidth, obj.sizeHeight);
             break;
           case 'tab':
-            openByNewTab(URL02);
+            openByNewTab(URL_translateWebsite);
             break;
         }
         break;
     }
   }
-
   browser.storage.local.get(['openMethod_text', 'openMethod_website', 'specifySize', 'sizeWidth', 'sizeHeight', 'languageCode'])
     .then(menuBehavior);
 });
@@ -95,7 +91,6 @@ browser.pageAction.onClicked.addListener((tab) => {
         break;
     }
   }
-
   browser.storage.local.get(['openMethod_website', 'specifySize', 'sizeWidth', 'sizeHeight', 'languageCode'])
     .then(addressbarBehavior);
 });
