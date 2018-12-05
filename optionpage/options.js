@@ -31,7 +31,7 @@ function save_openMethod_specifySize() {
 }
 
 function save_languageCode() {
-  const value_languageCode = document.querySelector('#select_languageCode').value;
+  const value_languageCode = document.getElementById('select_languageCode').value;
   browser.storage.local.set({ languageCode: value_languageCode });
 }
 

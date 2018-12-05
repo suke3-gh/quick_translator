@@ -45,7 +45,8 @@ browser.menus.onClicked.addListener((info) => {
           notificationNotSet();
         }
         const URL_translateText = 'https://translate.google.com/#view=home&op=translate&sl=auto&tl='+obj.languageCode+'&text='+info.selectionText
-                                  .replace(/\%/g, '%25').replace(/\//g, '%2F').replace(/\|/g, '%7C');
+                                  .replace(/\%/g, '％').replace(/\//g, '%2F').replace(/\|/g, '%7C');
+        console.log(URL_translateText);
         switch (obj.openMethod_text) {
           case 'window':
             openByNewWindow(URL_translateText, obj.specifySize, obj.sizeWidth, obj.sizeHeight);
