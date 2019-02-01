@@ -37,16 +37,21 @@ function notificationNotSet() {
   setTimeout(function(){ browser.notifications.clear('notificationNS'); }, 6000);
 }
 
+// Behavior clicked menu button
 browser.menus.onClicked.addListener((info) => {
   function menuBehavior(obj) {
     switch (info.menuItemId) {
-      case ID01: // transrate a text
+      // For transrate a text
+      case ID01:
         if ( (obj.openMethod_text == null) || (obj.languageCode == null) ) {
           notificationNotSet();
         }
-        const URL_translateText = 'https://translate.google.com/#view=home&op=translate&sl=auto&tl='+obj.languageCode+'&text='+info.selectionText
-                                  .replace(/\%/g, '％').replace(/\//g, '%2F').replace(/\|/g, '%7C');
-        console.log(URL_translateText);
+        const targetText = info.selectionText
+          .replace(/\%/g, '％')
+          .replace(/\&/g, '%26')
+          .replace(/\//g, '%2F')
+          .replace(/\|/g, '%7C');
+        const URL_translateText = 'https://translate.google.com/#view=home&op=translate&sl=auto&tl='+obj.languageCode+'&text='+targetText;
         switch (obj.openMethod_text) {
           case 'window':
             openByNewWindow(URL_translateText, obj.specifySize, obj.sizeWidth, obj.sizeHeight);
@@ -56,7 +61,8 @@ browser.menus.onClicked.addListener((info) => {
             break;
         }
         break;
-      case ID02: // transrate a web site
+      // For transrate a web site
+      case ID02:
         if ( (obj.openMethod_website == null) || (obj.languageCode == null) ) {
           notificationNotSet();
         }
@@ -72,10 +78,12 @@ browser.menus.onClicked.addListener((info) => {
         break;
     }
   }
+  // Get setting
   browser.storage.local.get(['openMethod_text', 'openMethod_website', 'specifySize', 'sizeWidth', 'sizeHeight', 'languageCode'])
     .then(menuBehavior);
 });
 
+// Add an action button to toolbar
 browser.pageAction.onClicked.addListener((tab) => {
   function addressbarBehavior(obj) {
     if ( (obj.openMethod_website == null) || (obj.languageCode == null) ) {
@@ -92,6 +100,7 @@ browser.pageAction.onClicked.addListener((tab) => {
         break;
     }
   }
+  // Get setting
   browser.storage.local.get(['openMethod_website', 'specifySize', 'sizeWidth', 'sizeHeight', 'languageCode'])
     .then(addressbarBehavior);
 });

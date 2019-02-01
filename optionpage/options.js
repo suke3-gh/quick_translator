@@ -1,18 +1,5 @@
 
-function init(obj) {
-  const init_openMethod_text    = document.querySelector('#form_openMethod_text input[value="'+obj.openMethod_text+'"]');
-  const init_openMethod_website = document.querySelector('#form_openMethod_website input[value="'+obj.openMethod_website+'"]');
-  const init_languageCode       = document.querySelector('option[value="'+obj.languageCode+'"]');
-
-  init_openMethod_text.checked    = true;
-  init_openMethod_website.checked = true;
-  init_languageCode.selected      = true;
-
-  document.getElementById('input_specifySize').checked          = obj.specifySize;
-  document.getElementById('input_sizeOfNewWindow_width').value  = obj.sizeWidth;
-  document.getElementById('input_sizeOfNewWindow_height').value = obj.sizeHeight;
-}
-
+// Save settings
 function save_openMethod_text() {
   const value_openMethod_text = document.querySelector('input[name="name_translateText"]:checked').value;
   browser.storage.local.set({ openMethod_text: value_openMethod_text });
@@ -33,6 +20,20 @@ function save_openMethod_specifySize() {
 function save_languageCode() {
   const value_languageCode = document.getElementById('select_languageCode').value;
   browser.storage.local.set({ languageCode: value_languageCode });
+}
+
+// Acquire initial settings
+function init(obj) {
+  const init_openMethod_text    = document.querySelector('#form_openMethod_text input[value="'+obj.openMethod_text+'"]');
+  const init_openMethod_website = document.querySelector('#form_openMethod_website input[value="'+obj.openMethod_website+'"]');
+  const init_languageCode       = document.querySelector('option[value="'+obj.languageCode+'"]');
+  init_openMethod_text.checked    = true;
+  init_openMethod_website.checked = true;
+  init_languageCode.selected      = true;
+
+  document.getElementById('input_specifySize').checked          = obj.specifySize;
+  document.getElementById('input_sizeOfNewWindow_width').value  = obj.sizeWidth;
+  document.getElementById('input_sizeOfNewWindow_height').value = obj.sizeHeight;
 }
 
 const initSetting = browser.storage.local.get(['openMethod_text', 'openMethod_website', 'specifySize', 'sizeWidth', 'sizeHeight', 'shortcutInAddressbar', 'languageCode'])
