@@ -1,45 +1,54 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>Option UI (Quick translator)</title>
   </head>
 
   <body>
-    <h1>Setting list</h1>
-      <h2><div id="div_behaviorWhen" class="BG-dddddd">Behavior when translating</div></h2>
-        <div style="font-size: 132%;">
-          <strong id="strong_caseOfText" style="float:left;">Case of text</strong><hr class="hr1px1em">
-          <form id="form_openMethod_text" style="clear:left;">
+    <div class="fontSize_124">
+      <h2>Setting list</h2>
+        <h3 class="itemTitle">
+          <div id="div_behaviorWhen" class="marginLeft_8px">Behavior when translating</div>
+        </h3>
+          <form id="form_openMethod_text">
+            <strong id="strong_caseOfText">Case of text</strong><br>
             <input type="radio" id="input_text_openByNewTab" name="name_translateText" value="tab">
               <label id="label_text_openByNewTab" for="input_text_openByNewTab">Open by new tab</label><br>
             <input type="radio" id="input_text_openByNewWindow" name="name_translateText" value="window">
               <label id="label_text_openByNewWindow" for="input_text_openByNewWindow">Open by new window</label><br>
           </form>
-          <br>
-          <strong id="strong_caseOfWebsite" style="float:left;">Case of website</strong><hr class="hr1px1em">
-          <form id="form_openMethod_website" style="clear:left;">
+        <hr class="border_dotted">
+          <form id="form_openMethod_website">
+            <strong id="strong_caseOfWebsite">Case of website</strong><br>
             <input type="radio" id="input_website_openByNewTab" name="name_translateWebsite" value="tab">
               <label id="label_website_openByNewTab" for="input_website_openByNewTab">Open by new tab</label><br>
             <input type="radio" id="input_website_openByNewWindow" name="name_translateWebsite" value="window">
               <label id="label_website_openByNewWindow" for="input_website_openByNewWindow">Open by new window</label><br>
           </form>
-          <br>
-          <strong id="strong_sizeOfNewWindow" style="float:left;">Size of new window</strong><hr class="hr1px1em">
-          <form id="form_openMethod_specifySize" style="clear:left;">
+        <hr  class="border_dotted">
+          <form id="form_openMethod_specifySize">
+            <strong id="strong_sizeOfNewWindow">Size of new window</strong><br>
             <input type="checkbox" id="input_specifySize" name="name_specifySize">
-              <label id="label_specifySize" for="input_specifySize">Specify the size of window</label><br>
-            width:<input type="number" id="input_sizeOfNewWindow_width" placeholder="px" min="0">
-            height:<input type="number" id="input_sizeOfNewWindow_height" placeholder="px" min="0">
+              <label id="label_specifySizeOfWindow" for="input_specifySizeOfWindow">Specify the size of window(optional)</label>
+            <p>
+              width: <input type="number" id="input_sizeOfNewWindow_width" placeholder="px" min="0"> ,
+              height: <input type="number" id="input_sizeOfNewWindow_height" placeholder="px" min="0">
+            </p>
+            <p id="p_whenSetWH" class="descriptionText">
+              When set width:800 and height:720, a size of new window is 800x720. This setting is reflected only when checked.
+            </p>
           </form>
-          <p id="p_whenSetWH" class="descriptionText">When set width:800 and height:720, a size of new window is 800x720. This setting is reflected only when checked.</p>
-          <br>
-        </div>
-      <br>
-      <h2><div id="div_languageOf" class="BG-dddddd">Language of the translated destination</div></h2>
-        <div style="font-size: 132%;">
-          <form id="form_languageCode">Language code:
+        <hr  class="border_dotted">
+        <h3 class="itemTitle">
+          <div id="div_languageOf" class="marginLeft_8px">Language of the translated destination</div>
+        </h3>
+          <form id="form_languageCode">
+            <strong id="strong_specifyLanguageCode">Specify language code</strong><br>
+            Language code:
             <select id="select_languageCode">
               <option value="00">-select-</option>
               <option value="af">af - Afrikaans</option>
@@ -148,16 +157,29 @@
               <option value="zu">zu - Zulu</option>
             </select>
           </form>
-          <p id="p_ifSetToEn" class="descriptionText">If set to \"en - English\"\u002C texts and websites will be translated into English.</p>
-        </div>
+          <p id="p_ifSetToEn" class="descriptionText">
+            If set to "en - English", texts and websites will be translated into English.
+          </p>
+        <hr  class="border_dotted">
 
-    <h1>License</h1>
-      <div style="font-size: 132%;">
+      <h2>Guide</h2>
+        <p>
+          Guide page: <a href="../guides/guide_page_en.html" target="_blank">English</a> / <a href="../guides/guide_page_ja.html" target="_blank">日本語</a>
+        </p>
+        <p id="p_describesBasicThing" class="descriptionText">
+          Describes basic things such as initial setup.
+        </p>
+        <hr  class="border_dotted">
+
+      <h2>License</h2>
         <details>
-          <object data="../License.txt" type="text/plain" width="100%" height="200"></object>
+          <object data="../../License.txt" type="text/plain" width="100%" height="320"></object>
         </details>
-      </div>
-    <script src="options.js"></script>
+        <hr  class="border_dotted">
+
+    </div><!-- class="fontSize_124" -->
+
+    <script type="text/javascript" src="option_script.js"></script>
   </body>
 
 </html>

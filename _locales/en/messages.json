@@ -14,57 +14,67 @@
     "message": "Translate this web page"
   },
 
-  "notificationTextNotSet":
+  "notificationTextNotSetup":
   {
-    "message": "It is not working properly because there is a deficiency in the setting. Please make settings on this add-on's details page."
+    "message": "It has been translated into \"English\" because no initial setup has been done. See the add-on's \"Guide page\" for details."
   },
 
-  "optionpageBehaviorWhen":
+  "optionUiBehaviorWhen":
   {
     "message": "Behavior when translating"
   },
 
-  "optionpageCaseOfText":
+  "optionUiCaseOfText":
   {
     "message": "Case of text"
   },
 
-  "optionpageCaseOfWebsite":
+  "optionUiCaseOfWebsite":
   {
     "message": "Case of website"
   },
 
-  "optionpageIfSetEn":
+  "optionUiDescribesBasicThing":
   {
-    "message": "If set to \"en - English\"\u002C texts and websites will be translated into English."
+    "message": "Describes basic things such as initial setup."
   },
 
-  "optionpageLanguageOf":
+  "optionUiIfSetEn":
+  {
+    "message": "If set to \"en - English\" \u002C texts and websites will be translated into English."
+  },
+
+  "optionUiLanguageOf":
   {
     "message": "Language of the translated destination"
   },
 
-  "optionpageOpenByNewTab":
+  "optionUiOpenByNewTab":
   {
     "message": "Open by new tab"
   },
 
-  "optionpageOpenByNewWindow":
+  "optionUiOpenByNewWindow":
   {
     "message": "Open by new window"
   },
 
-  "optionpageSizeOfNewWindow":
+  "optionUiSizeOfNewWindow":
   {
     "message": "Size of new window"
   },
 
-  "optionpageSpecifySize":
+  "optionUiSpecifySizeOfWindow":
   {
-    "message": "Specify the size of window"
+    "message": "Specify the size of window(Optional)"
   },
 
-  "optionpageWhenSetWH":
+  "optionUiSpecifyLanguageCode":
+  {
+    "message": "Specify language code"
+  },
+
+  "optionUiWhenSetWH":
   {
     "message": "When set \"width:800 and height:720\", a size of new window is 800x720. This setting is reflected only when checked."
   },

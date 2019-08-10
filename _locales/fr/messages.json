@@ -14,57 +14,67 @@
     "message": "Traduire cette page web"
   },
 
-  "notificationTextNotSet":
+  "notificationTextNotSetup":
   {
-    "message": "Le réglage est incomplet et ne fonctionnera pas correctement. Veuillez effectuer les réglages sur la page de détails de ce module complémentaire."
+    "message": "Il a été traduit en \"Anglais\" car aucune configuration initiale n’a été effectuée. Voir le \"Guide page\" de l'add-on pour plus de détails."
   },
 
-  "optionpageBehaviorWhen":
+  "optionUiBehaviorWhen":
   {
     "message": "Comportement de traduction"
   },
 
-  "optionpageCaseOfText":
+  "optionUiCaseOfText":
   {
     "message": "Pour le texte"
   },
 
-  "optionpageCaseOfWebsite":
+  "optionUiCaseOfWebsite":
   {
     "message": "Pour site web"
   },
 
-  "optionpageIfSetEn":
+  "optionUiDescribesBasicThing":
+  {
+    "message": "Décrit des éléments de base tels que la configuration initiale."
+  },
+
+  "optionUiIfSetEn":
   {
     "message": "\"en - English\", le texte et le site Web seront traduits en anglais."
   },
 
-  "optionpageLanguageOf":
+  "optionUiLanguageOf":
   {
     "message": "Langue de la destination de la traduction"
   },
 
-  "optionpageOpenByNewTab":
+  "optionUiOpenByNewTab":
   {
     "message": "Ouvrir dans un nouvel onglet"
   },
 
-  "optionpageOpenByNewWindow":
+  "optionUiOpenByNewWindow":
   {
     "message": "Ouvrir dans une nouvelle fenêtre"
   },
 
-  "optionpageSizeOfNewWindow":
+  "optionUiSizeOfNewWindow":
   {
     "message": "Taille de la nouvelle fenêtre"
   },
 
-  "optionpageSpecifySize":
+  "optionUiSpecifySizeOfWindow":
   {
-    "message": "Spécifiez la taille de la fenêtre"
+    "message": "Spécifiez la taille de la fenêtre(optionnel)"
   },
 
-  "optionpageWhenSetWH":
+  "optionUiSpecifyLanguageCode":
+  {
+    "message": "Spécifiez le code de langue"
+  },
+
+  "optionUiWhenSetWH":
   {
     "message": "\"widht: 800 height: 720\", la taille de la nouvelle fenêtre sera de 800 x 720. Ce paramètre n'est reflété que lorsqu'il est coché."
   },

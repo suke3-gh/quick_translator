@@ -14,57 +14,67 @@
     "message": "Traducir esta página web"
   },
 
-  "notificationTextNotSet":
+  "notificationTextNotSetup":
   {
-    "message": "No funciona correctamente porque no está completo en la configuración. Realice la configuración en esta página de detalles del complemento."
+    "message": "Se ha traducido a \"inglés\" porque no se ha realizado una configuración inicial. Consulte la \"Guide page\" del complemento para obtener más información."
   },
 
-  "optionpageBehaviorWhen":
+  "optionUiBehaviorWhen":
   {
     "message": "Comportamiento al traducir"
   },
 
-  "optionpageCaseOfText":
+  "optionUiCaseOfText":
   {
     "message": "Para texto"
   },
 
-  "optionpageCaseOfWebsite":
+  "optionUiCaseOfWebsite":
   {
     "message": "Para sitio web"
   },
 
-  "optionpageIfSetEn":
+  "optionUiDescribesBasicThing":
+  {
+    "message": "Describe cosas básicas como la configuración inicial."
+  },
+
+  "optionUiIfSetEn":
   {
     "message": "Si se establece en \"en - English\", los textos y sitios web se traducirán al inglés."
   },
 
-  "optionpageLanguageOf":
+  "optionUiLanguageOf":
   {
     "message": "Idioma del destino de la traducción"
   },
 
-  "optionpageOpenByNewTab":
+  "optionUiOpenByNewTab":
   {
     "message": "Abrir en una nueva pestaña"
   },
 
-  "optionpageOpenByNewWindow":
+  "optionUiOpenByNewWindow":
   {
     "message": "Abrir en una nueva ventana"
   },
 
-  "optionpageSizeOfNewWindow":
+  "optionUiSizeOfNewWindow":
   {
     "message": "Tamaño de la nueva ventana"
   },
 
-  "optionpageSpecifySize":
+  "optionUiSpecifySizeOfWindow":
   {
-    "message": "Especifique el tamaño de la ventana"
+    "message": "Especifique el tamaño de la ventana(Opcional)"
   },
 
-  "optionpageWhenSetWH":
+  "optionUiSpecifyLanguageCode":
+  {
+    "message": "Especificar código de idioma"
+  },
+
+  "optionUiWhenSetWH":
   {
     "message": "\"width：800 height：720\" Si está configurado, el tamaño de la nueva ventana será de 800 x 720. Esta configuración se refleja solo cuando está marcada."
   },

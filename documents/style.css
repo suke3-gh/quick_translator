@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+.align_right
+{
+  text-align: right;
+}
+
+.border_dotted
+{
+  border-style: dotted;
+  border-color: #a0a0a0; 
+  width: 90%;
+}
+
+.border_solid_guide
+{
+  border-style: solid;
+  border-color: #606060;
+  border-width: 1px;
+}
+
+.border_dashed_guide
+{
+  border-style: dashed;
+  border-color: #606060;
+  border-width: 1px;
+}
+
+.descriptionText
+{
+  font-size: 90%;
+  color: #606060;
+}
+
+.float_clear
+{
+  clear: both;
+}
+
+.float_left
+{
+  float: left;
+}
+
+.float_right
+{
+  float: right;
+}
+
+.fontSize_124
+{
+  font-size: 124%;
+}
+
+.itemTitle
+{
+  border-left: 8px solid #a0a0a0;
+  font-size: 100%;
+}
+
+.marginLeft_8px
+{
+  margin-left: 8px;
+}
+
+.marginTopAndBottom_8px
+{
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.menubar01
+{
+  background: #f0f0f0;
+  width: 280px;
+}
+
+.paddingLeft_8px
+{
+  padding-left: 8px;
+}
+
+.page_main
+{
+  overflow: hidden;
+}
+
+.page_overall
+{
+  margin-left:  auto;
+  margin-right: auto;
+  width: 88%;
+}
+
+
+@media screen and (min-width: 1081px)
+{
+  .menubar01
+  {
+    float: left;
+    margin-top:   16px;
+    margin-right: 16px;
+    width: 240px;
+  }
+
+  .page_overall
+  {
+    width: 72%;
+  }
+}

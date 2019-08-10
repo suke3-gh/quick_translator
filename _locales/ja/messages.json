@@ -14,57 +14,67 @@
     "message": "このウェブページを翻訳"
   },
 
-  "notificationTextNotSet":
+  "notificationTextNotSetup":
   {
-    "message": "設定に不備があるので正常に動作していません。 このAdd-onの詳細ページで設定を行ってください。"
+    "message": "初期セットアップを行っていないので\"英語\"に翻訳されてます。 詳しくはこのアドオンの\"Guide page\"をご覧ください。"
   },
 
-  "optionpageBehaviorWhen":
+  "optionUiBehaviorWhen":
   {
     "message": "翻訳するときの動作"
   },
 
-  "optionpageCaseOfText":
+  "optionUiCaseOfText":
   {
     "message": "テキストの場合"
   },
 
-  "optionpageCaseOfWebsite":
+  "optionUiCaseOfWebsite":
   {
     "message": "ウェブサイトの場合"
   },
 
-  "optionpageIfSetEn":
+  "optionUiDescribesBasicThing":
+  {
+    "message": "初期セットアップなど基本的なことについて記述しています。"
+  },
+
+  "optionUiIfSetEn":
   {
     "message": "仮に\"en - English\"に設定した場合、テキストやウェブサイトは英語に翻訳されます。"
   },
 
-  "optionpageLanguageOf":
+  "optionUiLanguageOf":
   {
     "message": "翻訳先の言語"
   },
 
-  "optionpageOpenByNewTab":
+  "optionUiOpenByNewTab":
   {
     "message": "新しいタブで開く"
   },
 
-  "optionpageOpenByNewWindow":
+  "optionUiOpenByNewWindow":
   {
     "message": "新しいウィンドウで開く"
   },
 
-  "optionpageSizeOfNewWindow":
+  "optionUiSizeOfNewWindow":
   {
     "message": "新しいウィンドウのサイズ"
   },
 
-  "optionpageSpecifySize":
+  "optionUiSpecifySizeOfWindow":
   {
-    "message": "ウィンドウのサイズを指定"
+    "message": "ウィンドウのサイズを指定(任意)"
   },
 
-  "optionpageWhenSetWH":
+  "optionUiSpecifyLanguageCode":
+  {
+    "message": "言語コードの指定"
+  },
+
+  "optionUiWhenSetWH":
   {
     "message": "\"width:800 height:720\" と設定した時、 新しいウィンドウのサイズは800x720となります。 この設定はチェックを入れているときのみ反映されます。"
   },
