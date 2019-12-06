@@ -19,62 +19,67 @@
     "message": "Se ha traducido a \"inglés\" porque no se ha realizado una configuración inicial. Consulte la \"Guide page\" del complemento para obtener más información."
   },
 
-  "optionUiBehaviorWhen":
+  "optionPageBehaviorWhen":
   {
     "message": "Comportamiento al traducir"
   },
 
-  "optionUiCaseOfText":
+  "optionPageCaseOfText":
   {
     "message": "Para texto"
   },
 
-  "optionUiCaseOfWebsite":
+  "optionPageCaseOfWebsite":
   {
     "message": "Para sitio web"
   },
 
-  "optionUiDescribesBasicThing":
+  "optionPageDescribesBasicThing":
   {
     "message": "Describe cosas básicas como la configuración inicial."
   },
 
-  "optionUiIfSetEn":
+  "optionPageIfSetEn":
   {
     "message": "Si se establece en \"en - English\", los textos y sitios web se traducirán al inglés."
   },
 
-  "optionUiLanguageOf":
+  "optionPageLanguageOf":
   {
     "message": "Idioma del destino de la traducción"
   },
 
-  "optionUiOpenByNewTab":
+  "optionPageLinkToGithub":
+  {
+    "message": "El código fuente de este complemento está disponible en Github."
+  },
+
+  "optionPageOpenByNewTab":
   {
     "message": "Abrir en una nueva pestaña"
   },
 
-  "optionUiOpenByNewWindow":
+  "optionPageOpenByNewWindow":
   {
     "message": "Abrir en una nueva ventana"
   },
 
-  "optionUiSizeOfNewWindow":
+  "optionPageSizeOfNewWindow":
   {
     "message": "Tamaño de la nueva ventana"
   },
 
-  "optionUiSpecifySizeOfWindow":
+  "optionPageSpecifySizeOfWindow":
   {
     "message": "Especifique el tamaño de la ventana(Opcional)"
   },
 
-  "optionUiSpecifyLanguageCode":
+  "optionPageSpecifyLanguageCode":
   {
     "message": "Especificar código de idioma"
   },
 
-  "optionUiWhenSetWH":
+  "optionPageWhenSetWH":
   {
     "message": "\"width：800 height：720\" Si está configurado, el tamaño de la nueva ventana será de 800 x 720. Esta configuración se refleja solo cuando está marcada."
   },

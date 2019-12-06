@@ -29,7 +29,9 @@
 
   "options_ui":
   {
-    "page": "documents/options/option_ui.html"
+    "browser_style": true,
+    "open_in_tab": true,
+    "page": "documents/options/option_page.html"
   },
 
   "page_action":
@@ -42,5 +44,5 @@
 
   "permissions": ["menus", "notifications", "storage", "tabs"],
 
-  "version": "1.4.0.0"
+  "version": "1.4.1.0"
 }

@@ -43,19 +43,21 @@ document.getElementById('form_languageCode').addEventListener('input', () => {
 }, false);
 
 // For multilingual
-document.getElementById('div_behaviorWhen').textContent              = browser.i18n.getMessage('optionUiBehaviorWhen');
-document.getElementById('strong_caseOfText').textContent             = browser.i18n.getMessage('optionUiCaseOfText');
-document.getElementById('strong_caseOfWebsite').textContent          = browser.i18n.getMessage('optionUiCaseOfWebsite');
-document.getElementById('label_text_openByNewTab').textContent       = browser.i18n.getMessage('optionUiOpenByNewTab');
-document.getElementById('label_text_openByNewWindow').textContent    = browser.i18n.getMessage('optionUiOpenByNewWindow');
-document.getElementById('label_website_openByNewTab').textContent    = browser.i18n.getMessage('optionUiOpenByNewTab');
-document.getElementById('label_website_openByNewWindow').textContent = browser.i18n.getMessage('optionUiOpenByNewWindow');
-document.getElementById('strong_sizeOfNewWindow').textContent        = browser.i18n.getMessage('optionUiSizeOfNewWindow');
-document.getElementById('label_specifySizeOfWindow').textContent     = browser.i18n.getMessage('optionUiSpecifySizeOfWindow');
-document.getElementById('p_whenSetWH').textContent                   = browser.i18n.getMessage('optionUiWhenSetWH');
+document.getElementById('div_behaviorWhen').textContent              = browser.i18n.getMessage('optionPageBehaviorWhen');
+document.getElementById('strong_caseOfText').textContent             = browser.i18n.getMessage('optionPageCaseOfText');
+document.getElementById('strong_caseOfWebsite').textContent          = browser.i18n.getMessage('optionPageCaseOfWebsite');
+document.getElementById('label_text_openByNewTab').textContent       = browser.i18n.getMessage('optionPageOpenByNewTab');
+document.getElementById('label_text_openByNewWindow').textContent    = browser.i18n.getMessage('optionPageOpenByNewWindow');
+document.getElementById('label_website_openByNewTab').textContent    = browser.i18n.getMessage('optionPageOpenByNewTab');
+document.getElementById('label_website_openByNewWindow').textContent = browser.i18n.getMessage('optionPageOpenByNewWindow');
+document.getElementById('strong_sizeOfNewWindow').textContent        = browser.i18n.getMessage('optionPageSizeOfNewWindow');
+document.getElementById('label_specifySizeOfWindow').textContent     = browser.i18n.getMessage('optionPageSpecifySizeOfWindow');
+document.getElementById('p_whenSetWH').textContent                   = browser.i18n.getMessage('optionPageWhenSetWH');
 
-document.getElementById('div_languageOf').textContent             = browser.i18n.getMessage('optionUiLanguageOf');
-document.getElementById('strong_specifyLanguageCode').textContent = browser.i18n.getMessage('optionUiSpecifyLanguageCode');
-document.getElementById('p_ifSetToEn').textContent                = browser.i18n.getMessage('optionUiIfSetEn');
+document.getElementById('div_languageOf').textContent             = browser.i18n.getMessage('optionPageLanguageOf');
+document.getElementById('strong_specifyLanguageCode').textContent = browser.i18n.getMessage('optionPageSpecifyLanguageCode');
+document.getElementById('p_ifSetToEn').textContent                = browser.i18n.getMessage('optionPageIfSetEn');
 
-document.getElementById('p_describesBasicThing').textContent = browser.i18n.getMessage('optionUiDescribesBasicThing');
+document.getElementById('p_describesBasicThing').textContent = browser.i18n.getMessage('optionPageDescribesBasicThing');
+
+document.getElementById('p_linkToGithub').textContent = browser.i18n.getMessage('optionPageLinkToGithub');

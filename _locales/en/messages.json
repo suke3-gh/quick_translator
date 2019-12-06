@@ -19,62 +19,67 @@
     "message": "It has been translated into \"English\" because no initial setup has been done. See the add-on's \"Guide page\" for details."
   },
 
-  "optionUiBehaviorWhen":
+  "optionPageBehaviorWhen":
   {
     "message": "Behavior when translating"
   },
 
-  "optionUiCaseOfText":
+  "optionPageCaseOfText":
   {
     "message": "Case of text"
   },
 
-  "optionUiCaseOfWebsite":
+  "optionPageCaseOfWebsite":
   {
     "message": "Case of website"
   },
 
-  "optionUiDescribesBasicThing":
+  "optionPageDescribesBasicThing":
   {
     "message": "Describes basic things such as initial setup."
   },
 
-  "optionUiIfSetEn":
+  "optionPageIfSetEn":
   {
     "message": "If set to \"en - English\" \u002C texts and websites will be translated into English."
   },
 
-  "optionUiLanguageOf":
+  "optionPageLanguageOf":
   {
     "message": "Language of the translated destination"
   },
 
-  "optionUiOpenByNewTab":
+  "optionPageLinkToGithub":
+  {
+    "message": "The source code of this add-on is available on Github."
+  },
+
+  "optionPageOpenByNewTab":
   {
     "message": "Open by new tab"
   },
 
-  "optionUiOpenByNewWindow":
+  "optionPageOpenByNewWindow":
   {
     "message": "Open by new window"
   },
 
-  "optionUiSizeOfNewWindow":
+  "optionPageSizeOfNewWindow":
   {
     "message": "Size of new window"
   },
 
-  "optionUiSpecifySizeOfWindow":
+  "optionPageSpecifySizeOfWindow":
   {
     "message": "Specify the size of window(Optional)"
   },
 
-  "optionUiSpecifyLanguageCode":
+  "optionPageSpecifyLanguageCode":
   {
     "message": "Specify language code"
   },
 
-  "optionUiWhenSetWH":
+  "optionPageWhenSetWH":
   {
     "message": "When set \"width:800 and height:720\", a size of new window is 800x720. This setting is reflected only when checked."
   },
