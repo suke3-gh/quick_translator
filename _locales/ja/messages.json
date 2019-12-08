@@ -64,9 +64,19 @@
     "message": "新しいウィンドウで開く"
   },
 
+  "optionPageServiceUsedFor":
+  {
+    "message": "翻訳に用いるサービス"
+  },
+
   "optionPageSizeOfNewWindow":
   {
     "message": "新しいウィンドウのサイズ"
+  },
+
+  "optionPageSpecifyLanguageCode":
+  {
+    "message": "言語コードの指定"
   },
 
   "optionPageSpecifySizeOfWindow":
@@ -74,9 +84,14 @@
     "message": "ウィンドウのサイズを指定(任意)"
   },
 
-  "optionPageSpecifyLanguageCode":
+  "optionPageSpecifyTranslationService":
   {
-    "message": "言語コードの指定"
+    "message": "翻訳サービスの指定"
+  },
+
+  "optionPageWhenBingIsSelected":
+  {
+    "message": "\"Bing\"を選択しているとき、使用できない言語がいくつかあります。"
   },
 
   "optionPageWhenSetWH":

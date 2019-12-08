@@ -1,16 +1,20 @@
 
-// Initialize
-browser.storage.local.get(['openMethod_text', 'openMethod_website', 'specifySize', 'sizeWidth', 'sizeHeight', 'shortcutInAddressbar', 'languageCode'])
+/* Initialize */
+browser.storage.local.get()
   .then( (obj) => {
-    if (obj.openMethod_text != undefined) {
+    if (obj.openMethod_text != null) {
       document.querySelector('#form_openMethod_text input[value="'+obj.openMethod_text+'"]').checked = true;
     }
 
-    if (obj.openMethod_website != undefined) {
+    if (obj.openMethod_website != null) {
       document.querySelector('#form_openMethod_website input[value="'+obj.openMethod_website+'"]').checked = true;
     }
 
-    if (obj.languageCode != undefined) {
+    if (obj.translationService != null) {
+      document.querySelector('option[value="'+obj.translationService+'"]').selected = true;
+    }
+
+    if (obj.languageCode != null) {
       document.querySelector('option[value="'+obj.languageCode+'"]').selected = true;
     }
 
@@ -19,7 +23,7 @@ browser.storage.local.get(['openMethod_text', 'openMethod_website', 'specifySize
     document.getElementById('input_sizeOfNewWindow_height').value = obj.sizeHeight;
   });
 
-// Update processing
+/* Update processing */
 document.getElementById('form_openMethod_text').addEventListener('input', () => {
   const value_openMethod_text = document.querySelector('input[name="name_translateText"]:checked').value;
   browser.storage.local.set({ openMethod_text: value_openMethod_text });
@@ -37,12 +41,17 @@ document.getElementById('form_openMethod_specifySize').addEventListener('input',
   browser.storage.local.set({ specifySize: value_openMethod_specifySize, sizeWidth: value_openMethod_sizeWidth, sizeHeight: value_openMethod_sizeHeight });
 }, false);
 
+document.getElementById('form_translationService').addEventListener('input', () => {
+  const value_translationService = document.getElementById('select_translationService').value;
+  browser.storage.local.set({ translationService: value_translationService });
+}, false);
+
 document.getElementById('form_languageCode').addEventListener('input', () => {
   const value_languageCode = document.getElementById('select_languageCode').value;
   browser.storage.local.set({ languageCode: value_languageCode });
 }, false);
 
-// For multilingual
+/* For multilingual */
 document.getElementById('div_behaviorWhen').textContent              = browser.i18n.getMessage('optionPageBehaviorWhen');
 document.getElementById('strong_caseOfText').textContent             = browser.i18n.getMessage('optionPageCaseOfText');
 document.getElementById('strong_caseOfWebsite').textContent          = browser.i18n.getMessage('optionPageCaseOfWebsite');
@@ -57,6 +66,10 @@ document.getElementById('p_whenSetWH').textContent                   = browser.i
 document.getElementById('div_languageOf').textContent             = browser.i18n.getMessage('optionPageLanguageOf');
 document.getElementById('strong_specifyLanguageCode').textContent = browser.i18n.getMessage('optionPageSpecifyLanguageCode');
 document.getElementById('p_ifSetToEn').textContent                = browser.i18n.getMessage('optionPageIfSetEn');
+
+document.getElementById('div_serviceUsedFor').textContent               = browser.i18n.getMessage('optionPageServiceUsedFor');
+document.getElementById('strong_specifyTranslationService').textContent = browser.i18n.getMessage('optionPageSpecifyTranslationService');
+document.getElementById('p_whenBingIsSelected').textContent             = browser.i18n.getMessage('optionPageWhenBingIsSelected');
 
 document.getElementById('p_describesBasicThing').textContent = browser.i18n.getMessage('optionPageDescribesBasicThing');
 

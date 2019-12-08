@@ -64,9 +64,19 @@
     "message": "Open by new window"
   },
 
+  "optionPageServiceUsedFor":
+  {
+    "message": "Service used for translation"
+  },
+
   "optionPageSizeOfNewWindow":
   {
     "message": "Size of new window"
+  },
+
+  "optionPageSpecifyLanguageCode":
+  {
+    "message": "Specify a language code"
   },
 
   "optionPageSpecifySizeOfWindow":
@@ -74,9 +84,14 @@
     "message": "Specify the size of window(Optional)"
   },
 
-  "optionPageSpecifyLanguageCode":
+  "optionPageSpecifyTranslationService":
   {
-    "message": "Specify language code"
+    "message": "Specify a translation service"
+  },
+
+  "optionPageWhenBingIsSelected":
+  {
+    "message": "When \"Bing\" is selected, some languages are not available."
   },
 
   "optionPageWhenSetWH":
