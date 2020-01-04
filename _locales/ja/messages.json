@@ -34,19 +34,9 @@
     "message": "ウェブサイトの場合"
   },
 
-  "optionPageDescribesBasicThing":
-  {
-    "message": "初期セットアップなど基本的なことについて記述しています。"
-  },
-
   "optionPageIfSetEn":
   {
     "message": "仮に\"en - English\"に設定した場合、テキストやウェブサイトは英語に翻訳されます。"
-  },
-
-  "optionPageLanguageOf":
-  {
-    "message": "翻訳先の言語"
   },
 
   "optionPageLinkToGithub":
@@ -87,6 +77,11 @@
   "optionPageSpecifyTranslationService":
   {
     "message": "翻訳サービスの指定"
+  },
+
+  "optionPageTranslatedLanguage":
+  {
+    "message": "翻訳後の言語"
   },
 
   "optionPageWhenBingIsSelected":

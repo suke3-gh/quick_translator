@@ -34,19 +34,9 @@
     "message": "Case of website"
   },
 
-  "optionPageDescribesBasicThing":
-  {
-    "message": "Describes basic things such as initial setup."
-  },
-
   "optionPageIfSetEn":
   {
     "message": "If set to \"en - English\" \u002C texts and websites will be translated into English."
-  },
-
-  "optionPageLanguageOf":
-  {
-    "message": "Language of the translated destination"
   },
 
   "optionPageLinkToGithub":
@@ -87,6 +77,11 @@
   "optionPageSpecifyTranslationService":
   {
     "message": "Specify a translation service"
+  },
+
+  "optionPageTranslatedLanguage":
+  {
+    "message": "Translated language"
   },
 
   "optionPageWhenBingIsSelected":

@@ -36,8 +36,10 @@ document.getElementById('form_openMethod_website').addEventListener('input', () 
 
 document.getElementById('form_openMethod_specifySize').addEventListener('input', () => {
   const value_openMethod_specifySize = document.getElementById('input_specifySize').checked;
-  const value_openMethod_sizeWidth   = Number( document.getElementById('input_sizeOfNewWindow_width').value );
-  const value_openMethod_sizeHeight  = Number( document.getElementById('input_sizeOfNewWindow_height').value );
+  const temp_sizeWidth  = encodeURI( document.getElementById('input_sizeOfNewWindow_width').value );
+  const temp_sizeHeight = encodeURI( document.getElementById('input_sizeOfNewWindow_height').value );
+  const value_openMethod_sizeWidth  = Number( temp_sizeWidth );
+  const value_openMethod_sizeHeight = Number( temp_sizeHeight );
   browser.storage.local.set({ specifySize: value_openMethod_specifySize, sizeWidth: value_openMethod_sizeWidth, sizeHeight: value_openMethod_sizeHeight });
 }, false);
 
@@ -63,14 +65,12 @@ document.getElementById('strong_sizeOfNewWindow').textContent        = browser.i
 document.getElementById('label_specifySizeOfWindow').textContent     = browser.i18n.getMessage('optionPageSpecifySizeOfWindow');
 document.getElementById('p_whenSetWH').textContent                   = browser.i18n.getMessage('optionPageWhenSetWH');
 
-document.getElementById('div_languageOf').textContent             = browser.i18n.getMessage('optionPageLanguageOf');
+document.getElementById('div_translatedLanguage').textContent     = browser.i18n.getMessage('optionPageTranslatedLanguage');
 document.getElementById('strong_specifyLanguageCode').textContent = browser.i18n.getMessage('optionPageSpecifyLanguageCode');
 document.getElementById('p_ifSetToEn').textContent                = browser.i18n.getMessage('optionPageIfSetEn');
 
 document.getElementById('div_serviceUsedFor').textContent               = browser.i18n.getMessage('optionPageServiceUsedFor');
 document.getElementById('strong_specifyTranslationService').textContent = browser.i18n.getMessage('optionPageSpecifyTranslationService');
 document.getElementById('p_whenBingIsSelected').textContent             = browser.i18n.getMessage('optionPageWhenBingIsSelected');
-
-document.getElementById('p_describesBasicThing').textContent = browser.i18n.getMessage('optionPageDescribesBasicThing');
 
 document.getElementById('p_linkToGithub').textContent = browser.i18n.getMessage('optionPageLinkToGithub');

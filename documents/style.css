@@ -2,14 +2,11 @@
 
 body
 {
-  background-color:#ffffff;
+  background-color:#e0e0e0;
   color: #2f2f2f;
-  margin: 0;
-}
-
-.align_right
-{
-  text-align: right;
+  font-size: 1.0rem;
+  padding: 0;
+  margin:  0;
 }
 
 .border_dotted_90
@@ -26,9 +23,13 @@ body
   border-width: 1px;
 }
 
+.clear_float
+{
+  clear: both;
+}
+
 .contents_area
 {
-  overflow: hidden;
   padding-left:  24px;
   padding-right: 24px;
 }
@@ -36,13 +37,13 @@ body
 .contents_itemTitle
 {
   border-left: 8px solid #a0a0a0;
-  font-size: 100%;
+  font-size: 1.0rem;
 }
 
 .descriptionText
 {
-  font-size: 90%;
   color: #606060;
+  font-size: 0.9rem;
 }
 
 .float_clear
@@ -55,9 +56,81 @@ body
   float: left;
 }
 
-.float_right
+.footer_addonVer
+{
+  color: #606060;
+  text-align: right;
+}
+
+.footer_lastUpdateDate
+{
+  color: #606060;
+  text-align: right;
+}
+
+.header_addonTitle
+{
+  font-size: 1.1rem;
+  padding-left:  8px;
+  padding-right: 8px;
+}
+
+.header_area
+{
+  background-color: #2f2f2f;
+  color: #e8e8e8;
+}
+
+.header_line
+{
+  display: none;
+}
+
+.header_text
+{
+  padding-top:    8px;
+  padding-bottom: 8px;
+  padding-left:   16px;
+  padding-right:  16px;
+}
+
+.header_navi_area
+{
+  background-color: #3f3f3f;
+}
+
+.header_navi_items
+{
+  float: left;
+  padding-left:  8px;
+  padding-right: 8px;
+  text-decoration: underline;
+}
+
+.header_navi_items:hover
+{
+  background-color: #909090;
+}
+
+.header_navi_guides
+{
+  float: left;
+  padding-left:  8px;
+  padding-right: 8px;
+}
+
+.header_navi_text
+{
+  padding-top:    8px;
+  padding-bottom: 8px;
+  padding-left:   16px;
+  padding-right:  16px;
+}
+
+.image_rightAlign
 {
   float: right;
+  padding-left: 8px;
 }
 
 .paddingLeft_8px
@@ -67,45 +140,99 @@ body
 
 .page_global
 {
+  background: #ffffff;
   overflow: hidden;
 }
 
-.page_menu_area
+.page_title
 {
-  background: #d0d0d0;
-  margin-left: 24px;
-  width: 280px;
+  font-size: 1.2rem;
 }
 
-.page_title_area
+a.header_navi_link
 {
-  background: #2f2f2f;
-  color:      #f5f5f5;
+  color: #e8e8e8;
 }
 
-.page_title_text
+a.header_navi_link:hover
 {
-  font-size: 1.1rem;
-  margin: 0;
-  padding-top:    8px;
-  padding-bottom: 8px;
-  padding-left:   32px;
+  background-color: #909090;
 }
 
 @media screen and (min-width: 1200px)
 {
-  .page_menu_area
-  {
-    float: left;
-    width: 240px;
-    padding-bottom: 32768px;
-    margin-bottom: -32768px;
-    margin-left: 0;
-  }
-
   .contents_area
   {
-    padding-left:  16px;
-    padding-right: 16px;
+    padding-left:  324px;
+    padding-right: 32px;
+  }
+
+  .header_addonTitle
+  {
+    text-align: center;
+  }
+
+  .header_area
+  {
+    float: left;
+    position: fixed;
+    width: 300px;
+  }
+
+  .header_line
+  {
+    display: block;
+    margin-top:    0;
+    margin-bottom: 0;
+    width: 80%;
+  }
+
+  .header_text
+  {
+    float: none;
+    padding-left:  0px;
+    padding-right: 0px;
+    text-align: center;
+  }
+
+  .header_navi_text
+  {
+    float: left;
+    font-size: 1.1rem;
+    padding-left:  24px;
+    padding-right: 24px;
+  }
+
+  .header_navi_area
+  {
+    background-color: #2f2f2f;
+    padding-bottom: 32768px;
+    margin-bottom: -32768px;
+    width: 100%;
+  }
+
+  .header_navi_items
+  {
+    float: none;
+    padding-top:    8px;
+    padding-bottom: 8px;
+    padding-left:   32px;
+    width: 100%;
+  }
+
+  .header_navi_guides
+  {
+    float: none;
+    padding-top:    8px;
+    padding-bottom: 8px;
+    padding-left:   32px;
+  }
+
+  .header_navi_text
+  {
+    padding-top:    8px;
+    padding-bottom: 8px;
+    padding-left:   0px;
+    padding-right:  24px;
   }
 }
