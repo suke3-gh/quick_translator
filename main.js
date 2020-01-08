@@ -130,4 +130,4 @@ browser.pageAction.onClicked.addListener( (tab) => {
           break;
       } /* End: switch (obj.openMethod_website) */
     }); /* End: browser.storage.local.get().then */
-}); /* browser.pageAction.onClicked.addListener */
+}); /* End: browser.pageAction.onClicked.addListener */

@@ -30,19 +30,19 @@
   "options_ui":
   {
     "browser_style": true,
-    "open_in_tab": true,
+    "open_in_tab":   true,
     "page": "documents/options/option_page.html"
   },
 
   "page_action":
   {
     "browser_style": true,
-    "default_icon": "icons/ic_translate_black_48dp.png",
+    "default_icon":  "icons/ic_translate_black_48dp.png",
     "default_title": "__MSG_tooltipTitle__",
-    "show_matches": ["<all_urls>"]
+    "show_matches":  ["<all_urls>"]
   },
 
   "permissions": ["menus", "notifications", "storage", "tabs"],
 
-  "version": "1.5.1.0"
+  "version": "1.5.1.1"
 }
