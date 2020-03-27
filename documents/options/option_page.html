@@ -11,38 +11,32 @@
   <body>
     <div class="page_global">
       <div class="header_area">
-        <div class="header_text">
-          <div class="header_addonTitle">
-            Quick translator
-          </div>
-        </div><!-- End: class="header_text" -->
+        <div class="header_addonTitle">
+          Quick translator
+        </div>
 
         <hr class="header_line">
   
         <div class="header_navi_area">
-          <div class="header_navi_text">
+          <div class="header_navi_items">
             <a class="header_navi_link" href="../options/option_page.html">
-              <div class="header_navi_items">
-                Options
-              </div>
+              Options
             </a>
-            <div class="header_navi_guides">
-              Guides
-              (
-                <a class="header_navi_link" href="../guides/guide_page_en.html">English</a> /
-                <a class="header_navi_link" href="../guides/guide_page_ja.html">日本語</a>
-              )
-            </div>
-            <div class="clear_float"></div>
-          </div><!-- End: class="header_navi_text" -->
+          </div>
+          <div class="header_navi_items">
+            Guides
+            (
+              <a class="header_navi_link" href="../guides/guide_page_en.html">English</a> /
+              <a class="header_navi_link" href="../guides/guide_page_ja.html">日本語</a>
+            )
+          </div>
         </div><!-- End: class="header_navi_area" -->
       </div><!-- End: class="header_area" -->
 
       <div class="contents_area">
-        <hr class="border_solid_1px">
         <h2>Options</h2>
           <h3 class="contents_itemTitle">
-            <div id="div_behaviorWhen" class="paddingLeft_8px">Behavior when translating</div>
+            <div id="div_behaviorWhen" class="contents_itemTitle_text">Behavior when translating</div>
           </h3>
           <form id="form_openMethod_text">
             <b id="b_caseOfText">Case of text</b><br>
@@ -51,7 +45,7 @@
             <input type="radio" id="input_text_openByNewWindow" name="name_translateText" value="window">
               <label id="label_text_openByNewWindow" for="input_text_openByNewWindow">Open by new window</label><br>
           </form>
-          <hr class="border_dotted_90">
+          <div class="contents_border_dotted"></div>
           <form id="form_openMethod_website">
             <b id="b_caseOfWebsite">Case of website</b><br>
             <input type="radio" id="input_website_openByNewTab" name="name_translateWebsite" value="tab">
@@ -59,11 +53,11 @@
             <input type="radio" id="input_website_openByNewWindow" name="name_translateWebsite" value="window">
               <label id="label_website_openByNewWindow" for="input_website_openByNewWindow">Open by new window</label><br>
           </form>
-          <hr class="border_dotted_90">
+          <div class="contents_border_dotted"></div>
           <form id="form_openMethod_specifySize">
             <b id="b_sizeOfNewWindow">Size of new window</b><br>
             <input type="checkbox" id="input_specifySize" name="name_specifySize">
-              <label id="label_specifySizeOfWindow" for="input_specifySizeOfWindow">Specify the size of window(optional)</label>
+              <label id="label_specifySizeOfWindow" for="input_specifySize">Specify the size of window(optional)</label>
             <p>
               width: <input type="number" id="input_sizeOfNewWindow_width" placeholder="px" min="0"> ,
               height: <input type="number" id="input_sizeOfNewWindow_height" placeholder="px" min="0">
@@ -72,10 +66,10 @@
               When set width:800 and height:720, a size of new window is 800x720. This setting is reflected only when checked.
             </p>
           </form>
-          <hr class="border_dotted_90">
+          <div class="contents_border_dotted"></div>
 
           <h3 class="contents_itemTitle">
-            <div id="div_serviceUsedFor" class="paddingLeft_8px">Service used for translation</div>
+            <div id="div_serviceUsedFor" class="contents_itemTitle_text">Service used for translation</div>
           </h3>
           <form id="form_translationService">
             <b id="b_specifyTranslationService">Specify a translation service</b>
@@ -90,10 +84,10 @@
             </p>
 
           </form>
-          <hr class="border_dotted_90">
+          <div class="contents_border_dotted"></div>
 
           <h3 class="contents_itemTitle">
-            <div id="div_translatedLanguage" class="paddingLeft_8px">Translated language</div>
+            <div id="div_translatedLanguage" class="contents_itemTitle_text">Translated language</div>
           </h3>
           <form id="form_languageCode">
             <b id="b_specifyLanguageCode">Specify a language code</b>
@@ -210,7 +204,7 @@
           <p id="p_ifSetToEn" class="descriptionText">
             If set to "en - English", texts and websites will be translated into English.
           </p>
-          <hr class="border_dotted_90">
+          <div class="contents_border_dotted"></div>
 
         <h2>Source code</h2>
           <details>
@@ -221,15 +215,15 @@
               Repository URL: <a href="https://github.com/Kei-sukesan/Quick-translator" target="_blank">https://github.com/Kei-sukesan/Quick-translator</a>
             </p>
           </details>
-          <hr class="border_dotted_90">
+          <div class="contents_border_dotted"></div>
 
         <h2>License</h2>
           <details>
             <object data="../../License.txt" type="text/plain" width="100%" height="560"></object>
           </details>
-        <hr class="border_solid_1px">
+        <div class="contents_border_solid"></div>
         <p class="footer_addonVer">
-          Add-on Version: 1.5.1.1
+          Add-on Version: 1.5.2.0
         </p>
       </div><!-- End: class="contents_area" -->
     </div><!-- End: class="page_global" -->
