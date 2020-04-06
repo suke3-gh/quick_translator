@@ -16,16 +16,16 @@ const menu02 = browser.menus.create({
 });
 
 /* Behavior */
-function openByNewWindow(URL, specifySize, sizeWidth, sizeHeight) {
+function openByNewWindow(url, specifySize, sizeWidth, sizeHeight) {
   if (specifySize == true) {
-    browser.windows.create({ url: URL, width: sizeWidth, height: sizeHeight });
+    browser.windows.create({ url: url, width: sizeWidth, height: sizeHeight });
   } else {
-    browser.windows.create({ url: URL });
+    browser.windows.create({ url: url });
   }
 }
 
-function openByNewTab(URL) {
-  browser.tabs.create({ url: URL });
+function openByNewTab(url) {
+  browser.tabs.create({ url: url });
 }
 
 function notificationNotSetup() {
@@ -45,57 +45,57 @@ browser.menus.onClicked.addListener( (info) => {
       }
       switch (info.menuItemId) {
         case ID01:
-          if ( (obj.openMethod_text == null) || (obj.languageCode == null) ) {
+          if ( (obj.openMethodText == null) || (obj.languageCode == null) ) {
             notificationNotSetup();
-            obj.openMethod_text = 'tab';
-            obj.languageCode    = 'en';
+            obj.openMethodText = 'tab';
+            obj.languageCode   = 'en';
           }
           const targetText = info.selectionText
             .replace(/\%/g, '％')
             .replace(/\&/g, '%26')
             .replace(/\//g, '%2F')
             .replace(/\|/g, '%7C');
-          let URL_translateText = obj.languageCode+'&text='+targetText;
+          let urlTranslateText = obj.languageCode+'&text='+targetText;
           switch (obj.translationService) {
             case "Google":
-              URL_translateText = 'https://translate.google.com/#view=home&op=translate&sl=auto&tl='+URL_translateText;
+              urlTranslateText = 'https://translate.google.com/#view=home&op=translate&sl=auto&tl='+urlTranslateText;
               break;
             case "Bing":
-              URL_translateText = 'https://www.bing.com/translator?from=&to='+URL_translateText;
+              urlTranslateText = 'https://www.bing.com/translator?from=&to='+urlTranslateText;
               break;
           } /* End: switch (obj.translationService) */
-          switch (obj.openMethod_text) {
+          switch (obj.openMethodText) {
             case 'window':
-              openByNewWindow(URL_translateText, obj.specifySize, obj.sizeWidth, obj.sizeHeight);
+              openByNewWindow(urlTranslateText, obj.specifySize, obj.sizeWidth, obj.sizeHeight);
               break;
             case 'tab':
-              openByNewTab(URL_translateText);
+              openByNewTab(urlTranslateText);
               break;
-          } /* End: switch (obj.openMethod_text) */
+          } /* End: switch (obj.openMethodText) */
           break; /* End: case ID01 */
         case ID02:
-          if ( (obj.openMethod_website == null) || (obj.languageCode == null) ) {
+          if ( (obj.openMethodWebsite == null) || (obj.languageCode == null) ) {
             notificationNotSetup();
-            obj.openMethod_website = 'tab';
-            obj.languageCode       = 'en';
+            obj.openMethodWebsite = 'tab';
+            obj.languageCode      = 'en';
           }
-          let URL_translateWebsite = info.pageUrl;
+          let urlTranslateWebsite = info.pageUrl;
           switch (obj.translationService) {
             case "Google":
-              URL_translateWebsite = 'https://translate.google.com/translate?hl='+obj.languageCode+'&sl=auto&tl='+obj.languageCode+'&u='+URL_translateWebsite;
+              urlTranslateWebsite = 'https://translate.google.com/translate?hl='+obj.languageCode+'&sl=auto&tl='+obj.languageCode+'&u='+urlTranslateWebsite;
               break;
             case "Bing":
-              URL_translateWebsite = 'https://www.translatetheweb.com/?from=&to='+obj.languageCode+'&a='+URL_translateWebsite;
+              urlTranslateWebsite = 'https://www.translatetheweb.com/?from=&to='+obj.languageCode+'&a='+urlTranslateWebsite;
               break;
           } /* End: switch (obj.translationService) */
-          switch (obj.openMethod_website) {
+          switch (obj.openMethodWebsite) {
             case 'window':
-              openByNewWindow(URL_translateWebsite, obj.specifySize, obj.sizeWidth, obj.sizeHeight);
+              openByNewWindow(urlTranslateWebsite, obj.specifySize, obj.sizeWidth, obj.sizeHeight);
               break;
             case 'tab':
-              openByNewTab(URL_translateWebsite);
+              openByNewTab(urlTranslateWebsite);
               break;
-          } /* End: switch (obj.openMethod_website) */
+          } /* End: switch (obj.openMethodWebsite) */
           break; /* End: case ID02 */
       } /* End: switch (info.menuItemId) */
     }); /* End: browser.storage.local.get().then */
@@ -107,27 +107,27 @@ browser.pageAction.onClicked.addListener( (tab) => {
       if (obj.translationService == null) {
         obj.translationService = "Google";
       }
-      if ( (obj.openMethod_website == null) || (obj.languageCode == null) ) {
+      if ( (obj.openMethodWebsite == null) || (obj.languageCode == null) ) {
         notificationNotSetup();
-        obj.openMethod_website = 'tab';
+        obj.openMethodWebsite = 'tab';
         obj.languageCode       = 'en';
       }
-      let barURL = tab.url;
+      let barUrl = tab.url;
       switch (obj.translationService) {
         case "Google":
-          barURL = 'https://translate.google.com/translate?hl='+obj.languageCode+'&sl=auto&tl='+obj.languageCode+'&u='+barURL;
+          barUrl = 'https://translate.google.com/translate?hl='+obj.languageCode+'&sl=auto&tl='+obj.languageCode+'&u='+barUrl;
           break;
         case "Bing":
-          barURL = 'https://www.translatetheweb.com/?from=&to='+obj.languageCode+'&a='+barURL;
+          barUrl = 'https://www.translatetheweb.com/?from=&to='+obj.languageCode+'&a='+barUrl;
           break;
       } /* End: switch (obj.translationService) */
-      switch (obj.openMethod_website) {
+      switch (obj.openMethodWebsite) {
         case 'window':
-          openByNewWindow(barURL, obj.specifySize, obj.sizeWidth, obj.sizeHeight);
+          openByNewWindow(barUrl, obj.specifySize, obj.sizeWidth, obj.sizeHeight);
           break;
         case 'tab':
-          openByNewTab(barURL);
+          openByNewTab(barUrl);
           break;
-      } /* End: switch (obj.openMethod_website) */
+      } /* End: switch (obj.openMethodWebsite) */
     }); /* End: browser.storage.local.get().then */
 }); /* End: browser.pageAction.onClicked.addListener */

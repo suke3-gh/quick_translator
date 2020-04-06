@@ -39,11 +39,6 @@
     "message": "仮に\"en - English\"に設定した場合、テキストやウェブサイトは英語に翻訳されます。"
   },
 
-  "optionPageLinkToGithub":
-  {
-    "message": "このアドオンのソースコードはGithubで公開しています。"
-  },
-
   "optionPageOpenByNewTab":
   {
     "message": "新しいタブで開く"

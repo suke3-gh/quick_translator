@@ -39,11 +39,6 @@
     "message": "\"en - English\", le texte et le site Web seront traduits en anglais."
   },
 
-  "optionPageLinkToGithub":
-  {
-    "message": "Le code source de cet add-on est disponible sur Github."
-  },
-
   "optionPageOpenByNewTab":
   {
     "message": "Ouvrir dans un nouvel onglet"

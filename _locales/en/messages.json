@@ -39,11 +39,6 @@
     "message": "If set to \"en - English\" \u002C texts and websites will be translated into English."
   },
 
-  "optionPageLinkToGithub":
-  {
-    "message": "The source code of this add-on is available on Github."
-  },
-
   "optionPageOpenByNewTab":
   {
     "message": "Open by new tab"
