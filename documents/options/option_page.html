@@ -9,34 +9,40 @@
   </head>
 
   <body>
-    <div class="page-area">
-      <div class="header-area">
-        <div class="header-addon-title">
+    <div class="global">
+      <header>
+        <div class="addon-title">
           Quick translator
         </div>
 
-        <hr class="header-line">
+        <div class="border-solid-header"></div>
   
-        <div class="header-navi-area">
-          <div class="header-navi-items">
-            <a class="header-navi-link" href="../options/option_page.html">
+        <div class="menu">
+          <div class="menu-list-title">
+            Menu:
+          </div>
+          <div class="menu-item">
+            <a class="menu-link" href="../options/option_page.html">
               Options
             </a>
           </div>
-          <div class="header-navi-items">
+          <div class="menu-item">
             Guides
             (
-              <a class="header-navi-link" href="../guides/guide_page_en.html">English</a> /
-              <a class="header-navi-link" href="../guides/guide_page_ja.html">日本語</a>
+              <a class="menu-link" href="../guides/en/guide_page.html">English</a> /
+              <a class="menu-link" href="../guides/ja/guide_page.html">日本語</a>
             )
           </div>
-        </div><!-- End: class="header-navi-area" -->
-      </div><!-- End: class="header-area" -->
+        </div><!-- End: class="menu" -->
+      </header>
 
-      <div class="main-area">
+      <div class="main">
+        <p class="addon-version">
+          <span class="text-bold">Add-on version:</span> ver.1.5.3.0
+        </p>
         <h2>Options</h2>
-          <h3 class="main-item-title">
-            <div id="divBehaviorWhen" class="main-item-title-text">Behavior when translating</div>
+          <h3>
+            <div id="divBehaviorWhen" class="headline3-text">Behavior when translating</div>
           </h3>
           <form id="formOpenMethodText">
             <b id="bCaseOfText">Case of text</b><br>
@@ -45,7 +51,7 @@
             <input type="radio" id="inputTextOpenByNewWindow" name="nameTranslateText" value="window">
               <label id="labelTextOpenByNewWindow" for="inputTextOpenByNewWindow">Open by new window</label><br>
           </form>
-          <div class="main-border-dotted"></div>
+          <div class="border-dotted"></div>
           <form id="formOpenMethodWebsite">
             <b id="bCaseOfWebsite">Case of website</b><br>
             <input type="radio" id="inputWebsiteOpenByNewTab" name="nameTranslateWebsite" value="tab">
@@ -53,7 +59,7 @@
             <input type="radio" id="inputWebsiteOpenByNewWindow" name="nameTranslateWebsite" value="window">
               <label id="labelWebsiteOpenByNewWindow" for="inputWebsiteOpenByNewWindow">Open by new window</label><br>
           </form>
-          <div class="main-border-dotted"></div>
+          <div class="border-dotted"></div>
           <form id="formOpenMethodSpecifySize">
             <b id="bSizeOfNewWindow">Size of new window</b><br>
             <input type="checkbox" id="inputSpecifySize" name="nameSpecifySize">
@@ -66,10 +72,10 @@
               When set width:800 and height:720, a size of new window is 800x720. This setting is reflected only when checked.
             </p>
           </form>
-          <div class="main-border-dotted"></div>
+          <div class="border-dotted"></div>
 
-          <h3 class="main-item-title">
-            <div id="divServiceUsedFor" class="main-item-title-text">Service used for translation</div>
+          <h3>
+            <div id="divServiceUsedFor" class="headline3-text">Service used for translation</div>
           </h3>
           <form id="formTranslationService">
             <b id="bSpecifyTranslationService">Specify a translation service</b>
@@ -84,10 +90,10 @@
             </p>
 
           </form>
-          <div class="main-border-dotted"></div>
+          <div class="border-dotted"></div>
 
-          <h3 class="main-item-title">
-            <div id="divTranslatedLanguage" class="main-item-title-text">Translated language</div>
+          <h3>
+            <div id="divTranslatedLanguage" class="headline3-text">Translated language</div>
           </h3>
           <form id="formLanguageCode">
             <b id="bSpecifyLanguageCode">Specify a language code</b>
@@ -204,18 +210,19 @@
           <p id="pIfSetToEn" class="description-text">
             If set to "en - English", texts and websites will be translated into English.
           </p>
-          <div class="main-border-dotted"></div>
+          <div class="border-dotted"></div>
 
         <h2>License</h2>
           <details>
             <object data="../../License.txt" type="text/plain" width="100%" height="560"></object>
           </details>
-        <div class="main-border-solid"></div>
-        <p class="footer-addon-version">
-          Add-on Version: 1.5.2.1
-        </p>
-      </div><!-- End: class="main-area" -->
-    </div><!-- End: class="page-area" -->
+
+        <div class="border-solid"></div>
+
+        <br>
+
+      </div><!-- End: class="main" -->
+    </div><!-- End: class="global" -->
 
     <script type="text/javascript" src="option_script.js"></script>
   </body>
