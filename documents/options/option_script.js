@@ -18,7 +18,7 @@ browser.storage.local.get()
       document.querySelector('option[value="'+obj.languageCode+'"]').selected = true;
     }
 
-    document.getElementById('inputSpecifySize').checked          = obj.specifySize;
+    document.getElementById('inputSpecifySize').checked         = obj.specifySize;
     document.getElementById('inputSizeOfNewWindowWidth').value  = obj.sizeWidth;
     document.getElementById('inputSizeOfNewWindowHeight').value = obj.sizeHeight;
   });
@@ -55,20 +55,20 @@ document.getElementById('formLanguageCode').addEventListener('input', () => {
 
 /* For multilingual */
 document.getElementById('divBehaviorWhen').textContent             = browser.i18n.getMessage('optionPageBehaviorWhen');
-document.getElementById('bCaseOfText').textContent                 = browser.i18n.getMessage('optionPageCaseOfText');
-document.getElementById('bCaseOfWebsite').textContent              = browser.i18n.getMessage('optionPageCaseOfWebsite');
+document.getElementById('spanCaseOfText').textContent              = browser.i18n.getMessage('optionPageCaseOfText');
+document.getElementById('spanCaseOfWebsite').textContent           = browser.i18n.getMessage('optionPageCaseOfWebsite');
 document.getElementById('labelTextOpenByNewTab').textContent       = browser.i18n.getMessage('optionPageOpenByNewTab');
 document.getElementById('labelTextOpenByNewWindow').textContent    = browser.i18n.getMessage('optionPageOpenByNewWindow');
 document.getElementById('labelWebsiteOpenByNewTab').textContent    = browser.i18n.getMessage('optionPageOpenByNewTab');
 document.getElementById('labelWebsiteOpenByNewWindow').textContent = browser.i18n.getMessage('optionPageOpenByNewWindow');
-document.getElementById('bSizeOfNewWindow').textContent            = browser.i18n.getMessage('optionPageSizeOfNewWindow');
+document.getElementById('spanSizeOfNewWindow').textContent         = browser.i18n.getMessage('optionPageSizeOfNewWindow');
 document.getElementById('labelSpecifySizeOfWindow').textContent    = browser.i18n.getMessage('optionPageSpecifySizeOfWindow');
 document.getElementById('pWhenSetWH').textContent                  = browser.i18n.getMessage('optionPageWhenSetWH');
 
-document.getElementById('divTranslatedLanguage').textContent = browser.i18n.getMessage('optionPageTranslatedLanguage');
-document.getElementById('bSpecifyLanguageCode').textContent  = browser.i18n.getMessage('optionPageSpecifyLanguageCode');
-document.getElementById('pIfSetToEn').textContent            = browser.i18n.getMessage('optionPageIfSetEn');
+document.getElementById('divTranslatedLanguage').textContent   = browser.i18n.getMessage('optionPageTranslatedLanguage');
+document.getElementById('spanSpecifyLanguageCode').textContent = browser.i18n.getMessage('optionPageSpecifyLanguageCode');
+document.getElementById('pIfSetToEn').textContent              = browser.i18n.getMessage('optionPageIfSetEn');
 
-document.getElementById('divServiceUsedFor').textContent          = browser.i18n.getMessage('optionPageServiceUsedFor');
-document.getElementById('bSpecifyTranslationService').textContent = browser.i18n.getMessage('optionPageSpecifyTranslationService');
-document.getElementById('pWhenBingIsSelected').textContent        = browser.i18n.getMessage('optionPageWhenBingIsSelected');
+document.getElementById('divServiceUsedFor').textContent             = browser.i18n.getMessage('optionPageServiceUsedFor');
+document.getElementById('spanSpecifyTranslationService').textContent = browser.i18n.getMessage('optionPageSpecifyTranslationService');
+document.getElementById('pWhenBingIsSelected').textContent           = browser.i18n.getMessage('optionPageWhenBingIsSelected');

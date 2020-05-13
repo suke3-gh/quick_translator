@@ -15,7 +15,37 @@ const menu02 = browser.menus.create({
   id: ID02, title: title02, contexts: ['page']
 });
 
-/* Behavior */
+/* Functions */
+function autoSelectLanguageCode() {
+  let tempLanguageCode = browser.i18n.getUILanguage();
+
+  /* Fix for German */
+  if (tempLanguageCode.indexOf('de') != -1) {
+    tempLanguageCode = 'de';
+    return tempLanguageCode
+  }
+
+  /* Fix for English */
+  if (tempLanguageCode.indexOf('en') != -1) {
+    tempLanguageCode = 'en';
+    return tempLanguageCode
+  }
+
+  /* Fix for Spnish */
+  if (tempLanguageCode.indexOf('es') != -1) {
+    tempLanguageCode = 'es';
+    return tempLanguageCode
+  }
+
+  /* Fix for Portuguese */
+  if (tempLanguageCode.indexOf('pt') != -1) {
+    tempLanguageCode = 'pt';
+    return tempLanguageCode
+  }
+
+  return tempLanguageCode
+}
+
 function openByNewWindow(url, specifySize, sizeWidth, sizeHeight) {
   if (specifySize == true) {
     browser.windows.create({ url: url, width: sizeWidth, height: sizeHeight });
@@ -28,33 +58,25 @@ function openByNewTab(url) {
   browser.tabs.create({ url: url });
 }
 
-function notificationNotSetup() {
-  browser.notifications.create('notificationNS', {
-    'type'   : 'basic',
-    'title'  : 'Notification from add-on \"Quick translate\"',
-    'message': browser.i18n.getMessage('notificationTextNotSetup')
-  });
-  setTimeout( () => { browser.notifications.clear('notificationNS'); }, 5000);
-}
-
 browser.menus.onClicked.addListener( (info) => {
   browser.storage.local.get()
     .then( (obj) => {
-      if (obj.translationService == null) {
+      if (obj.translationService == undefined) {
         obj.translationService = "Google";
       }
       switch (info.menuItemId) {
         case ID01:
-          if ( (obj.openMethodText == null) || (obj.languageCode == null) ) {
-            notificationNotSetup();
+          if (obj.openMethodText == undefined) {
             obj.openMethodText = 'tab';
-            obj.languageCode   = 'en';
+          }
+          if ( (obj.languageCode == undefined) || (obj.languageCode == 'auto') ) {
+            obj.languageCode = autoSelectLanguageCode();
           }
           const targetText = info.selectionText
             .replace(/\%/g, '％')
-            .replace(/\&/g, '%26')
-            .replace(/\//g, '%2F')
-            .replace(/\|/g, '%7C');
+              .replace(/\&/g, '%26')
+                .replace(/\//g, '%2F')
+                  .replace(/\|/g, '%7C');
           let urlTranslateText = obj.languageCode+'&text='+targetText;
           switch (obj.translationService) {
             case "Google":
@@ -74,10 +96,11 @@ browser.menus.onClicked.addListener( (info) => {
           } /* End: switch (obj.openMethodText) */
           break; /* End: case ID01 */
         case ID02:
-          if ( (obj.openMethodWebsite == null) || (obj.languageCode == null) ) {
-            notificationNotSetup();
+          if (obj.openMethodWebsite == undefined) {
             obj.openMethodWebsite = 'tab';
-            obj.languageCode      = 'en';
+          }
+          if ( (obj.languageCode == undefined) || (obj.languageCode == 'auto') ) {
+            obj.languageCode = autoSelectLanguageCode();
           }
           let urlTranslateWebsite = info.pageUrl;
           switch (obj.translationService) {
@@ -104,13 +127,14 @@ browser.menus.onClicked.addListener( (info) => {
 browser.pageAction.onClicked.addListener( (tab) => {
   browser.storage.local.get()
     .then( (obj) => {
-      if (obj.translationService == null) {
+      if (obj.translationService == undefined) {
         obj.translationService = "Google";
       }
-      if ( (obj.openMethodWebsite == null) || (obj.languageCode == null) ) {
-        notificationNotSetup();
+      if (obj.openMethodWebsite == undefined) {
         obj.openMethodWebsite = 'tab';
-        obj.languageCode       = 'en';
+      }
+      if ( (obj.languageCode == undefined) || (obj.languageCode == 'auto') ) {
+        obj.languageCode = autoSelectLanguageCode();
       }
       let barUrl = tab.url;
       switch (obj.translationService) {

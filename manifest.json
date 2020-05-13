@@ -3,10 +3,11 @@
   {
     "gecko":
     {
-      "id": "da486ed70ee0a721c84734f9aa89c74d964dbaad@temporary-addon",
       "strict_min_version": "60.0a1"
     }
   },
+
+  "author": "Sukesan",
 
   "background":
   {
@@ -42,7 +43,7 @@
     "show_matches":  ["<all_urls>"]
   },
 
-  "permissions": ["menus", "notifications", "storage", "tabs"],
+  "permissions": ["menus", "storage", "tabs"],
 
-  "version": "1.5.3.1"
+  "version": "1.5.4.0"
 }

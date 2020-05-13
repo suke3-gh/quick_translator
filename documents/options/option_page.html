@@ -38,30 +38,32 @@
 
       <div class="main">
         <p class="addon-version">
-          <span class="text-bold">Add-on version:</span> ver.1.5.3.0
+          <span class="text-bold">Add-on version:</span> ver.1.5.4.0
         </p>
         <h2>Options</h2>
           <h3>
             <div id="divBehaviorWhen" class="headline3-text">Behavior when translating</div>
           </h3>
           <form id="formOpenMethodText">
-            <b id="bCaseOfText">Case of text</b><br>
+            <span class="text-bold" id="spanCaseOfText">Case of text</span><br>
             <input type="radio" id="inputTextOpenByNewTab" name="nameTranslateText" value="tab">
               <label id="labelTextOpenByNewTab" for="inputTextOpenByNewTab">Open by new tab</label><br>
             <input type="radio" id="inputTextOpenByNewWindow" name="nameTranslateText" value="window">
               <label id="labelTextOpenByNewWindow" for="inputTextOpenByNewWindow">Open by new window</label><br>
           </form>
           <div class="border-dotted"></div>
+
           <form id="formOpenMethodWebsite">
-            <b id="bCaseOfWebsite">Case of website</b><br>
+            <b id="spanCaseOfWebsite">Case of website</b><br>
             <input type="radio" id="inputWebsiteOpenByNewTab" name="nameTranslateWebsite" value="tab">
               <label id="labelWebsiteOpenByNewTab" for="inputWebsiteOpenByNewTab">Open by new tab</label><br>
             <input type="radio" id="inputWebsiteOpenByNewWindow" name="nameTranslateWebsite" value="window">
               <label id="labelWebsiteOpenByNewWindow" for="inputWebsiteOpenByNewWindow">Open by new window</label><br>
           </form>
           <div class="border-dotted"></div>
+          
           <form id="formOpenMethodSpecifySize">
-            <b id="bSizeOfNewWindow">Size of new window</b><br>
+            <span class="text-bold" id="spanSizeOfNewWindow">Size of new window</span><br>
             <input type="checkbox" id="inputSpecifySize" name="nameSpecifySize">
               <label id="labelSpecifySizeOfWindow" for="inputSpecifySize">Specify the size of window(optional)</label>
             <p>
@@ -78,7 +80,7 @@
             <div id="divServiceUsedFor" class="headline3-text">Service used for translation</div>
           </h3>
           <form id="formTranslationService">
-            <b id="bSpecifyTranslationService">Specify a translation service</b>
+            <span class="text-bold" id="spanSpecifyTranslationService">Specify a translation service</span>
             <p>Translation service:
               <select id="selectTranslationService">
                 <option value="Google">Google</option>
@@ -96,10 +98,10 @@
             <div id="divTranslatedLanguage" class="headline3-text">Translated language</div>
           </h3>
           <form id="formLanguageCode">
-            <b id="bSpecifyLanguageCode">Specify a language code</b>
+            <span id="spanSpecifyLanguageCode">Specify a language code</span>
             <p>Language code:
               <select id="selectLanguageCode">
-                <option value="00">-select-</option>
+                <option value="auto">- auto -</option>
                 <option value="af">af - Afrikaans</option>
                 <option value="am">am - አማርኛ</option>
                 <option value="ar">ar - العربية</option>
