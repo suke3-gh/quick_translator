@@ -14,10 +14,12 @@
     "message": "このウェブページを翻訳"
   },
 
-  "notificationTextNotSetup":
+
+  "tooltipTitle":
   {
-    "message": "初期セットアップを行っていないので\"英語\"に翻訳されてます。 詳しくはこのアドオンの\"Guide page\"をご覧ください。"
+    "message": "このウェブページを翻訳"
   },
+
 
   "optionPageBehaviorWhen":
   {
@@ -34,11 +36,6 @@
     "message": "ウェブサイトの場合"
   },
 
-  "optionPageIfSetEn":
-  {
-    "message": "仮に\"en - English\"に設定した場合、テキストやウェブサイトは英語に翻訳されます。"
-  },
-
   "optionPageOpenByNewTab":
   {
     "message": "新しいタブで開く"
@@ -49,19 +46,9 @@
     "message": "新しいウィンドウで開く"
   },
 
-  "optionPageServiceUsedFor":
-  {
-    "message": "翻訳に用いるサービス"
-  },
-
   "optionPageSizeOfNewWindow":
   {
     "message": "新しいウィンドウのサイズ"
-  },
-
-  "optionPageSpecifyLanguageCode":
-  {
-    "message": "言語コードの指定"
   },
 
   "optionPageSpecifySizeOfWindow":
@@ -69,28 +56,40 @@
     "message": "ウィンドウのサイズを指定(任意)"
   },
 
-  "optionPageSpecifyTranslationService":
+  "optionPageWhenSetWH":
   {
-    "message": "翻訳サービスの指定"
+    "message": "\"width:800 height:720\" と設定した時、 新しいウィンドウのサイズは800x720となります。 この設定はチェックを入れているときのみ反映されます。"
   },
+
 
   "optionPageTranslatedLanguage":
   {
     "message": "翻訳後の言語"
   },
 
+  "optionPageSpecifyLanguageCode":
+  {
+    "message": "言語コードの指定"
+  },
+
+  "optionPageIfSetEn":
+  {
+    "message": "仮に\"en - English\"に設定した場合、テキストやウェブサイトは英語に翻訳されます。"
+  },
+
+
+  "optionPageServiceUsedFor":
+  {
+    "message": "翻訳に用いるサービス"
+  },
+
+  "optionPageSpecifyTranslationService":
+  {
+    "message": "翻訳サービスの指定"
+  },
+
   "optionPageWhenBingIsSelected":
   {
     "message": "\"Bing\"を選択しているとき、使用できない言語がいくつかあります。"
-  },
-
-  "optionPageWhenSetWH":
-  {
-    "message": "\"width:800 height:720\" と設定した時、 新しいウィンドウのサイズは800x720となります。 この設定はチェックを入れているときのみ反映されます。"
-  },
-
-  "tooltipTitle":
-  {
-    "message": "このウェブページを翻訳"
   }
 }

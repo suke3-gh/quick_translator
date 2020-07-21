@@ -20,8 +20,8 @@
 
   "icons":
   {
-    "48": "icons/quickTranslator_icon_48px.png",
-    "96": "icons/quickTranslator_icon_96px.png"
+    "48":   "/icons/quickTranslator_icon_48x48px.png",
+    "256":  "/icons/quickTranslator_icon_256x256px.png"
   },
 
   "manifest_version": 2,
@@ -32,18 +32,22 @@
   {
     "browser_style": true,
     "open_in_tab":   true,
-    "page": "documents/options/option_page.html"
+    "page": "/documents/options/option_page.html"
   },
 
   "page_action":
   {
     "browser_style": true,
-    "default_icon":  "icons/quickTranslator_icon_96px.png",
+    "default_icon":
+    {
+      "48":   "/icons/quickTranslator_icon_48x48px.png",
+      "256":  "/icons/quickTranslator_icon_256x256px.png"
+    },
     "default_title": "__MSG_tooltipTitle__",
     "show_matches":  ["<all_urls>"]
   },
 
   "permissions": ["menus", "storage", "tabs"],
 
-  "version": "1.5.4.0"
+  "version": "1.6.0"
 }

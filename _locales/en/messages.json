@@ -14,10 +14,12 @@
     "message": "Translate this web page"
   },
 
-  "notificationTextNotSetup":
+
+  "tooltipTitle":
   {
-    "message": "It has been translated into \"English\" because no initial setup has been done. See the add-on's \"Guide page\" for details."
+    "message": "Translate this web page"
   },
+
 
   "optionPageBehaviorWhen":
   {
@@ -34,11 +36,6 @@
     "message": "Case of website"
   },
 
-  "optionPageIfSetEn":
-  {
-    "message": "If set to \"en - English\" \u002C texts and websites will be translated into English."
-  },
-
   "optionPageOpenByNewTab":
   {
     "message": "Open by new tab"
@@ -49,19 +46,9 @@
     "message": "Open by new window"
   },
 
-  "optionPageServiceUsedFor":
-  {
-    "message": "Service used for translation"
-  },
-
   "optionPageSizeOfNewWindow":
   {
     "message": "Size of new window"
-  },
-
-  "optionPageSpecifyLanguageCode":
-  {
-    "message": "Specify a language code"
   },
 
   "optionPageSpecifySizeOfWindow":
@@ -69,28 +56,40 @@
     "message": "Specify the size of window(Optional)"
   },
 
-  "optionPageSpecifyTranslationService":
+  "optionPageWhenSetWH":
   {
-    "message": "Specify a translation service"
+    "message": "When set \"width:800 and height:720\", a size of new window is 800x720. This setting is reflected only when checked."
   },
+
 
   "optionPageTranslatedLanguage":
   {
     "message": "Translated language"
   },
 
+  "optionPageSpecifyLanguageCode":
+  {
+    "message": "Specify a language code"
+  },
+
+  "optionPageIfSetEn":
+  {
+    "message": "If set to \"en - English\" \u002C texts and websites will be translated into English."
+  },
+
+
+  "optionPageServiceUsedFor":
+  {
+    "message": "Service used for translation"
+  },
+
+  "optionPageSpecifyTranslationService":
+  {
+    "message": "Specify a translation service"
+  },
+
   "optionPageWhenBingIsSelected":
   {
     "message": "When \"Bing\" is selected, some languages are not available."
-  },
-
-  "optionPageWhenSetWH":
-  {
-    "message": "When set \"width:800 and height:720\", a size of new window is 800x720. This setting is reflected only when checked."
-  },
-
-  "tooltipTitle":
-  {
-    "message": "Translate this web page"
   }
 }

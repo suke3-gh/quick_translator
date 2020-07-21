@@ -4,7 +4,9 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../../style.css" />
+    <link rel="icon" type="image/png" href="/icons/quickTranslator_icon_48x48px.png" sizes="48x48">
+    <link rel="icon" type="image/png" href="/icons/quickTranslator_icon_256x256px.png" sizes="256x256">
+    <link rel="stylesheet" type="text/css" href="/documents/style.css">
     <title>Guide page (Quick translator)</title>
   </head>
 
@@ -17,23 +19,31 @@
 
         <div class="border-solid-header"></div>
   
-        <div class="menu">
-          <div class="menu-list-title">
-            Menu:
+        <label class="menu-button" for="inputAccordionMenu">
+          <div class="menu-icon">
+            <div class="menu-icon-border"></div>
+            <div class="menu-icon-border"></div>
+            <div class="menu-icon-border"></div>
           </div>
-          <div class="menu-item">
-            <a class="menu-link" href="../../options/option_page.html">
+        </label>
+        <input type="checkbox" class="checkbox-area" id="inputAccordionMenu">
+          <div class="menu">
+            <div class="menu-list">
               Options
-            </a>
-          </div>
-          <div class="menu-item">
-            Guides
-            (
-              <a class="menu-link" href="../../guides/en/guide_page.html">English</a> /
-              <a class="menu-link" href="../../guides/ja/guide_page.html">日本語</a>
-            )
-          </div>
-        </div><!-- End: class="menu" -->
+                <a class="menu-link" href="/documents/options/option_page.html" target="_blank">
+                  <div class="menu-item">Options</div>
+                </a>
+            </div>
+            <div class="menu-list">
+              Guides
+              <a class="menu-link" href="/documents/guides/en/guide_page.html" target="_blank">
+                <div class="menu-item">English</div>
+              </a>
+              <a class="menu-link" href="/documents/guides/ja/guide_page.html" target="_blank">
+                <div class="menu-item">日本語</div>
+              </a>
+            </div>
+          </div><!-- End: class="menu" -->
       </header>
 
       <div class="main">
@@ -50,8 +60,8 @@
           </p>
 
           <div class="guide-setup-link">
-            <a href="_images/guide_setup.png" target="_blank">
-              <img class="guide-setup-thumbnail" src="_images/guide_setup.png" alt="guide_setup.png">
+            <a href="/documents/guides/ja/_images/guide_setup_ja_desktop.png" target="_blank">
+              <img class="guide-setup-thumbnail" src="/documents/guides/ja/_images/guide_setup_ja_desktop.png" alt="guide_setup_ja_android.png">
             </a>
           </div>
       

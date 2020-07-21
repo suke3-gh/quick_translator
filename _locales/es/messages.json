@@ -14,10 +14,12 @@
     "message": "Traducir esta página web"
   },
 
-  "notificationTextNotSetup":
+
+  "tooltipTitle":
   {
-    "message": "Se ha traducido a \"inglés\" porque no se ha realizado una configuración inicial. Consulte la \"Guide page\" del complemento para obtener más información."
+    "message": "Traducir esta página web"
   },
+
 
   "optionPageBehaviorWhen":
   {
@@ -34,11 +36,6 @@
     "message": "Para sitio web"
   },
 
-  "optionPageIfSetEn":
-  {
-    "message": "Si se establece en \"en - English\", los textos y sitios web se traducirán al inglés."
-  },
-
   "optionPageOpenByNewTab":
   {
     "message": "Abrir en una nueva pestaña"
@@ -49,19 +46,9 @@
     "message": "Abrir en una nueva ventana"
   },
 
-  "optionPageServiceUsedFor":
-  {
-    "message": "Servicio utilizado para la traducción."
-  },
-
   "optionPageSizeOfNewWindow":
   {
     "message": "Tamaño de la nueva ventana"
-  },
-
-  "optionPageSpecifyLanguageCode":
-  {
-    "message": "Especificar código de idioma"
   },
 
   "optionPageSpecifySizeOfWindow":
@@ -69,28 +56,40 @@
     "message": "Especifique el tamaño de la ventana(Opcional)"
   },
 
-  "optionPageSpecifyTranslationService":
+  "optionPageWhenSetWH":
   {
-    "message": "Especificar un servicio de traducción."
+    "message": "\"width：800 height：720\" Si está configurado, el tamaño de la nueva ventana será de 800 x 720. Esta configuración se refleja solo cuando está marcada."
   },
+
 
   "optionPageTranslatedLanguage":
   {
     "message": "Lenguaje traducido"
   },
 
+  "optionPageSpecifyLanguageCode":
+  {
+    "message": "Especificar código de idioma"
+  },
+
+  "optionPageIfSetEn":
+  {
+    "message": "Si se establece en \"en - English\", los textos y sitios web se traducirán al inglés."
+  },
+
+
+  "optionPageServiceUsedFor":
+  {
+    "message": "Servicio utilizado para la traducción."
+  },
+
+  "optionPageSpecifyTranslationService":
+  {
+    "message": "Especificar un servicio de traducción."
+  },
+
   "optionPageWhenBingIsSelected":
   {
     "message": "Cuando se selecciona \"Bing\", algunos idiomas no están disponibles."
-  },
-
-  "optionPageWhenSetWH":
-  {
-    "message": "\"width：800 height：720\" Si está configurado, el tamaño de la nueva ventana será de 800 x 720. Esta configuración se refleja solo cuando está marcada."
-  },
-
-  "tooltipTitle":
-  {
-    "message": "Traducir esta página web"
   }
 }

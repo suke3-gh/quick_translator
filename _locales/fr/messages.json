@@ -14,10 +14,12 @@
     "message": "Traduire cette page web"
   },
 
-  "notificationTextNotSetup":
+
+  "tooltipTitle":
   {
-    "message": "Il a été traduit en \"Anglais\" car aucune configuration initiale n’a été effectuée. Voir le \"Guide page\" de l'add-on pour plus de détails."
+    "message": "Traduire cette page web"
   },
+
 
   "optionPageBehaviorWhen":
   {
@@ -34,11 +36,6 @@
     "message": "Pour site web"
   },
 
-  "optionPageIfSetEn":
-  {
-    "message": "\"en - English\", le texte et le site Web seront traduits en anglais."
-  },
-
   "optionPageOpenByNewTab":
   {
     "message": "Ouvrir dans un nouvel onglet"
@@ -49,39 +46,14 @@
     "message": "Ouvrir dans une nouvelle fenêtre"
   },
 
-  "optionPageServiceUsedFor":
-  {
-    "message": "Service utilisé pour la traduction"
-  },
-
   "optionPageSizeOfNewWindow":
   {
     "message": "Taille de la nouvelle fenêtre"
   },
 
-  "optionPageSpecifyLanguageCode":
-  {
-    "message": "Spécifiez le code de langue"
-  },
-  
   "optionPageSpecifySizeOfWindow":
   {
     "message": "Spécifiez la taille de la fenêtre(optionnel)"
-  },
-
-  "optionPageSpecifyTranslationService":
-  {
-    "message": "Spécifiez un service de traduction"
-  },
-
-  "optionPageTranslatedLanguage":
-  {
-    "message": "Langue traduite"
-  },
-
-  "optionPageWhenBingIsSelected":
-  {
-    "message": "Lorsque \"Bing\" est sélectionné, certaines langues ne sont pas disponibles."
   },
 
   "optionPageWhenSetWH":
@@ -89,8 +61,33 @@
     "message": "\"widht: 800 height: 720\", la taille de la nouvelle fenêtre sera de 800 x 720. Ce paramètre n'est reflété que lorsqu'il est coché."
   },
 
-  "tooltipTitle":
+  "optionPageTranslatedLanguage":
   {
-    "message": "Traduire cette page web"
+    "message": "Langue traduite"
+  },
+
+  "optionPageSpecifyLanguageCode":
+  {
+    "message": "Spécifiez le code de langue"
+  },
+
+  "optionPageIfSetEn":
+  {
+    "message": "\"en - English\", le texte et le site Web seront traduits en anglais."
+  },
+
+  "optionPageServiceUsedFor":
+  {
+    "message": "Service utilisé pour la traduction"
+  },
+
+  "optionPageSpecifyTranslationService":
+  {
+    "message": "Spécifiez un service de traduction"
+  },
+
+  "optionPageWhenBingIsSelected":
+  {
+    "message": "Lorsque \"Bing\" est sélectionné, certaines langues ne sont pas disponibles."
   }
 }
