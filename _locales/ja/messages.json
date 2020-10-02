@@ -1,95 +1,82 @@
 {
-  "extensionDescription":
-  {
+  "extensionDescription": {
     "message": "コンテキストメニューに翻訳の補助をする項目を追加するAdd-onです。"
   },
 
-  "menuTextTitle01":
-  {
+  "menuTextTitle01": {
     "message": "選択されているテキストを翻訳"
   },
 
-  "menuTextTitle02":
-  {
+  "menuTextTitle02": {
     "message": "このウェブページを翻訳"
   },
 
 
-  "tooltipTitle":
-  {
+  "tooltipTitle": {
     "message": "このウェブページを翻訳"
   },
 
 
-  "optionPageBehaviorWhen":
-  {
+  "optionPageBehaviorWhen": {
     "message": "翻訳するときの動作"
   },
 
-  "optionPageCaseOfText":
-  {
+  "optionPageCaseOfText": {
     "message": "テキストの場合"
   },
 
-  "optionPageCaseOfWebsite":
-  {
+  "optionPageCaseOfWebsite": {
     "message": "ウェブサイトの場合"
   },
 
-  "optionPageOpenByNewTab":
-  {
+  "optionPageOpenByNewTab": {
     "message": "新しいタブで開く"
   },
 
-  "optionPageOpenByNewWindow":
-  {
+  "optionPageOpenByNewWindow": {
     "message": "新しいウィンドウで開く"
   },
 
-  "optionPageSizeOfNewWindow":
-  {
+  "optionPageSizeOfNewWindow": {
     "message": "新しいウィンドウのサイズ"
   },
 
-  "optionPageSpecifySizeOfWindow":
-  {
+  "optionPageSpecifySizeOfWindow": {
     "message": "ウィンドウのサイズを指定(任意)"
   },
 
-  "optionPageWhenSetWH":
-  {
+  "optionPageWhenSetWH": {
     "message": "\"width:800 height:720\" と設定した時、 新しいウィンドウのサイズは800x720となります。 この設定はチェックを入れているときのみ反映されます。"
   },
 
-
-  "optionPageTranslatedLanguage":
-  {
-    "message": "翻訳後の言語"
-  },
-
-  "optionPageSpecifyLanguageCode":
-  {
-    "message": "言語コードの指定"
-  },
-
-  "optionPageIfSetEn":
-  {
-    "message": "仮に\"en - English\"に設定した場合、テキストやウェブサイトは英語に翻訳されます。"
-  },
-
-
-  "optionPageServiceUsedFor":
-  {
+  
+  "optionPageServiceUsedFor": {
     "message": "翻訳に用いるサービス"
   },
 
-  "optionPageSpecifyTranslationService":
-  {
+  "optionPageSpecifyTranslationService": {
     "message": "翻訳サービスの指定"
   },
+  
+  "optionPageDependingOnSelected": {
+    "message": "選択したサービスによっては、使用できない言語がいくつかあります。"
+  },
 
-  "optionPageWhenBingIsSelected":
-  {
-    "message": "\"Bing\"を選択しているとき、使用できない言語がいくつかあります。"
+
+  "optionPageTranslatedLanguage": {
+    "message": "翻訳後の言語"
+  },
+
+  "optionPageSpecifyLanguageCode": {
+    "message": "言語コードの指定"
+  },
+
+  "optionPageIfSetEn": {
+    "message": "仮に\"en - English\"に設定した場合、テキストやウェブサイトは英語に翻訳されます。"
+  },
+
+  "optionPageAlphabetIn": {
+    "message": "[ ]の中のアルファベットは利用可能なサービスの頭文字を表しています。"
   }
+
 }

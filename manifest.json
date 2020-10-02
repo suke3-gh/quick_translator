@@ -1,16 +1,13 @@
 {
-  "applications":
-  {
-    "gecko":
-    {
+  "applications": {
+    "gecko": {
       "strict_min_version": "60.0a1"
     }
   },
 
   "author": "Sukesan",
 
-  "background":
-  {
+  "background": {
     "scripts": ["main.js"]
   },
 
@@ -18,30 +15,30 @@
 
   "description": "__MSG_extensionDescription__",
 
-  "icons":
-  {
-    "48":   "/icons/quickTranslator_icon_48x48px.png",
-    "256":  "/icons/quickTranslator_icon_256x256px.png"
+  "icons": {
+    "32":  "/icons/quick_translator_icon_plain.svg",
+    "64":  "/icons/quick_translator_icon_plain.svg",
+    "128": "/icons/quick_translator_icon_plain.svg",
+    "256": "/icons/quick_translator_icon_plain.svg"
   },
 
   "manifest_version": 2,
 
   "name": "Quick translator",
 
-  "options_ui":
-  {
+  "options_ui": {
     "browser_style": true,
     "open_in_tab":   true,
     "page": "/documents/options/option_page.html"
   },
 
-  "page_action":
-  {
+  "page_action": {
     "browser_style": true,
-    "default_icon":
-    {
-      "48":   "/icons/quickTranslator_icon_48x48px.png",
-      "256":  "/icons/quickTranslator_icon_256x256px.png"
+    "default_icon": {
+      "32":  "/icons/quick_translator_icon_plain.svg",
+      "64":  "/icons/quick_translator_icon_plain.svg",
+      "128": "/icons/quick_translator_icon_plain.svg",
+      "256": "/icons/quick_translator_icon_plain.svg"
     },
     "default_title": "__MSG_tooltipTitle__",
     "show_matches":  ["<all_urls>"]
@@ -49,5 +46,5 @@
 
   "permissions": ["menus", "storage", "tabs"],
 
-  "version": "1.6.0"
+  "version": "1.6.1"
 }

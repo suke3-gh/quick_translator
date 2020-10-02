@@ -1,95 +1,81 @@
 {
-  "extensionDescription":
-  {
+  "extensionDescription": {
     "message": "This add-on adds an item to assist translation to the context menu."
   },
 
-  "menuTextTitle01":
-  {
+  "menuTextTitle01": {
     "message": "Translate selected text"
   },
 
-  "menuTextTitle02":
-  {
+  "menuTextTitle02": {
     "message": "Translate this web page"
   },
 
 
-  "tooltipTitle":
-  {
+  "tooltipTitle": {
     "message": "Translate this web page"
   },
 
 
-  "optionPageBehaviorWhen":
-  {
+  "optionPageBehaviorWhen": {
     "message": "Behavior when translating"
   },
 
-  "optionPageCaseOfText":
-  {
+  "optionPageCaseOfText": {
     "message": "Case of text"
   },
 
-  "optionPageCaseOfWebsite":
-  {
+  "optionPageCaseOfWebsite": {
     "message": "Case of website"
   },
 
-  "optionPageOpenByNewTab":
-  {
+  "optionPageOpenByNewTab": {
     "message": "Open by new tab"
   },
 
-  "optionPageOpenByNewWindow":
-  {
+  "optionPageOpenByNewWindow": {
     "message": "Open by new window"
   },
 
-  "optionPageSizeOfNewWindow":
-  {
+  "optionPageSizeOfNewWindow": {
     "message": "Size of new window"
   },
 
-  "optionPageSpecifySizeOfWindow":
-  {
+  "optionPageSpecifySizeOfWindow": {
     "message": "Specify the size of window(Optional)"
   },
 
-  "optionPageWhenSetWH":
-  {
+  "optionPageWhenSetWH": {
     "message": "When set \"width:800 and height:720\", a size of new window is 800x720. This setting is reflected only when checked."
   },
 
-
-  "optionPageTranslatedLanguage":
-  {
-    "message": "Translated language"
-  },
-
-  "optionPageSpecifyLanguageCode":
-  {
-    "message": "Specify a language code"
-  },
-
-  "optionPageIfSetEn":
-  {
-    "message": "If set to \"en - English\" \u002C texts and websites will be translated into English."
-  },
-
-
-  "optionPageServiceUsedFor":
-  {
+  "optionPageServiceUsedFor": {
     "message": "Service used for translation"
   },
 
-  "optionPageSpecifyTranslationService":
-  {
+  "optionPageSpecifyTranslationService": {
     "message": "Specify a translation service"
   },
 
-  "optionPageWhenBingIsSelected":
-  {
-    "message": "When \"Bing\" is selected, some languages are not available."
+  "optionPageDependingOnSelected": {
+    "message": "Depending on selected service, some languages are not available."
+  },
+
+
+  "optionPageTranslatedLanguage": {
+    "message": "Translated language"
+  },
+
+  "optionPageSpecifyLanguageCode": {
+    "message": "Specify a language code"
+  },
+
+  "optionPageIfSetEn": {
+    "message": "If set to \"en - English\" \u002C texts and websites will be translated into English."
+  },
+
+  "optionPageAlphabetIn": {
+    "message": "Alphabet in [ ] indicates the initial of available services."
   }
+
 }

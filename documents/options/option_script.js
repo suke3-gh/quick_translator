@@ -65,10 +65,11 @@ document.getElementById('spanSizeOfNewWindow').textContent         = browser.i18
 document.getElementById('labelSpecifySizeOfWindow').textContent    = browser.i18n.getMessage('optionPageSpecifySizeOfWindow');
 document.getElementById('pWhenSetWH').textContent                  = browser.i18n.getMessage('optionPageWhenSetWH');
 
+document.getElementById('divServiceUsedFor').textContent             = browser.i18n.getMessage('optionPageServiceUsedFor');
+document.getElementById('spanSpecifyTranslationService').textContent = browser.i18n.getMessage('optionPageSpecifyTranslationService');
+document.getElementById('pDependingOnSelected').textContent          = browser.i18n.getMessage('optionPageDependingOnSelected');
+
 document.getElementById('divTranslatedLanguage').textContent   = browser.i18n.getMessage('optionPageTranslatedLanguage');
 document.getElementById('spanSpecifyLanguageCode').textContent = browser.i18n.getMessage('optionPageSpecifyLanguageCode');
 document.getElementById('pIfSetToEn').textContent              = browser.i18n.getMessage('optionPageIfSetEn');
-
-document.getElementById('divServiceUsedFor').textContent             = browser.i18n.getMessage('optionPageServiceUsedFor');
-document.getElementById('spanSpecifyTranslationService').textContent = browser.i18n.getMessage('optionPageSpecifyTranslationService');
-document.getElementById('pWhenBingIsSelected').textContent           = browser.i18n.getMessage('optionPageWhenBingIsSelected');
+document.getElementById('pAlphabetIn').textContent             = browser.i18n.getMessage('optionPageAlphabetIn');

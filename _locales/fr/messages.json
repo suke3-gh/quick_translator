@@ -1,93 +1,82 @@
 {
-  "extensionDescription":
-  {
+  "extensionDescription": {
     "message": "Les modules complémentaires ajoutent des éléments pour aider à traduire le menu contextuel."
   },
 
-  "menuTextTitle01":
-  {
+  "menuTextTitle01": {
     "message": "Traduire le texte sélectionné"
   },
 
-  "menuTextTitle02":
-  {
+  "menuTextTitle02": {
     "message": "Traduire cette page web"
   },
 
 
-  "tooltipTitle":
-  {
+  "tooltipTitle": {
     "message": "Traduire cette page web"
   },
 
 
-  "optionPageBehaviorWhen":
-  {
+  "optionPageBehaviorWhen": {
     "message": "Comportement de traduction"
   },
 
-  "optionPageCaseOfText":
-  {
+  "optionPageCaseOfText": {
     "message": "Pour le texte"
   },
 
-  "optionPageCaseOfWebsite":
-  {
+  "optionPageCaseOfWebsite": {
     "message": "Pour site web"
   },
 
-  "optionPageOpenByNewTab":
-  {
+  "optionPageOpenByNewTab": {
     "message": "Ouvrir dans un nouvel onglet"
   },
 
-  "optionPageOpenByNewWindow":
-  {
+  "optionPageOpenByNewWindow": {
     "message": "Ouvrir dans une nouvelle fenêtre"
   },
 
-  "optionPageSizeOfNewWindow":
-  {
+  "optionPageSizeOfNewWindow": {
     "message": "Taille de la nouvelle fenêtre"
   },
 
-  "optionPageSpecifySizeOfWindow":
-  {
+  "optionPageSpecifySizeOfWindow": {
     "message": "Spécifiez la taille de la fenêtre(optionnel)"
   },
 
-  "optionPageWhenSetWH":
-  {
+  "optionPageWhenSetWH": {
     "message": "\"widht: 800 height: 720\", la taille de la nouvelle fenêtre sera de 800 x 720. Ce paramètre n'est reflété que lorsqu'il est coché."
   },
+  
 
-  "optionPageTranslatedLanguage":
-  {
-    "message": "Langue traduite"
-  },
-
-  "optionPageSpecifyLanguageCode":
-  {
-    "message": "Spécifiez le code de langue"
-  },
-
-  "optionPageIfSetEn":
-  {
-    "message": "\"en - English\", le texte et le site Web seront traduits en anglais."
-  },
-
-  "optionPageServiceUsedFor":
-  {
+  "optionPageServiceUsedFor": {
     "message": "Service utilisé pour la traduction"
   },
 
-  "optionPageSpecifyTranslationService":
-  {
+  "optionPageSpecifyTranslationService": {
     "message": "Spécifiez un service de traduction"
   },
 
-  "optionPageWhenBingIsSelected":
-  {
-    "message": "Lorsque \"Bing\" est sélectionné, certaines langues ne sont pas disponibles."
+  "optionPageDependingOnSelected": {
+    "message": "Selon le service choisi, certaines langues ne sont pas disponibles."
+  },
+
+
+  "optionPageTranslatedLanguage": {
+    "message": "Langue traduite"
+  },
+
+  "optionPageSpecifyLanguageCode": {
+    "message": "Spécifiez le code de langue"
+  },
+
+  "optionPageIfSetEn": {
+    "message": "\"en - English\", le texte et le site Web seront traduits en anglais."
+  },
+
+  "optionPageAlphabetIn": {
+    "message": "Les lettres en [ ] représentent les initiales des services disponibles."
   }
+
 }
