@@ -1,11 +1,11 @@
-# Quick-translator
+<h1>README.md</h1>
 
 <p>
   This is add-on of firefox.<br>
   Add-on page: https://addons.mozilla.org/ja/firefox/addon/quicktranslator/
 </p>
 
-<h3>Overview</h3>
+<h2>Overview</h2>
   <p>
     This add-on adds an item to assist translation to the context menu.
   </p>
@@ -17,7 +17,7 @@
     This add-on adopt "MIT license". Therefore, reuse of source code etc... is free in principle.
   </p>
 
-<h3>Reason for creation</h3>
+<h2>Reason for creation</h2>
   <p>
     There are several similar add-ons, but I wanted a function such as open in a new window, so I created this add-on.
   </p>

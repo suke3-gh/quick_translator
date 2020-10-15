@@ -22,28 +22,28 @@ function autoSelectLanguageCode() {
   /* Fix for German */
   if (tempLanguageCode.indexOf('de') != -1) {
     tempLanguageCode = 'de';
-    return tempLanguageCode
+    return tempLanguageCode;
   }
 
   /* Fix for English */
   if (tempLanguageCode.indexOf('en') != -1) {
     tempLanguageCode = 'en';
-    return tempLanguageCode
+    return tempLanguageCode;
   }
 
   /* Fix for Spnish */
   if (tempLanguageCode.indexOf('es') != -1) {
     tempLanguageCode = 'es';
-    return tempLanguageCode
+    return tempLanguageCode;
   }
 
   /* Fix for Portuguese */
   if (tempLanguageCode.indexOf('pt') != -1) {
     tempLanguageCode = 'pt';
-    return tempLanguageCode
+    return tempLanguageCode;
   }
 
-  return tempLanguageCode
+  return tempLanguageCode;
 }
 
 function openByNewWindow(url, specifySize, sizeWidth, sizeHeight) {

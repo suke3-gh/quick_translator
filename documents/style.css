@@ -98,18 +98,23 @@ article {
   }
 }
 
+article pre {
+  background: whitesmoke;
+  border:     lightgray solid medium;
+  padding:    0.5rem;
+}
+
 article h1 {
-  align-items: center;
-  display: flex;
-  flex-flow: row wrap;
-  font-size: 1.6rem;
+  display:     flex;
+  flex-flow:   row nowrap;
+  font-size:   1.6rem;
 }
 
 article h2 {
   border-left:  dimgray solid medium;
   border-top:   dimgray solid medium;
   font-size:    1.5rem;
-  padding: 0.5rem 0 0 0.5rem;
+  padding:      0.5rem 0 0 0.5rem;
 }
 
 article h3 {
@@ -214,7 +219,7 @@ header {
 }
 
 header .addon-title {
-  color:     whitesmoke;
+  color:       whitesmoke;
   font-size:   1.2rem;
   font-weight: bold;
   padding:     0 0.5rem 0 0.5rem;
