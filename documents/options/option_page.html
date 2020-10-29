@@ -12,20 +12,29 @@
   <body>
     <div class="global">
       <header>
-        <input type="checkbox" class="checkbox-area" id="inputAccordionMenu">
-          <label class="menu-button" for="inputAccordionMenu">
-            <object class="menu-icon" data="/icons/menu_icon_brighter_plain.svg" type="image/svg+xml"></object>
-            <span class="addon-title">Quick translator</span>
-          </label>
+        <div class="primary">
+          <span class="addon-title">Quick translator</span>
+          <div class="icons">
+            <a href="https://addons.mozilla.org/ja/firefox/addon/quicktranslator/" rel="noreferrer noopener" target="_blank">
+              <img class="icon-area" src="/icons/infomation_icon_brighter_plain.svg" alt="/icons/infomation_icon_brighter_plain.svg">
+            </a>
+          </div>
+          <div class="icons">
+            <label for="inputAccordionMenu">
+              <img class="icon-area" src="/icons/menu_icon_brighter_plain.svg" alt="/icons/menu_icon_brighter_plain.svg">
+            </label>
+          </div>
+        </div><!-- end: class="primary" -->
+          <input type="checkbox" class="checkbox-area" id="inputAccordionMenu">
           <div class="accordion-menu">
             <div class="list">
-              Options
+              <span class="heading">Options</span>
               <a class="link" href="/documents/options/option_page.html">
-                <div class="items">Options</div>
+                <div class="items">Option page</div>
               </a>
             </div>
             <div class="list">
-              Guides
+              <span class="heading">Guide</span>
               <a class="link" href="/documents/guides/en/guide_page.html">
                 <div class="items">English</div>
               </a>
@@ -33,12 +42,12 @@
                 <div class="items">日本語</div>
               </a>
             </div>
-          </div><!-- End: class="accordion-menu" -->
+          </div><!-- end: class="accordion-menu" -->
       </header>
 
       <article>
         <div class="addon-version">
-          Add-on version: ver.1.6.2
+          Add-on version: ver.1.6.3
         </div>
         <h1>
           <object class="document-icon" data="/icons/document_icon_plain.svg" type="image/svg+xml"></object>
@@ -222,12 +231,12 @@
 
           <h2>License</h2>
             <details>
-              <object data="/License.txt" type="text/plain" width="800" height="720"></object>
+              <object data="/License" type="text/plain" width="720" height="720"></object>
             </details>
             <div class="end-border-dotted"></div>
         <br>
       </article>
-    </div><!-- End: class="global" -->
+    </div><!-- end: class="global" -->
 
     <script type="text/javascript" src="/documents/options/option_script.js"></script>
   </body>

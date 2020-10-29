@@ -11,7 +11,7 @@ input.checkbox-area {
   display: none;
 }
 
-input.checkbox-area:checked + label.menu-button + .accordion-menu {
+input.checkbox-area:checked + .accordion-menu {
   display:    flex;
   flex-flow:  column;
 }
@@ -20,8 +20,9 @@ input.checkbox-area:checked + label.menu-button + .accordion-menu {
   background: #3f3f3f;
   box-shadow: 0 0 2px #2f2f2f;
   display:    none;
-  padding:    0 4.0vw 0 4.0vw;
   overflow-y: scroll;
+  padding:    0 4.0vw 0 4.0vw;
+  text-align: center;
   width:      100%;
 }
 
@@ -32,56 +33,40 @@ input.checkbox-area:checked + label.menu-button + .accordion-menu {
     flex-flow:  column nowrap;
     overflow-y: visible;
     padding:    0 1.0rem 0 1.0rem;
+    text-align: start;
     width:      auto;
   }
 }
 
-.accordion-menu .items {
+.accordion-menu > .list {
+  color:       lightgray;
+  padding:     0.5rem 0 0.5rem 0;
+}
+
+.accordion-menu > .list > .link {
+  color: whitesmoke
+}
+
+.accordion-menu > .list > .heading {
+  font-size:   1.2rem;
+  font-weight: bold;
+}
+
+.accordion-menu > .list > .link > .items {
   border-top: dimgray solid thin;
   padding:    0.5rem 1.0rem 0.5rem 1.0rem;
 }
 
-.accordion-menu .items:hover {
+.accordion-menu > .list > .link > .items:hover {
   background: gray;
-}
-
-.accordion-menu .list {
-  color:       lightgray;
-  font-weight: bold;
-  padding:     0.5rem 0 0.5rem 0;
-}
-
-.accordion-menu .link {
-  color: whitesmoke
-}
-
-.menu-button {
-  align-items:     center;
-  display:         flex;
-  height:          3.0rem;
-  justify-content: center;
-  width:           10.0rem;
-}
-
-@media screen and (min-width: 1200px) {
-  .menu-button {
-    flex:    0 1;
-    margin:  3.0rem auto 3.0rem auto;
-    width:   auto;
-  }
-}
-
-.menu-button:hover {
-  text-decoration: underline;
 }
 
 
 /* _article */
 article {
   background: white;
-  box-shadow: 0 0 2px #2f2f2f;
   color:      #2f2f2f;
-  padding:    4.0rem 4.0vw 3.0rem 4.0vw;
+  padding:    calc(1.0rem + 5.0vmin) 4.0vw 3.0rem 4.0vw;
 }
 
 @media screen and (min-width: 1200px) {
@@ -98,49 +83,49 @@ article {
   }
 }
 
-article pre {
+article > pre {
   background: whitesmoke;
   border:     lightgray solid medium;
   padding:    0.5rem;
 }
 
-article h1 {
+article > h1 {
   display:     flex;
   flex-flow:   row nowrap;
   font-size:   1.6rem;
 }
 
-article h2 {
+article > h1 > .document-icon {
+  height: 1.6rem;
+  width:  1.6rem;
+}
+
+article > h2 {
   border-left:  dimgray solid medium;
   border-top:   dimgray solid medium;
   font-size:    1.5rem;
-  padding:      0.5rem 0 0 0.5rem;
+  padding:      0 0 0 0.5rem;
 }
 
-article h3 {
+article > h3 {
   border-left:  dimgray solid thick;
   padding-left: 0.5rem;
   font-size:    1.4rem;
 }
 
-article h4 {
+article > h4 {
   font-size: 1.3rem;
 }
 
-article h5 {
+article > h5 {
   font-size: 1.2rem;
 }
 
-article h6 {
+article > h6 {
   font-size: 1.1rem;
 }
 
-article .document-icon {
-  height: 1.6rem;
-  width:  1.6rem;
-}
-
-article .end-border-dotted {
+article > .end-border-dotted {
   border-color: dimgray;
   border-style: dotted;
   border-width: thin;
@@ -148,12 +133,13 @@ article .end-border-dotted {
   width:        90%;
 }
 
-article .page-title {
+article > .page-title {
   padding-left: 0.5rem;
 }
 
-article .time-stamp {
-  font-size:  0.7rem;
+article > .time-stamp {
+  font-size:  0.8rem;
+  margin:     0.5rem 0 0 0;
   text-align: right;
 }
 
@@ -174,9 +160,9 @@ article .time-stamp {
 
 @media screen and (min-width: 1440px) {
   .global {
-    box-shadow: 0 0 2px #2f2f2f;
-    margin:     0 auto 0 auto;
-    width:      1440px;
+    border-right: darkgray solid thin;
+    margin:       0 auto 0 auto;
+    width:        1440px;
   }
 }
 
@@ -190,15 +176,13 @@ article .time-stamp {
 
 /* _header */
 header {
-  background:      #2f2f2f;
-  box-shadow:      0 0 1px 0 #2f2f2f;
-  color:           whitesmoke;
-  display:         flex;
-  flex-flow:       row wrap;
-  justify-content: center;
-  height:          3.0rem;
-  position:        fixed;
-  width:           100%;
+  background: #2f2f2f;
+  color:      whitesmoke;
+  display:    flex;
+  flex-flow:  row wrap;
+  height:     calc(1.0rem + 5.0vmin);
+  position:   fixed;
+  width:      100%;
 }
 
 @media screen and (min-width: 1200px) {
@@ -218,37 +202,73 @@ header {
   }
 }
 
-header .addon-title {
-  color:       whitesmoke;
-  font-size:   1.2rem;
-  font-weight: bold;
-  padding:     0 0.5rem 0 0.5rem;
-  white-space: nowrap;
-}
-
-header .menu-icon {
-  height: 1.2rem;
-  width:  1.2rem;
+header > .primary {
+  display:         flex;
+  flex-flow:       row nowrap;
+  height:          calc(1.0rem + 5.0vmin);
+  justify-content: flex-end;
+  margin:          0 4.0vw 0 4.0vw;
+  width:           100%;
 }
 
 @media screen and (min-width: 1200px) {
-  header .menu-icon {
+  header > .primary {
+    height: 8.0rem;
+    margin: 0 auto 0 auto;
+  }
+}
+
+header > .primary > .addon-title {
+  color:       whitesmoke;
+  font-size:   1.2rem;
+  font-weight: bold;
+  margin:      auto auto auto 0;
+}
+
+@media screen and (min-width: 1200px) {
+  header > .primary > .addon-title {
+    margin: auto;
+  }
+}
+
+header > .primary > .icons {
+  margin: auto 0.5rem auto 0.5rem;
+}
+
+@media screen and (min-width: 1200px) {
+  header > .primary > .icons {
     display: none;
   }
 }
 
+header > .primary > .icons:hover {
+  background: dimgray;
+  display:    flex;
+}
+
+header > .primary > .icons > a > .icon-area {
+  height: calc(1.0rem + 3.0vmin);
+  width:  calc(1.0rem + 3.0vmin);
+}
+
+header > .primary > .icons > label > .icon-area {
+  height: calc(1.0rem + 3.0vmin);
+  width:  calc(1.0rem + 3.0vmin);
+}
+
 
 /* option page */
-article .addon-version {
+article > .addon-version {
   font-size:  0.8rem;
+  margin:     0.5rem 0 0 0;
   text-align: right;
 }
 
-article .text-bold {
+article > .text-bold {
   font-weight: bold;
 }
 
-article .description-text {
+article > .description-text {
   color:     dimgray;
   font-size: 0.9rem;
 }
@@ -260,5 +280,5 @@ article .description-text {
 }
 
 .guide-setup-thumbnail {
-  width: 40%;
+  width: 40vmin;
 }

@@ -1,5 +1,5 @@
 
-/* Initialize */
+// Initialize
 browser.storage.local.get()
   .then( (obj) => {
     if (obj.openMethodText != null) {
@@ -23,7 +23,7 @@ browser.storage.local.get()
     document.getElementById('inputSizeOfNewWindowHeight').value = obj.sizeHeight;
   });
 
-/* Update processing */
+// Update processing
 document.getElementById('formOpenMethodText').addEventListener('input', () => {
   const valueOpenMethodText = document.querySelector('input[name="nameTranslateText"]:checked').value;
   browser.storage.local.set({ openMethodText: valueOpenMethodText });
@@ -53,7 +53,7 @@ document.getElementById('formLanguageCode').addEventListener('input', () => {
   browser.storage.local.set({ languageCode: valueLanguageCode });
 }, false);
 
-/* For multilingual */
+// For multilingual
 document.getElementById('divBehaviorWhen').textContent             = browser.i18n.getMessage('optionPageBehaviorWhen');
 document.getElementById('spanCaseOfText').textContent              = browser.i18n.getMessage('optionPageCaseOfText');
 document.getElementById('spanCaseOfWebsite').textContent           = browser.i18n.getMessage('optionPageCaseOfWebsite');

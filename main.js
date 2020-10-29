@@ -1,12 +1,12 @@
 
-/* ID */
+// ID
 const ID01    = 'selectText';
 const title01 = browser.i18n.getMessage('menuTextTitle01');
 
 const ID02    = 'clickPage';
 const title02 = browser.i18n.getMessage('menuTextTitle02');
 
-/* Menu */
+// Menu
 const menu01 = browser.menus.create({
   id: ID01, title: title01, contexts: ['selection']
 });
@@ -15,29 +15,29 @@ const menu02 = browser.menus.create({
   id: ID02, title: title02, contexts: ['page']
 });
 
-/* Functions */
+// Functions
 function autoSelectLanguageCode() {
   let tempLanguageCode = browser.i18n.getUILanguage();
 
-  /* Fix for German */
+  // Fix for German 
   if (tempLanguageCode.indexOf('de') != -1) {
     tempLanguageCode = 'de';
     return tempLanguageCode;
   }
 
-  /* Fix for English */
+  // Fix for English
   if (tempLanguageCode.indexOf('en') != -1) {
     tempLanguageCode = 'en';
     return tempLanguageCode;
   }
 
-  /* Fix for Spnish */
+  // Fix for Spnish
   if (tempLanguageCode.indexOf('es') != -1) {
     tempLanguageCode = 'es';
     return tempLanguageCode;
   }
 
-  /* Fix for Portuguese */
+  // Fix for Portuguese
   if (tempLanguageCode.indexOf('pt') != -1) {
     tempLanguageCode = 'pt';
     return tempLanguageCode;
@@ -85,7 +85,7 @@ browser.menus.onClicked.addListener( (info) => {
             case "Bing":
               urlTranslateText = 'https://www.bing.com/translator?from=&to='+urlTranslateText;
               break;
-          } /* End: switch (obj.translationService) */
+          }
           switch (obj.openMethodText) {
             case 'window':
               openByNewWindow(urlTranslateText, obj.specifySize, obj.sizeWidth, obj.sizeHeight);
@@ -93,8 +93,8 @@ browser.menus.onClicked.addListener( (info) => {
             case 'tab':
               openByNewTab(urlTranslateText);
               break;
-          } /* End: switch (obj.openMethodText) */
-          break; /* End: case ID01 */
+          }
+          break; // for "case ID01"
         case ID02:
           if (obj.openMethodWebsite == undefined) {
             obj.openMethodWebsite = 'tab';
@@ -110,7 +110,7 @@ browser.menus.onClicked.addListener( (info) => {
             case "Bing":
               urlTranslateWebsite = 'https://www.translatetheweb.com/?from=&to='+obj.languageCode+'&a='+urlTranslateWebsite;
               break;
-          } /* End: switch (obj.translationService) */
+          }
           switch (obj.openMethodWebsite) {
             case 'window':
               openByNewWindow(urlTranslateWebsite, obj.specifySize, obj.sizeWidth, obj.sizeHeight);
@@ -118,11 +118,11 @@ browser.menus.onClicked.addListener( (info) => {
             case 'tab':
               openByNewTab(urlTranslateWebsite);
               break;
-          } /* End: switch (obj.openMethodWebsite) */
-          break; /* End: case ID02 */
-      } /* End: switch (info.menuItemId) */
-    }); /* End: browser.storage.local.get().then */
-}); /* End: browser.menus.onClicked.addListener */
+          }
+          break; // for "case ID02"
+      } // end: switch (info.menuItemId)
+    }); // end: browser.storage.local.get().then
+}); // end: browser.menus.onClicked.addListener
 
 browser.pageAction.onClicked.addListener( (tab) => {
   browser.storage.local.get()
@@ -144,7 +144,7 @@ browser.pageAction.onClicked.addListener( (tab) => {
         case "Bing":
           barUrl = 'https://www.translatetheweb.com/?from=&to='+obj.languageCode+'&a='+barUrl;
           break;
-      } /* End: switch (obj.translationService) */
+      }
       switch (obj.openMethodWebsite) {
         case 'window':
           openByNewWindow(barUrl, obj.specifySize, obj.sizeWidth, obj.sizeHeight);
@@ -152,6 +152,6 @@ browser.pageAction.onClicked.addListener( (tab) => {
         case 'tab':
           openByNewTab(barUrl);
           break;
-      } /* End: switch (obj.openMethodWebsite) */
-    }); /* End: browser.storage.local.get().then */
-}); /* End: browser.pageAction.onClicked.addListener */
+      }
+    }); // end: browser.storage.local.get().then
+}); // end: browser.pageAction.onClicked.addListener
