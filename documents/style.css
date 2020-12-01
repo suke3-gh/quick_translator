@@ -1,284 +1,351 @@
 @charset "UTF-8";
 
-html, body {
-  background: whitesmoke;
-  margin:     0;
-  padding:    0;
-}
-
-/* _accordion-menu */
-input.checkbox-area {
-  display: none;
-}
-
-input.checkbox-area:checked + .accordion-menu {
-  display:    flex;
-  flex-flow:  column;
-}
-
-.accordion-menu {
-  background: #3f3f3f;
-  box-shadow: 0 0 2px #2f2f2f;
-  display:    none;
-  overflow-y: scroll;
-  padding:    0 4.0vw 0 4.0vw;
-  text-align: center;
-  width:      100%;
-}
-
-@media screen and (min-width: 1200px) {
-  .accordion-menu {
-    background: #2f2f2f;
-    display:    flex;
-    flex-flow:  column nowrap;
-    overflow-y: visible;
-    padding:    0 1.0rem 0 1.0rem;
-    text-align: start;
-    width:      auto;
-  }
-}
-
-.accordion-menu > .list {
-  color:       lightgray;
-  padding:     0.5rem 0 0.5rem 0;
-}
-
-.accordion-menu > .list > .link {
-  color: whitesmoke
-}
-
-.accordion-menu > .list > .heading {
-  font-size:   1.2rem;
-  font-weight: bold;
-}
-
-.accordion-menu > .list > .link > .items {
-  border-top: dimgray solid thin;
-  padding:    0.5rem 1.0rem 0.5rem 1.0rem;
-}
-
-.accordion-menu > .list > .link > .items:hover {
-  background: gray;
-}
-
 
 /* _article */
 article {
-  background: white;
-  color:      #2f2f2f;
-  padding:    calc(1.0rem + 5.0vmin) 4.0vw 3.0rem 4.0vw;
+  margin:  calc(1.0rem + 6.0vmin) 0 0 0;
+  padding: 0 4.0vw 1.0rem 4.0vw;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-aspect-ratio: 4 / 3) {
   article {
-    margin-left: 288px;
-    padding:     1.0rem 1.0rem 1.0rem 1.0rem;
-    width:       100%;
+    margin:  0 0 0 calc(8.0rem + 10vw);
+    padding: 1.0rem;
   }
 }
 
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 1600px) {
   article {
-    margin-left: 15.0vw;
+    margin:  0 0 0 27.5vw;
+    padding: 1.0rem 12.5vw 1.0rem 1.0rem;
+    width:   100%;
   }
 }
 
 article > pre {
-  background: whitesmoke;
-  border:     lightgray solid medium;
-  padding:    0.5rem;
+  background:  midnightblue;
+  border-left: royalblue solid thick;
+  color:       whitesmoke;
+  padding:     0.5rem;
 }
 
 article > h1 {
-  display:     flex;
-  flex-flow:   row nowrap;
-  font-size:   1.6rem;
-}
-
-article > h1 > .document-icon {
-  height: 1.6rem;
-  width:  1.6rem;
+  border-bottom: gray dotted medium;
+  font-size:     2.0rem;
+  padding:       0 0 0.1rem 0;
 }
 
 article > h2 {
-  border-left:  dimgray solid medium;
-  border-top:   dimgray solid medium;
-  font-size:    1.5rem;
-  padding:      0 0 0 0.5rem;
+  border-bottom: gray solid medium;
+  display:       inline-block;
+  font-size:     1.4rem;
+  padding:       0 0 0.1rem 0;
+  margin:        0.5rem;
 }
 
 article > h3 {
-  border-left:  dimgray solid thick;
-  padding-left: 0.5rem;
-  font-size:    1.4rem;
+  font-size: 1.3rem;
+  padding:   0 0 0 1.0rem;
 }
 
 article > h4 {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  padding:   0 0 0 1.0rem;
 }
 
 article > h5 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  padding:   0 0 0 1.0rem;
 }
 
 article > h6 {
-  font-size: 1.1rem;
+  font-size: 1.0rem;
+  padding:   0 0 0 1.0rem;
 }
 
-article > .end-border-dotted {
-  border-color: dimgray;
-  border-style: dotted;
-  border-width: thin;
-  margin:       0.5rem auto 0.5rem auto;
-  width:        90%;
-}
-
-article > .page-title {
-  padding-left: 0.5rem;
+article > .copyright {
+  color:      grey;
+  font-size:  small;
+  text-align: center;
 }
 
 article > .time-stamp {
-  font-size:  0.8rem;
-  margin:     0.5rem 0 0 0;
-  text-align: right;
+  color:      grey;
+  font-size:  small;
+  text-align: center;
 }
 
 
-/* _global */
-.global {
+/* _body */
+body {
+  background:    white;
+  color:         #2f2f2f;
   display:       flex;
   flex-flow:     column wrap;
+  margin:        0;
   overflow-wrap: break-word;
   overflow-x:    hidden;
+  padding:       0;
 }
 
-@media screen and (min-width: 1200px) {
-  .global {
+@media screen and (min-aspect-ratio: 4 / 3) {
+  body {
     flex-flow: row wrap;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .global {
-    border-right: darkgray solid thin;
-    margin:       0 auto 0 auto;
-    width:        1440px;
-  }
-}
-
-@media screen and (min-width: 1920px) {
-  .global {
-    margin: 0 12.5vw 0 12.5vw;
-    width:  auto;
   }
 }
 
 
 /* _header */
 header {
-  background: #2f2f2f;
-  color:      whitesmoke;
+  background: whitesmoke;
+  box-shadow: 0 0.1rem 0.1rem gray;
   display:    flex;
   flex-flow:  row wrap;
-  height:     calc(1.0rem + 5.0vmin);
+  height:     calc(1.0rem + 6.0vmin);
   position:   fixed;
-  width:      100%;
+  width:      100vw;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-aspect-ratio: 4 / 3) {
   header {
-    bottom:          auto;
+    box-shadow:      0 0 0.2rem gray;
     flex-flow:       column nowrap;
     height:          100vh;
     justify-content: flex-start;
     overflow-y:      scroll;
-    width:           288px;
+    width:           calc(8.0rem + 10vw);
   }
 }
 
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 1600px) {
   header {
-    width: 15.0vw;
+    padding: 0 0 0 12.5vw;
+    width:   15.0vw;
   }
 }
 
-header > .primary {
-  display:         flex;
-  flex-flow:       row nowrap;
-  height:          calc(1.0rem + 5.0vmin);
-  justify-content: flex-end;
-  margin:          0 4.0vw 0 4.0vw;
-  width:           100%;
+header > .main {
+  display:   flex;
+  flex-flow: row nowrap;
+  height:    calc(1.0rem + 6.0vmin);
+  margin:    0 4% 0 4%;
+  width:     100%;
 }
 
-@media screen and (min-width: 1200px) {
-  header > .primary {
-    height: 8.0rem;
-    margin: 0 auto 0 auto;
+@media screen and (min-aspect-ratio: 4 / 3) {
+  header > .main {
+    height:    8.0rem;
+    flex-flow: column;
+    margin:    0 auto 0 auto;
   }
 }
 
-header > .primary > .addon-title {
-  color:       whitesmoke;
-  font-size:   1.2rem;
+header > .main > .addon-title {
+  color:       #4f4f4f;
+  font-size:   calc(6.0vmin - 2.0rem);
   font-weight: bold;
-  margin:      auto auto auto 0;
+  margin:      auto 0 auto 0;
 }
 
-@media screen and (min-width: 1200px) {
-  header > .primary > .addon-title {
-    margin: auto;
+@media screen and (min-aspect-ratio: 4 / 3) {
+  header > .main > .addon-title {
+    font-size: 1.6rem;
+    margin:    auto;
   }
 }
 
-header > .primary > .icons {
-  margin: auto 0.5rem auto 0.5rem;
+header > .main > .shortcut {
+  margin: auto 0 auto auto;
 }
 
-@media screen and (min-width: 1200px) {
-  header > .primary > .icons {
+@media screen and (min-aspect-ratio: 4 / 3) {
+  header > .main > .shortcut {
     display: none;
   }
 }
 
-header > .primary > .icons:hover {
-  background: dimgray;
-  display:    flex;
+header > .main > .shortcut:hover {
+  background: lightgray;
 }
 
-header > .primary > .icons > a > .icon-area {
-  height: calc(1.0rem + 3.0vmin);
-  width:  calc(1.0rem + 3.0vmin);
+header > .main > .shortcut > a > .icon {
+  height: calc(6.0vmin - 0.5rem);
+  width:  calc(6.0vmin - 0.5rem);
 }
 
-header > .primary > .icons > label > .icon-area {
-  height: calc(1.0rem + 3.0vmin);
-  width:  calc(1.0rem + 3.0vmin);
+header > .main > .shortcut > div > .icon {
+  height: calc(6.0vmin - 0.5rem);
+  width:  calc(6.0vmin - 0.5rem);
+}
+
+
+/* _navigation-menu */
+nav {
+  background: whitesmoke;
+  box-shadow: 0 0.1rem 0.1rem gray;
+  flex-flow:  column wrap;
+  max-height: 0;
+  overflow-y: scroll;
+  padding:    0 4.0vw 0 4.0vw;
+  text-align: center;
+  width:      100%;
+}
+
+@media screen and (min-aspect-ratio: 4 / 3) {
+  nav {
+    box-shadow: none;
+    overflow-y: visible;
+    max-height: auto;
+    padding:    0 0.5rem 0 0.5rem;
+    text-align: start;
+    width:      auto;
+  }
+}
+
+nav > ul {
+  list-style-type: none;
+  padding:         0;
+}
+
+nav > ul > a {
+  color:           #2f2f2f;
+  text-decoration: none;
+}
+
+nav > ul > .menu-heading {
+  display:     inline-block;
+  font-size:   1.3rem;
+  font-weight: bold;
+  margin:      0 0 0.5rem 0;
+}
+
+nav > ul > a > .item {
+  background:      white;
+  box-shadow:      0 0 0.1rem #2f2f2f;
+  display:         flex;
+  justify-content: center;
+  padding:         1.0rem 0.5rem 1.0rem 0.5rem;
+}
+
+nav > ul > a > .item:hover {
+  background: lightgray;
+}
+
+@media screen and (min-aspect-ratio: 4 / 3) {
+  nav > ul > a > .item {
+    background:      whitesmoke;
+    box-shadow:      none;
+    justify-content: start;
+    padding:         0.5rem;
+  }
+}
+
+nav > ul > a > .item > .icon {
+  height: 1.4rem;
+  width:  1.4rem;
+}
+
+nav > ul > a > .item > li {
+  font-size: 1.2rem;
+  padding:   0 0 0 0.5rem;
 }
 
 
 /* option page */
 article > .addon-version {
-  font-size:  0.8rem;
-  margin:     0.5rem 0 0 0;
-  text-align: right;
+  color:      grey;
+  font-size:  small;
+  text-align: center;
 }
 
-article > .text-bold {
-  font-weight: bold;
+article > .function-tile {
+ border:  lightgray solid thin;
+ padding: 0.5rem;
+ margin:  1.0rem 0 1.0rem 0;
 }
 
-article > .description-text {
+article > .function-tile > form > div {
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+article > .function-tile > h2 {
+  border-bottom: gray solid medium;
+  display:       inline-block;
+  font-size:     1.4rem;
+  padding:       0 0 0.1rem 0;
+  margin:        0.5rem;
+}
+
+article > .function-tile > h3 {
+  font-size: 1.3rem;
+  margin:    0.5rem 0 0.5rem 0;
+}
+
+article > .function-tile > .description-text {
   color:     dimgray;
   font-size: 0.9rem;
 }
 
+article > .function-tile > form.for-tile {
+  display:         flex;
+  justify-content: center;
+}
+
+article > .function-tile > form > label.tile {
+  box-shadow: 0 0 0.1rem #2f2f2f;
+  display:    block;
+  padding:    0.5rem;
+  margin:     0.5rem;
+  width:      50%;
+}
+
+article > .function-tile > form > .list-bing {
+  display:         none;
+  justify-content: center;
+}
+
+article > .function-tile > form > .list-bing > .tile {
+  box-shadow: 0 0 0.1rem #2f2f2f;
+  padding:    0.5rem;
+  margin:     0.5rem;
+  width:      25%;
+}
+
+article > .function-tile > form > .list-bing > .tile > label {
+  display: block;
+  padding: 0.5rem;
+  width:   100%;
+}
+
+article > .function-tile > form > .list-google {
+  display:         none;
+  justify-content: center;
+}
+
+article > .function-tile > form > .list-google > .tile {
+  box-shadow: 0 0 0.1rem #2f2f2f;
+  padding:    0.5rem;
+  margin:     0.5rem;
+  width:      25%;
+}
+
+article > .function-tile > form > .list-google > .tile > label {
+  display: block;
+  padding: 0.5rem;
+  width:   100%;
+}
+
 
 /* guide page*/
+.text-bold {
+  font-weight: bold;
+}
+
 .guide-setup-link {
+  display:    block;
   text-align: center;
 }
 
 .guide-setup-thumbnail {
-  width: 40vmin;
+  width: 50vmin;
 }

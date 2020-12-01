@@ -14,6 +14,22 @@
   <defs
      id="defs2">
     <linearGradient
+       osb:paint="solid"
+       id="linearGradient3138">
+      <stop
+         id="stop3136"
+         offset="0"
+         style="stop-color:#4f4f4f;stop-opacity:1;" />
+    </linearGradient>
+    <linearGradient
+       osb:paint="solid"
+       id="linearGradient920">
+      <stop
+         id="stop918"
+         offset="0"
+         style="stop-color:#000000;stop-opacity:1;" />
+    </linearGradient>
+    <linearGradient
        id="linearGradient916"
        osb:paint="solid">
       <stop
@@ -195,30 +211,43 @@
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
         <dc:title></dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/4.0/" />
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Keisukes4n</dc:title>
+          </cc:Agent>
+        </dc:creator>
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <g
-     id="layer1">
-    <circle
-       cy="33.866665"
-       cx="33.866669"
-       id="path884"
-       style="fill:none;fill-rule:evenodd;stroke:#e8e8e8;stroke-width:3.17502;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none"
-       r="26.458332" />
+     id="layer2">
+    <path
+       d="M 13.953192,18.186526 26.416699,21.071517 33.866665,9.9380951 40.639699,20.791122 53.780138,18.186526 50.895147,30.650033 62.028568,38.099998 51.175541,44.873032 53.780138,58.013471 41.31663,55.12848 33.866665,66.261902 27.093631,55.408874 13.953192,58.013471 16.838183,45.549964 5.7047615,38.099998 16.557789,31.326965 Z"
+       id="path887"
+       style="display:inline;fill:none;stroke:#4f4f4f;stroke-width:5.29167;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers" />
   </g>
   <g
-     id="layer2">
-    <text
-       transform="scale(1.0117729,0.98836409)"
-       id="text891"
-       y="50.862679"
-       x="26.246807"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:42.2812px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#e8e8e8;fill-opacity:1;stroke-width:0.220214;stroke-miterlimit:4;stroke-dasharray:none;"
-       xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:42.2812px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#e8e8e8;fill-opacity:1;stroke-width:0.220214;stroke-miterlimit:4;stroke-dasharray:none;"
-         y="50.862679"
-         x="26.246807"
-         id="tspan889">i</tspan></text>
+     id="layer3">
+    <circle
+       r="7.9374976"
+       cy="38.629166"
+       cx="33.866665"
+       id="path891"
+       style="fill:none;stroke:#4f4f4f;stroke-width:5.29166641;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke fill markers" />
   </g>
 </svg>
