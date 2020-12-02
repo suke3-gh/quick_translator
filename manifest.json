@@ -1,7 +1,7 @@
 {
   "applications": {
     "gecko": {
-      "strict_min_version": "82.0"
+      "strict_min_version": "82.0.3"
     }
   },
 
@@ -40,7 +40,7 @@
       "128": "/icons/quick-translator-icon-plain.svg",
       "256": "/icons/quick-translator-icon-plain.svg"
     },
-    "default_title": "__MSG-tooltipTitle__",
+    "default_title": "__MSG_tooltipTitle__",
     "show_matches":  ["<all_urls>"]
   },
 

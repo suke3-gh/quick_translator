@@ -10,13 +10,13 @@ const elementLanguageCode          = document.getElementById( 'formLanguageCode'
 
 function changeLanguageCodeList(translationService) {
   switch (translationService) {
-    case 'Bing':
-      elementLanguageCode.querySelector( '#languagecode-bing' ).style.display   = 'flex';
-      elementLanguageCode.querySelector( '#languagecode-google' ).style.display = 'none';
-      break;
     case 'Google':
-      elementLanguageCode.querySelector( '#languagecode-bing' ).style.display   = 'none';
       elementLanguageCode.querySelector( '#languagecode-google' ).style.display = 'flex';
+      elementLanguageCode.querySelector( '#languagecode-bing' ).style.display   = 'none';
+      break;
+    case 'Bing':
+      elementLanguageCode.querySelector( '#languagecode-google' ).style.display = 'none';
+      elementLanguageCode.querySelector( '#languagecode-bing' ).style.display   = 'flex';
       break;
   }
 }
@@ -42,7 +42,7 @@ browser.storage.local.get()
   
     if (obj.translationService == undefined) {
       elementTranslationService.querySelector( 'input[value="Google"]' ).checked = true;
-      changeLanguageCodeList(obj.translationService);
+      changeLanguageCodeList('Google');
     } else {
       elementTranslationService.querySelector( 'input[value="'+obj.translationService+'"]' ).checked = true;
       changeLanguageCodeList(obj.translationService);

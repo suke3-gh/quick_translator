@@ -15,17 +15,6 @@ const contextMenuForPage = browser.menus.create({
 });
 
 // Functions
-function htmlEscape(string) {
-  return string
-    .replace(/\"/g, '%22')
-    .replace(/\'/g, '%27')
-    .replace(/\//g, '%2F')
-    .replace(/\;/g, '%3B')
-    .replace(/\</g, '%3C')
-    .replace(/\>/g, '%3E')
-    .replace(/\|/g, '%7C');
-}
-
 function autoSelectLanguageCode() {
   let tempLanguageCode = browser.i18n.getUILanguage();
 
@@ -52,16 +41,27 @@ function autoSelectLanguageCode() {
   return tempLanguageCode;
 }
 
+function htmlEscape(string) {
+  return string
+    .replace(/\"/g, '%22')
+    .replace(/\'/g, '%27')
+    .replace(/\//g, '%2F')
+    .replace(/\;/g, '%3B')
+    .replace(/\</g, '%3C')
+    .replace(/\>/g, '%3E')
+    .replace(/\|/g, '%7C');
+}
+
+function openByNewTab(url) {
+  browser.tabs.create({ url: url });
+}
+
 function openByNewWindow(url, specifySize, sizeWidth, sizeHeight) {
   if (specifySize == true) {
     browser.windows.create({ url: url, width: sizeWidth, height: sizeHeight });
   } else {
     browser.windows.create({ url: url });
   }
-}
-
-function openByNewTab(url) {
-  browser.tabs.create({ url: url });
 }
 
 function initForText(value1, value2, info) {
@@ -99,6 +99,7 @@ function initForPage(value1, value2, value3) {
   return object;
 }
 
+// API
 browser.menus.onClicked.addListener( (info) => {
   browser.storage.local.get()
     .then( (obj) => {
@@ -121,11 +122,11 @@ browser.menus.onClicked.addListener( (info) => {
               break;
           }
           switch (objectForText.openMethod) {
-            case 'window':
-              openByNewWindow(url, obj.specifySize, obj.sizeWidth, obj.sizeHeight);
-              break;
             case 'tab':
               openByNewTab(url);
+              break;
+            case 'window':
+              openByNewWindow(url, obj.specifySize, obj.sizeWidth, obj.sizeHeight);
               break;
           }
           break;
@@ -141,11 +142,11 @@ browser.menus.onClicked.addListener( (info) => {
               break;
           }
           switch (objectForPage.openMethod) {
-            case 'window':
-              openByNewWindow(url, obj.specifySize, obj.sizeWidth, obj.sizeHeight);
-              break;
             case 'tab':
               openByNewTab(url);
+              break;
+            case 'window':
+              openByNewWindow(url, obj.specifySize, obj.sizeWidth, obj.sizeHeight);
               break;
           }
           break;
@@ -173,11 +174,11 @@ browser.pageAction.onClicked.addListener( (tab) => {
           break;
       }
       switch (objectForPage.openMethod) {
-        case 'window':
-          openByNewWindow(url, obj.specifySize, obj.sizeWidth, obj.sizeHeight);
-          break;
         case 'tab':
           openByNewTab(url);
+          break;
+        case 'window':
+          openByNewWindow(url, obj.specifySize, obj.sizeWidth, obj.sizeHeight);
           break;
       }
   });
