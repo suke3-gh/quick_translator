@@ -96,7 +96,7 @@ elementLanguageCode.addEventListener('input', (obj) => {
     languageCode: valueLanguageCode
   });
 }, false);
-
+ 
 // For multilingual
 document.getElementById('h2BehaviorWhen').textContent             = browser.i18n.getMessage('optionPageBehaviorWhen');
 document.getElementById('h3CaseOfText').textContent               = browser.i18n.getMessage('optionPageCaseOfText');

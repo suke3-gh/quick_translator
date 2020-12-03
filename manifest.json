@@ -1,7 +1,7 @@
 {
   "applications": {
     "gecko": {
-      "strict_min_version": "82.0.3"
+      "strict_min_version": "82.0"
     }
   },
 
