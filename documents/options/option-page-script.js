@@ -8,6 +8,7 @@ const elementSizeOfNewWindowHeight = elementOpenMethodSpecifySize.querySelector(
 const elementTranslationService    = document.getElementById( 'formTranslationService' );
 const elementLanguageCode          = document.getElementById( 'formLanguageCode' );
 
+// Functions
 function changeLanguageCodeList(translationService) {
   switch (translationService) {
     case 'Google':

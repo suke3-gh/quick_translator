@@ -64,36 +64,36 @@ function openByNewWindow(url, specifySize, sizeWidth, sizeHeight) {
   }
 }
 
-function initForText(value1, value2, info) {
-  if (value1 == undefined) {
-    value1 = 'tab';
+function initForText(initOpenMethod, initLanguageCode, info) {
+  if (initOpenMethod == undefined) {
+    initOpenMethod = 'tab';
   }
-  if ( (value2 == undefined) || (value2 == 'auto') ) {
-    value2 = autoSelectLanguageCode();
+  if ( (initLanguageCode == undefined) || (initLanguageCode == 'auto') ) {
+    initLanguageCode = autoSelectLanguageCode();
   }
-  const value3 = info.selectionText
+  const initTargetText = info.selectionText
     .replace(/\%/g, '％')
     .replace(/\&/g, '＆');
   const object = {
-    openMethod:   value1,
-    languageCode: value2,
-    targetText:   htmlEscape(value3)
+    openMethod:   initOpenMethod,
+    languageCode: initLanguageCode,
+    targetText:   htmlEscape(initTargetText)
   }
 
   return object;
 }
 
-function initForPage(value1, value2, value3) {
-  if (value1 == undefined) {
-    value1 = 'tab';
+function initForPage(initOpenMethod, initLanguageCode, initTargetUrl) {
+  if (initOpenMethod == undefined) {
+    initOpenMethod = 'tab';
   }
-  if ( (value2 == undefined) || (value2 == 'auto') ) {
-    value2 = autoSelectLanguageCode();
+  if ( (initLanguageCode == undefined) || (initLanguageCode == 'auto') ) {
+    initLanguageCode = autoSelectLanguageCode();
   }
   const object = {
-    openMethod:   value1,
-    languageCode: value2,
-    targetUrl:    htmlEscape(value3)
+    openMethod:   initOpenMethod,
+    languageCode: initLanguageCode,
+    targetUrl:    htmlEscape(initTargetUrl)
   }
 
   return object;
