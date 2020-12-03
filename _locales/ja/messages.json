@@ -1,16 +1,15 @@
 {
-  "extensionDescription": {
-    "message": "コンテキストメニューに翻訳の補助をする項目を追加するAdd-onです。"
-  },
-
-  "menuTextTitle01": {
-    "message": "選択されているテキストを翻訳"
-  },
-
-  "menuTextTitle02": {
+  "contextMenuForPage": {
     "message": "このウェブページを翻訳"
   },
 
+  "contextMenuForText": {
+    "message": "選択されているテキストを翻訳"
+  },
+
+  "extensionDescription": {
+    "message": "コンテキストメニューに翻訳の補助をする項目を追加するAdd-onです。"
+  },
 
   "tooltipTitle": {
     "message": "このウェブページを翻訳"

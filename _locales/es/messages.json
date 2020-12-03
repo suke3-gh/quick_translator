@@ -1,16 +1,15 @@
 {
-  "extensionDescription": {
-    "message": "El complemento agrega un elemento para ayudar a la traducción al menú contextual."
-  },
-
-  "menuTextTitle01": {
-    "message": "Traducir texto seleccionado"
-  },
-
-  "menuTextTitle02": {
+  "contextMenuForPage": {
     "message": "Traducir esta página web"
   },
 
+  "contextMenuForText": {
+    "message": "Traducir texto seleccionado"
+  },
+
+  "extensionDescription": {
+    "message": "El complemento agrega un elemento para ayudar a la traducción al menú contextual."
+  },
 
   "tooltipTitle": {
     "message": "Traducir esta página web"

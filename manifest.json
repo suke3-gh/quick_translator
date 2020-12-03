@@ -1,7 +1,7 @@
 {
   "applications": {
     "gecko": {
-      "strict_min_version": "60.0a1"
+      "strict_min_version": "82.0.3"
     }
   },
 
@@ -16,10 +16,10 @@
   "description": "__MSG_extensionDescription__",
 
   "icons": {
-    "32":  "/icons/quick_translator_icon_plain.svg",
-    "64":  "/icons/quick_translator_icon_plain.svg",
-    "128": "/icons/quick_translator_icon_plain.svg",
-    "256": "/icons/quick_translator_icon_plain.svg"
+    "32":  "/icons/quick-translator-icon-plain.svg",
+    "64":  "/icons/quick-translator-icon-plain.svg",
+    "128": "/icons/quick-translator-icon-plain.svg",
+    "256": "/icons/quick-translator-icon-plain.svg"
   },
 
   "manifest_version": 2,
@@ -29,16 +29,16 @@
   "options_ui": {
     "browser_style": true,
     "open_in_tab":   true,
-    "page": "/documents/options/option_page.html"
+    "page": "/documents/options/option-page.html"
   },
 
   "page_action": {
     "browser_style": true,
     "default_icon": {
-      "32":  "/icons/quick_translator_icon_plain.svg",
-      "64":  "/icons/quick_translator_icon_plain.svg",
-      "128": "/icons/quick_translator_icon_plain.svg",
-      "256": "/icons/quick_translator_icon_plain.svg"
+      "32":  "/icons/quick-translator-icon-plain.svg",
+      "64":  "/icons/quick-translator-icon-plain.svg",
+      "128": "/icons/quick-translator-icon-plain.svg",
+      "256": "/icons/quick-translator-icon-plain.svg"
     },
     "default_title": "__MSG_tooltipTitle__",
     "show_matches":  ["<all_urls>"]
@@ -46,5 +46,5 @@
 
   "permissions": ["menus", "storage", "tabs"],
 
-  "version": "1.6.3"
+  "version": "2.0.0"
 }

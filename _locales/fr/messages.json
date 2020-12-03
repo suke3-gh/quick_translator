@@ -1,16 +1,15 @@
 {
-  "extensionDescription": {
-    "message": "Les modules complémentaires ajoutent des éléments pour aider à traduire le menu contextuel."
-  },
-
-  "menuTextTitle01": {
-    "message": "Traduire le texte sélectionné"
-  },
-
-  "menuTextTitle02": {
+  "contextMenuForPage": {
     "message": "Traduire cette page web"
   },
 
+  "contextMenuForText": {
+    "message": "Traduire le texte sélectionné"
+  },
+
+  "extensionDescription": {
+    "message": "Les modules complémentaires ajoutent des éléments pour aider à traduire le menu contextuel."
+  },
 
   "tooltipTitle": {
     "message": "Traduire cette page web"

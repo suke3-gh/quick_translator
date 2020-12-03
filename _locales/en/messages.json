@@ -1,16 +1,15 @@
 {
-  "extensionDescription": {
-    "message": "This add-on adds an item to assist translation to the context menu."
-  },
-
-  "menuTextTitle01": {
-    "message": "Translate selected text"
-  },
-
-  "menuTextTitle02": {
+  "contextMenuForPage": {
     "message": "Translate this web page"
   },
 
+  "contextMenuForText": {
+    "message": "Translate selected text"
+  },
+
+  "extensionDescription": {
+    "message": "This add-on adds an item to assist translation to the context menu."
+  },
 
   "tooltipTitle": {
     "message": "Translate this web page"
