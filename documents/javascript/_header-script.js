@@ -1,10 +1,11 @@
 
-const elementNavMenuArea = document.getElementById( 'navMenuArea' );
-const elementImgMenuIcon = document.getElementById( 'imgMenuIcon' );
+const elementdivOperationButtonLeft = document.getElementById( 'divOperationButtonLeft' );
+const elementImgMenuIcon            = document.getElementById( 'imgMenuIcon' );
+const elementNavMenuArea            = document.getElementById( 'navMenuArea' );
 let openFlag = 'close';
 let tempSrc  = 'temp';
 
-const clickedMenuIcon = elementImgMenuIcon
+const clickedOperationButtonLeft = elementdivOperationButtonLeft
   .addEventListener('click', () => {
     switch (openFlag) {
       case 'close':

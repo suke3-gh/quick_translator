@@ -1,11 +1,10 @@
 @charset "UTF-8";
 
-/* ================
+/*================
   _article
-*/
-
+  ================*/
 article {
-  margin:  calc(1.0rem + 6.0vmin) 0 0 0;
+  margin:  5.0rem 0 0 0;
   padding: 0 4% 4.0rem 4%;
 }
 
@@ -24,42 +23,42 @@ article {
   }
 }
 
-article > h1 {
+article h1 {
   border-bottom: gray dotted medium;
   font-size:     2.0rem;
   padding:       0 0 0.1rem 0;
   text-align:    center;
 }
 
-article > h2 {
+article h2 {
   border-bottom: gray solid medium;
   display:       inline-block;
-  font-size:     1.6rem;
-  padding:       0 0 0.1rem 0;
-  margin:        0 0 0 0.5rem;
+  font-size:     1.8rem;
+  padding:       0 0 0.1rem 0rem;
+  margin:        1.0rem 0 0 0.5rem;
 }
 
-article > h3 {
+article h3 {
   font-size: 1.3rem;
   padding:   0 0 0 1.0rem;
 }
 
-article > h4 {
+article h4 {
   font-size: 1.2rem;
   padding:   0 0 0 1.0rem;
 }
 
-article > h5 {
+article h5 {
   font-size: 1.1rem;
   padding:   0 0 0 1.0rem;
 }
 
-article > h6 {
+article h6 {
   font-size: 1.0rem;
   padding:   0 0 0 1.0rem;
 }
 
-article > pre {
+article pre {
   background:  midnightblue;
   border-left: royalblue solid thick;
   color:       whitesmoke;
@@ -84,10 +83,9 @@ article > .time-stamp {
   text-align: center;
 }
 
-/* ================
+/*================
   _body
-*/
-
+  ================*/
 body {
   background:    white;
   color:         #2f2f2f;
@@ -109,16 +107,15 @@ body a {
   text-decoration: none;
 }
 
-/* ================
+/*================
   _header
-*/
-
+  ================*/
 header {
   background: whitesmoke;
   box-shadow: 0 0.1rem 0.1rem gray;
   display:    flex;
   flex-flow:  row wrap;
-  height:     calc(1.5rem + 5.0vmin);
+  height:     5.0rem;
   position:   fixed;
   width:      100%;
 }
@@ -144,10 +141,9 @@ header {
 header > .main {
   display:         flex;
   flex-flow:       row nowrap;
-  height:          calc(1.5rem + 5.0vmin);
-  margin:          0 2% 0 2%;
-  width:           100%;
+  height:          5.0rem;
   justify-content: space-between;
+  width:           100%;
 }
 
 @media screen and (min-aspect-ratio: 4 / 3) {
@@ -160,77 +156,89 @@ header > .main {
 
 header > .main > .addon-title {
   color:       #4f4f4f;
-  font-size:   1.2rem;
+  font-size:   1.6rem;
   font-weight: bold;
   margin:      auto 0 auto 0;
 }
 
 @media screen and (min-aspect-ratio: 4 / 3) {
   header > .main > .addon-title {
-    font-size: 1.6rem;
     margin:    auto;
   }
 }
 
-header > .main > .operation-icon {
-  height: calc(0.5rem + 5.0vmin);
-  margin: auto 0 auto 0;
-  width:  calc(0.5rem + 5.0vmin);
+header > .main > .operation-button-left {
+  align-items:     center;
+  border-right:    gray solid thin;
+  color:           #4f4f4f;
+  display:         flex;
+  flex-flow:       column;
+  height:          5.0rem;
+  justify-content: center;
+  width:           30%;
 }
 
 @media screen and (min-aspect-ratio: 4 / 3) {
-  header > .main > .operation-icon {
+  header > .main > .operation-button-left {
     display: none;
   }
 }
 
-header > .main > .operation-icon:hover {
+header > .main > .operation-button-left:hover {
   background: lightgray;
 }
 
-header > .main > .operation-icon > img {
-  height: calc(0.5rem + 5.0vmin);
-  width:  calc(0.5rem + 5.0vmin);
+header > .main > .operation-button-left > img {
+  height: 3.0rem;
+  width:  3.0rem;
 }
 
-header > .main > .operation-icon-dummy {
-  height: calc(0.5rem + 5.0vmin);
-  margin: auto 0 auto 0;
-  width:  calc(0.5rem + 5.0vmin);
+header > .main > .operation-button-left > span {
+  font-weight: bold;
+}
+
+header > .main > .operation-button-right {
+  align-items:     center;
+  border-left:     gray solid thin;
+  color:           #4f4f4f;
+  display:         flex;
+  flex-flow:       column;
+  height:          5.0rem;
+  justify-content: center;
+  width:           30%;
 }
 
 @media screen and (min-aspect-ratio: 4 / 3) {
-  header > .main > .operation-icon-dummy {
+  header > .main > .operation-button-right {
     display: none;
   }
 }
 
-
-/* ================
+/*================
   _navigation-menu
-*/
-
+  ================*/
 nav {
-  background: whitesmoke;
-  box-shadow: 0 0.1rem 0.1rem gray;
-  flex-flow:  column wrap;
-  max-height: 0;
-  overflow-y: scroll;
-  padding:    0 2% 0 2%;
-  position:   relative;
-  transition: 400ms;
-  width:      33%;
+  background:   whitesmoke;
+  border-right: gray solid thin;
+  box-shadow:   0 0.1rem 0.1rem gray;
+  flex-flow:    column wrap;
+  max-height:   0;
+  overflow-y:   scroll;
+  padding:      0 0.5rem 0 0.5rem;
+  position:     relative;
+  transition:   400ms;
+  width:        calc(30% - 1.0rem);
 }
 
 @media screen and (min-aspect-ratio: 4 / 3) {
   nav {
-    box-shadow: none;
-    max-height: auto;
-    overflow-y: visible;
-    padding:    0 0.5rem 0 0.5rem;
-    position:   static;
-    transition: 0ms;
-    width:      auto;
+    border-right: none;
+    box-shadow:   none;
+    max-height:   auto;
+    overflow-y:   visible;
+    position:     static;
+    transition:   0ms;
+    width:        auto;
   }
 }
 
@@ -260,10 +268,9 @@ nav > ul > .item:hover {
 
 @media screen and (min-aspect-ratio: 4 / 3) {
   nav > ul > a > .item {
-    background:      whitesmoke;
-    box-shadow:      none;
-    justify-content: start;
-    padding:         0.5rem;
+    background: whitesmoke;
+    box-shadow: none;
+    padding:    0.5rem;
   }
 }
 
@@ -277,10 +284,15 @@ nav > ul > .item > li {
   padding:   0 0 0 0.5rem;
 }
 
+nav > ul > .menu-head {
+  display: block;
+  font-weight: bold;
+  padding:     0.5rem 0 0.5rem 1.0rem;
+}
 
-/* ================
+/*================
   option page
-*/
+  ================*/
 article > .addon-version {
   color:      grey;
   font-size:  small;
@@ -364,11 +376,9 @@ article > .function-tile > form > .list-google > .tile > label {
   width:   100%;
 }
 
-
-/* ================
+/*================
   guide page
-*/
-
+  ================*/
 .text-bold {
   font-weight: bold;
 }
