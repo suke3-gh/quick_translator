@@ -12,12 +12,12 @@ const elementLanguageCode          = document.getElementById( 'formLanguageCode'
 function changeLanguageCodeList(translationService) {
   switch (translationService) {
     case 'Google':
-      elementLanguageCode.querySelector( '#languagecode-google' ).style.display = 'flex';
-      elementLanguageCode.querySelector( '#languagecode-bing' ).style.display   = 'none';
+      elementLanguageCode.querySelector( '#languageCodeGoogle' ).style.display = 'flex';
+      elementLanguageCode.querySelector( '#languageCodeBing' ).style.display   = 'none';
       break;
     case 'Bing':
-      elementLanguageCode.querySelector( '#languagecode-google' ).style.display = 'none';
-      elementLanguageCode.querySelector( '#languagecode-bing' ).style.display   = 'flex';
+      elementLanguageCode.querySelector( '#languageCodeGoogle' ).style.display = 'none';
+      elementLanguageCode.querySelector( '#languageCodeBing' ).style.display   = 'flex';
       break;
   }
 }
