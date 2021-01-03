@@ -1,37 +1,43 @@
 
-const elementOpenMethodText        = document.getElementById( 'formOpenMethodText' );
-const elementOpenMethodWebsite     = document.getElementById( 'formOpenMethodWebsite' );
-const elementOpenMethodSpecifySize = document.getElementById( 'formOpenMethodSpecifySize' );
-const elementSpecifySizeFlag       = elementOpenMethodSpecifySize.querySelector( '#inputSpecifySize' );
-const elementSizeOfNewWindowWidth  = elementOpenMethodSpecifySize.querySelector( '#inputSizeOfNewWindowWidth' );
-const elementSizeOfNewWindowHeight = elementOpenMethodSpecifySize.querySelector( '#inputSizeOfNewWindowHeight' );
-const elementTranslationService    = document.getElementById( 'formTranslationService' );
-const elementLanguageCode          = document.getElementById( 'formLanguageCode' );
+const elementOpenMethodText         = document.getElementById( 'formOpenMethodText' );
+const elementOpenMethodWebsite      = document.getElementById( 'formOpenMethodWebsite' );
+const elementOpenMethodSpecifySize  = document.getElementById( 'formOpenMethodSpecifySize' );
+const elementSpecifySizeFlag        = elementOpenMethodSpecifySize.querySelector( '#inputSpecifySize' );
+const elementSizeOfNewWindowWidth   = elementOpenMethodSpecifySize.querySelector( '#inputSizeOfNewWindowWidth' );
+const elementSizeOfNewWindowHeight  = elementOpenMethodSpecifySize.querySelector( '#inputSizeOfNewWindowHeight' );
+const elementTranslationService     = document.getElementById( 'formTranslationService' );
+const elementLanguageCode           = document.getElementById( 'formLanguageCode' );
+const elementLanguageCodeListBing   = document.getElementById( 'languageCodeListBing' );
+const elementLanguageCodeListGoogle = document.getElementById( 'languageCodeListGoogle' );
 
-// Functions
+/*================
+  Functions
+  ================*/
 function changeLanguageCodeList(translationService) {
   switch (translationService) {
-    case 'Google':
-      elementLanguageCode.querySelector( '#languageCodeGoogle' ).style.display = 'flex';
-      elementLanguageCode.querySelector( '#languageCodeBing' ).style.display   = 'none';
-      break;
     case 'Bing':
-      elementLanguageCode.querySelector( '#languageCodeGoogle' ).style.display = 'none';
-      elementLanguageCode.querySelector( '#languageCodeBing' ).style.display   = 'flex';
+      elementLanguageCodeListBing.style.display   = 'flex';
+      elementLanguageCodeListGoogle.style.display = 'none';
+      break;
+    case 'Google':
+      elementLanguageCodeListBing.style.display   = 'none';
+      elementLanguageCodeListGoogle.style.display = 'flex';
       break;
   }
 }
 
-// Initialize
+/*================
+  Initialize
+  ================*/
 browser.storage.local.get()
   .then( obj => {
-    if (obj.openMethodText == undefined) {
+    if ( obj.openMethodText == undefined ) {
       elementOpenMethodText.querySelector( 'input[value="tab"]' ).checked = true;
     } else {
       elementOpenMethodText.querySelector( 'input[value="'+obj.openMethodText+'"]' ).checked = true;
     }
   
-    if (obj.openMethodWebsite == undefined) {
+    if ( obj.openMethodWebsite == undefined ) {
       elementOpenMethodWebsite.querySelector( 'input[value="tab"]' ).checked = true;
     } else {
       elementOpenMethodWebsite.querySelector( 'input[value="'+obj.openMethodWebsite+'"]' ).checked = true;
@@ -41,7 +47,7 @@ browser.storage.local.get()
     elementSizeOfNewWindowWidth.value  = obj.sizeWidth;
     elementSizeOfNewWindowHeight.value = obj.sizeHeight;
   
-    if (obj.translationService == undefined) {
+    if ( obj.translationService == undefined ) {
       elementTranslationService.querySelector( 'input[value="Google"]' ).checked = true;
       changeLanguageCodeList('Google');
     } else {
@@ -49,29 +55,57 @@ browser.storage.local.get()
       changeLanguageCodeList(obj.translationService);
     }
   
-    if (obj.languageCode == undefined) {
-      elementLanguageCode.querySelector( 'input[value="auto"]' ).checked = true;
+    if ( obj.languageCode == undefined ) {
+      switch (obj.translationService) {
+        case "Bing":
+          elementLanguageCodeListBing.querySelector( 'input[value="auto"]' ).checked = true;
+          break;
+        case "Google":
+        default:
+          elementLanguageCodeListGoogle.querySelector( 'input[value="auto"]' ).checked = true;
+          break;
+      }
     } else {
-      elementLanguageCode.querySelector( 'input[value="'+obj.languageCode+'"]' ).checked = true;
+      switch (obj.translationService) {
+        case "Bing":
+          // Checking unsupported language
+          try {
+            elementLanguageCodeListBing.querySelector( 'input[value="'+obj.languageCode+'"]' ).checked = true;
+          } catch (error) {
+            elementLanguageCodeListBing.querySelector( 'input[value="auto"]' ).checked = true;
+          }
+          break;
+        case "Google":
+        default:
+          // Checking unsupported language
+          try {
+            elementLanguageCodeListGoogle.querySelector( 'input[value="'+obj.languageCode+'"]' ).checked = true;
+          } catch (error) {
+            elementLanguageCodeListGoogle.querySelector( 'input[value="auto"]' ).checked = true;
+          }
+          break;
+      }
     }
   }, false);
 
-// Update processing
-elementOpenMethodText.addEventListener('input', (obj) => {
+/*================
+  Update processing
+  ================*/
+elementOpenMethodText.addEventListener( 'input', (obj) => {
   const valueOpenMethodText = obj.target.value;
   browser.storage.local.set({
     openMethodText: valueOpenMethodText
   });
 }, false);
 
-elementOpenMethodWebsite.addEventListener('input', (obj) => {
+elementOpenMethodWebsite.addEventListener( 'input', (obj) => {
   const valueOpenMethodWebsite = obj.target.value;
   browser.storage.local.set({
     openMethodWebsite: valueOpenMethodWebsite
   });
 }, false);
 
-elementOpenMethodSpecifySize.addEventListener('input', () => {
+elementOpenMethodSpecifySize.addEventListener( 'input', () => {
   const valueSpecifySizeFlag       = elementSpecifySizeFlag.checked;
   const valueSizeOfNewWindowWidth  = Number( encodeURI( elementSizeOfNewWindowWidth.value ) );
   const valueSizeOfNewWindowHeight = Number( encodeURI( elementSizeOfNewWindowHeight.value ) );
@@ -82,7 +116,7 @@ elementOpenMethodSpecifySize.addEventListener('input', () => {
   });
 }, false);
 
-elementTranslationService.addEventListener('input', (obj) => {
+elementTranslationService.addEventListener( 'input', (obj) => {
   const valueTranslationService = obj.target.value
   browser.storage.local.set({
     translationService: valueTranslationService
@@ -90,30 +124,32 @@ elementTranslationService.addEventListener('input', (obj) => {
   changeLanguageCodeList(valueTranslationService);
 }, false);
 
-elementLanguageCode.addEventListener('input', (obj) => {
+elementLanguageCode.addEventListener( 'input', (obj) => {
   const valueLanguageCode = obj.target.value;
   browser.storage.local.set({
     languageCode: valueLanguageCode
   });
 }, false);
- 
-// For multilingual
-document.getElementById('h2BehaviorWhen').textContent             = browser.i18n.getMessage('optionPageBehaviorWhen');
-document.getElementById('h3CaseOfText').textContent               = browser.i18n.getMessage('optionPageCaseOfText');
-document.getElementById('h3CaseOfWebsite').textContent            = browser.i18n.getMessage('optionPageCaseOfWebsite');
-document.getElementById('spanTextOpenByNewTab').textContent       = browser.i18n.getMessage('optionPageOpenByNewTab');
-document.getElementById('spanTextOpenByNewWindow').textContent    = browser.i18n.getMessage('optionPageOpenByNewWindow');
-document.getElementById('spanWebsiteOpenByNewTab').textContent    = browser.i18n.getMessage('optionPageOpenByNewTab');
-document.getElementById('spanWebsiteOpenByNewWindow').textContent = browser.i18n.getMessage('optionPageOpenByNewWindow');
-document.getElementById('h3SizeOfNewWindow').textContent          = browser.i18n.getMessage('optionPageSizeOfNewWindow');
-document.getElementById('spanSpecifySizeOfWindow').textContent    = browser.i18n.getMessage('optionPageSpecifySizeOfWindow');
-document.getElementById('pWhenSetWH').textContent                 = browser.i18n.getMessage('optionPageWhenSetWH');
 
-document.getElementById('h2ServiceUsedFor').textContent            = browser.i18n.getMessage('optionPageServiceUsedFor');
-document.getElementById('h3SpecifyTranslationService').textContent = browser.i18n.getMessage('optionPageSpecifyTranslationService');
-document.getElementById('pDependingOnSelected').textContent        = browser.i18n.getMessage('optionPageDependingOnSelected');
+/*================
+  Multilingual support
+  ================*/
+document.getElementById( 'h2BehaviorWhen' ).textContent             = browser.i18n.getMessage( 'optionPageBehaviorWhen' );
+document.getElementById( 'h3CaseOfText' ).textContent               = browser.i18n.getMessage( 'optionPageCaseOfText' );
+document.getElementById( 'h3CaseOfWebsite' ).textContent            = browser.i18n.getMessage( 'optionPageCaseOfWebsite' );
+document.getElementById( 'spanTextOpenByNewTab' ).textContent       = browser.i18n.getMessage( 'optionPageOpenByNewTab' );
+document.getElementById( 'spanTextOpenByNewWindow' ).textContent    = browser.i18n.getMessage( 'optionPageOpenByNewWindow' );
+document.getElementById( 'spanWebsiteOpenByNewTab' ).textContent    = browser.i18n.getMessage( 'optionPageOpenByNewTab' );
+document.getElementById( 'spanWebsiteOpenByNewWindow' ).textContent = browser.i18n.getMessage( 'optionPageOpenByNewWindow' );
+document.getElementById( 'h3SizeOfNewWindow' ).textContent          = browser.i18n.getMessage( 'optionPageSizeOfNewWindow' );
+document.getElementById( 'spanSpecifySizeOfWindow' ).textContent    = browser.i18n.getMessage( 'optionPageSpecifySizeOfWindow' );
+document.getElementById( 'pWhenSetWH' ).textContent                 = browser.i18n.getMessage( 'optionPageWhenSetWH' );
 
-document.getElementById('h2TranslatedLanguage').textContent   = browser.i18n.getMessage('optionPageTranslatedLanguage');
-document.getElementById('h3SpecifyLanguageCode').textContent  = browser.i18n.getMessage('optionPageSpecifyLanguageCode');
-document.getElementById('pIfSetToEn').textContent             = browser.i18n.getMessage('optionPageIfSetEn');
-document.getElementById('pAlphabetIn').textContent            = browser.i18n.getMessage('optionPageAlphabetIn');
+document.getElementById( 'h2ServiceUsedFor' ).textContent            = browser.i18n.getMessage( 'optionPageServiceUsedFor' );
+document.getElementById( 'h3SpecifyTranslationService' ).textContent = browser.i18n.getMessage( 'optionPageSpecifyTranslationService' );
+document.getElementById( 'pDependingOnSelected' ).textContent        = browser.i18n.getMessage( 'optionPageDependingOnSelected' );
+
+document.getElementById( 'h2TranslatedLanguage' ).textContent   = browser.i18n.getMessage( 'optionPageTranslatedLanguage' );
+document.getElementById( 'h3SpecifyLanguageCode' ).textContent  = browser.i18n.getMessage( 'optionPageSpecifyLanguageCode' );
+document.getElementById( 'pIfSetToEn' ).textContent             = browser.i18n.getMessage( 'optionPageIfSetEn' );
+document.getElementById( 'pAlphabetIn' ).textContent            = browser.i18n.getMessage( 'optionPageAlphabetIn' );

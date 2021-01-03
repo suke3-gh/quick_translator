@@ -113,7 +113,7 @@ body a {
   ================*/
 header {
   background: whitesmoke;
-  box-shadow: 0 0.1rem 0.1rem gray;
+  box-shadow: 0 2px 2px gray;
   display:    flex;
   flex-flow:  row wrap;
   height:     5.0rem;
@@ -257,7 +257,7 @@ nav > ul > .menu-heading {
 
 nav > ul > .item {
   background:      white;
-  box-shadow:      0 0 0.1rem #2f2f2f;
+  box-shadow:      0 0 2px #2f2f2f;
   color:           #2f2f2f;
   display:         flex;
   padding:         1.0rem 0.5rem 1.0rem 0.5rem;
@@ -322,7 +322,7 @@ article > .function-tile > form.two-choices {
 }
 
 article > .function-tile > form.two-choices > .tile {
-  box-shadow: 0 0 0.1rem #2f2f2f;
+  box-shadow: 0 0 2px #2f2f2f;
   display:    block;
   margin:     0.5rem;
   padding:    0.5rem;
@@ -338,7 +338,7 @@ article > .function-tile > form.language-code > div {
 }
 
 article > .function-tile > form.language-code > div > .tile {
-  box-shadow: 0 0 0.1rem #2f2f2f;
+  box-shadow: 0 0 2px #2f2f2f;
   margin:     0.5rem;
   padding:    0.5rem;
   width:      25%;
