@@ -13,8 +13,8 @@ const elementLanguageCodeListGoogle = document.getElementById( 'languageCodeList
 /*================
   Functions
   ================*/
-function changeLanguageCodeList(translationService) {
-  switch (translationService) {
+function changeLanguageCodeList( translationService ) {
+  switch ( translationService ) {
     case 'Bing':
       elementLanguageCodeListBing.style.display   = 'flex';
       elementLanguageCodeListGoogle.style.display = 'none';
@@ -49,61 +49,61 @@ browser.storage.local.get()
   
     if ( obj.translationService == undefined ) {
       elementTranslationService.querySelector( 'input[value="Google"]' ).checked = true;
-      changeLanguageCodeList('Google');
+      changeLanguageCodeList( 'Google' );
     } else {
       elementTranslationService.querySelector( 'input[value="'+obj.translationService+'"]' ).checked = true;
-      changeLanguageCodeList(obj.translationService);
+      changeLanguageCodeList( obj.translationService );
     }
   
     if ( obj.languageCode == undefined ) {
-      switch (obj.translationService) {
-        case "Bing":
+      switch ( obj.translationService ) {
+        case 'Bing':
           elementLanguageCodeListBing.querySelector( 'input[value="auto"]' ).checked = true;
           break;
-        case "Google":
+        case 'Google':
         default:
           elementLanguageCodeListGoogle.querySelector( 'input[value="auto"]' ).checked = true;
           break;
       }
     } else {
-      switch (obj.translationService) {
-        case "Bing":
+      switch ( obj.translationService ) {
+        case 'Bing':
           // Checking unsupported language
           try {
             elementLanguageCodeListBing.querySelector( 'input[value="'+obj.languageCode+'"]' ).checked = true;
-          } catch (error) {
+          } catch ( error)  {
             elementLanguageCodeListBing.querySelector( 'input[value="auto"]' ).checked = true;
           }
           break;
-        case "Google":
+        case 'Google':
         default:
           // Checking unsupported language
           try {
             elementLanguageCodeListGoogle.querySelector( 'input[value="'+obj.languageCode+'"]' ).checked = true;
-          } catch (error) {
+          } catch ( error ) {
             elementLanguageCodeListGoogle.querySelector( 'input[value="auto"]' ).checked = true;
           }
           break;
       }
     }
-  }, false);
+  }, false );
 
 /*================
   Update processing
   ================*/
-elementOpenMethodText.addEventListener( 'input', (obj) => {
+elementOpenMethodText.addEventListener( 'input', ( obj ) => {
   const valueOpenMethodText = obj.target.value;
   browser.storage.local.set({
     openMethodText: valueOpenMethodText
   });
-}, false);
+}, false );
 
-elementOpenMethodWebsite.addEventListener( 'input', (obj) => {
+elementOpenMethodWebsite.addEventListener( 'input', ( obj ) => {
   const valueOpenMethodWebsite = obj.target.value;
   browser.storage.local.set({
     openMethodWebsite: valueOpenMethodWebsite
   });
-}, false);
+}, false );
 
 elementOpenMethodSpecifySize.addEventListener( 'input', () => {
   const valueSpecifySizeFlag       = elementSpecifySizeFlag.checked;
@@ -114,22 +114,22 @@ elementOpenMethodSpecifySize.addEventListener( 'input', () => {
     sizeWidth:   valueSizeOfNewWindowWidth,
     sizeHeight:  valueSizeOfNewWindowHeight
   });
-}, false);
+}, false );
 
-elementTranslationService.addEventListener( 'input', (obj) => {
+elementTranslationService.addEventListener( 'input', ( obj ) => {
   const valueTranslationService = obj.target.value
   browser.storage.local.set({
     translationService: valueTranslationService
   });
   changeLanguageCodeList(valueTranslationService);
-}, false);
+}, false );
 
-elementLanguageCode.addEventListener( 'input', (obj) => {
+elementLanguageCode.addEventListener( 'input', ( obj ) => {
   const valueLanguageCode = obj.target.value;
   browser.storage.local.set({
     languageCode: valueLanguageCode
   });
-}, false);
+}, false );
 
 /*================
   Multilingual support
