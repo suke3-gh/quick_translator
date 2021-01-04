@@ -10,6 +10,8 @@ const elementLanguageCode           = document.getElementById( 'formLanguageCode
 const elementLanguageCodeListBing   = document.getElementById( 'languageCodeListBing' );
 const elementLanguageCodeListGoogle = document.getElementById( 'languageCodeListGoogle' );
 
+const promiseAddonSetting = browser.storage.local.get(null);
+
 /*================
   Functions
   ================*/
@@ -29,64 +31,63 @@ function changeLanguageCodeList( translationService ) {
 /*================
   Initialize
   ================*/
-browser.storage.local.get()
-  .then( obj => {
-    if ( obj.openMethodText == undefined ) {
-      elementOpenMethodText.querySelector( 'input[value="tab"]' ).checked = true;
-    } else {
-      elementOpenMethodText.querySelector( 'input[value="'+obj.openMethodText+'"]' ).checked = true;
-    }
-  
-    if ( obj.openMethodWebsite == undefined ) {
-      elementOpenMethodWebsite.querySelector( 'input[value="tab"]' ).checked = true;
-    } else {
-      elementOpenMethodWebsite.querySelector( 'input[value="'+obj.openMethodWebsite+'"]' ).checked = true;
-    }
+promiseAddonSetting.then( obj => {
+  if ( obj.openMethodText == undefined ) {
+    elementOpenMethodText.querySelector( 'input[value="tab"]' ).checked = true;
+  } else {
+    elementOpenMethodText.querySelector( 'input[value="'+obj.openMethodText+'"]' ).checked = true;
+  }
 
-    elementSpecifySizeFlag.checked     = obj.specifySize;
-    elementSizeOfNewWindowWidth.value  = obj.sizeWidth;
-    elementSizeOfNewWindowHeight.value = obj.sizeHeight;
-  
-    if ( obj.translationService == undefined ) {
-      elementTranslationService.querySelector( 'input[value="Google"]' ).checked = true;
-      changeLanguageCodeList( 'Google' );
-    } else {
-      elementTranslationService.querySelector( 'input[value="'+obj.translationService+'"]' ).checked = true;
-      changeLanguageCodeList( obj.translationService );
+  if ( obj.openMethodWebsite == undefined ) {
+    elementOpenMethodWebsite.querySelector( 'input[value="tab"]' ).checked = true;
+  } else {
+    elementOpenMethodWebsite.querySelector( 'input[value="'+obj.openMethodWebsite+'"]' ).checked = true;
+  }
+
+  elementSpecifySizeFlag.checked     = obj.specifySize;
+  elementSizeOfNewWindowWidth.value  = obj.sizeWidth;
+  elementSizeOfNewWindowHeight.value = obj.sizeHeight;
+
+  if ( obj.translationService == undefined ) {
+    elementTranslationService.querySelector( 'input[value="Google"]' ).checked = true;
+    changeLanguageCodeList( 'Google' );
+  } else {
+    elementTranslationService.querySelector( 'input[value="'+obj.translationService+'"]' ).checked = true;
+    changeLanguageCodeList( obj.translationService );
+  }
+
+  if ( obj.languageCode == undefined ) {
+    switch ( obj.translationService ) {
+      case 'Bing':
+        elementLanguageCodeListBing.querySelector( 'input[value="auto"]' ).checked = true;
+        break;
+      case 'Google':
+      default:
+        elementLanguageCodeListGoogle.querySelector( 'input[value="auto"]' ).checked = true;
+        break;
     }
-  
-    if ( obj.languageCode == undefined ) {
-      switch ( obj.translationService ) {
-        case 'Bing':
+  } else {
+    switch ( obj.translationService ) {
+      case 'Bing':
+        // Checking unsupported language
+        try {
+          elementLanguageCodeListBing.querySelector( 'input[value="'+obj.languageCode+'"]' ).checked = true;
+        } catch ( error)  {
           elementLanguageCodeListBing.querySelector( 'input[value="auto"]' ).checked = true;
-          break;
-        case 'Google':
-        default:
+        }
+        break;
+      case 'Google':
+      default:
+        // Checking unsupported language
+        try {
+          elementLanguageCodeListGoogle.querySelector( 'input[value="'+obj.languageCode+'"]' ).checked = true;
+        } catch ( error ) {
           elementLanguageCodeListGoogle.querySelector( 'input[value="auto"]' ).checked = true;
-          break;
-      }
-    } else {
-      switch ( obj.translationService ) {
-        case 'Bing':
-          // Checking unsupported language
-          try {
-            elementLanguageCodeListBing.querySelector( 'input[value="'+obj.languageCode+'"]' ).checked = true;
-          } catch ( error)  {
-            elementLanguageCodeListBing.querySelector( 'input[value="auto"]' ).checked = true;
-          }
-          break;
-        case 'Google':
-        default:
-          // Checking unsupported language
-          try {
-            elementLanguageCodeListGoogle.querySelector( 'input[value="'+obj.languageCode+'"]' ).checked = true;
-          } catch ( error ) {
-            elementLanguageCodeListGoogle.querySelector( 'input[value="auto"]' ).checked = true;
-          }
-          break;
-      }
+        }
+        break;
     }
-  }, false );
+  }
+}, false );
 
 /*================
   Update processing
