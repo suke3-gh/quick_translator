@@ -8,88 +8,77 @@
     <link href="/documents/style.css" rel="stylesheet" type="text/css">
     <title>Guide page - ja (Quick translator)</title>
   </head>
-
   <body>
     <header>
       <div class="main">
-        <span class="addon-title" id="spanAddonTitle">Addon title</span>
-        <div class="shortcut">
-          <div id="menuIcon">
-            <img alt="menu-icon-plain.svg" class="icon" src="/icons/menu-icon-plain.svg">
-          </div>
+        <div class="operation-button-left" id="divOperationButtonLeft">
+          <img alt="menu-icon-plain.svg" id="imgMenuIcon" src="/icons/menu-icon-plain.svg">
+          <span>MENU</span>
         </div>
-      </div><!-- end: class="main" -->
-      <nav id="navi-menu">
+        <span class="addon-title" id="spanAddonTitle">(Addon title)</span>
+        <div class="operation-button-right "></div>
+      </div>
+      <nav id="navMenuArea">
         <ul>
-          <span class="menu-heading">Options</span>
-          <a href="/documents/options/option-page.html">
-            <div class="item">
-              <img alt="option-icon-plain.svg" class="icon" src="/icons/option-icon-plain.svg">
-              <li>Option</li>
-            </div>
+          <span class="menu-head">Options</span>
+          <a class="item" href="/documents/options/option-page.html">
+            <img alt="option-icon-plain.svg" class="icon" src="/icons/option-icon-plain.svg" >
+            <li>Option</li>
           </a>
         </ul>
         <ul>
-          <span class="menu-heading">Guides</span>
-          <a href="/documents/guides/en/guide-page.html">
-            <div class="item">
-              <img alt="guide-icon-plain.svg" class="icon" src="/icons/guide-icon-plain.svg">
-              <li>English</li>
-            </div>
+          <span class="menu-head">Guides</span>
+          <a class="item" href="/documents/guides/en/guide-page.html">
+            <img alt="guide-icon-plain.svg" class="icon" src="/icons/guide-icon-plain.svg">
+            <li>English</li>
           </a>
-          <a href="/documents/guides/ja/guide-page.html">
-            <div class="item">
-              <img alt="guide-icon-plain.svg" class="icon" src="/icons/guide-icon-plain.svg">
-              <li>日本語</li>
-            </div>
+          <a class="item" href="/documents/guides/ja/guide-page.html">
+            <img alt="guide-icon-plain.svg" class="icon" src="/icons/guide-icon-plain.svg">
+            <li>日本語</li>
           </a>
         </ul>
         <ul>
-          <span class="menu-heading">About add-on</span>
-          <a href="/License" rel="noopener noreferrer" target="_balnk">
-            <div class="item">
-              <img alt="/icons/license-icon-plain.svg" class="icon" src="/icons/license-icon-plain.svg">
-              <li>License</li>
-            </div>
+          <span class="menu-head">About add-on</span>
+          <a class="item" href="/License" rel="noopener noreferrer" target="_balnk">
+            <img alt="/icons/license-icon-plain.svg" class="icon" src="/icons/license-icon-plain.svg">
+            <li>License</li>
           </a>
-          <a href="https://addons.mozilla.org/en-US/firefox/addon/quicktranslator/" rel="noopener noreferrer" target="_balnk">
-            <div class="item">
-              <img alt="information-icon-plain.svg" class="icon" src="/icons/information-icon-plain.svg">
-              <li>Product page</li>
-            </div>
+          <a class="item" href="https://addons.mozilla.org/en-US/firefox/addon/quicktranslator/" rel="noopener noreferrer" target="_balnk">
+            <img alt="information-icon-plain.svg" class="icon" src="/icons/information-icon-plain.svg">
+            <li>Product page</li>
           </a>
         </ul>
       </nav>
     </header>
     <article>
       <h1>Guide page</h1>
-        <h2>初期セットアップ</h2>
-          <p>
-            このアドオンを初めてインストールした時(再インストールも含む)、翻訳後の言語はブラウザのロケールによって決まります。また翻訳結果は新しいタブで開かれます。 <br>
-            これらの設定の変更を行う項目はオプションページに存在します。(次の画像の赤矢印)
-          </p>
-          <a class="guide-setup-link" href="/documents/guides/ja/_images/guide-setup-desktop.png" rel="noopener noreferrer" target="_blank">
-            <img class="guide-setup-thumbnail" src="/documents/guides/ja/_images/guide-setup-desktop.png" alt="guide-setup-desktop.png">
-          </a>
-        <h2>Tips</h2>
-          <p>
-            <span class="text-bold">Q. </span>翻訳後の言語が指定したものと異なる<br>
-            <span class="text-bold">A. </span>Google翻訳の仕様変更によって以前使用した言語になることがあるようです。 キャッシュを破棄してページを更新すると解決することがあります。 (Ctrl + F5 key) 
-          </p>
-          <p>
-            <span class="text-bold">Q. </span>アドレスバーに追加されるアイコンを消したい<br>
-            <span class="text-bold">A. </span>アイコンを右クリックすることでアイコンのみを削除できます。
-          </p>
-        <h2>ライセンスについて</h2>
-          <p>
-            このアドオンは"Apache License, Version 2.0"を採用しており、ソースコードはGithubで公開しています。<br>
-            リポジトリのURLはアドオンのホームページ欄に記載しています。
-          </p>
-        <div class="time-stamp">更新日: 2020年12月02日</div>
-        <div class="addon-version" id="divAddonVersion">Add-on version: x</div>
+      <h2>初期セットアップ</h2>
+      <p>
+        このアドオンを初めてインストールした時(再インストールも含む)、翻訳後の言語はブラウザのロケールによって決まります。また翻訳結果は新しいタブで開かれます。 <br>
+        これらの設定の変更を行う項目はオプションページに存在します。(次の画像の赤矢印)
+      </p>
+      <a class="guide-setup-link" href="/documents/guides/ja/_images/guide-setup-desktop.png" rel="noopener noreferrer" target="_blank">
+        <img class="guide-setup-thumbnail" src="/documents/guides/ja/_images/guide-setup-desktop.png" alt="guide-setup-desktop.png">
+      </a>
+      <h2>Tips</h2>
+      <p>
+        <span class="text-bold">Q. </span>翻訳後の言語が指定したものと異なる<br>
+        <span class="text-bold">A. </span>Google翻訳の仕様変更によって以前使用した言語になることがあるようです。 キャッシュを破棄してページを更新すると解決することがあります。 (Ctrl + F5 key) 
+      </p>
+      <p>
+        <span class="text-bold">Q. </span>アドレスバーに追加されるアイコンを消したい<br>
+        <span class="text-bold">A. </span>アイコンを右クリックすることでアイコンのみを削除できます。
+      </p>
+      <h2>ライセンスについて</h2>
+      <p>
+        このアドオンは"Apache License, Version 2.0"を採用しており、ソースコードはGithubで公開しています。<br>
+        リポジトリのURLはアドオンのホームページ欄に記載しています。
+      </p>
+      <div class="time-stamp">更新日: 2020年12月02日</div>
+      <div class="addon-version" id="divAddonVersion">Add-on version: x</div>
     </article>
 
-    <script type="text/javascript" src="/documents/javascript/header-script.js"></script>
-    <script type="text/javascript" src="/documents/javascript/information-script.js"></script>
+    <script type="text/javascript" src="/documents/javascript/_header-script.js"></script>
+    <script type="text/javascript" src="/documents/javascript/_information-script.js"></script>
   </body>
 </html>

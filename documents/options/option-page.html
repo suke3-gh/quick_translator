@@ -12,319 +12,309 @@
   <body>
     <header>
       <div class="main">
-        <span class="addon-title" id="spanAddonTitle">Addon title</span>
-        <div class="shortcut">
-          <div id="menuIcon">
-            <img alt="menu-icon-plain.svg" class="icon" src="/icons/menu-icon-plain.svg">
-          </div>
+        <div class="operation-button-left" id="divOperationButtonLeft">
+          <img alt="menu-icon-plain.svg" id="imgMenuIcon" src="/icons/menu-icon-plain.svg">
+          <span>MENU</span>
         </div>
-      </div><!-- end: class="main" -->
-      <nav id="navi-menu">
+        <span class="addon-title" id="spanAddonTitle">(Addon title)</span>
+        <div class="operation-button-right "></div>
+      </div>
+      <nav id="navMenuArea">
         <ul>
-          <span class="menu-heading">Options</span>
-          <a href="/documents/options/option-page.html">
-            <div class="item">
-              <img alt="option-icon-plain.svg" class="icon" src="/icons/option-icon-plain.svg" >
-              <li>Option</li>
-            </div>
+          <span class="menu-head">Options</span>
+          <a class="item" href="/documents/options/option-page.html">
+            <img alt="option-icon-plain.svg" class="icon" src="/icons/option-icon-plain.svg" >
+            <li>Option</li>
           </a>
         </ul>
         <ul>
-          <span class="menu-heading">Guides</span>
-          <a href="/documents/guides/en/guide-page.html">
-            <div class="item">
-              <img alt="guide-icon-plain.svg" class="icon" src="/icons/guide-icon-plain.svg">
-              <li>English</li>
-            </div>
+          <span class="menu-head">Guides</span>
+          <a class="item" href="/documents/guides/en/guide-page.html">
+            <img alt="guide-icon-plain.svg" class="icon" src="/icons/guide-icon-plain.svg">
+            <li>English</li>
           </a>
-          <a href="/documents/guides/ja/guide-page.html">
-            <div class="item">
-              <img alt="guide-icon-plain.svg" class="icon" src="/icons/guide-icon-plain.svg">
-              <li>日本語</li>
-            </div>
+          <a class="item" href="/documents/guides/ja/guide-page.html">
+            <img alt="guide-icon-plain.svg" class="icon" src="/icons/guide-icon-plain.svg">
+            <li>日本語</li>
           </a>
         </ul>
         <ul>
-          <span class="menu-heading">About add-on</span>
-          <a href="/License" rel="noopener noreferrer" target="_balnk">
-            <div class="item">
-              <img alt="/icons/license-icon-plain.svg" class="icon" src="/icons/license-icon-plain.svg">
-              <li>License</li>
-            </div>
+          <span class="menu-head">About add-on</span>
+          <a class="item" href="/License" rel="noopener noreferrer" target="_balnk">
+            <img alt="/icons/license-icon-plain.svg" class="icon" src="/icons/license-icon-plain.svg">
+            <li>License</li>
           </a>
-          <a href="https://addons.mozilla.org/en-US/firefox/addon/quicktranslator/" rel="noopener noreferrer" target="_balnk">
-            <div class="item">
-              <img alt="information-icon-plain.svg" class="icon" src="/icons/information-icon-plain.svg">
-              <li>Product page</li>
-            </div>
+          <a class="item" href="https://addons.mozilla.org/en-US/firefox/addon/quicktranslator/" rel="noopener noreferrer" target="_balnk">
+            <img alt="information-icon-plain.svg" class="icon" src="/icons/information-icon-plain.svg">
+            <li>Product page</li>
           </a>
         </ul>
       </nav>
     </header>
     <article>
       <h1>Option</h1>
-        <section class="function-tile">
-          <h2 id="h2BehaviorWhen">Behavior when translating</h2>
-            <h3 id="h3CaseOfText">Case of text</h3>
-              <form class="for-tile" id="formOpenMethodText">
-                <label class="tile">
-                  <input name="partsTranslateText" type="radio" value="tab">
-                  <span id="spanTextOpenByNewTab">Open by new tab</span>
-                </label>
-                <label class="tile">
-                  <input name="partsTranslateText" type="radio" value="window">
-                  <span id="spanTextOpenByNewWindow">Open by new window</span>
-                </label>
-              </form>
-            <h3 id="h3CaseOfWebsite">Case of website</h3>
-              <form class="for-tile" id="formOpenMethodWebsite">
-                <label class="tile">
-                  <input name="partsTranslateWebsite" type="radio" value="tab">
-                  <span id="spanWebsiteOpenByNewTab">Open by new tab</span>
-                </label>
-                <label class="tile">
-                  <input name="partsTranslateWebsite" type="radio" value="window">
-                  <span id="spanWebsiteOpenByNewWindow">Open by new window</span>
-                </label>
-              </form>
-            <h3 id="h3SizeOfNewWindow">Size of new window</h3>
-              <form id="formOpenMethodSpecifySize">
-                <label>
-                  <input id="inputSpecifySize" name="partsSpecifySize" type="checkbox" >
-                  <span id="spanSpecifySizeOfWindow">Specify the size of window(optional)</span>
-                </label>
-                <div>
-                  width: <input id="inputSizeOfNewWindowWidth" min="0" placeholder="px" type="number"> ,
-                  height: <input id="inputSizeOfNewWindowHeight" min="0" placeholder="px" type="number">
-                </div>
-              </form>
-              <p id="pWhenSetWH" class="description-text">
-                When set width:800 and height:720, a size of new window is 800x720. This setting is reflected only when checked.
-              </p>
-        </section>
+      <section class="function-tile">
+        <h2 id="h2BehaviorWhen">Behavior when translating</h2>
+        <h3 id="h3CaseOfText">Case of text</h3>
+        <form class="two-choices" id="formOpenMethodText">
+          <label class="tile">
+            <input name="partsTranslateText" type="radio" value="tab">
+            <span id="spanTextOpenByNewTab">Open by new tab</span>
+          </label>
+          <label class="tile">
+            <input name="partsTranslateText" type="radio" value="window">
+            <span id="spanTextOpenByNewWindow">Open by new window</span>
+            </label>
+        </form>
+        <h3 id="h3CaseOfWebsite">Case of website</h3>
+          <form class="two-choices" id="formOpenMethodWebsite">
+            <label class="tile">
+              <input name="partsTranslateWebsite" type="radio" value="tab">
+              <span id="spanWebsiteOpenByNewTab">Open by new tab</span>
+            </label>
+            <label class="tile">
+              <input name="partsTranslateWebsite" type="radio" value="window">
+              <span id="spanWebsiteOpenByNewWindow">Open by new window</span>
+            </label>
+          </form>
+        <h3 id="h3SizeOfNewWindow">Size of new window</h3>
+          <form id="formOpenMethodSpecifySize">
+            <label class="checkbox">
+              <input id="inputSpecifySize" name="partsSpecifySize" type="checkbox" >
+              <span id="spanSpecifySizeOfWindow">Specify the size of window(optional)</span>
+            </label>
+            <div>
+              width: <input id="inputSizeOfNewWindowWidth" min="0" placeholder="px" type="number"> ,
+              height: <input id="inputSizeOfNewWindowHeight" min="0" placeholder="px" type="number">
+            </div>
+          </form>
+          <p id="pWhenSetWH" class="description-text">
+            When set width:800 and height:720, a size of new window is 800x720. This setting is reflected only when checked.
+          </p>
+      </section>
 
-        <section class="function-tile">
-          <h2 id="h2ServiceUsedFor">Service used for translation</h2>
-            <h3 id="h3SpecifyTranslationService">Specify a translation service</h3>
-              <form class="for-tile" id="formTranslationService">
-                <label class="tile">
-                  <input id="inputUseGoogle" name="partsTranslationService" type="radio" value="Google">
-                  <span>Google</span>
-                </label>
-                <label class="tile">
-                  <input id="inputUseBing" name="partsTranslationService" type="radio" value="Bing">
-                  <span>Bing</span>
-                </label>
-              </form>
-              <p id="pDependingOnSelected" class="description-text">
-                Depending on selected service, some languages are not available.
-              </p>
-        </section>
+      <section class="function-tile">
+        <h2 id="h2ServiceUsedFor">Service used for translation</h2>
+        <h3 id="h3SpecifyTranslationService">Specify a translation service</h3>
+        <form class="two-choices" id="formTranslationService">
+          <label class="tile">
+            <input id="inputUseGoogle" name="partsTranslationService" type="radio" value="Google">
+            <span>Google</span>
+          </label>
+          <label class="tile">
+            <input id="inputUseBing" name="partsTranslationService" type="radio" value="Bing">
+            <span>Bing</span>
+          </label>
+        </form>
+        <p id="pDependingOnSelected" class="description-text">
+          Depending on selected service, some languages are not available.
+        </p>
+      </section>
 
-        <section class="function-tile">
-          <h2 id="h2TranslatedLanguage">Translated language</h2>
-            <h3 id="h3SpecifyLanguageCode">Specify a language code</h3>
-              <form id="formLanguageCode">
-                <div class="list-google" id="languagecode-google">
-                  <div class="tile">
-                    <h4>a ~ f</h4>
-                    <label><input name="partsLanguageCode" type="radio" value="auto"> <span>- auto - (System)</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="af"> <span>af - Afrikaans</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="am"> <span>am - አማርኛ</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="az"> <span>az - Azərbaycan</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="be"> <span>be - беларускі</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="bg"> <span>bg - български</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="bn"> <span>bn - বাংলা ভাষা</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="bs"> <span>bs - Bosanski</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ca"> <span>ca - Llengua catalana</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ceb"> <span>ceb - Cebuano</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="co"> <span>co - Corsa</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="cs"> <span>cs - Česky</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="cy"> <span>cy - Cymraeg</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="da"> <span>da - dansk</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="de"> <span>de - Deutsch</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="el"> <span>el - Ελληνικά</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="en"> <span>en - English</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="eo"> <span>eo - Esperanto</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="es"> <span>es - Español</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="et"> <span>et - Eesti keel</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="eu"> <span>eu - Euskara</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="fa"> <span>fa - فارسی</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="fi"> <span>fi - suomalainen</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="fr"> <span>fr - Français</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="fy"> <span>fy - Western Frisian</span></label>
-                  </div>
-                  <div class="tile">
-                    <h4>g ~ l</h4>
-                    <label><input name="partsLanguageCode" type="radio" value="ga"> <span>ga - Gaeilge</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="gd"> <span>gd - Gàidhlig na h-Alba</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="gl"> <span>gl - Galego</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="gu"> <span>gu - ગુજરાતી</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ha"> <span>ha - Harshen Hausa</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="haw"> <span>haw - Hawaiian</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="hi"> <span>hi - हिन्दी</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="hmn"> <span>hmn - Tshaj tawm</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="hr"> <span>hr - hrvatski</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ht"> <span>ht - Ayisyen</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="hu"> <span>hu - magyar</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="hy"> <span>hy - Հայերեն</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="id"> <span>id - Bahasa indonesia</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ig"> <span>ig - Asụsụ Igbo</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="is"> <span>is - Íslensku</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="it"> <span>it - italiano</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="iw"> <span>iw - עברית</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ja"> <span>ja - 日本語</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="jw"> <span>jw - Wong Jawa</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ka"> <span>ka - საქართველო ენა</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="kk"> <span>kk - Қазақ тілі</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="km"> <span>km - ភាសាខ្មែរ</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="kn"> <span>kn - ಕನ್ನಡ</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ko"> <span>ko - 한국</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ku"> <span>ku - Kurdî</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ky"> <span>ky - Kirghiz</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="la"> <span>la - Latine</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="lb"> <span>lb - Lëtzebuergesch</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="lo"> <span>lo - ລາວ</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="lt"> <span>lt - Lietuviškai</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="lv"> <span>lv - Latviešu</span></label>
-                  </div>
-                  <div class="tile">
-                    <h4>m ~ r</h4>
-                    <label><input name="partsLanguageCode" type="radio" value="mg"> <span>mg - Malagasy</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="mi"> <span>mi - Reo Maori</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="mk"> <span>mk - Македонски</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ml"> <span>ml - മലയാളം</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="mn"> <span>mn - Монгол хэл</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="mr"> <span>mr - मराठी</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ms"> <span>ms - Bahasa Melayu</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="mt"> <span>mt - Malti</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="my"> <span>my - မြန်မာ</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ne"> <span>ne - नेपाली</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="nl"> <span>nl - Nederlands</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="no"> <span>no - norsk</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ny"> <span>ny - Chewa</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="pa"> <span>pa - ਪੰਜਾਬੀ </span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="pl"> <span>pl - Polski</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ps"> <span>ps - پښتو</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="pt"> <span>pt - Português</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ro"> <span>ro - românesc</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ru"> <span>ru - Русский язык</span></label>
-                  </div>
-                  <div class="tile">
-                    <h4>s ~ z</h4>
-                    <label><input name="partsLanguageCode" type="radio" value="sd"> <span>sd - سنڌي</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="si"> <span>si - සිංහල</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="sk"> <span>sk - slovenský</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="sl"> <span>sl - Slovenija</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="sm"> <span>sm - Samoa</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="sn"> <span>sn - Shona </span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="so"> <span>so - Afka Soomaaliga</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="sq"> <span>sq - shqiptar</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="sr"> <span>sr - Српски</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="st"> <span>st - Sotho</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="su"> <span>su - Sunda</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="sv"> <span>sv - svenska</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="sw"> <span>sw - Kiswahili</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ta"> <span>ta - தமிழ் மொழி</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="te"> <span>te - తెలుగు</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="tg"> <span>tg - Тоҷикӣ</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="th"> <span>th - ภาษาไทย</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="tl"> <span>tl - Tagalog</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="uk"> <span>uk - Українська</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ur"> <span>ur - اردو</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="uz"> <span>uz - O'zbek</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="vi"> <span>vi - Người việt nam</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="xh"> <span>xh - Xosa</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="yi"> <span>yi - ייִדיש</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="yo"> <span>yo - Yorùbá</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="zh-CN"> <span>zh-CN - 中文(简体)</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="zh-TW"> <span>zh-TW - 中文(繁体)</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="zu"> <span>zu - Zulu</span></label>
-                  </div>
-                </div>
-                <div class="list-bing" id="languagecode-bing">
-                  <div class="tile">
-                    <h4>a ~ f</h4>
-                    <label><input name="partsLanguageCode" type="radio" value="auto"> <span>- auto - (System)</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="af"> <span>af - Afrikaan</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ar"> <span>ar - العربية</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="bg"> <span>bg - български</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ca"> <span>ca - Llengua catalana</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="cs"> <span>cs - Česky [G, B]</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="cy"> <span>cy - Cymraeg</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="da"> <span>da - dansk</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="de"> <span>de - Deutsch</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="el"> <span>el - Ελληνικά</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="en"> <span>en - English</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="es"> <span>es - Español</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="et"> <span>et - Eesti keel</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="fa"> <span>fa - فارسی</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="fi"> <span>fi - suomalainen</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="fr"> <span>fr - Français</span></label>
-                  </div>
-                  <div class="tile">
-                    <h4>g ~ l</h4>
-                    <label><input name="partsLanguageCode" type="radio" value="ga"> <span>ga - Gaeilge</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="gu"> <span>gu - ગુજરાતી</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="hi"> <span>hi - हिन्दी</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="hr"> <span>hr - hrvatski</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ht"> <span>ht - Ayisyen</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="hu"> <span>hu - magyar</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="id"> <span>id - Bahasa indonesia</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="is"> <span>is - Íslensku</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="it"> <span>it - italiano</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ja"> <span>ja - 日本語</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="kk"> <span>kk - Қазақ тілі</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="kn"> <span>kn - ಕನ್ನಡ</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ko"> <span>ko - 한국</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ku"> <span>ku - Kurdî</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="lt"> <span>lt - Lietuviškai</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="lv"> <span>lv - Latviešu</span></label>
-                  </div>
-                  <div class="tile">
-                    <h4>m ~ r</h4>
-                    <label><input name="partsLanguageCode" type="radio" value="mg"> <span>mg - Malagasy</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="mi"> <span>mi - Reo Maori</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ml"> <span>ml - മലയാളം</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="mr"> <span>mr - मराठी</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="mt"> <span>mt - Malti</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="nl"> <span>nl - Nederlands</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="pa"> <span>pa - ਪੰਜਾਬੀ</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="pl"> <span>pl - Polski</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ps"> <span>ps - پښتو</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="pt"> <span>pt - Português</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ro"> <span>ro - românesc </span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ru"> <span>ru - Русский язык</span></label>
-                  </div>
-                  <div class="tile">
-                    <h4>s ~ z</h4>
-                    <label><input name="partsLanguageCode" type="radio" value="sk"> <span>sk - slovenský</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="sl"> <span>sl - Slovenija</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="sm"> <span>sm - Samoa</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="sv"> <span>sv - svenska</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="sw"> <span>sw - Kiswahili</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ta"> <span>ta - தமிழ் மொழி</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="te"> <span>te - తెలుగు</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="th"> <span>th - ภาษาไทย</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="tr"> <span>tr - Türk</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="uk"> <span>uk - Українська</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="ur"> <span>ur - اردو</span></label>
-                    <label><input name="partsLanguageCode" type="radio" value="vi"> <span>vi - Người việt nam</span></label>
-                  </div>
-                </div>
-              </form>
-              <p class="description-text" id="pIfSetToEn">
-                If set to "en - English", texts and websites will be translated into English.
-              </p>
-              <p class="description-text" id="pAlphabetIn">
-                Alphabet in [] indicates the initial of available services. 
-              </p>
-        </section>
-        <div class="addon-version" id="divAddonVersion">Add-on version: x</div>
+      <section class="function-tile">
+        <h2 id="h2TranslatedLanguage">Translated language</h2>
+        <h3 id="h3SpecifyLanguageCode">Specify a language code</h3>
+        <form class="language-code" id="formLanguageCode">
+          <div id="languageCodeListGoogle">
+            <div class="tile">
+              <h4>a ~ f</h4>
+              <label><input name="partsLanguageCode" type="radio" value="auto"> <span>- auto - (System)</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="af"> <span>af - Afrikaans</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="am"> <span>am - አማርኛ</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="az"> <span>az - Azərbaycan</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="be"> <span>be - беларускі</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="bg"> <span>bg - български</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="bn"> <span>bn - বাংলা ভাষা</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="bs"> <span>bs - Bosanski</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ca"> <span>ca - Llengua catalana</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ceb"> <span>ceb - Cebuano</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="co"> <span>co - Corsa</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="cs"> <span>cs - Česky</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="cy"> <span>cy - Cymraeg</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="da"> <span>da - dansk</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="de"> <span>de - Deutsch</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="el"> <span>el - Ελληνικά</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="en"> <span>en - English</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="eo"> <span>eo - Esperanto</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="es"> <span>es - Español</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="et"> <span>et - Eesti keel</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="eu"> <span>eu - Euskara</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="fa"> <span>fa - فارسی</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="fi"> <span>fi - suomalainen</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="fr"> <span>fr - Français</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="fy"> <span>fy - Western Frisian</span></label>
+            </div>
+            <div class="tile">
+              <h4>g ~ l</h4>
+              <label><input name="partsLanguageCode" type="radio" value="ga"> <span>ga - Gaeilge</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="gd"> <span>gd - Gàidhlig na h-Alba</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="gl"> <span>gl - Galego</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="gu"> <span>gu - ગુજરાતી</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ha"> <span>ha - Harshen Hausa</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="haw"> <span>haw - Hawaiian</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="hi"> <span>hi - हिन्दी</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="hmn"> <span>hmn - Tshaj tawm</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="hr"> <span>hr - hrvatski</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ht"> <span>ht - Ayisyen</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="hu"> <span>hu - magyar</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="hy"> <span>hy - Հայերեն</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="id"> <span>id - Bahasa indonesia</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ig"> <span>ig - Asụsụ Igbo</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="is"> <span>is - Íslensku</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="it"> <span>it - italiano</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="iw"> <span>iw - עברית</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ja"> <span>ja - 日本語</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="jw"> <span>jw - Wong Jawa</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ka"> <span>ka - საქართველო ენა</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="kk"> <span>kk - Қазақ тілі</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="km"> <span>km - ភាសាខ្មែរ</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="kn"> <span>kn - ಕನ್ನಡ</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ko"> <span>ko - 한국</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ku"> <span>ku - Kurdî</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ky"> <span>ky - Kirghiz</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="la"> <span>la - Latine</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="lb"> <span>lb - Lëtzebuergesch</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="lo"> <span>lo - ລາວ</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="lt"> <span>lt - Lietuviškai</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="lv"> <span>lv - Latviešu</span></label>
+            </div>
+            <div class="tile">
+              <h4>m ~ r</h4>
+              <label><input name="partsLanguageCode" type="radio" value="mg"> <span>mg - Malagasy</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="mi"> <span>mi - Reo Maori</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="mk"> <span>mk - Македонски</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ml"> <span>ml - മലയാളം</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="mn"> <span>mn - Монгол хэл</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="mr"> <span>mr - मराठी</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ms"> <span>ms - Bahasa Melayu</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="mt"> <span>mt - Malti</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="my"> <span>my - မြန်မာ</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ne"> <span>ne - नेपाली</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="nl"> <span>nl - Nederlands</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="no"> <span>no - norsk</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ny"> <span>ny - Chewa</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="pa"> <span>pa - ਪੰਜਾਬੀ </span></label>
+              <label><input name="partsLanguageCode" type="radio" value="pl"> <span>pl - Polski</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ps"> <span>ps - پښتو</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="pt"> <span>pt - Português</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ro"> <span>ro - românesc</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ru"> <span>ru - Русский язык</span></label>
+            </div>
+            <div class="tile">
+              <h4>s ~ z</h4>
+              <label><input name="partsLanguageCode" type="radio" value="sd"> <span>sd - سنڌي</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="si"> <span>si - සිංහල</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="sk"> <span>sk - slovenský</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="sl"> <span>sl - Slovenija</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="sm"> <span>sm - Samoa</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="sn"> <span>sn - Shona </span></label>
+              <label><input name="partsLanguageCode" type="radio" value="so"> <span>so - Afka Soomaaliga</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="sq"> <span>sq - shqiptar</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="sr"> <span>sr - Српски</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="st"> <span>st - Sotho</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="su"> <span>su - Sunda</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="sv"> <span>sv - svenska</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="sw"> <span>sw - Kiswahili</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ta"> <span>ta - தமிழ் மொழி</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="te"> <span>te - తెలుగు</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="tg"> <span>tg - Тоҷикӣ</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="th"> <span>th - ภาษาไทย</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="tl"> <span>tl - Tagalog</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="uk"> <span>uk - Українська</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ur"> <span>ur - اردو</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="uz"> <span>uz - O'zbek</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="vi"> <span>vi - Người việt nam</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="xh"> <span>xh - Xosa</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="yi"> <span>yi - ייִדיש</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="yo"> <span>yo - Yorùbá</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="zh-CN"> <span>zh-CN - 中文(简体)</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="zh-TW"> <span>zh-TW - 中文(繁体)</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="zu"> <span>zu - Zulu</span></label>
+            </div>
+          </div><!-- ens: class="list-google" -->
+          <div id="languageCodeListBing">
+            <div class="tile">
+              <h4>a ~ f</h4>
+              <label><input name="partsLanguageCode" type="radio" value="auto"> <span>- auto - (System)</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="af"> <span>af - Afrikaan</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ar"> <span>ar - العربية</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="bg"> <span>bg - български</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ca"> <span>ca - Llengua catalana</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="cs"> <span>cs - Česky [G, B]</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="cy"> <span>cy - Cymraeg</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="da"> <span>da - dansk</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="de"> <span>de - Deutsch</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="el"> <span>el - Ελληνικά</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="en"> <span>en - English</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="es"> <span>es - Español</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="et"> <span>et - Eesti keel</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="fa"> <span>fa - فارسی</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="fi"> <span>fi - suomalainen</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="fr"> <span>fr - Français</span></label>
+            </div>
+            <div class="tile">
+              <h4>g ~ l</h4>
+              <label><input name="partsLanguageCode" type="radio" value="ga"> <span>ga - Gaeilge</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="gu"> <span>gu - ગુજરાતી</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="hi"> <span>hi - हिन्दी</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="hr"> <span>hr - hrvatski</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ht"> <span>ht - Ayisyen</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="hu"> <span>hu - magyar</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="id"> <span>id - Bahasa indonesia</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="is"> <span>is - Íslensku</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="it"> <span>it - italiano</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ja"> <span>ja - 日本語</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="kk"> <span>kk - Қазақ тілі</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="kn"> <span>kn - ಕನ್ನಡ</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ko"> <span>ko - 한국</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ku"> <span>ku - Kurdî</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="lt"> <span>lt - Lietuviškai</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="lv"> <span>lv - Latviešu</span></label>
+            </div>
+            <div class="tile">
+              <h4>m ~ r</h4>
+              <label><input name="partsLanguageCode" type="radio" value="mg"> <span>mg - Malagasy</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="mi"> <span>mi - Reo Maori</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ml"> <span>ml - മലയാളം</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="mr"> <span>mr - मराठी</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="mt"> <span>mt - Malti</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="nl"> <span>nl - Nederlands</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="pa"> <span>pa - ਪੰਜਾਬੀ</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="pl"> <span>pl - Polski</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ps"> <span>ps - پښتو</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="pt"> <span>pt - Português</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ro"> <span>ro - românesc </span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ru"> <span>ru - Русский язык</span></label>
+            </div>
+            <div class="tile">
+              <h4>s ~ z</h4>
+              <label><input name="partsLanguageCode" type="radio" value="sk"> <span>sk - slovenský</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="sl"> <span>sl - Slovenija</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="sm"> <span>sm - Samoa</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="sv"> <span>sv - svenska</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="sw"> <span>sw - Kiswahili</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ta"> <span>ta - தமிழ் மொழி</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="te"> <span>te - తెలుగు</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="th"> <span>th - ภาษาไทย</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="tr"> <span>tr - Türk</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="uk"> <span>uk - Українська</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="ur"> <span>ur - اردو</span></label>
+              <label><input name="partsLanguageCode" type="radio" value="vi"> <span>vi - Người việt nam</span></label>
+            </div>
+          </div><!-- end: class="list-bing" -->
+        </form>
+        <p class="description-text" id="pIfSetToEn">
+          If set to "en - English", texts and websites will be translated into English.
+        </p>
+        <p class="description-text" id="pAlphabetIn">
+          Alphabet in [] indicates the initial of available services. 
+        </p>
+      </section>
+      <div class="addon-version" id="divAddonVersion">(Add-on version)</div>
     </article>
 
-    <script type="text/javascript" src="/documents/options/option-page-script.js"></script>
-    <script type="text/javascript" src="/documents/javascript/header-script.js"></script>
-    <script type="text/javascript" src="/documents/javascript/information-script.js"></script>
+    <script src="/documents/options/option-page-script.js" type="text/javascript"></script>
+    <script src="/documents/javascript/_header-script.js" type="text/javascript"></script>
+    <script src="/documents/javascript/_information-script.js" type="text/javascript"></script>
   </body>
 </html>
