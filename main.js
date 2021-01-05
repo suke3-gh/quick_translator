@@ -46,11 +46,9 @@ function autoSelectLanguageCode() {
 }
 
 function checkTranslationService( service ) {
-  console.log(service);
   if ( service == undefined ) {
     service = 'Google';
   }
-  console.log(service);
   return service;
 }
 
@@ -114,58 +112,63 @@ function initForText( initOpenMethod, initLanguageCode, info ) {
   API
   ================*/
 browser.menus.onClicked.addListener( ( info ) => {
-  browser.storage.local.get(null).then( ( obj ) => {
-    let url = null;
-    const translationService = checkTranslationService(obj.translationService);
-    switch ( info.menuItemId ) {
-      case idClickInPage:
-        const objectForPage = initForPage( obj.openMethodWebsite, obj.languageCode, info.pageUrl );
-          // keys: openmethod, languageCode, targetUrl
-        switch ( translationService ) {
-          case 'Bing':
-            url = 'https://www.translatetheweb.com/?from=&to='+objectForPage.languageCode+'&a='+objectForPage.targetUrl;
-            break;
-          case 'Google':
-            url = 'https://translate.google.com/translate?hl='+objectForPage.languageCode+'&sl=auto&tl='+objectForPage.languageCode+'&u='+objectForPage.targetUrl;
-            break;
-        }
-        switch ( objectForPage.openMethod ) {
-          case 'tab':
+  let url = null;
+  const promiseAddonsetting = browser.storage.local.get( null );
+  switch ( info.menuItemId ) {
+    case idClickInPage:
+      promiseAddonsetting
+        .then( ( setting ) => {
+          const translationService = checkTranslationService( setting.translationService );
+          const objectForPage      = initForPage( setting.openMethodWebsite, setting.languageCode, info.pageUrl );
+            // keys: openMethod, languageCode, targetUrl
+          switch ( translationService ) {
+            case 'Bing':
+              url = 'https://www.translatetheweb.com/?from=&to='+objectForPage.languageCode+'&a='+objectForPage.targetUrl;
+              break;
+            case 'Google':
+              url = 'https://translate.google.com/translate?hl='+objectForPage.languageCode+'&sl=auto&tl='+objectForPage.languageCode+'&u='+objectForPage.targetUrl;
+              break;
+          }
+          switch ( objectForPage.openMethod ) {
+            case 'tab':
+              openByNewTab( url );
+              break;
+            case 'window':
+              openByNewWindow( url, obj.specifySize, obj.sizeWidth, obj.sizeHeight );
+              break;
+          }
+        })
+      break;
+    case idClickOnText:
+      promiseAddonsetting
+        .then( ( setting ) => {
+          const translationService = checkTranslationService( setting.translationService );
+          const objectForText      = initForText( setting.openMethodText, setting.languageCode, info );
+            // keys: openMethod, languageCode, targetText
+          switch ( translationService ) {
+            case 'Bing':
+              url = 'https://www.bing.com/translator?from=&to='+objectForText.languageCode+'&text='+objectForText.targetText;
+              break;
+            case 'Google':
+              url = 'https://translate.google.com/?sl=auto&tl='+objectForText.languageCode+'&text='+objectForText.targetText+'&op=translate';
+              break;
+          }
+          switch ( objectForText.openMethod ) {
+           case 'tab':
             openByNewTab( url );
             break;
           case 'window':
             openByNewWindow( url, obj.specifySize, obj.sizeWidth, obj.sizeHeight );
             break;
-        }
-        break;
-      case idClickOnText:
-        const objectForText = initForText( obj.openMethodText, obj.languageCode, info );
-          // keys: openMethod, languageCode, targetText
-        switch ( translationService ) {
-          case 'Bing':
-            url = 'https://www.bing.com/translator?from=&to='+objectForText.languageCode+'&text='+objectForText.targetText;
-            break;
-          case 'Google':
-            url = 'https://translate.google.com/?sl=auto&tl='+objectForText.languageCode+'&text='+objectForText.targetText+'&op=translate';
-            break;
-        }
-        switch ( objectForText.openMethod ) {
-          case 'tab':
-            openByNewTab( url );
-            break;
-          case 'window':
-            openByNewWindow( url, obj.specifySize, obj.sizeWidth, obj.sizeHeight );
-            break;
-        }
-        break;
-    } // end: switch ( info.menuItemId )
-  });
+          }
+        } )
+      break;
+  } // end: switch ( info.menuItemId )
 }); // end: browser.menus.onClicked.addListener()
 
 browser.pageAction.onClicked.addListener( ( tab ) => {
   browser.storage.local.get(null).then( ( obj ) => {
     let url = null;
-    const translationService = checkTranslationService(obj.translationService);
     const objectForPage      = initForPage( obj.openMethodText, obj.languageCode, tab.url );
       // keys: openMethod, languageCode, targetUrl
     switch ( translationService ) {
