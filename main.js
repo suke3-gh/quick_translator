@@ -108,28 +108,72 @@ function initForText( initOpenMethod, initLanguageCode, info ) {
   return object;
 }
 
+function optimizeSettingValue(paraLanguageCode, paraOpenMethod, paraTranslationService , paraTarget) {
+  let values = new Object();
+
+  console.log('values.languageCode: '+values.languageCode);
+  switch (paraLanguageCode) {
+    case 'auto':
+    case undefined:
+      values.languageCode = autoSelectLanguageCode();
+      break;
+    default:
+      values.languageCode = paraLanguageCode;
+      break;
+  }
+  console.log('values.languageCode: '+values.languageCode);
+
+  console.log('values.openMethod: '+values.openMethod);
+  switch (paraOpenMethod) {
+    case undefined:
+      values.openMethod = 'tab';
+      break;
+    default:
+      values.openMethod = paraOpenMethod;
+      break;
+  }
+  console.log('values.openMethod: '+values.openMethod);
+
+  console.log('values.translationService: '+values.translationService);
+  switch (paraTranslationService) {
+    case undefined:
+      values.translationService = 'Google';
+      break;
+    default:
+      values.translationService = paraTranslationService;
+      break;
+  }
+  console.log('values.translationService: '+values.translationService);
+
+  values.target = paraTarget
+    .replace( /\%/g, '％' )
+    .replace( /\&/g, '＆' );
+  values.target = htmlEscape( values.target );
+
+  return values;
+}
+
 /*================
   API
   ================*/
 browser.menus.onClicked.addListener( ( info ) => {
   let url = null;
-  const promiseAddonsetting = browser.storage.local.get( null );
+  const promiseAddonSetting = browser.storage.local.get( null );
   switch ( info.menuItemId ) {
     case idClickInPage:
-      promiseAddonsetting
-        .then( ( setting ) => {
-          const translationService = checkTranslationService( setting.translationService );
-          const objectForPage      = initForPage( setting.openMethodWebsite, setting.languageCode, info.pageUrl );
-            // keys: openMethod, languageCode, targetUrl
-          switch ( translationService ) {
+      promiseAddonSetting
+        .then( ( object ) => {
+          const setting = optimizeSettingValue(object.languageCode, object.openMethod, object.translationService, info.pageUrl);
+            // keys: languageCode, openMethod, translationService,target
+          switch ( setting.translationService ) {
             case 'Bing':
-              url = 'https://www.translatetheweb.com/?from=&to='+objectForPage.languageCode+'&a='+objectForPage.targetUrl;
+              url = 'https://www.translatetheweb.com/?from=&to='+setting.languageCode+'&a='+setting.target;
               break;
             case 'Google':
-              url = 'https://translate.google.com/translate?hl='+objectForPage.languageCode+'&sl=auto&tl='+objectForPage.languageCode+'&u='+objectForPage.targetUrl;
+              url = 'https://translate.google.com/translate?hl='+setting.languageCode+'&sl=auto&tl='+setting.languageCode+'&u='+setting.target;
               break;
           }
-          switch ( objectForPage.openMethod ) {
+          switch ( setting.openMethod ) {
             case 'tab':
               openByNewTab( url );
               break;
@@ -140,10 +184,10 @@ browser.menus.onClicked.addListener( ( info ) => {
         })
       break;
     case idClickOnText:
-      promiseAddonsetting
-        .then( ( setting ) => {
-          const translationService = checkTranslationService( setting.translationService );
-          const objectForText      = initForText( setting.openMethodText, setting.languageCode, info );
+      promiseAddonSetting
+        .then( ( object ) => {
+          const translationService = checkTranslationService( object.translationService );
+          const objectForText      = initForText( object.openMethodText, object.languageCode, info );
             // keys: openMethod, languageCode, targetText
           switch ( translationService ) {
             case 'Bing':
@@ -169,17 +213,18 @@ browser.menus.onClicked.addListener( ( info ) => {
 browser.pageAction.onClicked.addListener( ( tab ) => {
   browser.storage.local.get(null).then( ( obj ) => {
     let url = null;
-    const objectForPage      = initForPage( obj.openMethodText, obj.languageCode, tab.url );
+    const translationService = checkTranslationService( obj.translationService );
+    const setting      = initForPage( obj.openMethodText, obj.languageCode, tab.url );
       // keys: openMethod, languageCode, targetUrl
     switch ( translationService ) {
       case 'Bing':
-        url = 'https://www.translatetheweb.com/?from=&to='+objectForPage.languageCode+'&a='+objectForPage.targetUrl;
+        url = 'https://www.translatetheweb.com/?from=&to='+setting.languageCode+'&a='+setting.targetUrl;
         break;
       case 'Google':
-        url = 'https://translate.google.com/translate?hl='+objectForPage.languageCode+'&sl=auto&tl='+objectForPage.languageCode+'&u='+objectForPage.targetUrl;
+        url = 'https://translate.google.com/translate?hl='+setting.languageCode+'&sl=auto&tl='+setting.languageCode+'&u='+setting.targetUrl;
         break;
     }
-    switch ( objectForPage.openMethod ) {
+    switch ( setting.openMethod ) {
       case 'tab':
         openByNewTab( url );
         break;

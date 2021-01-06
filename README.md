@@ -1,5 +1,5 @@
 # README.md
-This is add-on of the FireFox.<br>
+This is add-on of the Firefox.<br>
 * Add-on page: https://addons.mozilla.org/en-US/firefox/addon/quicktranslator/
 * Lisence:     Apache License Version 2.0
 
