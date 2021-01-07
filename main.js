@@ -108,49 +108,63 @@ function initForText( initOpenMethod, initLanguageCode, info ) {
   return object;
 }
 
-function optimizeSettingValue(paraLanguageCode, paraOpenMethod, paraTranslationService , paraTarget) {
-  let values = new Object();
+function optimizeSettingValue(object, targetString) {
+  // keys of object: languageCode, openMethod, sizeHeight, sizeWidth, specifySize, translationService,
 
-  console.log('values.languageCode: '+values.languageCode);
-  switch (paraLanguageCode) {
+  switch (object.languageCode) {
     case 'auto':
     case undefined:
-      values.languageCode = autoSelectLanguageCode();
+      object.languageCode = autoSelectLanguageCode();
       break;
     default:
-      values.languageCode = paraLanguageCode;
       break;
   }
-  console.log('values.languageCode: '+values.languageCode);
 
-  console.log('values.openMethod: '+values.openMethod);
-  switch (paraOpenMethod) {
+  switch (object.openMethod) {
     case undefined:
-      values.openMethod = 'tab';
-      break;
-    default:
-      values.openMethod = paraOpenMethod;
+      object.openMethod = 'tab';
       break;
   }
-  console.log('values.openMethod: '+values.openMethod);
 
-  console.log('values.translationService: '+values.translationService);
-  switch (paraTranslationService) {
+  switch (object.translationService) {
     case undefined:
-      values.translationService = 'Google';
-      break;
-    default:
-      values.translationService = paraTranslationService;
+      object.translationService = 'Google';
       break;
   }
-  console.log('values.translationService: '+values.translationService);
 
-  values.target = paraTarget
+  object.target = targetString
     .replace( /\%/g, '％' )
     .replace( /\&/g, '＆' );
-  values.target = htmlEscape( values.target );
+  object.target = htmlEscape( object.target );
 
-  return values;
+  return object;
+}
+
+function addUrlForText(object) {
+  switch ( object.translationService ) {
+    case 'Bing':
+      object.url = 'https://www.bing.com/translator?from=&to='+object.languageCode+'&text='+object.target;
+      break;
+    case 'Google':
+      object.url = 'https://translate.google.com/?sl=auto&tl='+object.languageCode+'&text='+object.target+'&op=translate';
+      break;
+  }
+  return object;
+}
+
+function openTranslationResult(setting) {
+  switch ( setting.openMethod ) {
+    case 'tab':
+      browser.tabs.create({ url: setting.url });
+      break;
+    case 'window':
+      if (setting.specifySize == true) {
+        browser.windows.create({ url: setting.url, width: setting.sizeWidth, height: setting.sizeHeight });
+      } else {
+        browser.windows.create({ url: setting.url });
+      }
+      break;
+  }
 }
 
 /*================
@@ -164,7 +178,7 @@ browser.menus.onClicked.addListener( ( info ) => {
       promiseAddonSetting
         .then( ( object ) => {
           const setting = optimizeSettingValue(object.languageCode, object.openMethod, object.translationService, info.pageUrl);
-            // keys: languageCode, openMethod, translationService,target
+            // keys: languageCode, openMethod, translationService, target
           switch ( setting.translationService ) {
             case 'Bing':
               url = 'https://www.translatetheweb.com/?from=&to='+setting.languageCode+'&a='+setting.target;
@@ -185,26 +199,18 @@ browser.menus.onClicked.addListener( ( info ) => {
       break;
     case idClickOnText:
       promiseAddonSetting
-        .then( ( object ) => {
-          const translationService = checkTranslationService( object.translationService );
-          const objectForText      = initForText( object.openMethodText, object.languageCode, info );
-            // keys: openMethod, languageCode, targetText
-          switch ( translationService ) {
-            case 'Bing':
-              url = 'https://www.bing.com/translator?from=&to='+objectForText.languageCode+'&text='+objectForText.targetText;
-              break;
-            case 'Google':
-              url = 'https://translate.google.com/?sl=auto&tl='+objectForText.languageCode+'&text='+objectForText.targetText+'&op=translate';
-              break;
-          }
-          switch ( objectForText.openMethod ) {
-           case 'tab':
-            openByNewTab( url );
-            break;
-          case 'window':
-            openByNewWindow( url, obj.specifySize, obj.sizeWidth, obj.sizeHeight );
-            break;
-          }
+        .then( ( resultObject1 ) => {
+          // start: Fix for ...
+          resultObject1.openMethod = resultObject1.openMethodText;
+          delete resultObject1.openMethodText;
+          // end: Fix for ...
+          return optimizeSettingValue( resultObject1, info.selectionText );
+        } )
+        .then( ( resultObject2 ) => {
+          return addUrlForText( resultObject2 );
+        } )
+        .then( ( resultObject3 ) => {
+          openTranslationResult( resultObject3 );
         } )
       break;
   } // end: switch ( info.menuItemId )
