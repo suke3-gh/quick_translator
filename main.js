@@ -2,42 +2,42 @@
 /*================
   Creating menu items
   ================*/
-const idClickInPage = 'clickInPage';
+const idForWebpageTranslation = 'idForWebpageTranslation';
 const contextMenuForPage = browser.menus.create({
   contexts: ['page'],
-  id:       idClickInPage,
-  title:    browser.i18n.getMessage( 'contextMenuForPage' )
+  id:       idForWebpageTranslation,
+  title:    browser.i18n.getMessage( 'contextMenuForWebpageTranslation' )
 });
 
-const idClickOnText = 'clickOnText';
+const idForTextTranslation = 'idForTextTranslation';
 const contextMenuForText = browser.menus.create({
   contexts: ['selection'],
-  id:       idClickOnText,
-  title:    browser.i18n.getMessage( 'contextMenuForText' )
+  id:       idForTextTranslation,
+  title:    browser.i18n.getMessage( 'contextMenuForTextTranslation' )
 });
 
 /*================
   Functions
   ================*/
-function addUrlForPage( settingValueObject ) {
+function addUrlForTextTranslation( settingValueObject ) {
   switch ( settingValueObject.translationService ) {
     case 'Bing':
-      settingValueObject.url = 'https://www.translatetheweb.com/?from=&to='+settingValueObject.languageCode+'&a='+settingValueObject.target;
+      settingValueObject.url = 'https://www.bing.com/translator?from=&to='+settingValueObject.languageCode+'&text='+settingValueObject.targetString;
       break;
     case 'Google':
-      settingValueObject.url = 'https://translate.google.com/translate?hl='+settingValueObject.languageCode+'&sl=auto&tl='+settingValueObject.languageCode+'&u='+settingValueObject.target;
+      settingValueObject.url = 'https://translate.google.com/?sl=auto&tl='+settingValueObject.languageCode+'&text='+settingValueObject.targetString+'&op=translate';
       break;
   }
   return settingValueObject;
 }
 
-function addUrlForText( settingValueObject ) {
+function addUrlForWebpageTranslation( settingValueObject ) {
   switch ( settingValueObject.translationService ) {
     case 'Bing':
-      settingValueObject.url = 'https://www.bing.com/translator?from=&to='+settingValueObject.languageCode+'&text='+settingValueObject.target;
+      settingValueObject.url = 'https://www.translatetheweb.com/?from=&to='+settingValueObject.languageCode+'&a='+settingValueObject.targetString;
       break;
     case 'Google':
-      settingValueObject.url = 'https://translate.google.com/?sl=auto&tl='+settingValueObject.languageCode+'&text='+settingValueObject.target+'&op=translate';
+      settingValueObject.url = 'https://translate.google.com/translate?hl='+settingValueObject.languageCode+'&sl=auto&tl='+settingValueObject.languageCode+'&u='+settingValueObject.targetString;
       break;
   }
   return settingValueObject;
@@ -87,7 +87,7 @@ function openTranslationResult( settingValueObject ) {
       break;
     case 'window':
       if ( settingValueObject.specifySize == true ) {
-        browser.windows.create({ url: settingValueObject.url, width: settingValueObject.sizeWidth, height: settingValueObject.sizeHeight });
+        browser.windows.create({ url: settingValueObject.url, height: settingValueObject.sizeHeight, width: settingValueObject.sizeWidth });
       } else {
         browser.windows.create({ url: settingValueObject.url });
       }
@@ -95,8 +95,8 @@ function openTranslationResult( settingValueObject ) {
   }
 }
 
-function optimizeSettingValue( settingValueObject, targetString ) {
-  // keys of object: languageCode, openMethod, sizeHeight, sizeWidth, specifySize, translationService,
+function optimizeSettingValue( settingValueObject ) {
+  // Keys of object: languageCode, openMethod, sizeHeight, sizeWidth, specifySize, targetString, translationService,
 
   switch ( settingValueObject.languageCode ) {
     case 'auto':
@@ -113,10 +113,10 @@ function optimizeSettingValue( settingValueObject, targetString ) {
       break;
   }
 
-  settingValueObject.target = targetString
+  settingValueObject.targetString
     .replace( /\%/g, '％' )
     .replace( /\&/g, '＆' );
-  settingValueObject.target = htmlEscape( settingValueObject.target );
+  settingValueObject.targetString = htmlEscape( settingValueObject.targetString );
 
   switch ( settingValueObject.translationService ) {
     case undefined:
@@ -127,61 +127,59 @@ function optimizeSettingValue( settingValueObject, targetString ) {
   return settingValueObject;
 }
 
-/*================
-  API
-  ================*/
-browser.menus.onClicked.addListener( ( info ) => {
-  const promiseAddonSetting = browser.storage.local.get( null );
-  switch ( info.menuItemId ) {
-    case idClickInPage:
-      promiseAddonSetting
-        .then( ( resultObject1 ) => {
-          // Start: Fix for open method.
-          resultObject1.openMethod = resultObject1.openMethodWebsite;
-          delete resultObject1.openMethodWebsite;
-          // End  : Fix for ...
-          return optimizeSettingValue( resultObject1, info.pageUrl );
-        } )
-        .then( ( resultObject2 ) => {
-          return addUrlForPage( resultObject2 );
-        } )
-        .then( ( resultObject3 ) => {
-          openTranslationResult( resultObject3 );
-        } );
-      break;
-    case idClickOnText:
-      promiseAddonSetting
-        .then( ( resultObject1 ) => {
-          // Start: Fix for open method.
-          resultObject1.openMethod = resultObject1.openMethodText;
-          delete resultObject1.openMethodText;
-          // End  : Fix for ...
-          return optimizeSettingValue( resultObject1, info.selectionText );
-        } )
-        .then( ( resultObject2 ) => {
-          return addUrlForText( resultObject2 );
-        } )
-        .then( ( resultObject3 ) => {
-          openTranslationResult( resultObject3 );
-        } );
-      break;
-  }
-} ); // end: browser.menus.onClicked.addListener()
-
-browser.pageAction.onClicked.addListener( ( tab ) => {
-  const promiseAddonSetting = browser.storage.local.get( null );
-  promiseAddonSetting
+/*----------------
+  processing of ...
+  ----------------*/
+function processingOfTextTranslation( targetString ) {
+  browser.storage.local.get( null ) // Promise
     .then( ( resultObject1 ) => {
+      resultObject1.targetString = targetString;
       // Start: Fix for open method.
-      resultObject1.openMethod = resultObject1.openMethodWebsite;
-      delete resultObject1.openMethodWebsite;
+      resultObject1.openMethod = resultObject1.openMethodText;
+      delete resultObject1.openMethodText;
       // End  : Fix for ...
-      return optimizeSettingValue( resultObject1, tab.url );
+      return optimizeSettingValue( resultObject1 );
     } )
     .then( ( resultObject2 ) => {
-      return addUrlForPage( resultObject2 );
+      return addUrlForTextTranslation( resultObject2 );
     } )
     .then( ( resultObject3 ) => {
       openTranslationResult( resultObject3 );
     } );
-} ); // end: browser.pageAction.onClicked.addListener()
+}
+
+function processingOfWebpageTranslation( targetString ) {
+  browser.storage.local.get( null ) // Promise
+    .then( ( resultObject1 ) => {
+      resultObject1.targetString = targetString;
+      // Start: Fix for open method.
+      resultObject1.openMethod = resultObject1.openMethodWebsite;
+      delete resultObject1.openMethodWebsite;
+      // End  : Fix for ...
+      return optimizeSettingValue( resultObject1 );
+    } )
+    .then( ( resultObject2 ) => {
+      return addUrlForWebpageTranslation( resultObject2 );
+    } )
+    .then( ( resultObject3 ) => {
+      openTranslationResult( resultObject3 );
+    } );
+}
+
+/*================
+  API
+  ================*/
+browser.menus.onClicked.addListener( ( info ) => {
+  switch ( info.menuItemId ) {
+    case idForWebpageTranslation:
+      processingOfWebpageTranslation( info.pageUrl );
+      break;
+    case idForTextTranslation:
+      processingOfTextTranslation( info.selectionText );
+      break;
+  }
+} ); // End: browser.menus.onClicked.addListener()
+
+browser.pageAction.onClicked.addListener( ( tab ) => {
+  processingOfWebpageTranslation( tab.url );
+} ); // End: browser.pageAction.onClicked.addListener()

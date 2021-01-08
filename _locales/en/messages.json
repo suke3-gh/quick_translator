@@ -1,9 +1,9 @@
 {
-  "contextMenuForPage": {
+  "contextMenuForWebpageTranslation": {
     "message": "Translate this web page"
   },
 
-  "contextMenuForText": {
+  "contextMenuForTextTranslation": {
     "message": "Translate selected text"
   },
 
