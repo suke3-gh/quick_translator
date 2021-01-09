@@ -1,6 +1,6 @@
 
 const elementOpenMethodText         = document.getElementById( 'formOpenMethodText' );
-const elementOpenMethodWebsite      = document.getElementById( 'formOpenMethodWebsite' );
+const elementOpenMethodWebpage      = document.getElementById( 'formOpenMethodWebpage' );
 const elementOpenMethodSpecifySize  = document.getElementById( 'formOpenMethodSpecifySize' );
 const elementSpecifySizeFlag        = elementOpenMethodSpecifySize.querySelector( '#inputSpecifySize' );
 const elementSizeOfNewWindowWidth   = elementOpenMethodSpecifySize.querySelector( '#inputSizeOfNewWindowWidth' );
@@ -9,8 +9,6 @@ const elementTranslationService     = document.getElementById( 'formTranslationS
 const elementLanguageCode           = document.getElementById( 'formLanguageCode' );
 const elementLanguageCodeListBing   = document.getElementById( 'languageCodeListBing' );
 const elementLanguageCodeListGoogle = document.getElementById( 'languageCodeListGoogle' );
-
-const promiseAddonSetting = browser.storage.local.get(null);
 
 /*================
   Functions
@@ -28,36 +26,9 @@ function changeLanguageCodeList( translationService ) {
   }
 }
 
-/*================
-  Initialize
-  ================*/
-promiseAddonSetting.then( obj => {
-  if ( obj.openMethodText == undefined ) {
-    elementOpenMethodText.querySelector( 'input[value="tab"]' ).checked = true;
-  } else {
-    elementOpenMethodText.querySelector( 'input[value="'+obj.openMethodText+'"]' ).checked = true;
-  }
-
-  if ( obj.openMethodWebsite == undefined ) {
-    elementOpenMethodWebsite.querySelector( 'input[value="tab"]' ).checked = true;
-  } else {
-    elementOpenMethodWebsite.querySelector( 'input[value="'+obj.openMethodWebsite+'"]' ).checked = true;
-  }
-
-  elementSpecifySizeFlag.checked     = obj.specifySize;
-  elementSizeOfNewWindowWidth.value  = obj.sizeWidth;
-  elementSizeOfNewWindowHeight.value = obj.sizeHeight;
-
-  if ( obj.translationService == undefined ) {
-    elementTranslationService.querySelector( 'input[value="Google"]' ).checked = true;
-    changeLanguageCodeList( 'Google' );
-  } else {
-    elementTranslationService.querySelector( 'input[value="'+obj.translationService+'"]' ).checked = true;
-    changeLanguageCodeList( obj.translationService );
-  }
-
-  if ( obj.languageCode == undefined ) {
-    switch ( obj.translationService ) {
+function readoutLanguageCode( settingValueObject ) {
+  if ( settingValueObject.languageCode == undefined ) {
+    switch ( settingValueObject.translationService ) {
       case 'Bing':
         elementLanguageCodeListBing.querySelector( 'input[value="auto"]' ).checked = true;
         break;
@@ -67,11 +38,11 @@ promiseAddonSetting.then( obj => {
         break;
     }
   } else {
-    switch ( obj.translationService ) {
+    switch ( settingValueObject.translationService ) {
       case 'Bing':
         // Checking unsupported language
         try {
-          elementLanguageCodeListBing.querySelector( 'input[value="'+obj.languageCode+'"]' ).checked = true;
+          elementLanguageCodeListBing.querySelector( 'input[value="'+settingValueObject.languageCode+'"]' ).checked = true;
         } catch ( error)  {
           elementLanguageCodeListBing.querySelector( 'input[value="auto"]' ).checked = true;
         }
@@ -80,14 +51,82 @@ promiseAddonSetting.then( obj => {
       default:
         // Checking unsupported language
         try {
-          elementLanguageCodeListGoogle.querySelector( 'input[value="'+obj.languageCode+'"]' ).checked = true;
+          elementLanguageCodeListGoogle.querySelector( 'input[value="'+settingValueObject.languageCode+'"]' ).checked = true;
         } catch ( error ) {
           elementLanguageCodeListGoogle.querySelector( 'input[value="auto"]' ).checked = true;
         }
         break;
     }
   }
-}, false );
+}
+
+function readoutOpenMethodText( openMethod ) {
+  switch ( openMethod ) {
+    case null:
+    case undefined:
+      elementOpenMethodText.querySelector( 'input[value="tab"]' ).checked = true;
+      break;
+    default:
+      elementOpenMethodText.querySelector( 'input[value="'+openMethod+'"]' ).checked = true;
+      break;
+  }
+}
+
+function readoutOpenMethodWebpage( openMethod ) {
+  switch ( openMethod ) {
+    case null:
+    case undefined:
+      elementOpenMethodWebpage.querySelector( 'input[value="tab"]' ).checked = true;
+      break;
+    default:
+      elementOpenMethodWebpage.querySelector( 'input[value="'+openMethod+'"]' ).checked = true;
+      break;
+  }
+}
+
+function readoutSpecifySize( settingValueObject ) {
+  elementSpecifySizeFlag.checked     = settingValueObject.specifySize;
+  elementSizeOfNewWindowWidth.value  = settingValueObject.sizeWidth;
+  elementSizeOfNewWindowHeight.value = settingValueObject.sizeHeight;
+}
+
+function readoutTranslationService( translationService ) {
+  switch ( translationService ) {
+    case null:
+    case undefined:
+      elementTranslationService.querySelector( 'input[value="Google"]' ).checked = true;
+      changeLanguageCodeList( 'Google' );
+      break;
+    default:
+      elementTranslationService.querySelector( 'input[value="'+translationService+'"]' ).checked = true;
+      changeLanguageCodeList( translationService );
+      break;
+  }
+}
+
+/*================
+  Read out setting value
+  ================*/
+browser.storage.local.get( null )
+  .then( ( settingValueObject1 ) => {
+    readoutOpenMethodText( settingValueObject1.openMethodText );
+    return settingValueObject1;
+  } )
+  .then( ( settingValueObject2 ) => {
+    readoutOpenMethodWebpage( settingValueObject2.openMethodWebpage );
+    return settingValueObject2;
+  } )
+  .then( ( settingValueObject3 ) => {
+    readoutSpecifySize( settingValueObject3 );
+    return settingValueObject3;
+  } )
+  .then( ( settingValueObject4 ) => {
+    readoutTranslationService( settingValueObject4.translationService );
+    return settingValueObject4;
+  } )
+  .then( ( settingValueObject5 ) => {
+    readoutLanguageCode( settingValueObject5 );
+  } );
 
 /*================
   Update processing
@@ -99,10 +138,10 @@ elementOpenMethodText.addEventListener( 'input', ( obj ) => {
   });
 }, false );
 
-elementOpenMethodWebsite.addEventListener( 'input', ( obj ) => {
-  const valueOpenMethodWebsite = obj.target.value;
+elementOpenMethodWebpage.addEventListener( 'input', ( obj ) => {
+  const valueOpenMethodWebpage = obj.target.value;
   browser.storage.local.set({
-    openMethodWebsite: valueOpenMethodWebsite
+    openMethodWebpage: valueOpenMethodWebpage
   });
 }, false );
 
@@ -137,11 +176,11 @@ elementLanguageCode.addEventListener( 'input', ( obj ) => {
   ================*/
 document.getElementById( 'h2BehaviorWhen' ).textContent             = browser.i18n.getMessage( 'optionPageBehaviorWhen' );
 document.getElementById( 'h3CaseOfText' ).textContent               = browser.i18n.getMessage( 'optionPageCaseOfText' );
-document.getElementById( 'h3CaseOfWebsite' ).textContent            = browser.i18n.getMessage( 'optionPageCaseOfWebsite' );
+document.getElementById( 'h3CaseOfWebpage' ).textContent            = browser.i18n.getMessage( 'optionPageCaseOfWebpage' );
 document.getElementById( 'spanTextOpenByNewTab' ).textContent       = browser.i18n.getMessage( 'optionPageOpenByNewTab' );
 document.getElementById( 'spanTextOpenByNewWindow' ).textContent    = browser.i18n.getMessage( 'optionPageOpenByNewWindow' );
-document.getElementById( 'spanWebsiteOpenByNewTab' ).textContent    = browser.i18n.getMessage( 'optionPageOpenByNewTab' );
-document.getElementById( 'spanWebsiteOpenByNewWindow' ).textContent = browser.i18n.getMessage( 'optionPageOpenByNewWindow' );
+document.getElementById( 'spanWebpageOpenByNewTab' ).textContent    = browser.i18n.getMessage( 'optionPageOpenByNewTab' );
+document.getElementById( 'spanWebpageOpenByNewWindow' ).textContent = browser.i18n.getMessage( 'optionPageOpenByNewWindow' );
 document.getElementById( 'h3SizeOfNewWindow' ).textContent          = browser.i18n.getMessage( 'optionPageSizeOfNewWindow' );
 document.getElementById( 'spanSpecifySizeOfWindow' ).textContent    = browser.i18n.getMessage( 'optionPageSpecifySizeOfWindow' );
 document.getElementById( 'pWhenSetWH' ).textContent                 = browser.i18n.getMessage( 'optionPageWhenSetWH' );

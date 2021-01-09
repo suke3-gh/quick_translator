@@ -24,8 +24,8 @@
     "message": "Para texto"
   },
 
-  "optionPageCaseOfWebsite": {
-    "message": "Para sitio web"
+  "optionPageCaseOfWebpage": {
+    "message": "Para página web"
   },
 
   "optionPageOpenByNewTab": {
@@ -71,7 +71,7 @@
   },
 
   "optionPageIfSetEn": {
-    "message": "Si se establece en \"en - English\", los textos y sitios web se traducirán al inglés."
+    "message": "Si se establece en \"en - English\", los textos y página web se traducirán al inglés."
   },
 
   "optionPageAlphabetIn": {
