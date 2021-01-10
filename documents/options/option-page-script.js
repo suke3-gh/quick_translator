@@ -2,7 +2,7 @@
 const elementOpenMethodText         = document.getElementById( 'formOpenMethodText' );
 const elementOpenMethodWebpage      = document.getElementById( 'formOpenMethodWebpage' );
 const elementOpenMethodSpecifySize  = document.getElementById( 'formOpenMethodSpecifySize' );
-const elementSpecifySizeFlag        = elementOpenMethodSpecifySize.querySelector( '#inputSpecifySize' );
+const elementSpecifySizeFlag        = elementOpenMethodSpecifySize.querySelector( '#inputSpecifySizeFlag' );
 const elementSizeOfNewWindowWidth   = elementOpenMethodSpecifySize.querySelector( '#inputSizeOfNewWindowWidth' );
 const elementSizeOfNewWindowHeight  = elementOpenMethodSpecifySize.querySelector( '#inputSizeOfNewWindowHeight' );
 const elementTranslationService     = document.getElementById( 'formTranslationService' );
@@ -18,45 +18,36 @@ function changeLanguageCodeList( translationService ) {
     case 'Bing':
       elementLanguageCodeListBing.style.display   = 'flex';
       elementLanguageCodeListGoogle.style.display = 'none';
+      // Fix for check of radio button.
+      browser.storage.local.get( 'languageCode' )
+        .then( ( settingValueObject ) => {
+          selectorOfLanguageCodeListBing( settingValueObject.languageCode );
+        } );
       break;
     case 'Google':
       elementLanguageCodeListBing.style.display   = 'none';
       elementLanguageCodeListGoogle.style.display = 'flex';
+      // Fix for check of radio button.
+      browser.storage.local.get( 'languageCode' )
+        .then( ( settingValueObject ) => {
+          selectorOfLanguageCodeListGoogle( settingValueObject.languageCode );
+        } );
       break;
   }
 }
 
-function readoutLanguageCode( settingValueObject ) {
-  if ( settingValueObject.languageCode == undefined ) {
-    switch ( settingValueObject.translationService ) {
-      case 'Bing':
-        elementLanguageCodeListBing.querySelector( 'input[value="auto"]' ).checked = true;
-        break;
-      case 'Google':
-      default:
-        elementLanguageCodeListGoogle.querySelector( 'input[value="auto"]' ).checked = true;
-        break;
-    }
-  } else {
-    switch ( settingValueObject.translationService ) {
-      case 'Bing':
-        // Checking unsupported language
-        try {
-          elementLanguageCodeListBing.querySelector( 'input[value="'+settingValueObject.languageCode+'"]' ).checked = true;
-        } catch ( error)  {
-          elementLanguageCodeListBing.querySelector( 'input[value="auto"]' ).checked = true;
-        }
-        break;
-      case 'Google':
-      default:
-        // Checking unsupported language
-        try {
-          elementLanguageCodeListGoogle.querySelector( 'input[value="'+settingValueObject.languageCode+'"]' ).checked = true;
-        } catch ( error ) {
-          elementLanguageCodeListGoogle.querySelector( 'input[value="auto"]' ).checked = true;
-        }
-        break;
-    }
+/*----------------
+  readout...
+  ----------------*/
+function readoutLanguageCode( languageCode, translationService ) {
+  switch ( translationService ) {
+    case 'Bing':
+      selectorOfLanguageCodeListBing( languageCode );
+      break;
+    case 'Google':
+    default:
+      selectorOfLanguageCodeListGoogle( languageCode );
+      break;
   }
 }
 
@@ -85,7 +76,7 @@ function readoutOpenMethodWebpage( openMethod ) {
 }
 
 function readoutSpecifySize( settingValueObject ) {
-  elementSpecifySizeFlag.checked     = settingValueObject.specifySize;
+  elementSpecifySizeFlag.checked     = settingValueObject.specifySizeFlag;
   elementSizeOfNewWindowWidth.value  = settingValueObject.sizeWidth;
   elementSizeOfNewWindowHeight.value = settingValueObject.sizeHeight;
 }
@@ -101,6 +92,27 @@ function readoutTranslationService( translationService ) {
       elementTranslationService.querySelector( 'input[value="'+translationService+'"]' ).checked = true;
       changeLanguageCodeList( translationService );
       break;
+  }
+}
+
+/*----------------
+  selectotOf...
+  ----------------*/
+function selectorOfLanguageCodeListBing( languageCode ) {
+  try {
+    elementLanguageCodeListBing.querySelector( 'input[value="'+languageCode+'"]' ).checked = true;
+  } catch ( error ) {
+    elementLanguageCodeListBing.querySelector( 'input[value="auto"]' ).checked = true;
+    browser.storage.local.set( { languageCode: 'auto' } );
+  }
+}
+
+function selectorOfLanguageCodeListGoogle( languageCode ) {
+  try {
+    elementLanguageCodeListGoogle.querySelector( 'input[value="'+languageCode+'"]' ).checked = true;
+  } catch ( error ) {
+    elementLanguageCodeListGoogle.querySelector( 'input[value="auto"]' ).checked = true;
+    browser.storage.local.set( { languageCode: 'auto' } );
   }
 }
 
@@ -125,50 +137,35 @@ browser.storage.local.get( null )
     return settingValueObject4;
   } )
   .then( ( settingValueObject5 ) => {
-    readoutLanguageCode( settingValueObject5 );
+    readoutLanguageCode( settingValueObject5.languageCode ,settingValueObject5.translationService );
   } );
 
 /*================
   Update processing
   ================*/
-elementOpenMethodText.addEventListener( 'input', ( obj ) => {
-  const valueOpenMethodText = obj.target.value;
-  browser.storage.local.set({
-    openMethodText: valueOpenMethodText
-  });
+elementOpenMethodText.addEventListener( 'input', ( htmlElementObject ) => {
+  browser.storage.local.set( { openMethodText: htmlElementObject.target.value } ); // API
 }, false );
 
-elementOpenMethodWebpage.addEventListener( 'input', ( obj ) => {
-  const valueOpenMethodWebpage = obj.target.value;
-  browser.storage.local.set({
-    openMethodWebpage: valueOpenMethodWebpage
-  });
+elementOpenMethodWebpage.addEventListener( 'input', ( htmlElementObject ) => {
+  browser.storage.local.set( { openMethodWebpage: htmlElementObject.target.value } );
 }, false );
 
 elementOpenMethodSpecifySize.addEventListener( 'input', () => {
-  const valueSpecifySizeFlag       = elementSpecifySizeFlag.checked;
-  const valueSizeOfNewWindowWidth  = Number( encodeURI( elementSizeOfNewWindowWidth.value ) );
-  const valueSizeOfNewWindowHeight = Number( encodeURI( elementSizeOfNewWindowHeight.value ) );
-  browser.storage.local.set({
-    specifySize: valueSpecifySizeFlag,
-    sizeWidth:   valueSizeOfNewWindowWidth,
-    sizeHeight:  valueSizeOfNewWindowHeight
-  });
+  browser.storage.local.set( {
+    specifySizeFlag: elementSpecifySizeFlag.checked,
+    sizeWidth:       Number( encodeURI( elementSizeOfNewWindowWidth.value ) ),
+    sizeHeight:      Number( encodeURI( elementSizeOfNewWindowHeight.value ) )
+  } );
 }, false );
 
-elementTranslationService.addEventListener( 'input', ( obj ) => {
-  const valueTranslationService = obj.target.value
-  browser.storage.local.set({
-    translationService: valueTranslationService
-  });
-  changeLanguageCodeList(valueTranslationService);
+elementTranslationService.addEventListener( 'input', ( htmlElementObject ) => {
+  browser.storage.local.set( { translationService: htmlElementObject.target.value } );
+  changeLanguageCodeList( htmlElementObject.target.value );
 }, false );
 
-elementLanguageCode.addEventListener( 'input', ( obj ) => {
-  const valueLanguageCode = obj.target.value;
-  browser.storage.local.set({
-    languageCode: valueLanguageCode
-  });
+elementLanguageCode.addEventListener( 'input', ( htmlElementObject ) => {
+  browser.storage.local.set( { languageCode: htmlElementObject.target.value } );
 }, false );
 
 /*================

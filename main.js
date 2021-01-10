@@ -86,7 +86,7 @@ function openTranslationResult( settingValueObject ) {
       browser.tabs.create({ url: settingValueObject.url });
       break;
     case 'window':
-      if ( settingValueObject.specifySize == true ) {
+      if ( settingValueObject.specifySizeFlag == true ) {
         browser.windows.create({ url: settingValueObject.url, height: settingValueObject.sizeHeight, width: settingValueObject.sizeWidth });
       } else {
         browser.windows.create({ url: settingValueObject.url });
@@ -97,7 +97,6 @@ function openTranslationResult( settingValueObject ) {
 
 function optimizeSettingValue( settingValueObject ) {
   // Keys of object: languageCode, openMethod, sizeHeight, sizeWidth, specifySize, targetString, translationService,
-
   switch ( settingValueObject.languageCode ) {
     case 'auto':
     case undefined:
@@ -153,7 +152,7 @@ function processingOfWebpageTranslation( targetString ) {
     .then( ( resultObject1 ) => {
       resultObject1.targetString = targetString;
       // Start: Fix for open method.
-      resultObject1.openMethod = resultObject1.openMethodWebsite;
+      resultObject1.openMethod = resultObject1.openMethodWebpage;
       delete resultObject1.openMethodWebsite;
       // End  : Fix for ...
       return optimizeSettingValue( resultObject1 );
