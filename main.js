@@ -3,14 +3,14 @@
   Creating menu items
   ================*/
 const idForWebpageTranslation = 'idForWebpageTranslation';
-const contextMenuForPage = browser.menus.create({
+browser.menus.create({
   contexts: ['page'],
   id:       idForWebpageTranslation,
   title:    browser.i18n.getMessage( 'contextMenuForWebpageTranslation' )
 });
 
 const idForTextTranslation = 'idForTextTranslation';
-const contextMenuForText = browser.menus.create({
+browser.menus.create({
   contexts: ['selection'],
   id:       idForTextTranslation,
   title:    browser.i18n.getMessage( 'contextMenuForTextTranslation' )
@@ -19,28 +19,28 @@ const contextMenuForText = browser.menus.create({
 /*================
   Functions
   ================*/
-function addUrlForTextTranslation( settingValueObject ) {
-  switch ( settingValueObject.translationService ) {
+function addUrlPropertyForTextTranslation( object ) {
+  switch ( object.translationService ) {
     case 'Bing':
-      settingValueObject.url = 'https://www.bing.com/translator?from=&to='+settingValueObject.languageCode+'&text='+settingValueObject.targetString;
+      object.url = 'https://www.bing.com/translator?from=&to='+object.languageCode+'&text='+object.targetString;
       break;
     case 'Google':
-      settingValueObject.url = 'https://translate.google.com/?sl=auto&tl='+settingValueObject.languageCode+'&text='+settingValueObject.targetString+'&op=translate';
+      object.url = 'https://translate.google.com/?sl=auto&tl='+object.languageCode+'&text='+object.targetString+'&op=translate';
       break;
   }
-  return settingValueObject;
+  return object;
 }
 
-function addUrlForWebpageTranslation( settingValueObject ) {
-  switch ( settingValueObject.translationService ) {
+function addUrlPropertyForWebpageTranslation( object ) {
+  switch ( object.translationService ) {
     case 'Bing':
-      settingValueObject.url = 'https://www.translatetheweb.com/?from=&to='+settingValueObject.languageCode+'&a='+settingValueObject.targetString;
+      object.url = 'https://www.translatetheweb.com/?from=&to='+object.languageCode+'&a='+object.targetString;
       break;
     case 'Google':
-      settingValueObject.url = 'https://translate.google.com/translate?hl='+settingValueObject.languageCode+'&sl=auto&tl='+settingValueObject.languageCode+'&u='+settingValueObject.targetString;
+      object.url = 'https://translate.google.com/translate?hl='+object.languageCode+'&sl=auto&tl='+object.languageCode+'&u='+object.targetString;
       break;
   }
-  return settingValueObject;
+  return object;
 }
 
 function autoSelectLanguageCode() {
@@ -80,50 +80,58 @@ function htmlEscape( string ) {
     .replace( /\|/g, '%7C' );
 }
 
-function openTranslationResult( settingValueObject ) {
-  switch ( settingValueObject.openMethod ) {
+function openTranslationResult( settingsObject ) {
+  switch ( settingsObject.openMethod ) {
     case 'tab':
-      browser.tabs.create({ url: settingValueObject.url });
+      browser.tabs.create({ url: settingsObject.url });
       break;
     case 'window':
-      if ( settingValueObject.specifySizeFlag == true ) {
-        browser.windows.create({ url: settingValueObject.url, height: settingValueObject.sizeHeight, width: settingValueObject.sizeWidth });
+      if ( settingsObject.specifySizeFlag == true ) {
+        browser.windows.create({ url: settingsObject.url, height: settingsObject.sizeHeight, width: settingsObject.sizeWidth });
       } else {
-        browser.windows.create({ url: settingValueObject.url });
+        browser.windows.create({ url: settingsObject.url });
       }
       break;
   }
 }
 
-function optimizeSettingValue( settingValueObject ) {
-  // Keys of object: languageCode, openMethod, sizeHeight, sizeWidth, specifySize, targetString, translationService,
-  switch ( settingValueObject.languageCode ) {
+/*----------------
+  optimize ...
+  ----------------*/
+function optimizeLanguageCodeProperty( object ) {
+  switch ( object.languageCode ) {
     case 'auto':
     case undefined:
-      settingValueObject.languageCode = autoSelectLanguageCode();
-      break;
-    default:
+      object.languageCode = autoSelectLanguageCode();
       break;
   }
+  return object;
+}
 
-  switch ( settingValueObject.openMethod ) {
+function optimizeOpenMethodProperty( object ) {
+  switch ( object.openMethod ) {
     case undefined:
-      settingValueObject.openMethod = 'tab';
+      object.openMethod = 'tab';
       break;
   }
+  return object;
+}
 
-  settingValueObject.targetString
+function optimizeTargetStringProperty( object, targetString ) {
+  object.targetString = targetString
     .replace( /\%/g, '％' )
-    .replace( /\&/g, '＆' );
-  settingValueObject.targetString = htmlEscape( settingValueObject.targetString );
+    .replace( /\&/g, '＆' )
+  object.targetString = htmlEscape( object.targetString );
+  return object;
+}
 
-  switch ( settingValueObject.translationService ) {
+function optimizeTranslationServiceProperty( object ) {
+  switch ( object.translationService ) {
     case undefined:
-      settingValueObject.translationService = 'Google';
+      object.translationService = 'Google';
       break;
   }
-
-  return settingValueObject;
+  return object;
 }
 
 /*----------------
@@ -131,37 +139,51 @@ function optimizeSettingValue( settingValueObject ) {
   ----------------*/
 function processingOfTextTranslation( targetString ) {
   browser.storage.local.get( null ) // Promise
-    .then( ( resultObject1 ) => {
-      resultObject1.targetString = targetString;
-      // Start: Fix for open method.
-      resultObject1.openMethod = resultObject1.openMethodText;
-      delete resultObject1.openMethodText;
-      // End  : Fix for ...
-      return optimizeSettingValue( resultObject1 );
+    .then( ( settingsObject1 ) => {
+      // Keys of object: languageCode, openMethod, sizeHeight, sizeWidth, specifySize, targetString, translationService
+      settingsObject1.openMethod = settingsObject1.openMethodText;
+      delete settingsObject1.openMethodText;
+      return optimizeOpenMethodProperty( settingsObject1 );
     } )
-    .then( ( resultObject2 ) => {
-      return addUrlForTextTranslation( resultObject2 );
+    .then( ( settingsObject2 ) => {
+      return optimizeTranslationServiceProperty( settingsObject2 );
     } )
-    .then( ( resultObject3 ) => {
-      openTranslationResult( resultObject3 );
+    .then( ( settingsObject3 ) => {
+      return optimizeLanguageCodeProperty( settingsObject3 );
+    } )
+    .then( ( settingsObject4 ) => {
+      return optimizeTargetStringProperty( settingsObject4, targetString );
+    } )
+    .then( ( settingsObject5 ) => {
+      return addUrlPropertyForTextTranslation( settingsObject5 );
+    } )
+    .then( ( settingsObject6 ) => {
+      openTranslationResult( settingsObject6 );
     } );
 }
 
 function processingOfWebpageTranslation( targetString ) {
   browser.storage.local.get( null ) // Promise
-    .then( ( resultObject1 ) => {
-      resultObject1.targetString = targetString;
-      // Start: Fix for open method.
-      resultObject1.openMethod = resultObject1.openMethodWebpage;
-      delete resultObject1.openMethodWebsite;
-      // End  : Fix for ...
-      return optimizeSettingValue( resultObject1 );
+    .then( ( settingsObject1 ) => {
+      // Keys of object: languageCode, openMethod, sizeHeight, sizeWidth, specifySize, targetString, translationService
+      settingsObject1.openMethod = settingsObject1.openMethodWebpage;
+      delete settingsObject1.openMethodWebpage;
+      return optimizeOpenMethodProperty( settingsObject1 );
     } )
-    .then( ( resultObject2 ) => {
-      return addUrlForWebpageTranslation( resultObject2 );
+    .then( ( settingsObject2 ) => {
+      return optimizeTranslationServiceProperty( settingsObject2 );
     } )
-    .then( ( resultObject3 ) => {
-      openTranslationResult( resultObject3 );
+    .then( ( settingsObject3 ) => {
+      return optimizeLanguageCodeProperty( settingsObject3 );
+    } )
+    .then( ( settingsObject4 ) => {
+      return optimizeTargetStringProperty( settingsObject4, targetString );
+    } )
+    .then( ( settingsObject5 ) => {
+      return addUrlPropertyForWebpageTranslation( settingsObject5 );
+    } )
+    .then( ( settingsObject6 ) => {
+      openTranslationResult( settingsObject6 );
     } );
 }
 

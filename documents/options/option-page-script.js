@@ -20,8 +20,8 @@ function changeLanguageCodeList( translationService ) {
       elementLanguageCodeListGoogle.style.display = 'none';
       // Fix for check of radio button.
       browser.storage.local.get( 'languageCode' )
-        .then( ( settingValueObject ) => {
-          selectorOfLanguageCodeListBing( settingValueObject.languageCode );
+        .then( ( settingsObject ) => {
+          selectorOfLanguageCodeListBing( settingsObject.languageCode );
         } );
       break;
     case 'Google':
@@ -29,8 +29,8 @@ function changeLanguageCodeList( translationService ) {
       elementLanguageCodeListGoogle.style.display = 'flex';
       // Fix for check of radio button.
       browser.storage.local.get( 'languageCode' )
-        .then( ( settingValueObject ) => {
-          selectorOfLanguageCodeListGoogle( settingValueObject.languageCode );
+        .then( ( settingsObject ) => {
+          selectorOfLanguageCodeListGoogle( settingsObject.languageCode );
         } );
       break;
   }
@@ -75,10 +75,10 @@ function readoutOpenMethodWebpage( openMethod ) {
   }
 }
 
-function readoutSpecifySize( settingValueObject ) {
-  elementSpecifySizeFlag.checked     = settingValueObject.specifySizeFlag;
-  elementSizeOfNewWindowWidth.value  = settingValueObject.sizeWidth;
-  elementSizeOfNewWindowHeight.value = settingValueObject.sizeHeight;
+function readoutSpecifySize( settingsObject ) {
+  elementSpecifySizeFlag.checked     = settingsObject.specifySizeFlag;
+  elementSizeOfNewWindowWidth.value  = settingsObject.sizeWidth;
+  elementSizeOfNewWindowHeight.value = settingsObject.sizeHeight;
 }
 
 function readoutTranslationService( translationService ) {
@@ -96,7 +96,7 @@ function readoutTranslationService( translationService ) {
 }
 
 /*----------------
-  selectotOf...
+  selectorOf...
   ----------------*/
 function selectorOfLanguageCodeListBing( languageCode ) {
   try {
@@ -120,24 +120,24 @@ function selectorOfLanguageCodeListGoogle( languageCode ) {
   Read out setting value
   ================*/
 browser.storage.local.get( null )
-  .then( ( settingValueObject1 ) => {
-    readoutOpenMethodText( settingValueObject1.openMethodText );
-    return settingValueObject1;
+  .then( ( settingsObject1 ) => {
+    readoutOpenMethodText( settingsObject1.openMethodText );
+    return settingsObject1;
   } )
-  .then( ( settingValueObject2 ) => {
-    readoutOpenMethodWebpage( settingValueObject2.openMethodWebpage );
-    return settingValueObject2;
+  .then( ( settingsObject2 ) => {
+    readoutOpenMethodWebpage( settingsObject2.openMethodWebpage );
+    return settingsObject2;
   } )
-  .then( ( settingValueObject3 ) => {
-    readoutSpecifySize( settingValueObject3 );
-    return settingValueObject3;
+  .then( ( settingsObject3 ) => {
+    readoutSpecifySize( settingsObject3 );
+    return settingsObject3;
   } )
-  .then( ( settingValueObject4 ) => {
-    readoutTranslationService( settingValueObject4.translationService );
-    return settingValueObject4;
+  .then( ( settingsObject4 ) => {
+    readoutTranslationService( settingsObject4.translationService );
+    return settingsObject4;
   } )
-  .then( ( settingValueObject5 ) => {
-    readoutLanguageCode( settingValueObject5.languageCode ,settingValueObject5.translationService );
+  .then( ( settingsObject5 ) => {
+    readoutLanguageCode( settingsObject5.languageCode, settingsObject5.translationService );
   } );
 
 /*================
