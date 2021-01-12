@@ -96,7 +96,7 @@ function openTranslationResult( settingsObject ) {
 }
 
 /*----------------
-  optimize ...
+  optimize...
   ----------------*/
 function optimizeLanguageCodeProperty( object ) {
   switch ( object.languageCode ) {
@@ -135,7 +135,7 @@ function optimizeTranslationServiceProperty( object ) {
 }
 
 /*----------------
-  processing of ...
+  processingOf...
   ----------------*/
 function processingOfTextTranslation( targetString ) {
   browser.storage.local.get( null ) // Promise

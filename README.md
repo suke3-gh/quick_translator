@@ -14,9 +14,9 @@ Translation services available are "Google" and "Bing (Microsoft)".
 From ver.2.0.0 onward, version number follow below rule.
 
 *ver.x.yy.zzz*
-x   : Major version number
-yy  : Minor version number
-zzz : Build number
+* x   : Major version number
+* yy  : Minor version number
+* zzz : Build number
 
 ## Why did i create this add-on
 There are several similar add-ons, but I wanted a function such as open in a new window, so I created this add-on.

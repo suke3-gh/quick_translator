@@ -2,36 +2,31 @@
 const elementdivOperationButtonLeft = document.getElementById( 'divOperationButtonLeft' );
 const elementImgMenuIcon            = document.getElementById( 'imgMenuIcon' );
 const elementNavMenuArea            = document.getElementById( 'navMenuArea' );
-let openFlag = 'close';
-let tempSrc  = 'temp';
+let openFlagOfMenu = 'close';
+let tempSrcProperty  = 'temp';
 
-const clickedOperationButtonLeft = elementdivOperationButtonLeft
-  .addEventListener('click', () => {
-    switch (openFlag) {
-      case 'close':
-        openFlag = 'open';
-        tempSrc = elementImgMenuIcon.src;
-        elementImgMenuIcon.src = tempSrc.replace('menu-icon', 'close-icon');
-        elementNavMenuArea.style.maxHeight = '80vw';
-        break;
-      case 'open':
-        openFlag = 'close';
-        tempSrc = elementImgMenuIcon.src;
-        elementImgMenuIcon.src = tempSrc.replace('close-icon', 'menu-icon');
-        elementNavMenuArea.style.maxHeight = '0vw';
-        break;
-    }
-    
-  }
-);
-
-const closeNavByScroll = document
-  .addEventListener('scroll', () => {
-    if (openFlag == 'open') {
-      openFlag = 'close';
-      tempSrc = elementImgMenuIcon.src;
-      elementImgMenuIcon.src = tempSrc.replace('close-icon', 'menu-icon');
+elementdivOperationButtonLeft.addEventListener( 'click', () => {
+  switch ( openFlagOfMenu ) {
+    case 'close':
+      openFlagOfMenu = 'open';
+      tempSrcProperty = elementImgMenuIcon.src;
+      elementImgMenuIcon.src = tempSrcProperty.replace('menu-icon', 'close-icon');
+      elementNavMenuArea.style.maxHeight = '80vw';
+      break;
+    case 'open':
+      openFlagOfMenu = 'close';
+      tempSrcProperty = elementImgMenuIcon.src;
+      elementImgMenuIcon.src = tempSrcProperty.replace('close-icon', 'menu-icon');
       elementNavMenuArea.style.maxHeight = '0vw';
-    }
+      break;
   }
-);
+}, false );
+
+document.addEventListener( 'scroll', () => {
+  if ( openFlagOfMenu == 'open' ) {
+    openFlagOfMenu = 'close';
+    tempSrcProperty = elementImgMenuIcon.src;
+    elementImgMenuIcon.src = tempSrcProperty.replace('close-icon', 'menu-icon');
+    elementNavMenuArea.style.maxHeight = '0vw';
+  }
+}, false );
