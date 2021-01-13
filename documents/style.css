@@ -221,12 +221,11 @@ header > .main > .operation-button-right {
 nav {
   background:   whitesmoke;
   border-right: gray solid thin;
-  box-shadow:   0 0.1rem 0.1rem gray;
+  box-shadow:   0 2px 2px gray;
   flex-flow:    column wrap;
   max-height:   0;
   overflow-y:   scroll;
   padding:      0 0.5rem 0 0.5rem;
-  position:     relative;
   transition:   400ms;
   width:        calc(30% - 1.0rem);
 }
@@ -237,7 +236,6 @@ nav {
     box-shadow:   none;
     max-height:   auto;
     overflow-y:   visible;
-    position:     static;
     transition:   0ms;
     width:        auto;
   }

@@ -2,23 +2,47 @@
 /*================
   Creating menu items
   ================*/
-const idClickInPage = 'clickInPage';
-const contextMenuForPage = browser.menus.create({
+const idForWebpageTranslation = 'idForWebpageTranslation';
+browser.menus.create({
   contexts: ['page'],
-  id:       idClickInPage,
-  title:    browser.i18n.getMessage( 'contextMenuForPage' )
+  id:       idForWebpageTranslation,
+  title:    browser.i18n.getMessage( 'contextMenuForWebpageTranslation' )
 });
 
-const idClickOnText = 'clickOnText';
-const contextMenuForText = browser.menus.create({
+const idForTextTranslation = 'idForTextTranslation';
+browser.menus.create({
   contexts: ['selection'],
-  id:       idClickOnText,
-  title:    browser.i18n.getMessage( 'contextMenuForText' )
+  id:       idForTextTranslation,
+  title:    browser.i18n.getMessage( 'contextMenuForTextTranslation' )
 });
 
 /*================
   Functions
   ================*/
+function addUrlPropertyForTextTranslation( object ) {
+  switch ( object.translationService ) {
+    case 'Bing':
+      object.url = 'https://www.bing.com/translator?from=&to='+object.languageCode+'&text='+object.targetString;
+      break;
+    case 'Google':
+      object.url = 'https://translate.google.com/?sl=auto&tl='+object.languageCode+'&text='+object.targetString+'&op=translate';
+      break;
+  }
+  return object;
+}
+
+function addUrlPropertyForWebpageTranslation( object ) {
+  switch ( object.translationService ) {
+    case 'Bing':
+      object.url = 'https://www.translatetheweb.com/?from=&to='+object.languageCode+'&a='+object.targetString;
+      break;
+    case 'Google':
+      object.url = 'https://translate.google.com/translate?hl='+object.languageCode+'&sl=auto&tl='+object.languageCode+'&u='+object.targetString;
+      break;
+  }
+  return object;
+}
+
 function autoSelectLanguageCode() {
   let tempLanguageCode = browser.i18n.getUILanguage();
 
@@ -45,15 +69,6 @@ function autoSelectLanguageCode() {
   return tempLanguageCode;
 }
 
-function checkTranslationService( service ) {
-  console.log(service);
-  if ( service == undefined ) {
-    service = 'Google';
-  }
-  console.log(service);
-  return service;
-}
-
 function htmlEscape( string ) {
   return string
     .replace( /\"/g, '%22' )
@@ -65,124 +80,127 @@ function htmlEscape( string ) {
     .replace( /\|/g, '%7C' );
 }
 
-function openByNewTab( url ) {
-  browser.tabs.create({ url: url });
-}
-
-function openByNewWindow( url, specifySize, sizeWidth, sizeHeight ) {
-  if (specifySize == true) {
-    browser.windows.create({ url: url, width: sizeWidth, height: sizeHeight });
-  } else {
-    browser.windows.create({ url: url });
+function openTranslationResult( settingsObject ) {
+  switch ( settingsObject.openMethod ) {
+    case 'tab':
+      browser.tabs.create({ url: settingsObject.url });
+      break;
+    case 'window':
+      if ( settingsObject.specifySizeFlag == true ) {
+        browser.windows.create({ url: settingsObject.url, height: settingsObject.sizeHeight, width: settingsObject.sizeWidth });
+      } else {
+        browser.windows.create({ url: settingsObject.url });
+      }
+      break;
   }
 }
 
-function initForPage( initOpenMethod, initLanguageCode, initTargetUrl ) {
-  if ( initOpenMethod == undefined ) {
-    initOpenMethod = 'tab';
-  }
-  if ( ( initLanguageCode == undefined ) || ( initLanguageCode == 'auto' ) ) {
-    initLanguageCode = autoSelectLanguageCode();
-  }
-  const object = {
-    openMethod:   initOpenMethod,
-    languageCode: initLanguageCode,
-    targetUrl:    htmlEscape( initTargetUrl )
+/*----------------
+  optimize...
+  ----------------*/
+function optimizeLanguageCodeProperty( object ) {
+  switch ( object.languageCode ) {
+    case 'auto':
+    case undefined:
+      object.languageCode = autoSelectLanguageCode();
+      break;
   }
   return object;
 }
 
-function initForText( initOpenMethod, initLanguageCode, info ) {
-  if ( initOpenMethod == undefined ) {
-    initOpenMethod = 'tab';
+function optimizeOpenMethodProperty( object ) {
+  switch ( object.openMethod ) {
+    case undefined:
+      object.openMethod = 'tab';
+      break;
   }
-  if ( ( initLanguageCode == undefined ) || ( initLanguageCode == 'auto' ) ) {
-    initLanguageCode = autoSelectLanguageCode();
-  }
-  const initTargetText = info.selectionText
+  return object;
+}
+
+function optimizeTargetStringProperty( object, targetString ) {
+  object.targetString = targetString
     .replace( /\%/g, '％' )
-    .replace( /\&/g, '＆' );
-  const object = {
-    openMethod:   initOpenMethod,
-    languageCode: initLanguageCode,
-    targetText:   htmlEscape( initTargetText )
+    .replace( /\&/g, '＆' )
+  object.targetString = htmlEscape( object.targetString );
+  return object;
+}
+
+function optimizeTranslationServiceProperty( object ) {
+  switch ( object.translationService ) {
+    case undefined:
+      object.translationService = 'Google';
+      break;
   }
   return object;
+}
+
+/*----------------
+  processingOf...
+  ----------------*/
+function processingOfTextTranslation( targetString ) {
+  browser.storage.local.get( null ) // Promise
+    .then( ( settingsObject1 ) => {
+      // Keys of object: languageCode, openMethod, sizeHeight, sizeWidth, specifySize, targetString, translationService
+      settingsObject1.openMethod = settingsObject1.openMethodText;
+      delete settingsObject1.openMethodText;
+      return optimizeOpenMethodProperty( settingsObject1 );
+    } )
+    .then( ( settingsObject2 ) => {
+      return optimizeTranslationServiceProperty( settingsObject2 );
+    } )
+    .then( ( settingsObject3 ) => {
+      return optimizeLanguageCodeProperty( settingsObject3 );
+    } )
+    .then( ( settingsObject4 ) => {
+      return optimizeTargetStringProperty( settingsObject4, targetString );
+    } )
+    .then( ( settingsObject5 ) => {
+      return addUrlPropertyForTextTranslation( settingsObject5 );
+    } )
+    .then( ( settingsObject6 ) => {
+      openTranslationResult( settingsObject6 );
+    } );
+}
+
+function processingOfWebpageTranslation( targetString ) {
+  browser.storage.local.get( null ) // Promise
+    .then( ( settingsObject1 ) => {
+      // Keys of object: languageCode, openMethod, sizeHeight, sizeWidth, specifySize, targetString, translationService
+      settingsObject1.openMethod = settingsObject1.openMethodWebpage;
+      delete settingsObject1.openMethodWebpage;
+      return optimizeOpenMethodProperty( settingsObject1 );
+    } )
+    .then( ( settingsObject2 ) => {
+      return optimizeTranslationServiceProperty( settingsObject2 );
+    } )
+    .then( ( settingsObject3 ) => {
+      return optimizeLanguageCodeProperty( settingsObject3 );
+    } )
+    .then( ( settingsObject4 ) => {
+      return optimizeTargetStringProperty( settingsObject4, targetString );
+    } )
+    .then( ( settingsObject5 ) => {
+      return addUrlPropertyForWebpageTranslation( settingsObject5 );
+    } )
+    .then( ( settingsObject6 ) => {
+      openTranslationResult( settingsObject6 );
+    } );
 }
 
 /*================
   API
   ================*/
 browser.menus.onClicked.addListener( ( info ) => {
-  browser.storage.local.get(null).then( ( obj ) => {
-    let url = null;
-    const translationService = checkTranslationService(obj.translationService);
-    switch ( info.menuItemId ) {
-      case idClickInPage:
-        const objectForPage = initForPage( obj.openMethodWebsite, obj.languageCode, info.pageUrl );
-          // keys: openmethod, languageCode, targetUrl
-        switch ( translationService ) {
-          case 'Bing':
-            url = 'https://www.translatetheweb.com/?from=&to='+objectForPage.languageCode+'&a='+objectForPage.targetUrl;
-            break;
-          case 'Google':
-            url = 'https://translate.google.com/translate?hl='+objectForPage.languageCode+'&sl=auto&tl='+objectForPage.languageCode+'&u='+objectForPage.targetUrl;
-            break;
-        }
-        switch ( objectForPage.openMethod ) {
-          case 'tab':
-            openByNewTab( url );
-            break;
-          case 'window':
-            openByNewWindow( url, obj.specifySize, obj.sizeWidth, obj.sizeHeight );
-            break;
-        }
-        break;
-      case idClickOnText:
-        const objectForText = initForText( obj.openMethodText, obj.languageCode, info );
-          // keys: openMethod, languageCode, targetText
-        switch ( translationService ) {
-          case 'Bing':
-            url = 'https://www.bing.com/translator?from=&to='+objectForText.languageCode+'&text='+objectForText.targetText;
-            break;
-          case 'Google':
-            url = 'https://translate.google.com/?sl=auto&tl='+objectForText.languageCode+'&text='+objectForText.targetText+'&op=translate';
-            break;
-        }
-        switch ( objectForText.openMethod ) {
-          case 'tab':
-            openByNewTab( url );
-            break;
-          case 'window':
-            openByNewWindow( url, obj.specifySize, obj.sizeWidth, obj.sizeHeight );
-            break;
-        }
-        break;
-    } // end: switch ( info.menuItemId )
-  });
-}); // end: browser.menus.onClicked.addListener()
+  switch ( info.menuItemId ) {
+    case idForWebpageTranslation:
+      processingOfWebpageTranslation( info.pageUrl );
+      break;
+    case idForTextTranslation:
+      processingOfTextTranslation( info.selectionText );
+      break;
+  }
+} ); // End: browser.menus.onClicked.addListener()
 
 browser.pageAction.onClicked.addListener( ( tab ) => {
-  browser.storage.local.get(null).then( ( obj ) => {
-    let url = null;
-    const translationService = checkTranslationService(obj.translationService);
-    const objectForPage      = initForPage( obj.openMethodText, obj.languageCode, tab.url );
-      // keys: openMethod, languageCode, targetUrl
-    switch ( translationService ) {
-      case 'Bing':
-        url = 'https://www.translatetheweb.com/?from=&to='+objectForPage.languageCode+'&a='+objectForPage.targetUrl;
-        break;
-      case 'Google':
-        url = 'https://translate.google.com/translate?hl='+objectForPage.languageCode+'&sl=auto&tl='+objectForPage.languageCode+'&u='+objectForPage.targetUrl;
-        break;
-    }
-    switch ( objectForPage.openMethod ) {
-      case 'tab':
-        openByNewTab( url );
-        break;
-      case 'window':
-        openByNewWindow( url, obj.specifySize, obj.sizeWidth, obj.sizeHeight );
-        break;
-    }
-  });
-}); // end: browser.pageAction.onClicked.addListener()
+  processingOfWebpageTranslation( tab.url );
+} ); // End: browser.pageAction.onClicked.addListener()

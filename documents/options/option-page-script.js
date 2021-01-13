@@ -1,16 +1,14 @@
 
 const elementOpenMethodText         = document.getElementById( 'formOpenMethodText' );
-const elementOpenMethodWebsite      = document.getElementById( 'formOpenMethodWebsite' );
+const elementOpenMethodWebpage      = document.getElementById( 'formOpenMethodWebpage' );
 const elementOpenMethodSpecifySize  = document.getElementById( 'formOpenMethodSpecifySize' );
-const elementSpecifySizeFlag        = elementOpenMethodSpecifySize.querySelector( '#inputSpecifySize' );
+const elementSpecifySizeFlag        = elementOpenMethodSpecifySize.querySelector( '#inputSpecifySizeFlag' );
 const elementSizeOfNewWindowWidth   = elementOpenMethodSpecifySize.querySelector( '#inputSizeOfNewWindowWidth' );
 const elementSizeOfNewWindowHeight  = elementOpenMethodSpecifySize.querySelector( '#inputSizeOfNewWindowHeight' );
 const elementTranslationService     = document.getElementById( 'formTranslationService' );
 const elementLanguageCode           = document.getElementById( 'formLanguageCode' );
 const elementLanguageCodeListBing   = document.getElementById( 'languageCodeListBing' );
 const elementLanguageCodeListGoogle = document.getElementById( 'languageCodeListGoogle' );
-
-const promiseAddonSetting = browser.storage.local.get(null);
 
 /*================
   Functions
@@ -20,116 +18,154 @@ function changeLanguageCodeList( translationService ) {
     case 'Bing':
       elementLanguageCodeListBing.style.display   = 'flex';
       elementLanguageCodeListGoogle.style.display = 'none';
+      // Fix for check of radio button.
+      browser.storage.local.get( 'languageCode' )
+        .then( ( settingsObject ) => {
+          selectorOfLanguageCodeListBing( settingsObject.languageCode );
+        } );
       break;
     case 'Google':
       elementLanguageCodeListBing.style.display   = 'none';
       elementLanguageCodeListGoogle.style.display = 'flex';
+      // Fix for check of radio button.
+      browser.storage.local.get( 'languageCode' )
+        .then( ( settingsObject ) => {
+          selectorOfLanguageCodeListGoogle( settingsObject.languageCode );
+        } );
       break;
   }
 }
 
+/*----------------
+  readout...
+  ----------------*/
+function readoutLanguageCode( languageCode, translationService ) {
+  switch ( translationService ) {
+    case 'Bing':
+      selectorOfLanguageCodeListBing( languageCode );
+      break;
+    case 'Google':
+    default:
+      selectorOfLanguageCodeListGoogle( languageCode );
+      break;
+  }
+}
+
+function readoutOpenMethodText( openMethod ) {
+  switch ( openMethod ) {
+    case null:
+    case undefined:
+      elementOpenMethodText.querySelector( 'input[value="tab"]' ).checked = true;
+      break;
+    default:
+      elementOpenMethodText.querySelector( 'input[value="'+openMethod+'"]' ).checked = true;
+      break;
+  }
+}
+
+function readoutOpenMethodWebpage( openMethod ) {
+  switch ( openMethod ) {
+    case null:
+    case undefined:
+      elementOpenMethodWebpage.querySelector( 'input[value="tab"]' ).checked = true;
+      break;
+    default:
+      elementOpenMethodWebpage.querySelector( 'input[value="'+openMethod+'"]' ).checked = true;
+      break;
+  }
+}
+
+function readoutSpecifySize( settingsObject ) {
+  elementSpecifySizeFlag.checked     = settingsObject.specifySizeFlag;
+  elementSizeOfNewWindowWidth.value  = settingsObject.sizeWidth;
+  elementSizeOfNewWindowHeight.value = settingsObject.sizeHeight;
+}
+
+function readoutTranslationService( translationService ) {
+  switch ( translationService ) {
+    case null:
+    case undefined:
+      elementTranslationService.querySelector( 'input[value="Google"]' ).checked = true;
+      changeLanguageCodeList( 'Google' );
+      break;
+    default:
+      elementTranslationService.querySelector( 'input[value="'+translationService+'"]' ).checked = true;
+      changeLanguageCodeList( translationService );
+      break;
+  }
+}
+
+/*----------------
+  selectorOf...
+  ----------------*/
+function selectorOfLanguageCodeListBing( languageCode ) {
+  try {
+    elementLanguageCodeListBing.querySelector( 'input[value="'+languageCode+'"]' ).checked = true;
+  } catch ( error ) {
+    elementLanguageCodeListBing.querySelector( 'input[value="auto"]' ).checked = true;
+    browser.storage.local.set( { languageCode: 'auto' } );
+  }
+}
+
+function selectorOfLanguageCodeListGoogle( languageCode ) {
+  try {
+    elementLanguageCodeListGoogle.querySelector( 'input[value="'+languageCode+'"]' ).checked = true;
+  } catch ( error ) {
+    elementLanguageCodeListGoogle.querySelector( 'input[value="auto"]' ).checked = true;
+    browser.storage.local.set( { languageCode: 'auto' } );
+  }
+}
+
 /*================
-  Initialize
+  Read out setting value
   ================*/
-promiseAddonSetting.then( obj => {
-  if ( obj.openMethodText == undefined ) {
-    elementOpenMethodText.querySelector( 'input[value="tab"]' ).checked = true;
-  } else {
-    elementOpenMethodText.querySelector( 'input[value="'+obj.openMethodText+'"]' ).checked = true;
-  }
-
-  if ( obj.openMethodWebsite == undefined ) {
-    elementOpenMethodWebsite.querySelector( 'input[value="tab"]' ).checked = true;
-  } else {
-    elementOpenMethodWebsite.querySelector( 'input[value="'+obj.openMethodWebsite+'"]' ).checked = true;
-  }
-
-  elementSpecifySizeFlag.checked     = obj.specifySize;
-  elementSizeOfNewWindowWidth.value  = obj.sizeWidth;
-  elementSizeOfNewWindowHeight.value = obj.sizeHeight;
-
-  if ( obj.translationService == undefined ) {
-    elementTranslationService.querySelector( 'input[value="Google"]' ).checked = true;
-    changeLanguageCodeList( 'Google' );
-  } else {
-    elementTranslationService.querySelector( 'input[value="'+obj.translationService+'"]' ).checked = true;
-    changeLanguageCodeList( obj.translationService );
-  }
-
-  if ( obj.languageCode == undefined ) {
-    switch ( obj.translationService ) {
-      case 'Bing':
-        elementLanguageCodeListBing.querySelector( 'input[value="auto"]' ).checked = true;
-        break;
-      case 'Google':
-      default:
-        elementLanguageCodeListGoogle.querySelector( 'input[value="auto"]' ).checked = true;
-        break;
-    }
-  } else {
-    switch ( obj.translationService ) {
-      case 'Bing':
-        // Checking unsupported language
-        try {
-          elementLanguageCodeListBing.querySelector( 'input[value="'+obj.languageCode+'"]' ).checked = true;
-        } catch ( error)  {
-          elementLanguageCodeListBing.querySelector( 'input[value="auto"]' ).checked = true;
-        }
-        break;
-      case 'Google':
-      default:
-        // Checking unsupported language
-        try {
-          elementLanguageCodeListGoogle.querySelector( 'input[value="'+obj.languageCode+'"]' ).checked = true;
-        } catch ( error ) {
-          elementLanguageCodeListGoogle.querySelector( 'input[value="auto"]' ).checked = true;
-        }
-        break;
-    }
-  }
-}, false );
+browser.storage.local.get( null )
+  .then( ( settingsObject1 ) => {
+    readoutOpenMethodText( settingsObject1.openMethodText );
+    return settingsObject1;
+  } )
+  .then( ( settingsObject2 ) => {
+    readoutOpenMethodWebpage( settingsObject2.openMethodWebpage );
+    return settingsObject2;
+  } )
+  .then( ( settingsObject3 ) => {
+    readoutSpecifySize( settingsObject3 );
+    return settingsObject3;
+  } )
+  .then( ( settingsObject4 ) => {
+    readoutTranslationService( settingsObject4.translationService );
+    return settingsObject4;
+  } )
+  .then( ( settingsObject5 ) => {
+    readoutLanguageCode( settingsObject5.languageCode, settingsObject5.translationService );
+  } );
 
 /*================
   Update processing
   ================*/
-elementOpenMethodText.addEventListener( 'input', ( obj ) => {
-  const valueOpenMethodText = obj.target.value;
-  browser.storage.local.set({
-    openMethodText: valueOpenMethodText
-  });
+elementOpenMethodText.addEventListener( 'input', ( htmlElementObject ) => {
+  browser.storage.local.set( { openMethodText: htmlElementObject.target.value } ); // API
 }, false );
 
-elementOpenMethodWebsite.addEventListener( 'input', ( obj ) => {
-  const valueOpenMethodWebsite = obj.target.value;
-  browser.storage.local.set({
-    openMethodWebsite: valueOpenMethodWebsite
-  });
+elementOpenMethodWebpage.addEventListener( 'input', ( htmlElementObject ) => {
+  browser.storage.local.set( { openMethodWebpage: htmlElementObject.target.value } );
 }, false );
 
 elementOpenMethodSpecifySize.addEventListener( 'input', () => {
-  const valueSpecifySizeFlag       = elementSpecifySizeFlag.checked;
-  const valueSizeOfNewWindowWidth  = Number( encodeURI( elementSizeOfNewWindowWidth.value ) );
-  const valueSizeOfNewWindowHeight = Number( encodeURI( elementSizeOfNewWindowHeight.value ) );
-  browser.storage.local.set({
-    specifySize: valueSpecifySizeFlag,
-    sizeWidth:   valueSizeOfNewWindowWidth,
-    sizeHeight:  valueSizeOfNewWindowHeight
-  });
+  browser.storage.local.set( {
+    specifySizeFlag: elementSpecifySizeFlag.checked,
+    sizeWidth:       Number( encodeURI( elementSizeOfNewWindowWidth.value ) ),
+    sizeHeight:      Number( encodeURI( elementSizeOfNewWindowHeight.value ) )
+  } );
 }, false );
 
-elementTranslationService.addEventListener( 'input', ( obj ) => {
-  const valueTranslationService = obj.target.value
-  browser.storage.local.set({
-    translationService: valueTranslationService
-  });
-  changeLanguageCodeList(valueTranslationService);
+elementTranslationService.addEventListener( 'input', ( htmlElementObject ) => {
+  browser.storage.local.set( { translationService: htmlElementObject.target.value } );
+  changeLanguageCodeList( htmlElementObject.target.value );
 }, false );
 
-elementLanguageCode.addEventListener( 'input', ( obj ) => {
-  const valueLanguageCode = obj.target.value;
-  browser.storage.local.set({
-    languageCode: valueLanguageCode
-  });
+elementLanguageCode.addEventListener( 'input', ( htmlElementObject ) => {
+  browser.storage.local.set( { languageCode: htmlElementObject.target.value } );
 }, false );
 
 /*================
@@ -137,11 +173,11 @@ elementLanguageCode.addEventListener( 'input', ( obj ) => {
   ================*/
 document.getElementById( 'h2BehaviorWhen' ).textContent             = browser.i18n.getMessage( 'optionPageBehaviorWhen' );
 document.getElementById( 'h3CaseOfText' ).textContent               = browser.i18n.getMessage( 'optionPageCaseOfText' );
-document.getElementById( 'h3CaseOfWebsite' ).textContent            = browser.i18n.getMessage( 'optionPageCaseOfWebsite' );
+document.getElementById( 'h3CaseOfWebpage' ).textContent            = browser.i18n.getMessage( 'optionPageCaseOfWebpage' );
 document.getElementById( 'spanTextOpenByNewTab' ).textContent       = browser.i18n.getMessage( 'optionPageOpenByNewTab' );
 document.getElementById( 'spanTextOpenByNewWindow' ).textContent    = browser.i18n.getMessage( 'optionPageOpenByNewWindow' );
-document.getElementById( 'spanWebsiteOpenByNewTab' ).textContent    = browser.i18n.getMessage( 'optionPageOpenByNewTab' );
-document.getElementById( 'spanWebsiteOpenByNewWindow' ).textContent = browser.i18n.getMessage( 'optionPageOpenByNewWindow' );
+document.getElementById( 'spanWebpageOpenByNewTab' ).textContent    = browser.i18n.getMessage( 'optionPageOpenByNewTab' );
+document.getElementById( 'spanWebpageOpenByNewWindow' ).textContent = browser.i18n.getMessage( 'optionPageOpenByNewWindow' );
 document.getElementById( 'h3SizeOfNewWindow' ).textContent          = browser.i18n.getMessage( 'optionPageSizeOfNewWindow' );
 document.getElementById( 'spanSpecifySizeOfWindow' ).textContent    = browser.i18n.getMessage( 'optionPageSpecifySizeOfWindow' );
 document.getElementById( 'pWhenSetWH' ).textContent                 = browser.i18n.getMessage( 'optionPageWhenSetWH' );

@@ -1,9 +1,9 @@
 {
-  "contextMenuForPage": {
+  "contextMenuForWebpageTranslation": {
     "message": "Translate this web page"
   },
 
-  "contextMenuForText": {
+  "contextMenuForTextTranslation": {
     "message": "Translate selected text"
   },
 
@@ -24,7 +24,7 @@
     "message": "Case of text"
   },
 
-  "optionPageCaseOfWebsite": {
+  "optionPageCaseOfWebpage": {
     "message": "Case of website"
   },
 

@@ -1,9 +1,9 @@
 {
-  "contextMenuForPage": {
+  "contextMenuForWebpageTranslation": {
     "message": "このウェブページを翻訳"
   },
 
-  "contextMenuForText": {
+  "contextMenuForTextTranslation": {
     "message": "選択されているテキストを翻訳"
   },
 
@@ -24,8 +24,8 @@
     "message": "テキストの場合"
   },
 
-  "optionPageCaseOfWebsite": {
-    "message": "ウェブサイトの場合"
+  "optionPageCaseOfWebpage": {
+    "message": "ウェブページの場合"
   },
 
   "optionPageOpenByNewTab": {
@@ -71,7 +71,7 @@
   },
 
   "optionPageIfSetEn": {
-    "message": "仮に\"en - English\"に設定した場合、テキストやウェブサイトは英語に翻訳されます。"
+    "message": "仮に\"en - English\"に設定した場合、テキストやウェブページは英語に翻訳されます。"
   },
 
   "optionPageAlphabetIn": {
