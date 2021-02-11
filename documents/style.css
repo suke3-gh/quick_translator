@@ -235,7 +235,7 @@ main > section.tile {
 }
 
 main > section.tile > .description-text {
-  color:     dimgray;
+  color:     rgb(95, 95, 95);
   font-size: 0.9rem;
 }
 
@@ -299,6 +299,12 @@ main > section.tile > form.language-code > div > .tile > label:hover {
 /**
  * guide page
  */
+
+div.timestamp {
+  font-size: small;
+  text-align: center;
+}
+
 .text-bold {
   font-weight: bold;
 }
