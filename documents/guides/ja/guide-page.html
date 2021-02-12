@@ -10,15 +10,16 @@
   </head>
   <body>
     <header>
-      <div class="main">
+      <section class="primary">
         <div class="operation-button-left" id="divOperationButtonLeft">
-          <img alt="menu-icon-plain.svg" id="imgMenuIcon" src="/icons/menu-icon-plain.svg">
+          <img src="/icons/menu-icon-plain.svg" alt="menu-icon-plain.svg" id="imgMenuIcon">
           <span>MENU</span>
         </div>
         <span class="addon-title" id="spanAddonTitle">(Addon title)</span>
         <div class="operation-button-right "></div>
-      </div>
-      <nav id="navMenuArea">
+      </section>
+      
+      <nav class="menu" id="navMenu">
         <ul>
           <span class="menu-head">Options</span>
           <a class="item" href="/documents/options/option-page.html">
@@ -50,7 +51,8 @@
         </ul>
       </nav>
     </header>
-    <article>
+
+    <main>
       <h1>Guide page</h1>
       <h2>初期セットアップ</h2>
       <p>
@@ -74,9 +76,12 @@
         このアドオンは"Apache License, Version 2.0"を採用しており、ソースコードはGithubで公開しています。<br>
         リポジトリのURLはアドオンのホームページ欄に記載しています。
       </p>
-      <div class="time-stamp">更新日: 2020年12月02日</div>
-      <div class="addon-version" id="divAddonVersion">Add-on version: x</div>
-    </article>
+      <div class="timestamp">更新日: 2020年12月02日</div>
+    </main>
+
+    <footer>
+      <div class="addon-version" id="divAddonVersion">(Add-on version)</div>
+    </footer>
 
     <script type="text/javascript" src="/documents/javascript/_header-script.js"></script>
     <script type="text/javascript" src="/documents/javascript/_information-script.js"></script>
