@@ -1,7 +1,7 @@
 
-/*================
-  Creating menu items
-  ================*/
+/**
+ * Creating menu items
+ */
 const idForWebpageTranslation = 'idForWebpageTranslation';
 browser.menus.create({
   contexts: ['page'],
@@ -16,12 +16,12 @@ browser.menus.create({
   title:    browser.i18n.getMessage( 'contextMenuForTextTranslation' )
 });
 
-/*================
-  Functions
-  ================*/
+/**
+ * Functions
+ */
 function addUrlPropertyForTextTranslation( object ) {
   switch ( object.translationService ) {
-    case 'Bing':
+    case 'Microsoft':
       object.url = 'https://www.bing.com/translator?from=&to='+object.languageCode+'&text='+object.targetString;
       break;
     case 'Google':
@@ -33,7 +33,7 @@ function addUrlPropertyForTextTranslation( object ) {
 
 function addUrlPropertyForWebpageTranslation( object ) {
   switch ( object.translationService ) {
-    case 'Bing':
+    case 'Microsoft':
       object.url = 'https://www.translatetheweb.com/?from=&to='+object.languageCode+'&a='+object.targetString;
       break;
     case 'Google':
@@ -95,9 +95,9 @@ function openTranslationResult( settingsObject ) {
   }
 }
 
-/*----------------
-  optimize...
-  ----------------*/
+/**
+ * Functions: optimize...
+ */
 function optimizeLanguageCodeProperty( object ) {
   switch ( object.languageCode ) {
     case 'auto':
@@ -134,9 +134,9 @@ function optimizeTranslationServiceProperty( object ) {
   return object;
 }
 
-/*----------------
-  processingOf...
-  ----------------*/
+/**
+ * Functions: processingOf...
+ */
 function processingOfTextTranslation( targetString ) {
   browser.storage.local.get( null ) // Promise
     .then( ( settingsObject1 ) => {
@@ -187,9 +187,9 @@ function processingOfWebpageTranslation( targetString ) {
     } );
 }
 
-/*================
-  API
-  ================*/
+/**
+ * API
+ */
 browser.menus.onClicked.addListener( ( info ) => {
   switch ( info.menuItemId ) {
     case idForWebpageTranslation:

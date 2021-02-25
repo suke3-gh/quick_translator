@@ -1,32 +1,32 @@
 
-const elementOpenMethodText         = document.getElementById( 'formOpenMethodText' );
-const elementOpenMethodWebpage      = document.getElementById( 'formOpenMethodWebpage' );
-const elementOpenMethodSpecifySize  = document.getElementById( 'formOpenMethodSpecifySize' );
-const elementSpecifySizeFlag        = elementOpenMethodSpecifySize.querySelector( '#inputSpecifySizeFlag' );
-const elementSizeOfNewWindowWidth   = elementOpenMethodSpecifySize.querySelector( '#inputSizeOfNewWindowWidth' );
-const elementSizeOfNewWindowHeight  = elementOpenMethodSpecifySize.querySelector( '#inputSizeOfNewWindowHeight' );
-const elementTranslationService     = document.getElementById( 'formTranslationService' );
-const elementLanguageCode           = document.getElementById( 'formLanguageCode' );
-const elementLanguageCodeListBing   = document.getElementById( 'languageCodeListBing' );
-const elementLanguageCodeListGoogle = document.getElementById( 'languageCodeListGoogle' );
+const elementOpenMethodText            = document.getElementById( 'formOpenMethodText' );
+const elementOpenMethodWebpage         = document.getElementById( 'formOpenMethodWebpage' );
+const elementOpenMethodSpecifySize     = document.getElementById( 'formOpenMethodSpecifySize' );
+const elementSpecifySizeFlag           = elementOpenMethodSpecifySize.querySelector( '#inputSpecifySizeFlag' );
+const elementSizeOfNewWindowWidth      = elementOpenMethodSpecifySize.querySelector( '#inputSizeOfNewWindowWidth' );
+const elementSizeOfNewWindowHeight     = elementOpenMethodSpecifySize.querySelector( '#inputSizeOfNewWindowHeight' );
+const elementTranslationService        = document.getElementById( 'formTranslationService' );
+const elementLanguageCode              = document.getElementById( 'formLanguageCode' );
+const elementLanguageCodeListMicrosoft = document.getElementById( 'languageCodeListMicrosoft' );
+const elementLanguageCodeListGoogle    = document.getElementById( 'languageCodeListGoogle' );
 
-/*================
-  Functions
-  ================*/
+/**
+ * Functions
+ */
 function changeLanguageCodeList( translationService ) {
   switch ( translationService ) {
-    case 'Bing':
-      elementLanguageCodeListBing.style.display   = 'flex';
-      elementLanguageCodeListGoogle.style.display = 'none';
+    case 'Microsoft':
+      elementLanguageCodeListMicrosoft.style.display = 'flex';
+      elementLanguageCodeListGoogle.style.display    = 'none';
       // Fix for check of radio button.
       browser.storage.local.get( 'languageCode' )
         .then( ( settingsObject ) => {
-          selectorOfLanguageCodeListBing( settingsObject.languageCode );
+          selectorOfLanguageCodeListMicrosoft( settingsObject.languageCode );
         } );
       break;
     case 'Google':
-      elementLanguageCodeListBing.style.display   = 'none';
-      elementLanguageCodeListGoogle.style.display = 'flex';
+      elementLanguageCodeListMicrosoft.style.display = 'none';
+      elementLanguageCodeListGoogle.style.display    = 'flex';
       // Fix for check of radio button.
       browser.storage.local.get( 'languageCode' )
         .then( ( settingsObject ) => {
@@ -36,13 +36,13 @@ function changeLanguageCodeList( translationService ) {
   }
 }
 
-/*----------------
-  readout...
-  ----------------*/
+/**
+ * readout...
+ */
 function readoutLanguageCode( languageCode, translationService ) {
   switch ( translationService ) {
-    case 'Bing':
-      selectorOfLanguageCodeListBing( languageCode );
+    case 'Microsoft':
+      selectorOfLanguageCodeListMicrosoft( languageCode );
       break;
     case 'Google':
     default:
@@ -95,14 +95,14 @@ function readoutTranslationService( translationService ) {
   }
 }
 
-/*----------------
-  selectorOf...
-  ----------------*/
-function selectorOfLanguageCodeListBing( languageCode ) {
+/**
+ * selectorOf...
+ */
+function selectorOfLanguageCodeListMicrosoft( languageCode ) {
   try {
-    elementLanguageCodeListBing.querySelector( 'input[value="'+languageCode+'"]' ).checked = true;
+    elementLanguageCodeListMicrosoft.querySelector( 'input[value="'+languageCode+'"]' ).checked = true;
   } catch ( error ) {
-    elementLanguageCodeListBing.querySelector( 'input[value="auto"]' ).checked = true;
+    elementLanguageCodeListMicrosoft.querySelector( 'input[value="auto"]' ).checked = true;
     browser.storage.local.set( { languageCode: 'auto' } );
   }
 }
@@ -116,9 +116,9 @@ function selectorOfLanguageCodeListGoogle( languageCode ) {
   }
 }
 
-/*================
-  Read out setting value
-  ================*/
+/**
+ * Read out setting value
+ */
 browser.storage.local.get( null )
   .then( ( settingsObject1 ) => {
     readoutOpenMethodText( settingsObject1.openMethodText );
@@ -140,9 +140,9 @@ browser.storage.local.get( null )
     readoutLanguageCode( settingsObject5.languageCode, settingsObject5.translationService );
   } );
 
-/*================
-  Update processing
-  ================*/
+/**
+ * Update processing
+ */
 elementOpenMethodText.addEventListener( 'input', ( htmlElementObject ) => {
   browser.storage.local.set( { openMethodText: htmlElementObject.target.value } ); // API
 }, false );
@@ -168,9 +168,9 @@ elementLanguageCode.addEventListener( 'input', ( htmlElementObject ) => {
   browser.storage.local.set( { languageCode: htmlElementObject.target.value } );
 }, false );
 
-/*================
-  Multilingual support
-  ================*/
+/**
+ * Multilingual support
+ */
 document.getElementById( 'h2BehaviorWhen' ).textContent             = browser.i18n.getMessage( 'optionPageBehaviorWhen' );
 document.getElementById( 'h3CaseOfText' ).textContent               = browser.i18n.getMessage( 'optionPageCaseOfText' );
 document.getElementById( 'h3CaseOfWebpage' ).textContent            = browser.i18n.getMessage( 'optionPageCaseOfWebpage' );
