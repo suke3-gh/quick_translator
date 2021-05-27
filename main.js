@@ -1,25 +1,8 @@
 
 /**
- * Creating menu items
- */
-const idForWebpageTranslation = 'idForWebpageTranslation';
-browser.menus.create({
-  contexts: ['page'],
-  id:       idForWebpageTranslation,
-  title:    browser.i18n.getMessage( 'contextMenuForWebpageTranslation' )
-});
-
-const idForTextTranslation = 'idForTextTranslation';
-browser.menus.create({
-  contexts: ['selection'],
-  id:       idForTextTranslation,
-  title:    browser.i18n.getMessage( 'contextMenuForTextTranslation' )
-});
-
-/**
  * Functions
  */
-function addUrlPropertyForTextTranslation( object ) {
+function buildUrlTranslateText( object ) {
   switch ( object.translationService ) {
     case 'Microsoft':
       object.url = 'https://www.bing.com/translator?from=&to='+object.languageCode+'&text='+object.targetString;
@@ -31,7 +14,7 @@ function addUrlPropertyForTextTranslation( object ) {
   return object;
 }
 
-function addUrlPropertyForWebpageTranslation( object ) {
+function buildUrlTranslateWebpage( object ) {
   switch ( object.translationService ) {
     case 'Microsoft':
       object.url = 'https://www.translatetheweb.com/?from=&to='+object.languageCode+'&a='+object.targetString;
@@ -72,12 +55,10 @@ function autoSelectLanguageCode() {
 function htmlEscape( string ) {
   return string
     .replace( /\"/g, '%22' )
+    .replace( /\&/g, '%26' )
     .replace( /\'/g, '%27' )
-    .replace( /\//g, '%2F' )
-    .replace( /\;/g, '%3B' )
     .replace( /\</g, '%3C' )
-    .replace( /\>/g, '%3E' )
-    .replace( /\|/g, '%7C' );
+    .replace( /\>/g, '%3E' );
 }
 
 function openTranslationResult( settingsObject ) {
@@ -98,7 +79,7 @@ function openTranslationResult( settingsObject ) {
 /**
  * Functions: optimize...
  */
-function optimizeLanguageCodeProperty( object ) {
+function optimiseLanguageCode( object ) {
   switch ( object.languageCode ) {
     case 'auto':
     case undefined:
@@ -108,7 +89,7 @@ function optimizeLanguageCodeProperty( object ) {
   return object;
 }
 
-function optimizeOpenMethodProperty( object ) {
+function optimizeOpenMethod( object ) {
   switch ( object.openMethod ) {
     case undefined:
       object.openMethod = 'tab';
@@ -117,15 +98,28 @@ function optimizeOpenMethodProperty( object ) {
   return object;
 }
 
-function optimizeTargetStringProperty( object, targetString ) {
-  object.targetString = targetString
+function optimizeTargetText( settings, targetText ) {
+  settings.targetString = targetText;
+  settings.targetString
     .replace( /\%/g, '％' )
-    .replace( /\&/g, '＆' )
-  object.targetString = htmlEscape( object.targetString );
-  return object;
+    .replace( /\"/g, '%22' )
+    .replace( /\&/g, '%26' )
+    .replace( /\'/g, '%27' )
+    .replace( /\</g, '%3C' )
+    .replace( /\>/g, '%3E' );
+  return settings;
 }
 
-function optimizeTranslationServiceProperty( object ) {
+function optimizeTargetUrl( settings, targetUrl ) {
+  settings.targetString = targetUrl;
+  settings.targetString
+    .replace( /\"/g, '%22' )
+    .replace( /\</g, '%3C' )
+    .replace( /\>/g, '%3E' );
+  return settings;
+}
+
+function optimizeTranslationService( object ) {
   switch ( object.translationService ) {
     case undefined:
       object.translationService = 'Google';
@@ -135,72 +129,64 @@ function optimizeTranslationServiceProperty( object ) {
 }
 
 /**
- * Functions: processingOf...
+ * functions         : processTranslate...
+ * keys of "settings": languageCode, openMethodText / openMethodWebpage, 
+ *                     sizeHeight, sizeWidth, specifySize, targetString, translationService
  */
-function processingOfTextTranslation( targetString ) {
-  browser.storage.local.get( null ) // Promise
-    .then( ( settingsObject1 ) => {
-      // Keys of object: languageCode, openMethod, sizeHeight, sizeWidth, specifySize, targetString, translationService
-      settingsObject1.openMethod = settingsObject1.openMethodText;
-      delete settingsObject1.openMethodText;
-      return optimizeOpenMethodProperty( settingsObject1 );
-    } )
-    .then( ( settingsObject2 ) => {
-      return optimizeTranslationServiceProperty( settingsObject2 );
-    } )
-    .then( ( settingsObject3 ) => {
-      return optimizeLanguageCodeProperty( settingsObject3 );
-    } )
-    .then( ( settingsObject4 ) => {
-      return optimizeTargetStringProperty( settingsObject4, targetString );
-    } )
-    .then( ( settingsObject5 ) => {
-      return addUrlPropertyForTextTranslation( settingsObject5 );
-    } )
-    .then( ( settingsObject6 ) => {
-      openTranslationResult( settingsObject6 );
-    } );
+function processTranslateText( targetText ) {
+  browser.storage.local.get()
+    .then( settings => {
+      settings.openMethod = settings.openMethodText;
+      delete settings.openMethodText;
+      return optimizeOpenMethod( settings );
+    })
+    .then( settings => { return optimizeTranslationService( settings ); })
+    .then( settings => { return optimiseLanguageCode( settings ); })
+    .then( settings => { return optimizeTargetText( settings, targetText ); })
+    .then( settings => { return buildUrlTranslateText( settings ); })
+    .then( settings => { return openTranslationResult( settings ); });
 }
 
-function processingOfWebpageTranslation( targetString ) {
-  browser.storage.local.get( null ) // Promise
-    .then( ( settingsObject1 ) => {
-      // Keys of object: languageCode, openMethod, sizeHeight, sizeWidth, specifySize, targetString, translationService
-      settingsObject1.openMethod = settingsObject1.openMethodWebpage;
-      delete settingsObject1.openMethodWebpage;
-      return optimizeOpenMethodProperty( settingsObject1 );
-    } )
-    .then( ( settingsObject2 ) => {
-      return optimizeTranslationServiceProperty( settingsObject2 );
-    } )
-    .then( ( settingsObject3 ) => {
-      return optimizeLanguageCodeProperty( settingsObject3 );
-    } )
-    .then( ( settingsObject4 ) => {
-      return optimizeTargetStringProperty( settingsObject4, targetString );
-    } )
-    .then( ( settingsObject5 ) => {
-      return addUrlPropertyForWebpageTranslation( settingsObject5 );
-    } )
-    .then( ( settingsObject6 ) => {
-      openTranslationResult( settingsObject6 );
-    } );
+function processTranslateWebpage( targetUrl ) {
+  browser.storage.local.get()
+    .then( settings => {
+      settings.openMethod = settings.openMethodWebpage;
+      delete settings.openMethodWebpage;
+      return optimizeOpenMethod( settings );
+    })
+    .then( settings => { return optimizeTranslationService( settings ); })
+    .then( settings => { return optimiseLanguageCode( settings ); })
+    .then( settings => { return optimizeTargetUrl( settings, targetUrl ); })
+    .then( settings => { return buildUrlTranslateWebpage( settings ); })
+    .then( settings => { return openTranslationResult( settings ); });
 }
 
 /**
  * API
  */
+ browser.menus.create({
+  contexts: ['page'],
+  id:       'idTranslateWebpage',
+  title:    browser.i18n.getMessage( 'contextMenuForWebpageTranslation' )
+});
+
+browser.menus.create({
+  contexts: ['selection'],
+  id:       'idTranslateText',
+  title:    browser.i18n.getMessage( 'contextMenuForTextTranslation' )
+});
+
 browser.menus.onClicked.addListener( ( info ) => {
   switch ( info.menuItemId ) {
-    case idForWebpageTranslation:
-      processingOfWebpageTranslation( info.pageUrl );
+    case 'idTranslateWebpage':
+      processTranslateWebpage( info.pageUrl );
       break;
-    case idForTextTranslation:
-      processingOfTextTranslation( info.selectionText );
+    case 'idTranslateText':
+      processTranslateText( info.selectionText );
       break;
   }
-} ); // End: browser.menus.onClicked.addListener()
+}); // End: browser.menus.onClicked.addListener()
 
 browser.pageAction.onClicked.addListener( ( tab ) => {
-  processingOfWebpageTranslation( tab.url );
-} ); // End: browser.pageAction.onClicked.addListener()
+  processTranslateWebpage( tab.url );
+}); // End: browser.pageAction.onClicked.addListener()
