@@ -29,7 +29,7 @@
   "options_ui": {
     "browser_style": true,
     "open_in_tab":   true,
-    "page": "/documents/options/index.html"
+    "page": "/documents/options/option-page.html"
   },
 
   "page_action": {
@@ -46,5 +46,5 @@
 
   "permissions": ["menus", "storage", "tabs"],
 
-  "version": "2.1.21"
+  "version": "2.1.20"
 }
