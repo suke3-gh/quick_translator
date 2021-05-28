@@ -23,41 +23,63 @@ body a {
  * _footer.scss
  */
 footer {
-  background: rgb(63, 63, 63);
-  box-shadow: 0 0 2px rgb(95, 95, 95);
-  color:      rgb(255, 255, 255);
-  flex:       1 1 auto;
-  padding:    1.0rem;
+  background:  rgb(63, 63, 63);
+  box-sizing:  border-box;
+  box-shadow:  0 0 2px rgb(63, 63, 63);
+  color:       rgb(255, 255, 255);
+  display:     flex;
+  align-items: center;
+  flex-flow:   column;
+  padding:     1.0rem;
 }
 
-footer > section.timestamp {
-  font-size:  small;
-  text-align: center;
+@media screen and ( min-aspect-ratio: 4/3 ) {
+  footer {
+    background: rgb(255, 255, 255);
+    box-shadow: none;
+    color:      rgb(31, 31, 31);
+    margin:     0 0 0 30%;
+    width:      60%;
+  }
 }
 
-footer > section.copyright {
-  font-size:  small;
-	text-align: center;
+footer > div.item {
+  font-size: small;
+  padding:   0.5rem;
 }
 
 /**
  * _header.scss
  */
 header {
-  background: whitesmoke;
-  box-shadow: 0 0 2px rgb(95, 95, 95);
+  background: rgb(239, 239, 239);
+  box-shadow: 0 0 2px rgb(63, 63, 63);
   display:    flex;
   flex-flow:  row wrap;
-  height:     5.0rem;
+  height:     4.0rem;
+  overflow-y: visible;
   position:   fixed;
+  transition: height 200ms ease-out 0ms;
   width:      100%;
+}
+
+@media screen and ( min-aspect-ratio: 4/3 ) {
+  header {
+    flex-flow:  column;
+    height:     100vh;
+    overflow-y: scroll;
+    padding:    0 0 0 10%;
+    position:   fixed;
+    transition: none;
+    width:      20%;
+  }
 }
 
 header > section.primary {
   box-sizing:      border-box;
   display:         flex;
-  flex-flow:       row nowrap;
-  height:          5.0rem;
+  flex-flow:       row;
+  height:          4.0rem;
   justify-content: space-between;
   width:           100%;
 }
@@ -71,14 +93,19 @@ header > section.primary > .website-title {
 
 header > section.primary > .operation-button-left {
   align-items:     center;
-  border-right:    rgb(132, 145, 158) solid thin;
+  border-right:    rgb(127, 127, 127) solid thin;
   box-sizing:      border-box;
   color:           rgb(63, 63, 63);
   display:         flex;
   flex-flow:       column;
-  height:          5.0rem;
   justify-content: center;
   width:           25%;
+}
+
+@media screen and ( min-aspect-ratio: 4/3 ) {
+  header > section.primary > .operation-button-left {
+    display: none;
+  }
 }
 
 header > section.primary > .operation-button-left > img {
@@ -96,14 +123,19 @@ header > section.primary > .operation-button-left > span {
 
 header > section.primary > .operation-button-right {
   align-items:     center;
-  border-left:     rgb(132, 145, 158) solid thin;
+  border-left:     rgb(127, 127, 127) solid thin;
   box-sizing:      border-box;
   color:           rgb(63, 63, 63);
   display:         flex;
   flex-flow:       column;
-  height:          5.0rem;
   justify-content: center;
   width:           25%;
+}
+
+@media screen and ( min-aspect-ratio: 4/3 ) {
+  header > section.primary > .operation-button-right {
+    display: none;
+  }
 }
 
 /**
@@ -111,13 +143,13 @@ header > section.primary > .operation-button-right {
  */
 main {
   box-sizing: border-box;
-  padding:    5.0rem 4% 5.0rem 4%;
+  padding:    4.0rem 2.0rem 4.0rem 2.0rem;
 }
 
-@media screen and (min-aspect-ratio: 4 / 3) {
+@media screen and ( min-aspect-ratio: 4/3 ) {
   main {
-    margin:  0 auto 0 auto;
-    padding: 5.0rem 0 5.0rem 0;
+    margin:  0 0 0 30%;
+    padding: 0 1.0rem 0 1.0rem;
     width:   60%;
   }
 }
@@ -155,66 +187,76 @@ main h6 {
   padding:   0 0 0 1.0rem;
 }
 
-main pre {
-  background:  midnightblue;
-  border-left: royalblue solid thick;
-  box-sizing:  border-box;
-  color:       rgb(239, 239, 239);
-  padding:     0.5rem;
-}
-
 /**
  * _nav.menu.scss
  */
 nav.menu {
-  background:   whitesmoke;
-  border-right: rgb(95, 95, 95) solid thin;
-  box-shadow:   0 0 2px rgb(95, 95, 95);
-  flex-flow:    column wrap;
-  max-height:   0;
+  background:   rgb(239, 239, 239);
+  box-shadow:   0 0 2px rgb(63, 63, 63);
+  margin:       0.5rem auto 0 2.0rem;
+  height:       0px;
   overflow-y:   scroll;
-  padding:      0 0.5rem 0 0.5rem;
-  transition:   max-height 400ms 0s;
-  width:        40%;
+  transition:   height 200ms ease-out 0ms;
+  width:        60%;
 }
 
-@media screen and (min-aspect-ratio: 4 / 3) {
+@media screen and ( min-aspect-ratio: 4/3 ) {
   nav.menu {
-    width: 30%;
+    box-shadow: none;
+    height:     100%;
+    margin:     0;
+    overflow-y: visible;
+    transition: none;
+    width:      auto;
   }
 }
 
-nav.menu > ul {
+nav.menu > div.categories {
+  display:   flex;
+  flex-flow: column;
+  padding:   0 1.0rem 0 1.0rem;
+}
+
+nav.menu > div.categories > ul {
+  box-sizing:      border-box;
+  flex:            0 1 100%;
   list-style-type: none;
+  margin:          0;
   padding:         0;
 }
 
-nav.menu > ul > .item {
+nav.menu > div.categories > ul > a.item {
   background: rgb(255, 255, 255);
-  box-shadow: 0 0 2px #2f2f2f;
-  color:      #2f2f2f;
+  box-shadow: 0 0 2px rgb(63, 63, 63);
+  color:      rgb(31, 31, 31);
   display:    flex;
+  margin:     0.5rem 0 0.5rem 0;
   padding:    1.0rem 0.5rem 1.0rem 0.5rem;
+  transition: background 200ms ease-out 0ms;
 }
 
-nav.menu > ul > .item:hover {
-  background: rgb(239, 239, 239);
+nav.menu > div.categories > ul > .item:hover {
+  background: rgb(223, 223, 223);
 }
 
-nav.menu > ul > .item > img {
+nav.menu > div.categories > ul > a.item > img {
   height: 1.5rem;
   width:  1.5rem;
 }
 
-nav.menu > ul > .item > li {
+nav.menu > div.categories > ul > a.item > li {
   font-size: 1.2rem;
   padding:   0 0 0 0.5rem;
 }
 
-nav.menu > ul > .menu-head {
-  display:     block;
-  font-weight: bold;
-  padding:     0.5rem 0 0.5rem 1.0rem;
+nav.menu > p {
+  text-align: center;
+}
+
+@media screen and ( min-aspect-ratio: 4/3 ) {
+  nav.menu > p {
+    display: none;
+  }
 }
 
 /**
@@ -228,9 +270,9 @@ nav.menu > ul > .menu-head {
 }
 
 main > section.tile {
-  box-shadow: 0 0 2px rgb(95, 95, 95);
+  box-shadow: 0 0 2px rgb(63, 63, 63);
   box-sizing: border-box;
-  margin:     1.0rem 0.5rem 1.0rem 0.5rem;
+  margin:     1.0rem;
   padding:    0.5rem;
 }
 
@@ -247,59 +289,57 @@ main > section.tile > form > .checkbox {
 main > section.tile > form.two-choices {
   box-sizing:      border-box;
   display:         flex;
-  flex-flow:       row wrap;
+  flex-flow:       row;
   justify-content: center;
 }
 
 main > section.tile > form.two-choices > label {
   align-items:   center;
-  border-radius: 8px;
-  box-shadow:    0 0 2px rgb(95, 95, 95);
+  background:    rgb(255, 255, 255);
+  border-radius: 4px;
+  box-shadow:    0 0 2px rgb(127, 127, 127);
   box-sizing:    border-box;
   display:       flex;
-  flex:          1 1 calc(50% - 1.0rem);
+  flex:          0 0 calc(50% - 1.0rem);
+  height:        3.0rem;
   margin:        0.5rem;
-  padding:       0.5rem 0 0.5rem 0;
+  transition:    background 200ms ease-out 0ms;
 }
 
 main > section.tile > form.two-choices > label:hover {
-  background:  rgb(239, 239, 239);
+  background:  rgb(223, 223, 223);
 }
 
 main > section.tile > form.two-choices > label > input {
   margin: 0 0.5rem 0 0.5rem;
 }
 
-main > section.tile > form.two-choices > label > span {
-  font-weight: bold;
-}
-
 main > section.tile > form.language-code > div {
   box-sizing:      border-box;
   display:         flex;
+  flex-flow:       row;
   justify-content: center;
 }
 
 main > section.tile > form.language-code > div > .tile {
-  box-shadow: 0 0 2px rgb(95, 95, 95);
-  margin:     0.5rem;
-  padding:    0.5rem;
-  flex:       1 1 25%;
-}
-
-main > section.tile > form.language-code > div > .tile > label {
-  display: block;
+  flex:    1 1 25%;
   padding: 0.5rem;
 }
 
+main > section.tile > form.language-code > div > .tile > label {
+  background: rgb(255, 255, 255);
+  display:    block;
+  padding:    0.5rem;
+  transition: background 200ms ease-out 0ms;
+}
+
 main > section.tile > form.language-code > div > .tile > label:hover {
-  background: rgb(239, 239, 239);
+  background: rgb(223, 223, 223);
 }
 
 /**
  * guide page
  */
-
 div.timestamp {
   font-size: small;
   text-align: center;
@@ -319,12 +359,4 @@ div.timestamp {
   box-shadow:    0 0 0.1rem #2f2f2f;
   padding:       0.5rem;
   width:         50%;
-}
-
-/**
- * For footer text
- */
-footer > div.addon-version {
-  font-size:  small;
-  text-align: center;
 }

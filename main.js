@@ -2,49 +2,25 @@
 /**
  * Functions
  */
-function buildUrlTranslateText( object ) {
-  switch ( object.translationService ) {
-    case 'Microsoft':
-      object.url = 'https://www.bing.com/translator?from=&to='+object.languageCode+'&text='+object.targetString;
-      break;
-    case 'Google':
-      object.url = 'https://translate.google.com/?sl=auto&tl='+object.languageCode+'&text='+object.targetString+'&op=translate';
-      break;
-  }
-  return object;
-}
-
-function buildUrlTranslateWebpage( object ) {
-  switch ( object.translationService ) {
-    case 'Microsoft':
-      object.url = 'https://www.translatetheweb.com/?from=&to='+object.languageCode+'&a='+object.targetString;
-      break;
-    case 'Google':
-      object.url = 'https://translate.google.com/translate?hl='+object.languageCode+'&sl=auto&tl='+object.languageCode+'&u='+object.targetString;
-      break;
-  }
-  return object;
-}
-
 function autoSelectLanguageCode() {
   let tempLanguageCode = browser.i18n.getUILanguage();
 
-  // Fix for German 
+  /** Fix for German */
   if (tempLanguageCode.indexOf( 'de' ) != -1) {
     tempLanguageCode = 'de';
     return tempLanguageCode;
   }
-  // Fix for English
+  /** Fix for English */
   if (tempLanguageCode.indexOf( 'en' ) != -1) {
     tempLanguageCode = 'en';
     return tempLanguageCode;
   }
-  // Fix for Spnish
+  /** Fix for Spnish */ 
   if (tempLanguageCode.indexOf( 'es' ) != -1) {
     tempLanguageCode = 'es';
     return tempLanguageCode;
   }
-  // Fix for Portuguese
+  /** Fix for Portuguese */
   if (tempLanguageCode.indexOf( 'pt' ) != -1) {
     tempLanguageCode = 'pt';
     return tempLanguageCode;
@@ -52,25 +28,40 @@ function autoSelectLanguageCode() {
   return tempLanguageCode;
 }
 
-function htmlEscape( string ) {
-  return string
-    .replace( /\"/g, '%22' )
-    .replace( /\&/g, '%26' )
-    .replace( /\'/g, '%27' )
-    .replace( /\</g, '%3C' )
-    .replace( /\>/g, '%3E' );
+function buildUrlTranslateText( settings ) {
+  switch ( settings.translationService ) {
+    case 'Microsoft':
+      settings.url = 'https://www.bing.com/translator?from=&to='+settings.languageCode+'&text='+settings.targetString;
+      break;
+    case 'Google':
+      settings.url = 'https://translate.google.com/?sl=auto&tl='+settings.languageCode+'&text='+settings.targetString+'&op=translate';
+      break;
+  }
+  return settings;
 }
 
-function openTranslationResult( settingsObject ) {
-  switch ( settingsObject.openMethod ) {
+function buildUrlTranslateWebpage( settings ) {
+  switch ( settings.translationService ) {
+    case 'Microsoft':
+      settings.url = 'https://www.translatetheweb.com/?from=&to='+settings.languageCode+'&a='+settings.targetString;
+      break;
+    case 'Google':
+      settings.url = 'https://translate.google.com/translate?hl='+settings.languageCode+'&sl=auto&tl='+settings.languageCode+'&u='+settings.targetString;
+      break;
+  }
+  return settings;
+}
+
+function openTranslationResult( settings ) {
+  switch ( settings.openMethod ) {
     case 'tab':
-      browser.tabs.create({ url: settingsObject.url });
+      browser.tabs.create({ url: settings.url });
       break;
     case 'window':
-      if ( settingsObject.specifySizeFlag == true ) {
-        browser.windows.create({ url: settingsObject.url, height: settingsObject.sizeHeight, width: settingsObject.sizeWidth });
+      if ( settings.specifySizeFlag == true ) {
+        browser.windows.create({ url: settings.url, height: settings.sizeHeight, width: settings.sizeWidth });
       } else {
-        browser.windows.create({ url: settingsObject.url });
+        browser.windows.create({ url: settings.url });
       }
       break;
   }
@@ -79,23 +70,23 @@ function openTranslationResult( settingsObject ) {
 /**
  * Functions: optimize...
  */
-function optimiseLanguageCode( object ) {
-  switch ( object.languageCode ) {
+function optimiseLanguageCode( settings ) {
+  switch ( settings.languageCode ) {
     case 'auto':
     case undefined:
-      object.languageCode = autoSelectLanguageCode();
+      settings.languageCode = autoSelectLanguageCode();
       break;
   }
-  return object;
+  return settings;
 }
 
-function optimizeOpenMethod( object ) {
-  switch ( object.openMethod ) {
+function optimizeOpenMethod( settings ) {
+  switch ( settings.openMethod ) {
     case undefined:
-      object.openMethod = 'tab';
+      settings.openMethod = 'tab';
       break;
   }
-  return object;
+  return settings;
 }
 
 function optimizeTargetText( settings, targetText ) {
@@ -119,13 +110,13 @@ function optimizeTargetUrl( settings, targetUrl ) {
   return settings;
 }
 
-function optimizeTranslationService( object ) {
-  switch ( object.translationService ) {
+function optimizeTranslationService( settings ) {
+  switch ( settings.translationService ) {
     case undefined:
-      object.translationService = 'Google';
+      settings.translationService = 'Google';
       break;
   }
-  return object;
+  return settings;
 }
 
 /**
