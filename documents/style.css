@@ -341,7 +341,7 @@ main > section.tile > form.language-code > div > .tile > label:hover {
  * guide page
  */
 div.timestamp {
-  font-size: small;
+  font-size:  small;
   text-align: center;
 }
 
@@ -356,7 +356,7 @@ div.timestamp {
 
 .guide-setup-thumbnail {
   border-radius: 8px;
-  box-shadow:    0 0 0.1rem #2f2f2f;
+  box-shadow:    0 0 0.1rem rgb(63, 63, 63);
   padding:       0.5rem;
   width:         50%;
 }
