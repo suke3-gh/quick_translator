@@ -83,14 +83,14 @@
             </label>
           </form>
         <h3 id="h3SizeOfNewWindow">Size of new window</h3>
-          <form id="formOpenMethodSpecifySize">
+          <form class="specifySize" id="formOpenMethodSpecifySize">
             <label class="checkbox">
               <input id="inputSpecifySizeFlag" name="partsSpecifySizeFlag" type="checkbox" >
               <span id="spanSpecifySizeOfWindow">Specify the size of window(optional)</span>
             </label>
-            <div>
-              Width: <input id="inputSizeOfNewWindowWidth" min="0" placeholder="px" type="number"> ,
-              Height: <input id="inputSizeOfNewWindowHeight" min="0" placeholder="px" type="number">
+            <div class="inputSize" >
+              Width: <input id="inputSizeOfNewWindowWidth" min="0" pattern="^[0-9]+$" placeholder="px" type="number"> ,
+              Height: <input id="inputSizeOfNewWindowHeight" min="0" pattern="^[0-9]+$" placeholder="px" type="number">
             </div>
           </form>
           <p id="pWhenSetWH" class="description-text">

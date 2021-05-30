@@ -1,7 +1,8 @@
-
 /**
- * functions
+ * background script for add-on
  */
+
+/** functions */
 function autoSelectLanguageCode() {
   let tempLanguageCode = browser.i18n.getUILanguage();
 
@@ -67,9 +68,7 @@ function openTranslationResult( settings ) {
   }
 }
 
-/**
- * functions: optimize ~
- */
+/** functions: optimize~ */
 function optimiseLanguageCode( languageCode ) {
   switch ( languageCode ) {
     case 'auto':
@@ -118,7 +117,7 @@ function optimizeTranslationService( translationService ) {
 }
 
 /**
- * functions         : processTranslate ~
+ * functions         : processTranslate~
  * keys of "settings": languageCode, openMethodText / openMethodWebpage, 
  *                     sizeHeight, sizeWidth, specifySize, targetString, translationService
  */
@@ -156,9 +155,7 @@ function processTranslateWebpage( targetUrl ) {
     });
 }
 
-/**
- * setup
- */
+/** setup */
 function initialProcess() {
   const id1 = 'idTranslateText';
   const id2 = 'idTranslateWebpage';

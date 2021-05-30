@@ -276,14 +276,49 @@ main > section.tile {
   padding:    0.5rem;
 }
 
-main > section.tile > .description-text {
+main > section.tile > p.description-text {
   color:     rgb(95, 95, 95);
   font-size: 0.9rem;
 }
 
-main > section.tile > form > .checkbox {
+main > section.tile > form.language-code > div {
+  box-sizing:      border-box;
+  display:         flex;
+  flex-flow:       row;
+  justify-content: center;
+}
+
+main > section.tile > form.language-code > div > .tile {
+  flex:    1 1 25%;
+  padding: 0.5rem;
+}
+
+main > section.tile > form.language-code > div > .tile > label {
+  background: rgb(255, 255, 255);
+  display:    block;
+  padding:    0.5rem;
+  transition: background 200ms ease-out 0ms;
+}
+
+main > section.tile > form.language-code > div > .tile > label:hover {
+  background: rgb(223, 223, 223);
+}
+
+main > section.tile > form.specifySize {
+  padding: 0 0.5rem 0 0.5rem;
+}
+
+main > section.tile > form.specifySize > label.checkbox {
   display: inline-block;
   margin:  0.5rem 0 0.5rem 0;
+}
+
+main > section.tile > form.specifySize > div.inputSize {
+  font-size: large;
+}
+
+main > section.tile > form.specifySize > div.inputSize > input {
+  font-size: large;
 }
 
 main > section.tile > form.two-choices {
@@ -312,29 +347,6 @@ main > section.tile > form.two-choices > label:hover {
 
 main > section.tile > form.two-choices > label > input {
   margin: 0 0.5rem 0 0.5rem;
-}
-
-main > section.tile > form.language-code > div {
-  box-sizing:      border-box;
-  display:         flex;
-  flex-flow:       row;
-  justify-content: center;
-}
-
-main > section.tile > form.language-code > div > .tile {
-  flex:    1 1 25%;
-  padding: 0.5rem;
-}
-
-main > section.tile > form.language-code > div > .tile > label {
-  background: rgb(255, 255, 255);
-  display:    block;
-  padding:    0.5rem;
-  transition: background 200ms ease-out 0ms;
-}
-
-main > section.tile > form.language-code > div > .tile > label:hover {
-  background: rgb(223, 223, 223);
 }
 
 /**
