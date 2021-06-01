@@ -15,3 +15,4 @@ interface settings {
   translationService : string;
   url                : string;
 }
+

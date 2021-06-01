@@ -1,29 +1,29 @@
 
 /** functions */
 function autoSelectLanguageCode():string {
-  let tempLanguageCode:string = browser.i18n.getUILanguage();
+  let languageCode:string = browser.i18n.getUILanguage();
 
   /** fix for German */
-  if ( tempLanguageCode.indexOf( 'de' ) != -1 ) {
-    tempLanguageCode = 'de';
-    return tempLanguageCode;
+  if ( languageCode.indexOf( 'de' ) != -1 ) {
+    languageCode = 'de';
+    return languageCode;
   }
   /** fix for English */
-  if ( tempLanguageCode.indexOf( 'en' ) != -1 ) {
-    tempLanguageCode = 'en';
-    return tempLanguageCode;
+  if ( languageCode.indexOf( 'en' ) != -1 ) {
+    languageCode = 'en';
+    return languageCode;
   }
   /** fix for Spnish */ 
-  if ( tempLanguageCode.indexOf( 'es' ) != -1 ) {
-    tempLanguageCode = 'es';
-    return tempLanguageCode;
+  if ( languageCode.indexOf( 'es' ) != -1 ) {
+    languageCode = 'es';
+    return languageCode;
   }
   /** fix for Portuguese */
-  if ( tempLanguageCode.indexOf( 'pt' ) != -1 ) {
-    tempLanguageCode = 'pt';
-    return tempLanguageCode;
+  if ( languageCode.indexOf( 'pt' ) != -1 ) {
+    languageCode = 'pt';
+    return languageCode;
   }
-  return tempLanguageCode;
+  return languageCode;
 }
 
 function buildUrlTranslateText( obj:settings ):settings {
@@ -50,7 +50,7 @@ function buildUrlTranslateWebpage( obj:settings ):settings {
   return obj;
 }
 
-function openTranslationResult( obj:settings ) {
+function openTranslationResult( obj:settings ):void {
   switch ( obj.openMethod ) {
     case 'tab':
       browser.tabs.create({ url: obj.url });
@@ -120,7 +120,7 @@ function optimizeTranslationService( translationService:string ):string {
  */
 function processTranslateText( targetText:string ) {
   browser.storage.local.get( null )
-    .then( ( obj:settings ) => {
+    .then( ( obj:settings ):settings => {
       obj.languageCode       = optimiseLanguageCode( obj.languageCode );
       obj.openMethod         = optimizeOpenMethod( obj.openMethodText );
       obj.targetString       = optimizeTargetText( targetText );
@@ -128,8 +128,8 @@ function processTranslateText( targetText:string ) {
       delete obj.openMethodText;
       return obj;
     })
-    .then( ( obj:settings ) => { return buildUrlTranslateText( obj ); })
-    .then( ( obj:settings ) => { return openTranslationResult( obj ); })
+    .then( ( obj:settings ):settings => { return buildUrlTranslateText( obj ); })
+    .then( ( obj:settings ):void => { openTranslationResult( obj ); })
     .catch( ( id:exception ) => {
       console.log( id.name + ': ' + id.message );
     });
@@ -137,7 +137,7 @@ function processTranslateText( targetText:string ) {
 
 function processTranslateWebpage( targetUrl:string ) {
   browser.storage.local.get( null )
-    .then( ( obj:settings ) => {
+    .then( ( obj:settings ):settings => {
       obj.languageCode       = optimiseLanguageCode( obj.languageCode );
       obj.openMethod         = optimizeOpenMethod( obj.openMethodWebpage );
       obj.targetString       = optimizeTargetUrl( targetUrl );
@@ -145,8 +145,8 @@ function processTranslateWebpage( targetUrl:string ) {
       delete obj.openMethodWebpage;
       return obj;
     })
-    .then( ( obj:settings ) => { return buildUrlTranslateWebpage( obj ); })
-    .then( ( obj:settings ) => { return openTranslationResult( obj ); })
+    .then( ( obj:settings ):settings => { return buildUrlTranslateWebpage( obj ); })
+    .then( ( obj:settings ):void => { openTranslationResult( obj ); })
     .catch( ( id:exception ) => {
       console.log( id.name + ': ' + id.message );
     });

@@ -1,27 +1,27 @@
 /** functions */
 function autoSelectLanguageCode() {
-    var tempLanguageCode = browser.i18n.getUILanguage();
+    var languageCode = browser.i18n.getUILanguage();
     /** fix for German */
-    if (tempLanguageCode.indexOf('de') != -1) {
-        tempLanguageCode = 'de';
-        return tempLanguageCode;
+    if (languageCode.indexOf('de') != -1) {
+        languageCode = 'de';
+        return languageCode;
     }
     /** fix for English */
-    if (tempLanguageCode.indexOf('en') != -1) {
-        tempLanguageCode = 'en';
-        return tempLanguageCode;
+    if (languageCode.indexOf('en') != -1) {
+        languageCode = 'en';
+        return languageCode;
     }
     /** fix for Spnish */
-    if (tempLanguageCode.indexOf('es') != -1) {
-        tempLanguageCode = 'es';
-        return tempLanguageCode;
+    if (languageCode.indexOf('es') != -1) {
+        languageCode = 'es';
+        return languageCode;
     }
     /** fix for Portuguese */
-    if (tempLanguageCode.indexOf('pt') != -1) {
-        tempLanguageCode = 'pt';
-        return tempLanguageCode;
+    if (languageCode.indexOf('pt') != -1) {
+        languageCode = 'pt';
+        return languageCode;
     }
-    return tempLanguageCode;
+    return languageCode;
 }
 function buildUrlTranslateText(obj) {
     switch (obj.translationService) {
@@ -119,7 +119,7 @@ function processTranslateText(targetText) {
         return obj;
     })
         .then(function (obj) { return buildUrlTranslateText(obj); })
-        .then(function (obj) { return openTranslationResult(obj); })["catch"](function (id) {
+        .then(function (obj) { openTranslationResult(obj); })["catch"](function (id) {
         console.log(id.name + ': ' + id.message);
     });
 }
@@ -134,7 +134,7 @@ function processTranslateWebpage(targetUrl) {
         return obj;
     })
         .then(function (obj) { return buildUrlTranslateWebpage(obj); })
-        .then(function (obj) { return openTranslationResult(obj); })["catch"](function (id) {
+        .then(function (obj) { openTranslationResult(obj); })["catch"](function (id) {
         console.log(id.name + ': ' + id.message);
     });
 }
