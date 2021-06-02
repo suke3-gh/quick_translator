@@ -17,7 +17,6 @@
 
   "icons": {
     "32":  "/icons/quick-translator-icon-plain.svg",
-    "64":  "/icons/quick-translator-icon-plain.svg",
     "128": "/icons/quick-translator-icon-plain.svg",
     "256": "/icons/quick-translator-icon-plain.svg"
   },
@@ -29,22 +28,19 @@
   "options_ui": {
     "browser_style": true,
     "open_in_tab":   true,
-    "page": "/documents/options/option-page.html"
+    "page": "/documents/options/index.html"
   },
 
-  "page_action": {
-    "browser_style": true,
+  "browser_action": {
     "default_icon": {
       "32":  "/icons/quick-translator-icon-plain.svg",
-      "64":  "/icons/quick-translator-icon-plain.svg",
       "128": "/icons/quick-translator-icon-plain.svg",
       "256": "/icons/quick-translator-icon-plain.svg"
     },
-    "default_title": "__MSG_tooltipTitle__",
-    "show_matches":  ["<all_urls>"]
+    "default_title": "__MSG_tooltipTitle__"
   },
 
   "permissions": ["menus", "storage", "tabs"],
 
-  "version": "2.0.19"
+  "version": "2.1.28"
 }

@@ -6,6 +6,8 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="/icons/quick-translator-icon-plain.svg" rel="icon" type="image/svg+xml">
     <link href="/documents/style.css" rel="stylesheet" type="text/css">
+    <script defer src="/documents/javascript/_script_header.js" type="text/javascript"></script>
+    <script defer src="/documents/javascript/_script_footer.js" type="text/javascript"></script>
     <title>Guide page - en (Quick translator)</title>
   </head>
   <body>
@@ -13,42 +15,43 @@
       <section class="primary">
         <div class="operation-button-left" id="divOperationButtonLeft">
           <img src="/icons/menu-icon-plain.svg" alt="menu-icon-plain.svg" id="imgMenuIcon">
-          <span>MENU</span>
         </div>
         <span class="addon-title" id="spanAddonTitle">(Addon title)</span>
         <div class="operation-button-right "></div>
       </section>
-
       <nav class="menu" id="navMenu">
-        <ul>
-          <span class="menu-head">Options</span>
-          <a class="item" href="/documents/options/option-page.html">
-            <img alt="option-icon-plain.svg" class="icon" src="/icons/option-icon-plain.svg" >
-            <li>Option</li>
-          </a>
-        </ul>
-        <ul>
-          <span class="menu-head">Guides</span>
-          <a class="item" href="/documents/guides/en/guide-page.html">
-            <img alt="guide-icon-plain.svg" class="icon" src="/icons/guide-icon-plain.svg">
-            <li>English</li>
-          </a>
-          <a class="item" href="/documents/guides/ja/guide-page.html">
-            <img alt="guide-icon-plain.svg" class="icon" src="/icons/guide-icon-plain.svg">
-            <li>日本語</li>
-          </a>
-        </ul>
-        <ul>
-          <span class="menu-head">About add-on</span>
-          <a class="item" href="/License" rel="noopener noreferrer" target="_balnk">
-            <img alt="/icons/license-icon-plain.svg" class="icon" src="/icons/license-icon-plain.svg">
-            <li>License</li>
-          </a>
-          <a class="item" href="https://addons.mozilla.org/en-US/firefox/addon/quicktranslator/" rel="noopener noreferrer" target="_balnk">
-            <img alt="information-icon-plain.svg" class="icon" src="/icons/information-icon-plain.svg">
-            <li>Product page</li>
-          </a>
-        </ul>
+        <div class="categories">
+          <ul>
+            <h3>Options</h3>
+            <a class="item" href="/documents/options/index.html">
+              <img alt="option-icon-plain.svg" class="icon" src="/icons/option-icon-plain.svg" >
+              <li>Option</li>
+            </a>
+          </ul>
+          <ul>
+            <h3>Guides</h3>
+            <a class="item" href="/documents/guides/en/guide-page.html">
+              <img alt="guide-icon-plain.svg" class="icon" src="/icons/guide-icon-plain.svg">
+              <li>English</li>
+            </a>
+            <a class="item" href="/documents/guides/ja/guide-page.html">
+              <img alt="guide-icon-plain.svg" class="icon" src="/icons/guide-icon-plain.svg">
+              <li>日本語</li>
+            </a>
+          </ul>
+          <ul>
+            <h3>About add-on</h3>
+            <a class="item" href="/License" rel="noopener noreferrer" target="_balnk">
+              <img alt="/icons/license-icon-plain.svg" class="icon" src="/icons/license-icon-plain.svg">
+              <li>License</li>
+            </a>
+            <a class="item" href="https://addons.mozilla.org/en-US/firefox/addon/quicktranslator/" rel="noopener noreferrer" target="_balnk">
+              <img alt="information-icon-plain.svg" class="icon" src="/icons/information-icon-plain.svg">
+              <li>Product page</li>
+            </a>
+          </ul>
+        </div>
+        <p>Click an icon at upper left side to close this menu.</p>
       </nav>
     </header>
 
@@ -80,10 +83,8 @@
     </main>
 
     <footer>
-      <div class="addon-version" id="divAddonVersion">(Add-on version)</div>
+      <div class="item" id="divAddonVersion">(Add-on version)</div>
+      <div class="item" id="divLicenseText">(License)</div>
     </footer>
-
-    <script type="text/javascript" src="/documents/javascript/_header-script.js"></script>
-    <script type="text/javascript" src="/documents/javascript/_information-script.js"></script>
   </body>
 </html>
