@@ -21,7 +21,7 @@ function changeLanguageCodeList( translationService:string ):void {
       languageCodeListMicrosoft.style.display = 'flex';
       /** fix for check of radio button. */
       browser.storage.local.get( 'languageCode' )
-        .then( ( settings ) => { selectLanguageCode( languageCodeListGoogle, settings.languageCode ); })
+        .then( ( settings ) => { selectLanguageCode( languageCodeListMicrosoft, settings.languageCode ); })
         .catch( ( id:exception ) => exceptionLog( id ) );
       break;
   }
@@ -76,14 +76,18 @@ function readoutOpenMethodWebpage( openMethod:string ):void {
   input.checked = true;
 }
 
-function readoutSpecifySize( paramFlag:boolean, paramWidth:number, paramHeight:number ):void {
+function readoutSpecifySize( paramFlag:string, paramWidth:string, paramHeight:string ):void {
   const form:HTMLElement = document.getElementById( 'formOpenMethodSpecifySize' );
 
   const windowFlag:HTMLInputElement   = form.querySelector( '#inputSpecifySizeFlag' );
   const windowHeight:HTMLInputElement = form.querySelector( '#inputSizeOfNewWindowHeight' );
   const windowWidth:HTMLInputElement  = form.querySelector( '#inputSizeOfNewWindowWidth' );
 
-  windowFlag.checked = paramFlag;
+  if ( paramFlag == 'Y' ) {
+    windowFlag.checked = true;
+  } else {
+    windowFlag.checked = false;
+  }
   windowHeight.value = String( paramHeight );
   windowWidth.value  = String( paramWidth );
 }
@@ -106,17 +110,15 @@ function readoutTranslationService( translationService:string ):void {
   changeLanguageCodeList( translationService );
 }
 
-function selectLanguageCode( form:HTMLElement, languageCode:string ) {
-  try {
-    const input:HTMLInputElement = form.querySelector( 'input[value="'+languageCode+'"]' );
-    input.checked = true;
-  } catch ( e:unknown ) {
-    const input:HTMLInputElement = form.querySelector( 'input[value="auto"]' );
-    input.checked = true;
-    console.log( 'A value is set as auto.' );
+function selectLanguageCode( list:HTMLElement, languageCode:string ):void {
+  let input:HTMLInputElement = list.querySelector( 'input[value="'+languageCode+'"]' );
+  if ( input == null ) {
+    input = list.querySelector( 'input[value="auto"]' );
+    console.log( 'Quick translator: A value is set as auto.' );
     browser.storage.local.set( { languageCode: 'auto' } )
       .catch( ( id:exception ) => exceptionLog( id ) );
   }
+    input.checked = true;
 }
 
 function exceptionLog( id:exception ):void {
@@ -124,8 +126,8 @@ function exceptionLog( id:exception ):void {
 }
 
 /** main process */
-function processReadout() {
-  browser.storage.local.get( null )
+function processReadout():void {
+  browser.storage.local.get()
     .then( ( obj:settings ) => {
       readoutOpenMethodText( obj.openMethodText );
       readoutOpenMethodWebpage( obj.openMethodWebpage );
@@ -136,7 +138,7 @@ function processReadout() {
     .catch( ( id:exception ) => exceptionLog( id ) );
 }
 
-function processSupportMultilingual() {
+function processSupportMultilingual():void {
   document.getElementById( 'h2BehaviorWhen' ).textContent             = browser.i18n.getMessage( 'optionPageBehaviorWhen' );
   document.getElementById( 'h3CaseOfText' ).textContent               = browser.i18n.getMessage( 'optionPageCaseOfText' );
   document.getElementById( 'h3CaseOfWebpage' ).textContent            = browser.i18n.getMessage( 'optionPageCaseOfWebpage' );
@@ -158,8 +160,8 @@ function processSupportMultilingual() {
   document.getElementById( 'pAlphabetIn' ).textContent            = browser.i18n.getMessage( 'optionPageAlphabetIn' );
 }
 
-function processUpdate() {
-  document.getElementById( 'formOpenMethodText' ).addEventListener( 'input', ( event:Event ) => {
+function processUpdate():void {
+  document.getElementById( 'formOpenMethodText' )?.addEventListener( 'input', ( event:Event ) => {
     if ( event.target instanceof HTMLInputElement ) {
       const openMethod:string = event.target.value;
       browser.storage.local.set({ openMethodText: openMethod })
@@ -167,7 +169,7 @@ function processUpdate() {
     }
   }, false );
   
-  document.getElementById( 'formOpenMethodWebpage' ).addEventListener( 'input', ( event:Event ) => {
+  document.getElementById( 'formOpenMethodWebpage' )?.addEventListener( 'input', ( event:Event ) => {
     if ( event.target instanceof HTMLInputElement ) {
       const openMethod:string = event.target.value;
       browser.storage.local.set({ openMethodWebpage: openMethod })
@@ -175,15 +177,20 @@ function processUpdate() {
     }
   }, false );
 
-  document.getElementById( 'inputSpecifySizeFlag' ).addEventListener( 'input', ( event:Event ) => {
+  document.getElementById( 'inputSpecifySizeFlag' )?.addEventListener( 'input', ( event:Event ) => {
     if ( event.target instanceof HTMLInputElement ) {
-      const flag:boolean = event.target.checked;
+      let flag:string = '';
+      if ( event.target.checked == true ) {
+        flag = 'Y';
+      } else {
+        flag = 'N';
+      }
       browser.storage.local.set({ specifySizeFlag: flag })
         .catch( ( id:exception ) => exceptionLog( id ) );
     }
   });
 
-  document.getElementById( 'inputSizeOfNewWindowHeight' ).addEventListener( 'input', ( event:Event ) => {
+  document.getElementById( 'inputSizeOfNewWindowHeight' )?.addEventListener( 'input', ( event:Event ) => {
     if ( event.target instanceof HTMLInputElement ) {
       const height:number = Number( event.target.value );
       browser.storage.local.set({ sizeHeight: height })
@@ -191,7 +198,7 @@ function processUpdate() {
     }
   });
 
-  document.getElementById( 'inputSizeOfNewWindowWidth' ).addEventListener( 'input', ( event:Event ) => {
+  document.getElementById( 'inputSizeOfNewWindowWidth' )?.addEventListener( 'input', ( event:Event ) => {
     if ( event.target instanceof HTMLInputElement ) {
       const width:number = Number( event.target.value );
       browser.storage.local.set({ sizeWidth: width })
@@ -199,7 +206,7 @@ function processUpdate() {
     }
   });
   
-  document.getElementById( 'formTranslationService' ).addEventListener( 'input', ( event:Event ) => {
+  document.getElementById( 'formTranslationService' )?.addEventListener( 'input', ( event:Event ) => {
     if ( event.target instanceof HTMLInputElement ) {
       browser.storage.local.set( { translationService: event.target.value } )
         .catch( ( id:exception ) => exceptionLog( id ) );
@@ -207,7 +214,7 @@ function processUpdate() {
     }
   }, false );
   
-  document.getElementById( 'formLanguageCode' ).addEventListener( 'input', ( event:Event ) => {
+  document.getElementById( 'formLanguageCode' )?.addEventListener( 'input', ( event:Event ) => {
     if ( event.target instanceof HTMLInputElement ) {
       browser.storage.local.set( { languageCode: event.target.value } )
         .catch( ( id:exception ) => exceptionLog( id ) );

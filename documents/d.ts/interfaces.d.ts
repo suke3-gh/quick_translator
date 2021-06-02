@@ -3,16 +3,23 @@ interface exception {
   name    : string;
 }
 
+/*
 interface settings {
-  languageCode       : string;
+  languageCode :string;
   openMethod         : string;
   openMethodText     : string;
   openMethodWebpage  : string;
-  sizeHeight         : number;
-  sizeWidth          : number;
+  sizeHeight:number;
+  sizeWidth:number;
   specifySizeFlag    : boolean;
   targetString       : string;
   translationService : string;
   url                : string;
+}
+*/
+
+
+interface settings {
+  [key:string]:string;
 }
 

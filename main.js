@@ -51,8 +51,8 @@ function openTranslationResult(obj) {
             browser.tabs.create({ url: obj.url });
             break;
         case 'window':
-            if (obj.specifySizeFlag == true) {
-                browser.windows.create({ url: obj.url, height: obj.sizeHeight, width: obj.sizeWidth });
+            if (obj.specifySizeFlag == 'Y') {
+                browser.windows.create({ url: obj.url, height: Number(obj.sizeHeight), width: Number(obj.sizeWidth) });
             }
             else {
                 browser.windows.create({ url: obj.url });
@@ -109,13 +109,12 @@ function optimizeTranslationService(translationService) {
  *                     sizeHeight, sizeWidth, specifySize, targetString, translationService
  */
 function processTranslateText(targetText) {
-    browser.storage.local.get(null)
+    browser.storage.local.get()
         .then(function (obj) {
         obj.languageCode = optimiseLanguageCode(obj.languageCode);
         obj.openMethod = optimizeOpenMethod(obj.openMethodText);
         obj.targetString = optimizeTargetText(targetText);
         obj.translationService = optimizeTranslationService(obj.translationService);
-        delete obj.openMethodText;
         return obj;
     })
         .then(function (obj) { return buildUrlTranslateText(obj); })
@@ -124,13 +123,12 @@ function processTranslateText(targetText) {
     });
 }
 function processTranslateWebpage(targetUrl) {
-    browser.storage.local.get(null)
+    browser.storage.local.get()
         .then(function (obj) {
         obj.languageCode = optimiseLanguageCode(obj.languageCode);
         obj.openMethod = optimizeOpenMethod(obj.openMethodWebpage);
         obj.targetString = optimizeTargetUrl(targetUrl);
         obj.translationService = optimizeTranslationService(obj.translationService);
-        delete obj.openMethodWebpage;
         return obj;
     })
         .then(function (obj) { return buildUrlTranslateWebpage(obj); })

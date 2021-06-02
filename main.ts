@@ -56,8 +56,8 @@ function openTranslationResult( obj:settings ):void {
       browser.tabs.create({ url: obj.url });
       break;
     case 'window':
-      if ( obj.specifySizeFlag == true ) {
-        browser.windows.create({ url: obj.url, height: obj.sizeHeight, width: obj.sizeWidth });
+      if ( obj.specifySizeFlag == 'Y' ) {
+        browser.windows.create({ url: obj.url, height: Number( obj.sizeHeight ), width: Number( obj.sizeWidth ) });
       } else {
         browser.windows.create({ url: obj.url });
       }
@@ -119,13 +119,12 @@ function optimizeTranslationService( translationService:string ):string {
  *                     sizeHeight, sizeWidth, specifySize, targetString, translationService
  */
 function processTranslateText( targetText:string ) {
-  browser.storage.local.get( null )
+  browser.storage.local.get()
     .then( ( obj:settings ):settings => {
       obj.languageCode       = optimiseLanguageCode( obj.languageCode );
       obj.openMethod         = optimizeOpenMethod( obj.openMethodText );
       obj.targetString       = optimizeTargetText( targetText );
       obj.translationService = optimizeTranslationService( obj.translationService );
-      delete obj.openMethodText;
       return obj;
     })
     .then( ( obj:settings ):settings => { return buildUrlTranslateText( obj ); })
@@ -136,13 +135,12 @@ function processTranslateText( targetText:string ) {
 }
 
 function processTranslateWebpage( targetUrl:string ) {
-  browser.storage.local.get( null )
+  browser.storage.local.get()
     .then( ( obj:settings ):settings => {
       obj.languageCode       = optimiseLanguageCode( obj.languageCode );
       obj.openMethod         = optimizeOpenMethod( obj.openMethodWebpage );
       obj.targetString       = optimizeTargetUrl( targetUrl );
       obj.translationService = optimizeTranslationService( obj.translationService );
-      delete obj.openMethodWebpage;
       return obj;
     })
     .then( ( obj:settings ):settings => { return buildUrlTranslateWebpage( obj ); })

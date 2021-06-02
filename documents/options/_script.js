@@ -19,7 +19,7 @@ function changeLanguageCodeList(translationService) {
             languageCodeListMicrosoft.style.display = 'flex';
             /** fix for check of radio button. */
             browser.storage.local.get('languageCode')
-                .then(function (settings) { selectLanguageCode(languageCodeListGoogle, settings.languageCode); })["catch"](function (id) { return exceptionLog(id); });
+                .then(function (settings) { selectLanguageCode(languageCodeListMicrosoft, settings.languageCode); })["catch"](function (id) { return exceptionLog(id); });
             break;
     }
 }
@@ -74,7 +74,12 @@ function readoutSpecifySize(paramFlag, paramWidth, paramHeight) {
     var windowFlag = form.querySelector('#inputSpecifySizeFlag');
     var windowHeight = form.querySelector('#inputSizeOfNewWindowHeight');
     var windowWidth = form.querySelector('#inputSizeOfNewWindowWidth');
-    windowFlag.checked = paramFlag;
+    if (paramFlag == 'Y') {
+        windowFlag.checked = true;
+    }
+    else {
+        windowFlag.checked = false;
+    }
     windowHeight.value = String(paramHeight);
     windowWidth.value = String(paramWidth);
 }
@@ -95,24 +100,21 @@ function readoutTranslationService(translationService) {
     input.checked = true;
     changeLanguageCodeList(translationService);
 }
-function selectLanguageCode(form, languageCode) {
-    try {
-        var input = form.querySelector('input[value="' + languageCode + '"]');
-        input.checked = true;
-    }
-    catch (e) {
-        var input = form.querySelector('input[value="auto"]');
-        input.checked = true;
-        console.log('A value is set as auto.');
+function selectLanguageCode(list, languageCode) {
+    var input = list.querySelector('input[value="' + languageCode + '"]');
+    if (input == null) {
+        input = list.querySelector('input[value="auto"]');
+        console.log('Quick translator: A value is set as auto.');
         browser.storage.local.set({ languageCode: 'auto' })["catch"](function (id) { return exceptionLog(id); });
     }
+    input.checked = true;
 }
 function exceptionLog(id) {
     console.log(id.name + ': ' + id.message);
 }
 /** main process */
 function processReadout() {
-    browser.storage.local.get(null)
+    browser.storage.local.get()
         .then(function (obj) {
         readoutOpenMethodText(obj.openMethodText);
         readoutOpenMethodWebpage(obj.openMethodWebpage);
@@ -141,43 +143,50 @@ function processSupportMultilingual() {
     document.getElementById('pAlphabetIn').textContent = browser.i18n.getMessage('optionPageAlphabetIn');
 }
 function processUpdate() {
-    document.getElementById('formOpenMethodText').addEventListener('input', function (event) {
+    var _a, _b, _c, _d, _e, _f, _g;
+    (_a = document.getElementById('formOpenMethodText')) === null || _a === void 0 ? void 0 : _a.addEventListener('input', function (event) {
         if (event.target instanceof HTMLInputElement) {
             var openMethod = event.target.value;
             browser.storage.local.set({ openMethodText: openMethod })["catch"](function (id) { return exceptionLog(id); });
         }
     }, false);
-    document.getElementById('formOpenMethodWebpage').addEventListener('input', function (event) {
+    (_b = document.getElementById('formOpenMethodWebpage')) === null || _b === void 0 ? void 0 : _b.addEventListener('input', function (event) {
         if (event.target instanceof HTMLInputElement) {
             var openMethod = event.target.value;
             browser.storage.local.set({ openMethodWebpage: openMethod })["catch"](function (id) { return exceptionLog(id); });
         }
     }, false);
-    document.getElementById('inputSpecifySizeFlag').addEventListener('input', function (event) {
+    (_c = document.getElementById('inputSpecifySizeFlag')) === null || _c === void 0 ? void 0 : _c.addEventListener('input', function (event) {
         if (event.target instanceof HTMLInputElement) {
-            var flag = event.target.checked;
+            var flag = '';
+            if (event.target.checked == true) {
+                flag = 'Y';
+            }
+            else {
+                flag = 'N';
+            }
             browser.storage.local.set({ specifySizeFlag: flag })["catch"](function (id) { return exceptionLog(id); });
         }
     });
-    document.getElementById('inputSizeOfNewWindowHeight').addEventListener('input', function (event) {
+    (_d = document.getElementById('inputSizeOfNewWindowHeight')) === null || _d === void 0 ? void 0 : _d.addEventListener('input', function (event) {
         if (event.target instanceof HTMLInputElement) {
             var height = Number(event.target.value);
             browser.storage.local.set({ sizeHeight: height })["catch"](function (id) { return exceptionLog(id); });
         }
     });
-    document.getElementById('inputSizeOfNewWindowWidth').addEventListener('input', function (event) {
+    (_e = document.getElementById('inputSizeOfNewWindowWidth')) === null || _e === void 0 ? void 0 : _e.addEventListener('input', function (event) {
         if (event.target instanceof HTMLInputElement) {
             var width = Number(event.target.value);
             browser.storage.local.set({ sizeWidth: width })["catch"](function (id) { return exceptionLog(id); });
         }
     });
-    document.getElementById('formTranslationService').addEventListener('input', function (event) {
+    (_f = document.getElementById('formTranslationService')) === null || _f === void 0 ? void 0 : _f.addEventListener('input', function (event) {
         if (event.target instanceof HTMLInputElement) {
             browser.storage.local.set({ translationService: event.target.value })["catch"](function (id) { return exceptionLog(id); });
             changeLanguageCodeList(event.target.value);
         }
     }, false);
-    document.getElementById('formLanguageCode').addEventListener('input', function (event) {
+    (_g = document.getElementById('formLanguageCode')) === null || _g === void 0 ? void 0 : _g.addEventListener('input', function (event) {
         if (event.target instanceof HTMLInputElement) {
             browser.storage.local.set({ languageCode: event.target.value })["catch"](function (id) { return exceptionLog(id); });
         }
