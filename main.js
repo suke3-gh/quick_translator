@@ -49,6 +49,10 @@ function buildUrlTranslateWebpage( obj ) {
   }
   return obj;
 }
+
+function exceptionLog( id ) {
+  console.log( id.name + ': ' + id.message );
+}
   
 function openTranslationResult( obj ) {
   switch ( obj.openMethod ) {
@@ -112,6 +116,16 @@ function optimizeTranslationService( translationService ) {
   }
   return translationService;
 }
+
+function optimizeWindowSizeValue( size ) {
+  switch ( size ) {
+    case null:
+    case undefined:
+      size = 0;
+      break;
+  }
+  return size;
+}
   
 /**
  * functions         : processTranslate~
@@ -125,13 +139,13 @@ function processTranslateText( targetText ) {
       obj.openMethod         = optimizeOpenMethod( obj.openMethodText );
       obj.targetString       = optimizeTargetText( targetText );
       obj.translationService = optimizeTranslationService( obj.translationService );
+      obj.sizeHeight         = optimizeWindowSizeValue( obj.sizeHeight );
+      obj.sizeWidth          = optimizeWindowSizeValue( obj.sizeWidth );
       return obj;
     })
     .then( ( obj ) => { return buildUrlTranslateText( obj ); })
     .then( ( obj ) => { openTranslationResult( obj ); })
-    .catch( ( id ) => {
-      console.log( id.name + ': ' + id.message );
-  });
+    .catch( ( id ) => exceptionLog( id ) );
 }
   
 function processTranslateWebpage( targetUrl ) {
@@ -141,13 +155,13 @@ function processTranslateWebpage( targetUrl ) {
       obj.openMethod         = optimizeOpenMethod( obj.openMethodWebpage );
       obj.targetString       = optimizeTargetUrl( targetUrl );
       obj.translationService = optimizeTranslationService( obj.translationService );
+      obj.sizeHeight         = optimizeWindowSizeValue( obj.sizeHeight );
+      obj.sizeWidth          = optimizeWindowSizeValue( obj.sizeWidth );
       return obj;
     })
     .then( ( obj ) => { return buildUrlTranslateWebpage( obj ); })
     .then( ( obj ) => { openTranslationResult( obj ); })
-    .catch( ( id ) => {
-      console.log( id.name + ': ' + id.message );
-  });
+    .catch( ( id ) => exceptionLog( id ) );
 }
   
 /** setup */

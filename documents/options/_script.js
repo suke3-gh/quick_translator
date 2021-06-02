@@ -7,24 +7,25 @@
 function changeLanguageCodeList( translationService ) {
   const languageCodeListGoogle    = document.getElementById( 'languageCodeListGoogle' );
   const languageCodeListMicrosoft = document.getElementById( 'languageCodeListMicrosoft' );
+  let list = 'list';
   switch ( translationService ) {
     case 'Google':
       languageCodeListGoogle.style.display    = 'flex';
       languageCodeListMicrosoft.style.display = 'none';
-      /** fix for check of radio button. */
-      browser.storage.local.get( 'languageCode' )
-        .then( ( settings ) => { selectLanguageCode( languageCodeListGoogle, settings.languageCode ); })
-        .catch( ( id ) => exceptionLog( id ) );
+      list = languageCodeListGoogle;
     break;
     case 'Microsoft':
       languageCodeListGoogle.style.display    = 'none';
       languageCodeListMicrosoft.style.display = 'flex';
-      /** fix for check of radio button. */
-      browser.storage.local.get( 'languageCode' )
-        .then( ( settings ) => { selectLanguageCode( languageCodeListMicrosoft, settings.languageCode ); })
-        .catch( ( id ) => exceptionLog( id ) );
-      break;
+      list = languageCodeListMicrosoft;
   }
+  browser.storage.local.get( 'languageCode' )
+    .then( ( obj ) => { selectLanguageCode( list, obj.languageCode ); })
+    .catch( ( id ) => exceptionLog( id ) );
+}
+
+function exceptionLog( id ) {
+  console.log( id.name + ': ' + id.message );
 }
 
 /** functions: readout~ */
@@ -111,7 +112,7 @@ function readoutTranslationService( translationService ) {
 }
 
 function selectLanguageCode( list, languageCode ) {
-  let input = list.querySelector( 'input[value="'+languageCode+'"]' );
+  let input = list.querySelector( 'input[value="' + languageCode+ '"]' );
   if ( input == null ) {
     input = list.querySelector( 'input[value="auto"]' );
     console.log( 'Quick translator: A value is set as auto.' );
@@ -119,10 +120,6 @@ function selectLanguageCode( list, languageCode ) {
       .catch( ( id ) => exceptionLog( id ) );
   }
     input.checked = true;
-}
-
-function exceptionLog( id ) {
-  console.log( id.name + ': ' + id.message );
 }
 
 /** main process */

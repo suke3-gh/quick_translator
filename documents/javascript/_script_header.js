@@ -33,9 +33,9 @@ function getAspectRatio() {
 }
 
 function getFlagOpenNavMenu() {
-  let result  = null;
-  const elementNavMenu   = document.getElementById( 'navMenu' );
-  const styleNavMenu = window.getComputedStyle( elementNavMenu );
+  let result = 'result';
+  const elementNavMenu = document.getElementById( 'navMenu' );
+  const styleNavMenu   = window.getComputedStyle( elementNavMenu );
   if ( styleNavMenu.height == '0px' ) {
     result = 'N';
   } else {
@@ -45,7 +45,7 @@ function getFlagOpenNavMenu() {
 }
 
 function judgeScrollDirection( beforeY, currentY ) {
-  let result      = null;
+  let result      = 'result';
   let fluctuation = currentY - beforeY;
   if ( fluctuation > 0) {
     result = 'down';
