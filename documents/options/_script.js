@@ -47,7 +47,7 @@ function readoutLanguageCode( languageCode, translationService ) {
 
 function readoutOpenMethodText( openMethod ) {
   const form = document.getElementById( 'formOpenMethodText' );
-  let selector = '';
+  let selector = 'selector';
   switch ( openMethod ) {
     case null:
     case undefined:
@@ -63,7 +63,7 @@ function readoutOpenMethodText( openMethod ) {
 
 function readoutOpenMethodWebpage( openMethod ) {
   const form = document.getElementById( 'formOpenMethodWebpage' );
-  let selector = '';
+  let selector = 'selector';
   switch ( openMethod ) {
     case null:
     case undefined:
@@ -176,7 +176,7 @@ function processUpdate() {
 
   document.getElementById( 'inputSpecifySizeFlag' )?.addEventListener( 'input', ( event ) => {
     if ( event.target instanceof HTMLInputElement ) {
-      let flag = '';
+      let flag = 'flag';
       if ( event.target.checked == true ) {
         flag = 'Y';
       } else {
