@@ -123,6 +123,16 @@ function selectLanguageCode( list, languageCode ) {
 }
 
 /** main process */
+function processInputNotification() {
+  document.addEventListener( 'input', async() => {
+    const element = document.getElementById( 'divInputNotificationArea' );
+    element.style.display = 'block';
+    await new Promise( resolve => setTimeout( resolve, 4000 ) )
+      .catch( ( identifier ) => exceptionLog( identifier ) );
+    element.style.display = 'none';
+  });
+}
+
 function processReadout() {
   browser.storage.local.get()
     .then( ( obj ) => {
@@ -219,6 +229,7 @@ function processUpdate() {
   }, false );
 }
 
+processInputNotification();
 processReadout();
 processSupportMultilingual();
 processUpdate();

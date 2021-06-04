@@ -262,6 +262,17 @@ nav.menu > p {
 /**
  * option page
  */
+
+div.inputNotificationArea {
+  background: rgb(239, 239, 239);
+  bottom: 1.0rem;
+  color: rgb(63, 63, 63);
+  padding: 1.0rem;
+  position: fixed;
+  right: 1.0rem;
+  display: none;
+}
+
  header > section.primary > .addon-title {
   color:       rgb(63, 63, 63);
   font-size:   1.6rem;
