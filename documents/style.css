@@ -262,15 +262,19 @@ nav.menu > p {
 /**
  * option page
  */
-
 div.inputNotificationArea {
   background: rgb(239, 239, 239);
-  bottom: 1.0rem;
-  color: rgb(63, 63, 63);
-  padding: 1.0rem;
-  position: fixed;
-  right: 1.0rem;
-  display: none;
+  bottom:     1.0rem;
+  box-shadow: 0 0 2px rgb(63, 63, 63);
+  color:      rgb(63, 63, 63);
+  display:    none;
+  padding:    1.0rem;
+  position:   fixed;
+  right:      1.0rem;
+}
+
+div.inputNotificationArea > span {
+  display: inline-block;
 }
 
  header > section.primary > .addon-title {

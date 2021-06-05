@@ -21,7 +21,7 @@ function changeLanguageCodeList( translationService ) {
   }
   browser.storage.local.get( 'languageCode' )
     .then( ( obj ) => { selectLanguageCode( list, obj.languageCode ); })
-    .catch( ( id ) => exceptionLog( id ) );
+    .catch( ( identifier ) => exceptionLog( identifier ) );
 }
 
 function exceptionLog( id ) {
@@ -117,19 +117,23 @@ function selectLanguageCode( list, languageCode ) {
     input = list.querySelector( 'input[value="auto"]' );
     console.log( 'Quick translator: A value is set as auto.' );
     browser.storage.local.set( { languageCode: 'auto' } )
-      .catch( ( id ) => exceptionLog( id ) );
+      .catch( ( identifier ) => exceptionLog( identifier ) );
   }
     input.checked = true;
 }
 
 /** main process */
 function processInputNotification() {
+  let flag = 'Y';
   document.addEventListener( 'input', async() => {
-    const element = document.getElementById( 'divInputNotificationArea' );
-    element.style.display = 'block';
-    await new Promise( resolve => setTimeout( resolve, 4000 ) )
+    if ( flag == 'Y' ) {
+      const element = document.getElementById( 'divInputNotificationArea' );
+      element.style.display = 'block';
+      await new Promise( resolve => setTimeout( resolve, 5000 ) )
       .catch( ( identifier ) => exceptionLog( identifier ) );
-    element.style.display = 'none';
+      element.style.display = 'none';
+      flag = 'N';
+    }
   });
 }
 
@@ -142,7 +146,7 @@ function processReadout() {
       readoutTranslationService( obj.translationService );
       readoutLanguageCode( obj.languageCode, obj.translationService );
     })
-    .catch( ( id ) => exceptionLog( id ) );
+    .catch( ( identifier ) => exceptionLog( identifier ) );
 }
 
 function processSupportMultilingual() {
@@ -172,7 +176,7 @@ function processUpdate() {
     if ( event.target instanceof HTMLInputElement ) {
       const openMethod = event.target.value;
       browser.storage.local.set({ openMethodText: openMethod })
-        .catch( ( id ) => exceptionLog( id ) );
+        .catch( ( identifier ) => exceptionLog( identifier ) );
     }
   }, false );
   
@@ -180,7 +184,7 @@ function processUpdate() {
     if ( event.target instanceof HTMLInputElement ) {
       const openMethod = event.target.value;
       browser.storage.local.set({ openMethodWebpage: openMethod })
-        .catch( ( id ) => exceptionLog( id ) );
+        .catch( ( identifier ) => exceptionLog( identifier ) );
     }
   }, false );
 
@@ -193,7 +197,7 @@ function processUpdate() {
         flag = 'N';
       }
       browser.storage.local.set({ specifySizeFlag: flag })
-        .catch( ( id ) => exceptionLog( id ) );
+        .catch( ( identifier ) => exceptionLog( identifier ) );
     }
   });
 
@@ -201,7 +205,7 @@ function processUpdate() {
     if ( event.target instanceof HTMLInputElement ) {
       const height = Number( event.target.value );
       browser.storage.local.set({ sizeHeight: height })
-        .catch( ( id ) => exceptionLog( id ) );
+        .catch( ( identifier ) => exceptionLog( identifier ) );
     }
   });
 
@@ -209,22 +213,22 @@ function processUpdate() {
     if ( event.target instanceof HTMLInputElement ) {
       const width = Number( event.target.value );
       browser.storage.local.set({ sizeWidth: width })
-        .catch( ( id ) => exceptionLog( id ) );
+        .catch( ( identifier ) => exceptionLog( identifier ) );
     }
   });
   
   document.getElementById( 'formTranslationService' )?.addEventListener( 'input', ( event ) => {
     if ( event.target instanceof HTMLInputElement ) {
       browser.storage.local.set( { translationService: event.target.value } )
-        .catch( ( id ) => exceptionLog( id ) );
-        changeLanguageCodeList( event.target.value );
+        .catch( ( identifier ) => exceptionLog( identifier ) );
+      changeLanguageCodeList( event.target.value );
     }
   }, false );
   
   document.getElementById( 'formLanguageCode' )?.addEventListener( 'input', ( event ) => {
     if ( event.target instanceof HTMLInputElement ) {
       browser.storage.local.set( { languageCode: event.target.value } )
-        .catch( ( id ) => exceptionLog( id ) );
+        .catch( ( identifier ) => exceptionLog( identifier ) );
     }
   }, false );
 }
