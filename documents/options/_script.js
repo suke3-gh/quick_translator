@@ -128,7 +128,7 @@ function processInputNotification() {
   document.addEventListener( 'input', async() => {
     if ( flag == 'Y' ) {
       const element = document.getElementById( 'divInputNotificationArea' );
-      element.style.display = 'block';
+      element.style.display = 'flex';
       await new Promise( resolve => setTimeout( resolve, 5000 ) )
       .catch( ( identifier ) => exceptionLog( identifier ) );
       element.style.display = 'none';
