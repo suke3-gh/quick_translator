@@ -89,7 +89,7 @@ async function scrollHideHeader() {
 }
 
 /** process for event */
-function processClickEvent() {
+function processClickEvent() { /** open a menu. */
   document.getElementById( 'divOperationButtonLeft' ).addEventListener( 'click', () => {
     const aspectRatio = getAspectRatio();
     const flag        = getFlagOpenNavMenu();
