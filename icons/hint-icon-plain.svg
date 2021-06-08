@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 67.73333 67.73333"
+   height="256"
+   width="256"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs2">
+    <linearGradient
+       id="linearGradient881">
+      <stop
+         id="stop879"
+         offset="0"
+         style="stop-color:#e6e6e6;stop-opacity:1;" />
+    </linearGradient>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       id="filter917">
+      <feFlood
+         flood-opacity="0"
+         flood-color="rgb(102,102,102)"
+         result="flood"
+         id="feFlood897" />
+      <feColorMatrix
+         in="SourceGraphic"
+         values="0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 "
+         result="colormatrix1"
+         id="feColorMatrix899" />
+      <feOffset
+         dy="-6"
+         dx="-6"
+         result="offset1"
+         id="feOffset901" />
+      <feBlend
+         in2="flood"
+         mode="screen"
+         result="blend1"
+         id="feBlend903" />
+      <feColorMatrix
+         in="SourceGraphic"
+         values="0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 "
+         result="colormatrix2"
+         id="feColorMatrix905" />
+      <feOffset
+         dy="6"
+         dx="7"
+         result="offset2"
+         id="feOffset907" />
+      <feBlend
+         in2="blend1"
+         mode="screen"
+         result="blend2"
+         id="feBlend909" />
+      <feOffset
+         dy="1"
+         dx="-16"
+         result="offset3"
+         id="feOffset911" />
+      <feColorMatrix
+         in="SourceGraphic"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 "
+         result="colormatrix3"
+         id="feColorMatrix913" />
+      <feBlend
+         in2="offset3"
+         mode="screen"
+         result="fbSourceGraphic"
+         id="feBlend915" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix919" />
+      <feFlood
+         id="feFlood921"
+         flood-opacity="0"
+         flood-color="rgb(102,102,102)"
+         result="flood"
+         in="fbSourceGraphic" />
+      <feColorMatrix
+         id="feColorMatrix923"
+         in="fbSourceGraphic"
+         values="0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 "
+         result="colormatrix1" />
+      <feOffset
+         id="feOffset925"
+         dy="-6"
+         dx="-6"
+         result="offset1" />
+      <feBlend
+         in2="flood"
+         id="feBlend927"
+         mode="screen"
+         result="blend1" />
+      <feColorMatrix
+         id="feColorMatrix929"
+         in="fbSourceGraphic"
+         values="0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 "
+         result="colormatrix2" />
+      <feOffset
+         id="feOffset931"
+         dy="6"
+         dx="7"
+         result="offset2" />
+      <feBlend
+         in2="blend1"
+         id="feBlend933"
+         mode="screen"
+         result="blend2" />
+      <feOffset
+         id="feOffset935"
+         dy="1"
+         dx="-16"
+         result="offset3" />
+      <feColorMatrix
+         id="feColorMatrix937"
+         in="fbSourceGraphic"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 "
+         result="colormatrix3" />
+      <feBlend
+         in2="offset3"
+         id="feBlend939"
+         mode="screen"
+         result="blend3" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       id="filter967">
+      <feFlood
+         flood-opacity="0"
+         flood-color="rgb(102,102,102)"
+         result="flood"
+         id="feFlood947" />
+      <feColorMatrix
+         in="SourceGraphic"
+         values="0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 "
+         result="colormatrix1"
+         id="feColorMatrix949" />
+      <feOffset
+         dy="-6"
+         dx="-6"
+         result="offset1"
+         id="feOffset951" />
+      <feBlend
+         in2="flood"
+         mode="screen"
+         result="blend1"
+         id="feBlend953" />
+      <feColorMatrix
+         in="SourceGraphic"
+         values="0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 "
+         result="colormatrix2"
+         id="feColorMatrix955" />
+      <feOffset
+         dy="6"
+         dx="7"
+         result="offset2"
+         id="feOffset957" />
+      <feBlend
+         in2="blend1"
+         mode="screen"
+         result="blend2"
+         id="feBlend959" />
+      <feOffset
+         dy="1"
+         dx="-16"
+         result="offset3"
+         id="feOffset961" />
+      <feColorMatrix
+         in="SourceGraphic"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 "
+         result="colormatrix3"
+         id="feColorMatrix963" />
+      <feBlend
+         in2="offset3"
+         mode="screen"
+         result="blend3"
+         id="feBlend965" />
+    </filter>
+  </defs>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/4.0/" />
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Keisukes4n</dc:title>
+          </cc:Agent>
+        </dc:creator>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer2">
+    <path
+       style="fill:none;fill-opacity:1;stroke:#3f3f3f;stroke-width:4.23333;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path2620"
+       d="M 26.45817,48.814921 A 14.816952,14.816646 0 0 1 19.554569,32.1485 14.816952,14.816646 0 0 1 33.866646,21.166684 14.816952,14.816646 0 0 1 48.178722,32.1485 14.816952,14.816646 0 0 1 41.275121,48.814922" />
+  </g>
+  <g
+     id="layer3">
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#3f3f3f;stroke-width:4.23333;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1810"
+       width="13.229166"
+       height="13.229166"
+       x="27.252081"
+       y="49.741665" />
+  </g>
+  <g
+     id="layer4">
+    <rect
+       style="fill:#3f3f3f;stroke-width:3.175;stroke-linecap:round;stroke-linejoin:round"
+       id="rect1848"
+       width="4.2333331"
+       height="7.4083328"
+       x="31.749998"
+       y="8.4666662"
+       ry="1.5875" />
+    <rect
+       style="fill:#3f3f3f;stroke-width:3.17638;stroke-linecap:round;stroke-linejoin:round"
+       id="rect2972"
+       width="4.2333331"
+       height="7.4083328"
+       x="7.4338174"
+       y="19.814861"
+       ry="1.5875"
+       transform="matrix(0.86621331,-0.49967439,0.50032569,0.86583728,0,0)" />
+    <rect
+       style="fill:#3f3f3f;stroke-width:3.21136;stroke-linecap:round;stroke-linejoin:round"
+       id="rect3076"
+       width="4.2333331"
+       height="7.4083328"
+       x="46.784679"
+       y="-13.544757"
+       ry="1.5875"
+       transform="matrix(0.87084625,0.4915555,-0.5084923,0.86106654,0,0)" />
+  </g>
+</svg>

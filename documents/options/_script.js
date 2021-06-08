@@ -7,24 +7,25 @@
 function changeLanguageCodeList( translationService ) {
   const languageCodeListGoogle    = document.getElementById( 'languageCodeListGoogle' );
   const languageCodeListMicrosoft = document.getElementById( 'languageCodeListMicrosoft' );
+  let list = 'list';
   switch ( translationService ) {
     case 'Google':
       languageCodeListGoogle.style.display    = 'flex';
       languageCodeListMicrosoft.style.display = 'none';
-      /** fix for check of radio button. */
-      browser.storage.local.get( 'languageCode' )
-        .then( ( settings ) => { selectLanguageCode( languageCodeListGoogle, settings.languageCode ); })
-        .catch( ( id ) => exceptionLog( id ) );
+      list = languageCodeListGoogle;
     break;
     case 'Microsoft':
       languageCodeListGoogle.style.display    = 'none';
       languageCodeListMicrosoft.style.display = 'flex';
-      /** fix for check of radio button. */
-      browser.storage.local.get( 'languageCode' )
-        .then( ( settings ) => { selectLanguageCode( languageCodeListMicrosoft, settings.languageCode ); })
-        .catch( ( id ) => exceptionLog( id ) );
-      break;
+      list = languageCodeListMicrosoft;
   }
+  browser.storage.local.get( 'languageCode' )
+    .then( ( obj ) => { selectLanguageCode( list, obj.languageCode ); })
+    .catch( ( identifier ) => exceptionLog( identifier ) );
+}
+
+function exceptionLog( id ) {
+  console.log( id.name + ': ' + id.message );
 }
 
 /** functions: readout~ */
@@ -46,7 +47,7 @@ function readoutLanguageCode( languageCode, translationService ) {
 
 function readoutOpenMethodText( openMethod ) {
   const form = document.getElementById( 'formOpenMethodText' );
-  let selector = '';
+  let selector = 'selector';
   switch ( openMethod ) {
     case null:
     case undefined:
@@ -62,7 +63,7 @@ function readoutOpenMethodText( openMethod ) {
 
 function readoutOpenMethodWebpage( openMethod ) {
   const form = document.getElementById( 'formOpenMethodWebpage' );
-  let selector = '';
+  let selector = 'selector';
   switch ( openMethod ) {
     case null:
     case undefined:
@@ -111,21 +112,31 @@ function readoutTranslationService( translationService ) {
 }
 
 function selectLanguageCode( list, languageCode ) {
-  let input = list.querySelector( 'input[value="'+languageCode+'"]' );
+  let input = list.querySelector( 'input[value="' + languageCode+ '"]' );
   if ( input == null ) {
     input = list.querySelector( 'input[value="auto"]' );
     console.log( 'Quick translator: A value is set as auto.' );
     browser.storage.local.set( { languageCode: 'auto' } )
-      .catch( ( id ) => exceptionLog( id ) );
+      .catch( ( identifier ) => exceptionLog( identifier ) );
   }
     input.checked = true;
 }
 
-function exceptionLog( id ) {
-  console.log( id.name + ': ' + id.message );
+/** main process */
+function processInputNotification() {
+  let flag = 'Y';
+  document.addEventListener( 'input', async() => {
+    if ( flag == 'Y' ) {
+      const element = document.getElementById( 'divInputNotificationArea' );
+      element.style.display = 'flex';
+      await new Promise( resolve => setTimeout( resolve, 5000 ) )
+      .catch( ( identifier ) => exceptionLog( identifier ) );
+      element.style.display = 'none';
+      flag = 'N';
+    }
+  });
 }
 
-/** main process */
 function processReadout() {
   browser.storage.local.get()
     .then( ( obj ) => {
@@ -135,7 +146,7 @@ function processReadout() {
       readoutTranslationService( obj.translationService );
       readoutLanguageCode( obj.languageCode, obj.translationService );
     })
-    .catch( ( id ) => exceptionLog( id ) );
+    .catch( ( identifier ) => exceptionLog( identifier ) );
 }
 
 function processSupportMultilingual() {
@@ -157,7 +168,7 @@ function processSupportMultilingual() {
   document.getElementById( 'h2TranslatedLanguage' ).textContent   = browser.i18n.getMessage( 'optionPageTranslatedLanguage' );
   document.getElementById( 'h3SpecifyLanguageCode' ).textContent  = browser.i18n.getMessage( 'optionPageSpecifyLanguageCode' );
   document.getElementById( 'pIfSetToEn' ).textContent             = browser.i18n.getMessage( 'optionPageIfSetEn' );
-  document.getElementById( 'pAlphabetIn' ).textContent            = browser.i18n.getMessage( 'optionPageAlphabetIn' );
+  document.getElementById( 'pAlphabetIn' ).textContent            = browser.i18n.getMessage( 'optionPageAlphabetIn' ); 
 }
 
 function processUpdate() {
@@ -165,7 +176,7 @@ function processUpdate() {
     if ( event.target instanceof HTMLInputElement ) {
       const openMethod = event.target.value;
       browser.storage.local.set({ openMethodText: openMethod })
-        .catch( ( id ) => exceptionLog( id ) );
+        .catch( ( identifier ) => exceptionLog( identifier ) );
     }
   }, false );
   
@@ -173,20 +184,20 @@ function processUpdate() {
     if ( event.target instanceof HTMLInputElement ) {
       const openMethod = event.target.value;
       browser.storage.local.set({ openMethodWebpage: openMethod })
-        .catch( ( id ) => exceptionLog( id ) );
+        .catch( ( identifier ) => exceptionLog( identifier ) );
     }
   }, false );
 
   document.getElementById( 'inputSpecifySizeFlag' )?.addEventListener( 'input', ( event ) => {
     if ( event.target instanceof HTMLInputElement ) {
-      let flag = '';
+      let flag = 'flag';
       if ( event.target.checked == true ) {
         flag = 'Y';
       } else {
         flag = 'N';
       }
       browser.storage.local.set({ specifySizeFlag: flag })
-        .catch( ( id ) => exceptionLog( id ) );
+        .catch( ( identifier ) => exceptionLog( identifier ) );
     }
   });
 
@@ -194,7 +205,7 @@ function processUpdate() {
     if ( event.target instanceof HTMLInputElement ) {
       const height = Number( event.target.value );
       browser.storage.local.set({ sizeHeight: height })
-        .catch( ( id ) => exceptionLog( id ) );
+        .catch( ( identifier ) => exceptionLog( identifier ) );
     }
   });
 
@@ -202,26 +213,27 @@ function processUpdate() {
     if ( event.target instanceof HTMLInputElement ) {
       const width = Number( event.target.value );
       browser.storage.local.set({ sizeWidth: width })
-        .catch( ( id ) => exceptionLog( id ) );
+        .catch( ( identifier ) => exceptionLog( identifier ) );
     }
   });
   
   document.getElementById( 'formTranslationService' )?.addEventListener( 'input', ( event ) => {
     if ( event.target instanceof HTMLInputElement ) {
       browser.storage.local.set( { translationService: event.target.value } )
-        .catch( ( id ) => exceptionLog( id ) );
-        changeLanguageCodeList( event.target.value );
+        .catch( ( identifier ) => exceptionLog( identifier ) );
+      changeLanguageCodeList( event.target.value );
     }
   }, false );
   
   document.getElementById( 'formLanguageCode' )?.addEventListener( 'input', ( event ) => {
     if ( event.target instanceof HTMLInputElement ) {
       browser.storage.local.set( { languageCode: event.target.value } )
-        .catch( ( id ) => exceptionLog( id ) );
+        .catch( ( identifier ) => exceptionLog( identifier ) );
     }
   }, false );
 }
 
+processInputNotification();
 processReadout();
 processSupportMultilingual();
 processUpdate();

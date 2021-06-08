@@ -84,11 +84,17 @@ header > section.primary {
   width:           100%;
 }
 
-header > section.primary > .website-title {
+header > section.primary > .addon-title {
   color:       rgb(63, 63, 63);
   font-size:   1.6rem;
   font-weight: bold;
   margin:      auto;
+}
+
+@media screen and ( min-aspect-ratio: 4/3 ) {
+  header > section.primary > .addon-title {
+    padding: 1.0rem 0 1.0rem 0;
+  }
 }
 
 header > section.primary > .operation-button-left {
@@ -262,11 +268,25 @@ nav.menu > p {
 /**
  * option page
  */
- header > section.primary > .addon-title {
+div.inputNotificationArea {
+  background:  rgb(239, 239, 239);
+  bottom:      1.0rem;
+  box-shadow:  0 0 2px rgb(63, 63, 63);
   color:       rgb(63, 63, 63);
-  font-size:   1.6rem;
-  font-weight: bold;
-  margin:      auto;
+  display:     none;
+  align-items: center;
+  padding:     0.5rem;
+  position:    fixed;
+  right:       1.0rem;
+}
+
+div.inputNotificationArea > img {
+  height: 1.5rem;
+  width:  1.5rem;
+}
+
+div.inputNotificationArea > span {
+  font-size: large;
 }
 
 main > section.tile {

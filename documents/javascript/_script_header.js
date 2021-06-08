@@ -4,39 +4,42 @@
  */
 
 /** functions */
-function clickCloseMenu( elementImgMenuIcon, elementNavMenuArea ) {
-  elementImgMenuIcon.src          = elementImgMenuIcon.src.replace( 'menu-up', 'menu' );
-  elementNavMenuArea.style.height = '0px';
+function clickCloseMenu( imgMenuIcon, navMenuArea ) {
+  imgMenuIcon.src          = imgMenuIcon.src.replace( 'menu-up', 'menu' );
+  navMenuArea.style.height = '0px';
 }
 
-function clickOpenMenu( elementImgMenuIcon, elementNavMenuArea ) {
-  elementImgMenuIcon.src          = elementImgMenuIcon.src.replace( 'menu', 'menu-up' );
-  elementNavMenuArea.style.height = '70vh';
+function clickOpenMenu( imgMenuIcon, navMenuArea ) {
+  imgMenuIcon.src          = imgMenuIcon.src.replace( 'menu', 'menu-up' );
+  navMenuArea.style.height = '70vh';
 }
 
 function clickMenuBehavior( flag ) {
-  const elementImgMenuIcon = document.getElementById( 'imgMenuIcon' );
-  const elementNavMenuArea = document.getElementById( 'navMenu' );
+  const imgMenuIcon = document.getElementById( 'imgMenuIcon' );
+  const navMenuArea = document.getElementById( 'navMenu' );
   switch ( flag ) {
     case 'N':
-      clickOpenMenu( elementImgMenuIcon, elementNavMenuArea );
+      clickOpenMenu( imgMenuIcon, navMenuArea );
       break;
     case 'Y':
-      clickCloseMenu( elementImgMenuIcon, elementNavMenuArea );
+      clickCloseMenu( imgMenuIcon, navMenuArea );
       break;
   }
 }
 
+function exceptionLog( id ) {
+  console.log( id.name + ': ' + id.message );
+}
+
 function getAspectRatio() {
-  const result = Number( window.innerWidth / window.innerHeight );
-  return result;
+  return Number( window.innerWidth / window.innerHeight );
 }
 
 function getFlagOpenNavMenu() {
-  let result  = null;
-  const elementNavMenu   = document.getElementById( 'navMenu' );
-  const styleNavMenu = window.getComputedStyle( elementNavMenu );
-  if ( styleNavMenu.height == '0px' ) {
+  let result = 'result';
+  const element = document.getElementById( 'navMenu' );
+  const style   = window.getComputedStyle( element );
+  if ( style.height == '0px' ) {
     result = 'N';
   } else {
     result = 'Y';
@@ -45,7 +48,7 @@ function getFlagOpenNavMenu() {
 }
 
 function judgeScrollDirection( beforeY, currentY ) {
-  let result      = null;
+  let result      = 'result';
   let fluctuation = currentY - beforeY;
   if ( fluctuation > 0) {
     result = 'down';
@@ -57,78 +60,87 @@ function judgeScrollDirection( beforeY, currentY ) {
   return result;
 }
 
-function resetViewToLandscape( elementHeader, elementImgMenuIcon, elementNavMenuArea ) {
-  elementHeader.style.height      = '100vh';  
-  elementHeader.style.overflowY   = 'scroll';
-  elementImgMenuIcon.src          = elementImgMenuIcon.src.replace( 'menu-up', 'menu' );
-  elementNavMenuArea.style.height = '100vh';
+function resetViewToLandscape( header, imgMenuIcon, navMenuArea ) {
+  header.style.height      = '100vh';  
+  header.style.overflowY   = 'scroll';
+  imgMenuIcon.src          = imgMenuIcon.src.replace( 'menu-up', 'menu' );
+  navMenuArea.style.height = '100vh';
 }
 
-function resetViewToPortrait( elementHeader, elementImgMenuIcon, elementNavMenuArea ) {
-  elementHeader.style.height      = '4.0rem';
-  elementHeader.style.overflowY   = 'visible';
-  elementImgMenuIcon.src          = elementImgMenuIcon.src.replace( 'menu-up', 'menu' );
-  elementNavMenuArea.style.height = '0px';
+function resetViewToPortrait( header, imgMenuIcon, navMenuArea ) {
+  header.style.height      = '4.0rem';
+  header.style.overflowY   = 'visible';
+  imgMenuIcon.src          = imgMenuIcon.src.replace( 'menu-up', 'menu' );
+  navMenuArea.style.height = '0px';
 }
 
-function scrollShowHeader() {
+async function scrollShowHeader() {
   const element = document.getElementById( 'header' );
   element.style.height = '4.0rem';
-  window.setTimeout( () => {
-    element.style.overflowY = 'visible';
-  }, 200)
+  await new Promise( resolve => setTimeout( resolve, 200 ) )
+    .catch( ( identifier ) => exceptionLog( identifier ) );
+  element.style.overflowY = 'visible';
 }
     
-function scrollHideHeader() {
+async function scrollHideHeader() {
   const element = document.getElementById( 'header' );
   element.style.height    = '0';
   element.style.overflowY = 'hidden';
 }
 
-/** open and close a menu */
-document.getElementById( 'divOperationButtonLeft' ).addEventListener( 'click', () => {
-  const aspectRatio = getAspectRatio();
-  const flag        = getFlagOpenNavMenu();
-  if ( aspectRatio < 4/3 ) {
-    clickMenuBehavior( flag );
-  }
-}, false );
-
-window.addEventListener( 'scroll', () => {
-  const aspectRatio = getAspectRatio();
-  if ( aspectRatio < 4/3 ) {
-    const elementImgMenuIcon = document.getElementById( 'imgMenuIcon' );
-    const elementNavMenuArea = document.getElementById( 'navMenu' );
-    clickCloseMenu( elementImgMenuIcon, elementNavMenuArea );
-  }
-}, false );
-
-/** show and hide the header */
-const scrollInfo = { beforeY: 0, currentY: window.scrollY, directionY: null };
-window.addEventListener( 'scroll', () => {
-  const aspectRatio = getAspectRatio();
-  if ( aspectRatio < 4/3 ) {
-    scrollInfo.currentY   = window.scrollY;    
-    scrollInfo.directionY = judgeScrollDirection( scrollInfo.beforeY, scrollInfo.currentY );
-    scrollInfo.beforeY    = scrollInfo.currentY;
-
-    if ( scrollInfo.currentY == 0 ) {
-      scrollShowHeader();
+/** process for event */
+function processClickEvent() { /** open a menu. */
+  document.getElementById( 'divOperationButtonLeft' ).addEventListener( 'click', () => {
+    const aspectRatio = getAspectRatio();
+    const flag        = getFlagOpenNavMenu();
+    if ( aspectRatio < 4/3 ) {
+      clickMenuBehavior( flag );
     }
-  }
-}, false );
+  }, false );
+}
 
-window.addEventListener( 'resize', () => {
-  const aspectRatio        = getAspectRatio();
-  const elementHeader      = document.getElementById( 'header' );
-  const elementImgMenuIcon = document.getElementById( 'imgMenuIcon' );
-  const elementNavMenuArea = document.getElementById( 'navMenu' );
-  if ( aspectRatio < 4/3 ) {
-    resetViewToPortrait( elementHeader, elementImgMenuIcon, elementNavMenuArea );
-  } else {
-    resetViewToLandscape( elementHeader, elementImgMenuIcon, elementNavMenuArea );
-  }
-}, false );
+function processResizeEvents() { /** reset layout depend on aspect ratio. */
+  window.addEventListener( 'resize', () => {
+    const aspectRatio = getAspectRatio();
+    const header      = document.getElementById( 'header' );
+    const imgMenuIcon = document.getElementById( 'imgMenuIcon' );
+    const navMenuArea = document.getElementById( 'navMenu' );
+    if ( aspectRatio < 4/3 ) {
+      resetViewToPortrait( header, imgMenuIcon, navMenuArea );
+    } else {
+      resetViewToLandscape( header, imgMenuIcon, navMenuArea );
+    }
+  }, false );
+}
+
+function processScrollEvents() { /** show and hide the header. */
+  window.addEventListener( 'scroll', () => {
+    const aspectRatio = getAspectRatio();
+    if ( aspectRatio < 4/3 ) {
+      const imgMenuIcon = document.getElementById( 'imgMenuIcon' );
+      const navMenuArea = document.getElementById( 'navMenu' );
+      clickCloseMenu( imgMenuIcon, navMenuArea );
+    }
+  }, false );
+  
+  const obj = { beforeY: 0, currentY: window.scrollY };
+  window.addEventListener( 'scroll', () => {
+    const aspectRatio = getAspectRatio();
+    if ( aspectRatio < 4/3 ) {
+      obj.currentY = window.scrollY;    
+      judgeScrollDirection( obj.beforeY, obj.currentY );
+      obj.beforeY  = obj.currentY;
+  
+      if ( obj.currentY == 0 ) {
+        scrollShowHeader();
+      }
+    }
+  }, false );
+}
+
+processClickEvent();
+processResizeEvents();
+processScrollEvents();
 
 /**
  * Addon title text
