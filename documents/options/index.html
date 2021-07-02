@@ -61,7 +61,7 @@
       <section class="tile">
         <h2 id="h2BehaviorWhen">Behavior when translating</h2>
         <h3 id="h3CaseOfText">Case of text</h3>
-        <form class="two-choices" id="formOpenMethodText">
+        <form class="two-line-grid" id="formOpenMethodText">
           <label>
             <input name="partsTranslateText" type="radio" value="tab">
             <span id="spanTextOpenByNewTab">Open by new tab</span>
@@ -72,24 +72,27 @@
           </label>
         </form>
         <h3 id="h3CaseOfWebpage">Case of Webpage"</h3>
-          <form class="two-choices" id="formOpenMethodWebpage">
-            <label class="tile">
-              <input name="partsTranslateWebpage" type="radio" value="tab">
-              <span id="spanWebpageOpenByNewTab">Open by new tab</span>
-            </label>
-            <label class="tile">
-              <input name="partsTranslateWebpage" type="radio" value="window">
-              <span id="spanWebpageOpenByNewWindow">Open by new window</span>
-            </label>
-          </form>
+        <form class="two-line-grid" id="formOpenMethodWebpage">
+          <label class="tile">
+            <input name="partsTranslateWebpage" type="radio" value="tab">
+            <span id="spanWebpageOpenByNewTab">Open by new tab</span>
+          </label>
+          <label class="tile">
+            <input name="partsTranslateWebpage" type="radio" value="window">
+            <span id="spanWebpageOpenByNewWindow">Open by new window</span>
+          </label>
+        </form>
         <h3 id="h3SizeOfNewWindow">Size of new window</h3>
-          <form class="specifySize" id="formOpenMethodSpecifySize">
+          <form class="two-line-grid" id="formOpenMethodSpecifySize">
             <label class="checkbox">
               <input id="inputSpecifySizeFlag" name="partsSpecifySizeFlag" type="checkbox" >
               <span id="spanSpecifySizeOfWindow">Specify the size of window(optional)</span>
             </label>
+            <span></span>
             <div class="inputSize" >
-              Width: <input id="inputSizeOfNewWindowWidth" min="0" pattern="^[0-9]+$" placeholder="px" type="number"> ,
+              Width: <input id="inputSizeOfNewWindowWidth" min="0" pattern="^[0-9]+$" placeholder="px" type="number">
+            </div>
+            <div class="inputSize" >
               Height: <input id="inputSizeOfNewWindowHeight" min="0" pattern="^[0-9]+$" placeholder="px" type="number">
             </div>
           </form>
@@ -101,7 +104,7 @@
       <section class="tile">
         <h2 id="h2ServiceUsedFor">Service used for translation</h2>
         <h3 id="h3SpecifyTranslationService">Specify a translation service</h3>
-        <form class="two-choices" id="formTranslationService">
+        <form class="two-line-grid" id="formTranslationService">
           <label class="tile">
             <input id="inputUseGoogle" name="partsTranslationService" type="radio" value="Google">
             <span>Google</span>

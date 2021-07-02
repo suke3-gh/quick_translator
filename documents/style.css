@@ -1,11 +1,42 @@
 @charset "UTF-8";
 
+:root {
+  --body-bg-color: rgba( 255, 255, 255, 1 );
+  --body-color:    rgba( 63, 63, 63, 1 );
+
+  --button-action-padding: 0.5rem 1.0rem 0.5rem 1.0rem;
+  --button-bg-color:       rgba( 223, 223, 223, 1 );
+  --button-bg-color-hover: rgba( 191, 191, 191, 1 );
+  --button-border:         none;
+  --button-border-radius:  4px;
+  --button-submit-padding: 1.0rem;
+  --button-transition-bg:  background-color 100ms  ease-out 0ms;
+
+  --footer-color:    rgba( 247, 247, 247, 1);
+  --footer-bg-color: rgba( 63, 63, 63, 1 );
+
+  --tile-bg-color:      rgba( 247, 247, 247, 1);
+  --tile-margin:        1.0rem;
+  --tile-parts-padding: 1.0rem;
+
+  --description-color: rgba( 95, 95, 95, 1 );
+
+  --grid-gap: 1.0rem 1.0rem;
+
+  --h2-padding: 1.0rem;
+  --h3-padding: 0 1.0rem 0 1.0rem;
+
+  --radio-padding: 1.0rem 0.5rem 1.0rem 0.5rem;
+
+  --shadow-param: 0 0 2px rgba( 175, 175, 175, 1 );
+}
+
 /**
  * _body.scss
  */
  body {
-	background:    rgb(255, 255, 255);
-  color:         rgb(31, 31, 31);
+	background:    var( --body-bg-color );
+  color:         var( --body-color );
   display:       flex;
   flex-flow:     column;
   height:        100vh;
@@ -23,10 +54,8 @@ body a {
  * _footer.scss
  */
 footer {
-  background:  rgb(63, 63, 63);
-  box-sizing:  border-box;
-  box-shadow:  0 0 2px rgb(63, 63, 63);
-  color:       rgb(255, 255, 255);
+  background:  var( --footer-bg-color );
+  color:       var( --footer-color );
   display:     flex;
   align-items: center;
   flex-flow:   column;
@@ -35,11 +64,11 @@ footer {
 
 @media screen and ( min-aspect-ratio: 4/3 ) {
   footer {
-    background: rgb(255, 255, 255);
+    background: var( --body-bg-color );
     box-shadow: none;
-    color:      rgb(31, 31, 31);
+    color:      var( --body-color );
     margin:     0 0 0 30%;
-    width:      60%;
+    width:      60vw;
   }
 }
 
@@ -52,8 +81,8 @@ footer > div.item {
  * _header.scss
  */
 header {
-  background: rgb(239, 239, 239);
-  box-shadow: 0 0 2px rgb(63, 63, 63);
+  background: var( --tile-bg-color );
+  box-shadow: var( --shadow-param );
   display:    flex;
   flex-flow:  row wrap;
   height:     4.0rem;
@@ -76,7 +105,6 @@ header {
 }
 
 header > section.primary {
-  box-sizing:      border-box;
   display:         flex;
   flex-flow:       row;
   height:          4.0rem;
@@ -85,7 +113,6 @@ header > section.primary {
 }
 
 header > section.primary > .addon-title {
-  color:       rgb(63, 63, 63);
   font-size:   1.6rem;
   font-weight: bold;
   margin:      auto;
@@ -99,9 +126,7 @@ header > section.primary > .addon-title {
 
 header > section.primary > .operation-button-left {
   align-items:     center;
-  border-right:    rgb(127, 127, 127) solid thin;
-  box-sizing:      border-box;
-  color:           rgb(63, 63, 63);
+  box-shadow:      var( --shadow-param );
   display:         flex;
   flex-flow:       column;
   justify-content: center;
@@ -120,7 +145,7 @@ header > section.primary > .operation-button-left > img {
 }
 
 header > section.primary > .operation-button-left > img:hover {
-  background: rgb(207, 207, 207);
+  background: var( --button-bg-color-hover );
 }
 
 header > section.primary > .operation-button-left > span {
@@ -129,9 +154,7 @@ header > section.primary > .operation-button-left > span {
 
 header > section.primary > .operation-button-right {
   align-items:     center;
-  border-left:     rgb(127, 127, 127) solid thin;
-  box-sizing:      border-box;
-  color:           rgb(63, 63, 63);
+  box-shadow:      var( --shadow-param );
   display:         flex;
   flex-flow:       column;
   justify-content: center;
@@ -149,33 +172,21 @@ header > section.primary > .operation-button-right {
  */
 main {
   box-sizing: border-box;
-  padding:    4.0rem 2.0rem 4.0rem 2.0rem;
+  padding:    4.0rem 5.0vw 4.0rem 5.0vw;
+  width:      100vw;
 }
 
 @media screen and ( min-aspect-ratio: 4/3 ) {
   main {
-    margin:  0 0 0 30%;
+    margin:  0 0 0 30vw;
     padding: 0 1.0rem 0 1.0rem;
-    width:   60%;
+    width:   60vw;
   }
 }
 
 main h1 {
   font-size:  2.0rem;
   text-align: center;
-}
-
-main h2 {
-  border-bottom: rgb(207, 207, 207) solid thin;
-  font-size:     1.6rem;
-  margin:        1.0rem 0 0.5rem 0.5rem;
-  padding:       0 0 0.2rem 0rem;
-}
-
-main h3 {
-  font-size: 1.3rem;
-  margin:    0.5rem 0 0 0;
-  padding:   0 0 0 1.0rem;
 }
 
 main h4 {
@@ -197,13 +208,13 @@ main h6 {
  * _nav.menu.scss
  */
 nav.menu {
-  background:   rgb(239, 239, 239);
-  box-shadow:   0 0 2px rgb(63, 63, 63);
+  background:   var( --tile-bg-color );
+  box-shadow:   var( --shadow-param );
   margin:       0.5rem auto 0 2.0rem;
   height:       0px;
   overflow-y:   scroll;
   transition:   height 200ms ease-out 0ms;
-  width:        60%;
+  width:        60vw;
 }
 
 @media screen and ( min-aspect-ratio: 4/3 ) {
@@ -232,17 +243,16 @@ nav.menu > div.categories > ul {
 }
 
 nav.menu > div.categories > ul > a.item {
-  background: rgb(255, 255, 255);
-  box-shadow: 0 0 2px rgb(63, 63, 63);
-  color:      rgb(31, 31, 31);
+  background: var( --button-bg-color );
+  box-shadow: var( --shadow-param );
   display:    flex;
   margin:     0.5rem 0 0.5rem 0;
   padding:    1.0rem 0.5rem 1.0rem 0.5rem;
-  transition: background 200ms ease-out 0ms;
+  transition: var( --button-transition-bg );
 }
 
 nav.menu > div.categories > ul > .item:hover {
-  background: rgb(223, 223, 223);
+  background: var( --button-bg-color-hover );
 }
 
 nav.menu > div.categories > ul > a.item > img {
@@ -269,10 +279,9 @@ nav.menu > p {
  * option page
  */
 div.inputNotificationArea {
-  background:  rgb(239, 239, 239);
+  background:  var( --tile-bg-color );
   bottom:      1.0rem;
-  box-shadow:  0 0 2px rgb(63, 63, 63);
-  color:       rgb(63, 63, 63);
+  box-shadow:  var( --shadow-param );
   display:     none;
   align-items: center;
   padding:     0.5rem;
@@ -290,15 +299,25 @@ div.inputNotificationArea > span {
 }
 
 main > section.tile {
-  box-shadow: 0 0 2px rgb(63, 63, 63);
-  box-sizing: border-box;
-  margin:     1.0rem;
-  padding:    0.5rem;
+  background: var( --tile-bg-color );
+  box-shadow: var( --shadow-param );
+  margin:     var( --tile-margin );
+}
+
+main > section.tile > h2 {
+  margin:  0;
+  padding: var( --h2-padding );
+}
+
+main > section.tile > h3 {
+  margin:  0;
+  padding: var( --h3-padding );
 }
 
 main > section.tile > p.description-text {
-  color:     rgb(95, 95, 95);
+  color:     var( --description-color );
   font-size: 0.9rem;
+  padding:   var( --tile-parts-padding );
 }
 
 main > section.tile > form.language-code > div {
@@ -314,58 +333,45 @@ main > section.tile > form.language-code > div > .tile {
 }
 
 main > section.tile > form.language-code > div > .tile > label {
-  background: rgb(255, 255, 255);
   display:    block;
   padding:    0.5rem;
-  transition: background 200ms ease-out 0ms;
+  transition: var( --button-transition-bg );
 }
 
 main > section.tile > form.language-code > div > .tile > label:hover {
-  background: rgb(223, 223, 223);
+  background: var( --button-bg-color );
 }
 
-main > section.tile > form.specifySize {
-  padding: 0 0.5rem 0 0.5rem;
+main > section.tile > form.two-line-grid {
+  display: grid;
+  gap:     var( --grid-gap );
+  grid:    auto-flow auto / repeat( auto-fill, minmax( 45%, auto ) );
+  padding: var( --tile-parts-padding );
 }
 
-main > section.tile > form.specifySize > label.checkbox {
-  display: inline-block;
-  margin:  0.5rem 0 0.5rem 0;
-}
-
-main > section.tile > form.specifySize > div.inputSize {
+main > section.tile > form.two-line-grid > div.inputSize {
   font-size: large;
 }
 
-main > section.tile > form.specifySize > div.inputSize > input {
+main > section.tile > form.two-line-grid > div.inputSize > input {
   font-size: large;
 }
 
-main > section.tile > form.two-choices {
-  box-sizing:      border-box;
-  display:         flex;
-  flex-flow:       row;
-  justify-content: center;
-}
-
-main > section.tile > form.two-choices > label {
+main > section.tile > form.two-line-grid > label {
   align-items:   center;
-  background:    rgb(255, 255, 255);
-  border-radius: 4px;
-  box-shadow:    0 0 2px rgb(127, 127, 127);
-  box-sizing:    border-box;
+  background:    var( --button-bg-color );
+  border-radius: var( --button-border-radius );
+  box-shadow:    var( --shadow-param );
   display:       flex;
-  flex:          0 0 calc(50% - 1.0rem);
-  height:        3.0rem;
-  margin:        0.5rem;
-  transition:    background 200ms ease-out 0ms;
+  padding:       var( --radio-padding );
+  transition:    var( --button-transition-bg );
 }
 
-main > section.tile > form.two-choices > label:hover {
-  background:  rgb(223, 223, 223);
+main > section.tile > form.two-line-grid > label:hover {
+  background: var( --button-bg-color-hover );
 }
 
-main > section.tile > form.two-choices > label > input {
+main > section.tile > form.two-line-grid > label > input {
   margin: 0 0.5rem 0 0.5rem;
 }
 
@@ -388,7 +394,7 @@ div.timestamp {
 
 .guide-setup-thumbnail {
   border-radius: 8px;
-  box-shadow:    0 0 0.1rem rgb(63, 63, 63);
+  box-shadow:    var( --shadow-param );
   padding:       0.5rem;
   width:         50%;
 }
