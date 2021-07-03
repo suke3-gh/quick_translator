@@ -184,24 +184,9 @@ main {
   }
 }
 
-main h1 {
+main > h1 {
   font-size:  2.0rem;
   text-align: center;
-}
-
-main h4 {
-  font-size: 1.2rem;
-  padding:   0 0 0 1.0rem;
-}
-
-main h5 {
-  font-size: 1.1rem;
-  padding:   0 0 0 1.0rem;
-}
-
-main h6 {
-  font-size: 1.0rem;
-  padding:   0 0 0 1.0rem;
 }
 
 /**
@@ -245,6 +230,7 @@ nav.menu > div.categories > ul {
 nav.menu > div.categories > ul > a.item {
   background: var( --button-bg-color );
   box-shadow: var( --shadow-param );
+  color:      var( --body-color );
   display:    flex;
   margin:     0.5rem 0 0.5rem 0;
   padding:    1.0rem 0.5rem 1.0rem 0.5rem;
@@ -317,47 +303,47 @@ main > section.tile > h3 {
 main > section.tile > p.description-text {
   color:     var( --description-color );
   font-size: 0.9rem;
-  padding:   var( --tile-parts-padding );
+  padding:   0.5rem 1.0rem 0.5rem 1.0rem;
 }
 
-main > section.tile > form.language-code > div {
-  box-sizing:      border-box;
-  display:         flex;
-  flex-flow:       row;
-  justify-content: center;
+form.language-code > .list {
+  display: grid;
+  gap:     var( --grid-gap );
+  grid:    auto-flow auto / repeat( auto-fill, minmax( 25%, auto ) );
+  padding: var( --tile-parts-padding );
 }
 
-main > section.tile > form.language-code > div > .tile {
-  flex:    1 1 25%;
-  padding: 0.5rem;
+form.language-code > .list > .column > h4 {
+  margin: 0.5rem 0 0.5rem 0;
 }
 
-main > section.tile > form.language-code > div > .tile > label {
-  display:    block;
-  padding:    0.5rem;
-  transition: var( --button-transition-bg );
+form.language-code > .list > .column > label {
+  border-radius: var( --button-border-radius );
+  display:       block;
+  padding:       var( --button-action-padding );
+  transition:    var( --button-transition-bg );
 }
 
-main > section.tile > form.language-code > div > .tile > label:hover {
+form.language-code > .list > .column > label:hover {
   background: var( --button-bg-color );
 }
 
-main > section.tile > form.two-line-grid {
+form.two-line-grid {
   display: grid;
   gap:     var( --grid-gap );
   grid:    auto-flow auto / repeat( auto-fill, minmax( 45%, auto ) );
   padding: var( --tile-parts-padding );
 }
 
-main > section.tile > form.two-line-grid > div.inputSize {
+form.two-line-grid > div.inputSize {
   font-size: large;
 }
 
-main > section.tile > form.two-line-grid > div.inputSize > input {
+form.two-line-grid > div.inputSize > input {
   font-size: large;
 }
 
-main > section.tile > form.two-line-grid > label {
+form.two-line-grid > label {
   align-items:   center;
   background:    var( --button-bg-color );
   border-radius: var( --button-border-radius );
@@ -367,11 +353,11 @@ main > section.tile > form.two-line-grid > label {
   transition:    var( --button-transition-bg );
 }
 
-main > section.tile > form.two-line-grid > label:hover {
+form.two-line-grid > label:hover {
   background: var( --button-bg-color-hover );
 }
 
-main > section.tile > form.two-line-grid > label > input {
+form.two-line-grid > label > input {
   margin: 0 0.5rem 0 0.5rem;
 }
 

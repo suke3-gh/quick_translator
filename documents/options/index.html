@@ -7,6 +7,7 @@
     <link href="/icons/quick-translator-icon-plain.svg" rel="icon" type="image/svg+xml">
     <link href="/documents/style.css" rel="stylesheet" type="text/css">
     <script defer src="/documents/options/_script.js" type="text/javascript"></script>
+    <script defer src="/documents/options/_multilingual.js" type="text/javascript"></script>
     <script defer src="/documents/javascript/_script_header.js" type="text/javascript"></script>
     <script defer src="/documents/javascript/_script_footer.js" type="text/javascript"></script>
     <title>Option (Quick translator)</title>
@@ -55,7 +56,6 @@
         <p>Click an icon at upper left side to close this menu.</p>
       </nav>
     </header>
-
     <main>
       <h1>Option</h1>
       <section class="tile">
@@ -83,33 +83,32 @@
           </label>
         </form>
         <h3 id="h3SizeOfNewWindow">Size of new window</h3>
-          <form class="two-line-grid" id="formOpenMethodSpecifySize">
-            <label class="checkbox">
-              <input id="inputSpecifySizeFlag" name="partsSpecifySizeFlag" type="checkbox" >
-              <span id="spanSpecifySizeOfWindow">Specify the size of window(optional)</span>
-            </label>
-            <span></span>
-            <div class="inputSize" >
-              Width: <input id="inputSizeOfNewWindowWidth" min="0" pattern="^[0-9]+$" placeholder="px" type="number">
-            </div>
-            <div class="inputSize" >
-              Height: <input id="inputSizeOfNewWindowHeight" min="0" pattern="^[0-9]+$" placeholder="px" type="number">
-            </div>
-          </form>
-          <p id="pWhenSetWH" class="description-text">
-            When set width:800 and height:720, a size of new window is 800x720. This setting is reflected only when checked.
-          </p>
+        <form class="two-line-grid" id="formOpenMethodSpecifySize">
+          <label>
+            <input id="inputSpecifySizeFlag" name="partsSpecifySizeFlag" type="checkbox" >
+            <span id="spanSpecifySizeOfWindow">Specify the size of window(optional)</span>
+          </label>
+          <span></span>
+          <div class="inputSize" >
+            Width: <input id="inputSizeOfNewWindowWidth" min="0" pattern="^[0-9]+$" placeholder="px" type="number">
+          </div>
+          <div class="inputSize" >
+            Height: <input id="inputSizeOfNewWindowHeight" min="0" pattern="^[0-9]+$" placeholder="px" type="number">
+          </div>
+        </form>
+        <p id="pWhenSetWH" class="description-text">
+          When set width:800 and height:720, a size of new window is 800x720. This setting is reflected only when checked.
+        </p>
       </section>
-
       <section class="tile">
         <h2 id="h2ServiceUsedFor">Service used for translation</h2>
         <h3 id="h3SpecifyTranslationService">Specify a translation service</h3>
         <form class="two-line-grid" id="formTranslationService">
-          <label class="tile">
+          <label>
             <input id="inputUseGoogle" name="partsTranslationService" type="radio" value="Google">
             <span>Google</span>
           </label>
-          <label class="tile">
+          <label>
             <input id="inputUseMicrosoft" name="partsTranslationService" type="radio" value="Microsoft">
             <span>Microsoft (Bing / translatetheweb.com)</span>
           </label>
@@ -118,13 +117,12 @@
           Depending on selected service, some languages are not available.
         </p>
       </section>
-
       <section class="tile">
         <h2 id="h2TranslatedLanguage">Translated language</h2>
         <h3 id="h3SpecifyLanguageCode">Specify a language code</h3>
         <form class="language-code" id="formLanguageCode">
-          <div id="languageCodeListGoogle">
-            <div class="tile">
+          <div class="list" id="languageCodeListGoogle">
+            <section class="column">
               <h4>a ~ f</h4>
               <label><input name="partsLanguageCode" type="radio" value="auto"> <span>- auto - (System)</span></label>
               <label><input name="partsLanguageCode" type="radio" value="af"> <span>af - Afrikaans</span></label>
@@ -152,8 +150,8 @@
               <label><input name="partsLanguageCode" type="radio" value="fi"> <span>fi - suomalainen</span></label>
               <label><input name="partsLanguageCode" type="radio" value="fr"> <span>fr - Français</span></label>
               <label><input name="partsLanguageCode" type="radio" value="fy"> <span>fy - Western Frisian</span></label>
-            </div>
-            <div class="tile">
+            </section>
+            <section class="column">
               <h4>g ~ l</h4>
               <label><input name="partsLanguageCode" type="radio" value="ga"> <span>ga - Gaeilge</span></label>
               <label><input name="partsLanguageCode" type="radio" value="gd"> <span>gd - Gàidhlig na h-Alba</span></label>
@@ -186,8 +184,8 @@
               <label><input name="partsLanguageCode" type="radio" value="lo"> <span>lo - ລາວ</span></label>
               <label><input name="partsLanguageCode" type="radio" value="lt"> <span>lt - Lietuviškai</span></label>
               <label><input name="partsLanguageCode" type="radio" value="lv"> <span>lv - Latviešu</span></label>
-            </div>
-            <div class="tile">
+            </section>
+            <section class="column">
               <h4>m ~ r</h4>
               <label><input name="partsLanguageCode" type="radio" value="mg"> <span>mg - Malagasy</span></label>
               <label><input name="partsLanguageCode" type="radio" value="mi"> <span>mi - Reo Maori</span></label>
@@ -208,8 +206,8 @@
               <label><input name="partsLanguageCode" type="radio" value="pt"> <span>pt - Português</span></label>
               <label><input name="partsLanguageCode" type="radio" value="ro"> <span>ro - românesc</span></label>
               <label><input name="partsLanguageCode" type="radio" value="ru"> <span>ru - Русский язык</span></label>
-            </div>
-            <div class="tile">
+            </section>
+            <section class="column">
               <h4>s ~ z</h4>
               <label><input name="partsLanguageCode" type="radio" value="sd"> <span>sd - سنڌي</span></label>
               <label><input name="partsLanguageCode" type="radio" value="si"> <span>si - සිංහල</span></label>
@@ -240,10 +238,10 @@
               <label><input name="partsLanguageCode" type="radio" value="zh-CN"> <span>zh-CN - 中文(简体)</span></label>
               <label><input name="partsLanguageCode" type="radio" value="zh-TW"> <span>zh-TW - 中文(繁体)</span></label>
               <label><input name="partsLanguageCode" type="radio" value="zu"> <span>zu - Zulu</span></label>
-            </div>
+            </section>
           </div><!-- end: id="languageCodeListGoogle" -->
-          <div id="languageCodeListMicrosoft">
-            <div class="tile">
+          <div class="list" id="languageCodeListMicrosoft">
+            <section class="column">
               <h4>a ~ f</h4>
               <label><input name="partsLanguageCode" type="radio" value="auto"> <span>- auto - (System)</span></label>
               <label><input name="partsLanguageCode" type="radio" value="af"> <span>af - Afrikaan</span></label>
@@ -263,8 +261,8 @@
               <label><input name="partsLanguageCode" type="radio" value="fa"> <span>fa - فارسی</span></label>
               <label><input name="partsLanguageCode" type="radio" value="fi"> <span>fi - suomalainen</span></label>
               <label><input name="partsLanguageCode" type="radio" value="fr"> <span>fr - Français</span></label>
-            </div>
-            <div class="tile">
+            </section>
+            <section class="column">
               <h4>g ~ l</h4>
               <label><input name="partsLanguageCode" type="radio" value="ga"> <span>ga - Gaeilge</span></label>
               <label><input name="partsLanguageCode" type="radio" value="gu"> <span>gu - ગુજરાતી</span></label>
@@ -282,8 +280,8 @@
               <label><input name="partsLanguageCode" type="radio" value="ku"> <span>ku - Kurdî</span></label>
               <label><input name="partsLanguageCode" type="radio" value="lt"> <span>lt - Lietuviškai</span></label>
               <label><input name="partsLanguageCode" type="radio" value="lv"> <span>lv - Latviešu</span></label>
-            </div>
-            <div class="tile">
+            </section>
+            <section class="column">
               <h4>m ~ r</h4>
               <label><input name="partsLanguageCode" type="radio" value="mg"> <span>mg - Malagasy</span></label>
               <label><input name="partsLanguageCode" type="radio" value="mi"> <span>mi - Reo Maori</span></label>
@@ -298,8 +296,8 @@
               <label><input name="partsLanguageCode" type="radio" value="pt"> <span>pt - Português</span></label>
               <label><input name="partsLanguageCode" type="radio" value="ro"> <span>ro - românesc </span></label>
               <label><input name="partsLanguageCode" type="radio" value="ru"> <span>ru - Русский язык</span></label>
-            </div>
-            <div class="tile">
+            </section>
+            <section class="column">
               <h4>s ~ z</h4>
               <label><input name="partsLanguageCode" type="radio" value="sk"> <span>sk - slovenský</span></label>
               <label><input name="partsLanguageCode" type="radio" value="sl"> <span>sl - Slovenija</span></label>
@@ -313,7 +311,7 @@
               <label><input name="partsLanguageCode" type="radio" value="uk"> <span>uk - Українська</span></label>
               <label><input name="partsLanguageCode" type="radio" value="ur"> <span>ur - اردو</span></label>
               <label><input name="partsLanguageCode" type="radio" value="vi"> <span>vi - Người việt nam</span></label>
-            </div>
+            </section>
           </div><!-- end: id="languageCodeListMicrosoft" -->
         </form>
         <p class="description-text" id="pIfSetToEn">
@@ -324,12 +322,10 @@
         </p>
       </section>
     </main>
-
     <div class="inputNotificationArea" id="divInputNotificationArea">
       <img src="/icons/hint-icon-plain.svg" alt="hint-icon-plain.svg">
       <span>Settings are saved automatically.</span>
     </div>
-
     <footer>
       <div class="item" id="divAddonVersion">(Add-on version)</div>
       <div class="item" id="divLicenseText">(License)</div>
