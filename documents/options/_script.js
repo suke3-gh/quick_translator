@@ -124,6 +124,7 @@ function selectLanguageCode( list, languageCode ) {
 
 /** main process */
 function processInputNotification() {
+  /*
   let flag = 'Y';
   document.addEventListener( 'input', async() => {
     if ( flag == 'Y' ) {
@@ -134,7 +135,7 @@ function processInputNotification() {
       element.style.display = 'none';
       flag = 'N';
     }
-  });
+  });*/
 }
 
 function processReadout() {
@@ -150,21 +151,6 @@ function processReadout() {
 }
 
 function processUpdate() {
-  document.getElementById( 'formOpenMethodText' )?.addEventListener( 'input', ( event ) => {
-    if ( event.target instanceof HTMLInputElement ) {
-      const openMethod = event.target.value;
-      browser.storage.local.set({ openMethodText: openMethod })
-        .catch( ( identifier ) => exceptionLog( identifier ) );
-    }
-  }, false );
-  
-  document.getElementById( 'formOpenMethodWebpage' )?.addEventListener( 'input', ( event ) => {
-    if ( event.target instanceof HTMLInputElement ) {
-      const openMethod = event.target.value;
-      browser.storage.local.set({ openMethodWebpage: openMethod })
-        .catch( ( identifier ) => exceptionLog( identifier ) );
-    }
-  }, false );
 
   document.getElementById( 'inputSpecifySizeFlag' )?.addEventListener( 'input', ( event ) => {
     if ( event.target instanceof HTMLInputElement ) {
