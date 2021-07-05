@@ -1,27 +1,38 @@
 /**
- * module file: _script.js
+ * module file: _settingReadouter.js
  * description: 
  */
 
-/** functions */
-function changeLanguageCodeList( translationService ) {
-  const languageCodeListGoogle    = document.getElementById( 'languageCodeListGoogle' );
-  const languageCodeListMicrosoft = document.getElementById( 'languageCodeListMicrosoft' );
-  let list = 'list';
-  switch ( translationService ) {
-    case 'Google':
-      languageCodeListGoogle.style.display    = 'flex';
-      languageCodeListMicrosoft.style.display = 'none';
-      list = languageCodeListGoogle;
-    break;
-    case 'Microsoft':
-      languageCodeListGoogle.style.display    = 'none';
-      languageCodeListMicrosoft.style.display = 'flex';
-      list = languageCodeListMicrosoft;
+class settingReadouter {
+  formOpenMethodText;
+  formOpenMethodWebpage;
+  inputSpecifySizeFlag;
+  inputNewWindowHeight;
+  inputNewWindowWidth;
+
+  formTranslationService;
+  languageCodeList;
+
+  formLanguageCode;
+
+  divNotification;
+  notificationCount;
+
+  constructor() {
+    this.formOpenMethodText    = document.getElementById( 'formOpenMethodText' );
+    this.formOpenMethodWebpage = document.getElementById( 'formOpenMethodWebpage' );
+    this.inputSpecifySizeFlag  = document.getElementById( 'inputSpecifySizeFlag' );
+    this.inputNewWindowHeight  = document.getElementById( 'inputSizeOfNewWindowHeight' );
+    this.inputNewWindowWidth   = document.getElementById( 'inputSizeOfNewWindowWidth' );
+
+    this.formTranslationService = document.getElementById( 'formTranslationService' );
+    this.languageCodeList = {
+      google:    document.getElementById( 'languageCodeListGoogle' ),
+      microsoft: document.getElementById( 'languageCodeListMicrosoft' )
+    };
+
+    this.formLanguageCode = document.getElementById( 'formLanguageCode' );
   }
-  browser.storage.local.get( 'languageCode' )
-    .then( ( obj ) => { selectLanguageCode( list, obj.languageCode ); })
-    .catch( ( identifier ) => exceptionLog( identifier ) );
 }
 
 function exceptionLog( id ) {
@@ -112,6 +123,7 @@ function readoutTranslationService( translationService ) {
 }
 
 function selectLanguageCode( list, languageCode ) {
+  /*
   let input = list.querySelector( 'input[value="' + languageCode+ '"]' );
   if ( input == null ) {
     input = list.querySelector( 'input[value="auto"]' );
@@ -120,23 +132,10 @@ function selectLanguageCode( list, languageCode ) {
       .catch( ( identifier ) => exceptionLog( identifier ) );
   }
     input.checked = true;
+  */
 }
 
 /** main process */
-function processInputNotification() {
-  /*
-  let flag = 'Y';
-  document.addEventListener( 'input', async() => {
-    if ( flag == 'Y' ) {
-      const element = document.getElementById( 'divInputNotificationArea' );
-      element.style.display = 'flex';
-      await new Promise( resolve => setTimeout( resolve, 5000 ) )
-      .catch( ( identifier ) => exceptionLog( identifier ) );
-      element.style.display = 'none';
-      flag = 'N';
-    }
-  });*/
-}
 
 function processReadout() {
   browser.storage.local.get()
@@ -150,53 +149,5 @@ function processReadout() {
     .catch( ( identifier ) => exceptionLog( identifier ) );
 }
 
-function processUpdate() {
 
-  document.getElementById( 'inputSpecifySizeFlag' )?.addEventListener( 'input', ( event ) => {
-    if ( event.target instanceof HTMLInputElement ) {
-      let flag = 'flag';
-      if ( event.target.checked == true ) {
-        flag = 'Y';
-      } else {
-        flag = 'N';
-      }
-      browser.storage.local.set({ specifySizeFlag: flag })
-        .catch( ( identifier ) => exceptionLog( identifier ) );
-    }
-  });
-
-  document.getElementById( 'inputSizeOfNewWindowHeight' )?.addEventListener( 'input', ( event ) => {
-    if ( event.target instanceof HTMLInputElement ) {
-      const height = Number( event.target.value );
-      browser.storage.local.set({ sizeHeight: height })
-        .catch( ( identifier ) => exceptionLog( identifier ) );
-    }
-  });
-
-  document.getElementById( 'inputSizeOfNewWindowWidth' )?.addEventListener( 'input', ( event ) => {
-    if ( event.target instanceof HTMLInputElement ) {
-      const width = Number( event.target.value );
-      browser.storage.local.set({ sizeWidth: width })
-        .catch( ( identifier ) => exceptionLog( identifier ) );
-    }
-  });
-  
-  document.getElementById( 'formTranslationService' )?.addEventListener( 'input', ( event ) => {
-    if ( event.target instanceof HTMLInputElement ) {
-      browser.storage.local.set( { translationService: event.target.value } )
-        .catch( ( identifier ) => exceptionLog( identifier ) );
-      changeLanguageCodeList( event.target.value );
-    }
-  }, false );
-  
-  document.getElementById( 'formLanguageCode' )?.addEventListener( 'input', ( event ) => {
-    if ( event.target instanceof HTMLInputElement ) {
-      browser.storage.local.set( { languageCode: event.target.value } )
-        .catch( ( identifier ) => exceptionLog( identifier ) );
-    }
-  }, false );
-}
-
-processInputNotification();
 processReadout();
-processUpdate();

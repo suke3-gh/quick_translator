@@ -42,5 +42,5 @@
 
   "permissions": ["menus", "storage", "tabs"],
 
-  "version": "2.1.37"
+  "version": "2.1.38"
 }
