@@ -6,7 +6,6 @@
 import { options } from './options.js';
 
 class inputDetector extends options {
-
   divNotification;
   notificationCount;
 
@@ -16,7 +15,7 @@ class inputDetector extends options {
     this.divNotification   = document.getElementById( 'divInputNotificationArea' );
     this.notificationCount = Number( 0 );
 
-    this.prepareOpenMethodInput();
+    this.prepareOpenMethodInput('openMethodText', super.getFormOpeningMethodText());
     this.prepareSpecifySizeInput();
     this.prepareServiceInput();
     this.prepareLanguageCodeInput();
@@ -38,7 +37,7 @@ class inputDetector extends options {
     }
   }
 
-  prepareOpenMethodInput() {
+  prepareOpenMethodInput( key, form ) {
     this.formOpenMethodText?.addEventListener( 'input', ( event ) => {
       if ( event.target instanceof HTMLInputElement ) {
         browser.storage.local.set({
@@ -70,7 +69,8 @@ class inputDetector extends options {
   prepareSpecifySizeInput() {
     this.inputSpecifySizeFlag?.addEventListener( 'input', ( event ) => {
       if ( event.target instanceof HTMLInputElement ) {
-        const flag = event.target.checked ? 'Y' : 'N';
+        const flag = event.target.checked ? true : false;
+        console.log( flag );
         browser.storage.local.set({
           specifySizeFlag: flag
         })
@@ -117,7 +117,7 @@ class inputDetector extends options {
           translationService: event.target.value
         })
         .then( () => {
-          this.languageCodeListSwitch( event.target.value );
+          super.languageCodeListSwitch( event.target.value );
           this.notification();
         })
         .catch( ( error ) => {
@@ -141,40 +141,6 @@ class inputDetector extends options {
         });
       }
     }, false );
-  }
-
-  languageCodeListSwitch( service ) {
-    let targetList;
-    switch ( service ) {
-      case 'Google':
-        this.languageCodeList.google.style.display    = 'flex';
-        this.languageCodeList.microsoft.style.display = 'none';
-        targetList = this.languageCodeList.google;
-        break;
-      case 'Microsoft':
-        this.languageCodeList.google.style.display    = 'none';
-        this.languageCodeList.microsoft.style.display = 'flex';
-        targetList = this.languageCodeList.microsoft;
-        break;
-    }
-    browser.storage.local.get(
-      'languageCode'
-    )
-    .then( ( object ) => {
-      const input = targetList.querySelector( 'input[value="' + object.languageCode+ '"]' );
-      input.checked = true;
-    })
-    .catch( ( error ) => {
-      exceptionLog( error );
-      const input = targetList.querySelector( 'input[value="auto"]' );
-      input.checked = true;
-      browser.storage.local.set({
-        languageCode: 'auto'
-      })
-      .catch( ( error2 ) => {
-        super.exceptionLog( error2 );
-      });
-    })
   }
 }
 

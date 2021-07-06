@@ -60,7 +60,7 @@ function openTranslationResult( obj ) {
       browser.tabs.create({ url: obj.url });
       break;
     case 'window':
-      if ( obj.specifySizeFlag == 'Y' ) {
+      if ( obj.specifySizeFlag == true ) {
         browser.windows.create({ url: obj.url, height: Number( obj.sizeHeight ), width: Number( obj.sizeWidth ) });
       } else {
         browser.windows.create({ url: obj.url });
