@@ -1,4 +1,5 @@
-class options {
+
+export class Options {
   formOpenMethodText;
   formOpenMethodWebpage;
   inputSpecifySizeFlag;
@@ -76,5 +77,3 @@ class options {
     })
   }
 }
-
-export { options };

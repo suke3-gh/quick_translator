@@ -3,9 +3,9 @@
  * description: 
  */
 
-import { options } from './options.js';
+import { Options } from './Options.js';
 
-class settingReadouter extends options {
+class SettingReadouter extends Options {
   constructor() {
     super();
   }
@@ -60,8 +60,8 @@ class settingReadouter extends options {
   }
 }
 
-const settingReadouterIns = new settingReadouter();
-settingReadouterIns.openingMethod( 'openMethodText', settingReadouterIns.getFormOpeningMethodText() );
-settingReadouterIns.openingMethod( 'openMethodWebpage', settingReadouterIns.getFormOpeningMethodWeb() );
-settingReadouterIns.specifySize( 'specifySizeFlag', 'sizeHeight', 'sizeWidth' );
-settingReadouterIns.translationService( 'translationService', settingReadouterIns.getFormTranslationService() );
+const SettingReadouterIns = new SettingReadouter();
+SettingReadouterIns.openingMethod( 'openMethodText', SettingReadouterIns.getFormOpeningMethodText() );
+SettingReadouterIns.openingMethod( 'openMethodWebpage', SettingReadouterIns.getFormOpeningMethodWeb() );
+SettingReadouterIns.specifySize( 'specifySizeFlag', 'sizeHeight', 'sizeWidth' );
+SettingReadouterIns.translationService( 'translationService', SettingReadouterIns.getFormTranslationService() );

@@ -3,9 +3,9 @@
  * description: 
  */
 
-import { options } from './options.js';
+import { Options } from './Options.js';
 
-class inputDetector extends options {
+class InputDetector extends Options {
   divNotification;
   notificationCount;
 
@@ -144,4 +144,4 @@ class inputDetector extends options {
   }
 }
 
-const inputDetectorInstance = new inputDetector();
+const InputDetectorInstance = new InputDetector();
