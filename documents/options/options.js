@@ -65,7 +65,7 @@ export class Options {
       input.checked = true;
     })
     .catch( ( error ) => {
-      exceptionLog( error );
+      this.exceptionLog( error );
       const input = targetList.querySelector( 'input[value="auto"]' );
       input.checked = true;
       browser.storage.local.set({

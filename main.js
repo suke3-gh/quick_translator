@@ -1,4 +1,68 @@
 
+'use strict';
+
+class Background {
+  menuItem;
+  languageCode;
+
+  constructor() {
+    this.menuItem = {
+      text: 'idTranslateText',
+      web:  'idTranslateWebpage'
+    }
+  }
+
+  exceptionLog( error ) {
+    console.log( 'Catched an exception: ' + error.message );
+  }
+
+  getMenuItem() {
+    return this.menuItem;
+  }
+
+  menuItemCreator( context, id, title ) {
+    browser.menus.create({
+      contexts: [context],
+      id:       id,
+      title:    browser.i18n.getMessage( title )
+    });
+  }
+
+  prepareOnclickedEvent() {
+    browser.menus.onClicked.addListener( ( info ) => {
+      switch ( info.menuItemId ) {
+        case this.menuItem.text:
+          processTranslateText( info.selectionText );
+          break;
+        case this.menuItem.web:
+          processTranslateWebpage( info.pageUrl );
+          break;
+      }
+    });
+  }
+
+  languageCodeAcquisition( key ) {
+    browser.storage.local.get(
+      key
+    )
+    .then( ( object ) => {
+      switch ( object[key] ) {
+        case 'auto':
+        case undefined:
+          object[key] = ( object[key].indexOf( 'de' ) != -1 ) ?  'de' : object[key];
+          object[key] = ( object[key].indexOf( 'en' ) != -1 ) ?  'en' : object[key];
+          object[key] = ( object[key].indexOf( 'es' ) != -1 ) ?  'es' : object[key];
+          object[key] = ( object[key].indexOf( 'pt' ) != -1 ) ?  'pt' : object[key];
+          break;
+      }
+      this.languageCode = object[key];
+    })
+    .catch( ( error ) => {
+      this.exceptionLog( error );
+    });
+  }
+}
+
 /** functions */
 function autoSelectLanguageCode() {
   let languageCode = browser.i18n.getUILanguage();
@@ -164,33 +228,10 @@ function processTranslateWebpage( targetUrl ) {
     .catch( ( id ) => exceptionLog( id ) );
 }
   
-/** setup */
-function initialProcess() {
-  const id1 = 'idTranslateText';
-  const id2 = 'idTranslateWebpage';
-  
-  browser.menus.create({
-    contexts: ['selection'],
-    id:       id1,
-    title:    browser.i18n.getMessage( 'contextMenuForTextTranslation' )
-  });
-  
-  browser.menus.create({
-    contexts: ['page'],
-    id:       id2,
-    title:    browser.i18n.getMessage( 'contextMenuForWebpageTranslation' )
-  });
-    
-  browser.menus.onClicked.addListener( ( info ) => {
-    switch ( info.menuItemId ) {
-      case id1:
-        processTranslateText( info.selectionText );
-        break;
-      case id2:
-        processTranslateWebpage( info.pageUrl );
-        break;
-    }
-  });
-}
-  
-initialProcess();
+
+
+const BackgroundIns = new Background();
+BackgroundIns.menuItemCreator( 'selection', BackgroundIns.getMenuItem().text, 'contextMenuForTextTranslation' );
+BackgroundIns.menuItemCreator( 'page', BackgroundIns.getMenuItem().web, 'contextMenuForWebpageTranslation' );
+BackgroundIns.prepareOnclickedEvent();
+BackgroundIns.languageCodeAcquisition( 'languageCode' );
