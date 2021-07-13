@@ -2,11 +2,27 @@
 'use strict';
 
 class Background {
-  menuItem;
+  menuItems;
   languageCode;
+  openingMethod;
+  targetText;
+  service;
+  windowFlag;
+  windowHeight;
+  windowWidth;
+  url;
 
   constructor() {
-    this.menuItem = {
+    this.languageCode = 'en';
+    this.openingMethod = 'tab';
+    this.targetText = '';
+    this.service = 'Google';
+    this.flagKey = false;
+    this.windowWidth = '0';
+    this.windowHeight = '0';
+    this.url = '';
+
+    this.menuItems = {
       text: 'idTranslateText',
       web:  'idTranslateWebpage'
     }
@@ -16,50 +32,175 @@ class Background {
     console.log( 'Catched an exception: ' + error.message );
   }
 
-  getMenuItem() {
-    return this.menuItem;
+  getMenuItems() {
+    return this.menuItems;
   }
 
-  menuItemCreator( context, id, title ) {
+  menuItem( contextType, itemId, title ) {
     browser.menus.create({
-      contexts: [context],
-      id:       id,
+      contexts: [contextType],
+      id:       itemId,
       title:    browser.i18n.getMessage( title )
     });
   }
 
   prepareOnclickedEvent() {
-    browser.menus.onClicked.addListener( ( info ) => {
+    browser.menus.onClicked.addListener( async ( info ) => {
       switch ( info.menuItemId ) {
-        case this.menuItem.text:
-          processTranslateText( info.selectionText );
+        case this.menuItems.text:
+          await Promise.all([
+            this.languageCodeSetup( 'languageCode' ),
+            this.openingMethodSetup( 'openMethodText' ),
+            this.targetTextSetup( info.selectionText ),
+            this.serviceSetup( 'translationService' ),
+            this.windowSizeSetup( 'specifySizeFlag', 'sizeWidth', 'sizeHeight' )
+          ])
+          .catch( ( error ) => this.exceptionLog( error ) );
+          await this.urlAssemblingText()
+          .catch( ( error ) => this.exceptionLog( error ) );
+          this.urlOpen();
           break;
-        case this.menuItem.web:
-          processTranslateWebpage( info.pageUrl );
-          break;
+        /*case this.menuItems.web:
+          // processTranslateWebpage( info.pageUrl );
+          await Promise.all([
+            this.languageCodeSetup( 'languageCode' ),
+            this.openingMethodSetup( 'openMethodWebpage' ),
+            this.targetTextSetup( info.pageUrl ),
+            this.serviceSetup( 'translationService' ),
+            this.windowSizeSetup( 'specifySizeFlag', 'sizeWidth', 'sizeHeight' )
+          ])
+          .catch( ( error ) => this.exceptionLog( error ) );
+          break;*/
       }
     });
   }
 
-  languageCodeAcquisition( key ) {
-    browser.storage.local.get(
-      key
-    )
-    .then( ( object ) => {
-      switch ( object[key] ) {
-        case 'auto':
-        case undefined:
-          object[key] = ( object[key].indexOf( 'de' ) != -1 ) ?  'de' : object[key];
-          object[key] = ( object[key].indexOf( 'en' ) != -1 ) ?  'en' : object[key];
-          object[key] = ( object[key].indexOf( 'es' ) != -1 ) ?  'es' : object[key];
-          object[key] = ( object[key].indexOf( 'pt' ) != -1 ) ?  'pt' : object[key];
+  async languageCodeSetup( key ) {
+    try {
+      const object = await browser.storage.local.get( key );
+      object[key] = 'auto' ? browser.i18n.getUILanguage() : object[key];
+      const fixCodes = [ 'de', 'en', 'es', 'pt' ];
+      fixCodes.forEach( code => {
+        object[key] = ( object[key].indexOf( code ) != -1 ) ? code : object[key];
+      });
+      this.languageCode = object[key];
+      return true;
+    } catch ( error ) {
+      this.exceptionLog( error );
+      return false;
+    }
+  }
+
+  async openingMethodSetup( key ) {
+    try {
+      const object       = await browser.storage.local.get( key );
+      this.openingMethod = object[key] ?? 'tab';
+      return true;
+    } catch ( error ) {
+      this.exceptionLog( error );
+      return false;
+    }
+  }
+
+  async targetTextSetup( text ) {
+    try {
+      text.replaceAll( /\%/g, '％' )
+        .replaceAll( /\"/g, '%22' )
+          .replaceAll( /\&/g, '%26' )
+            .replaceAll( /\'/g, '%27' )
+              .replaceAll( /\</g, '%3C' )
+                .replaceAll( /\>/g, '%3E' );
+      this.targetText = text;
+      return true;
+    } catch ( error ) {
+      this.exceptionLog( error );
+      return false;
+    }
+  }
+
+  async serviceSetup( key ) {
+    try {
+      const object = await browser.storage.local.get( key );
+      this.service = object[key] ?? 'Google';
+      return true;
+    } catch ( error ) {
+      this.exceptionLog( error );
+      return false;
+    }
+  }
+
+  async windowSizeSetup( flagKey, widthKey, heightKey ) {
+    try {
+      const object      = await browser.storage.local.get([ flagKey, widthKey, heightKey ]);
+      this.windowFlag   = object[flagKey]   ?? false;
+      this.windowWidth  = object[widthKey]  ?? 800;
+      this.windowHeight = object[heightKey] ?? 720;
+      return true;
+    } catch ( error ) {
+      this.exceptionLog( error );
+      return false;
+    }
+  }
+
+  async urlAssemblingWeb() {
+    try {
+      switch ( this.service ) {
+        case 'Google':
+          this.url = 'https://translate.google.com/translate?hl='+this.languageCode+'&sl=auto&tl='+this.languageCode+'&u='+obj.targetPage;
+          break;
+        case 'Microsoft':
+          this.url = 'https://www.translatetheweb.com/?from=&to='+this.languageCode+'&a='+this.targetPage;
           break;
       }
-      this.languageCode = object[key];
-    })
-    .catch( ( error ) => {
+      return true;
+    } catch ( error ) {
       this.exceptionLog( error );
-    });
+      return false;
+    }
+  }
+
+  async urlAssemblingText() {
+    try {
+      switch ( this.service ) {
+        case 'Microsoft':
+          this.url = 'https://www.bing.com/translator?from=&to='+this.languageCode+'&text='+this.targetText;
+          break;
+        case 'Google':
+          this.url = 'https://translate.google.com/?sl=auto&tl='+this.languageCode+'&text='+this.targetText+'&op=translate';
+          break;
+      }
+      return true;
+    } catch ( error ) {
+      this.exceptionLog( error );
+      return false; 
+    }
+  }
+
+  urlOpen() {
+    try {
+      switch ( this.openingMethod ) {
+        case 'tab':
+          browser.tabs.create({
+            url: this.url
+          });
+          break;
+        case 'window':
+          if ( this.windowFlag == true ) {
+            browser.windows.create({
+              url: this.url, width: this.windowWidth, height: this.windowHeight
+            });
+          } else {
+            browser.windows.create({
+              url: this.url
+            });
+          }
+          break;
+      }
+      return true;
+    } catch ( error ) {
+      this.exceptionLog( error );
+      return false;
+    }
   }
 }
 
@@ -231,7 +372,7 @@ function processTranslateWebpage( targetUrl ) {
 
 
 const BackgroundIns = new Background();
-BackgroundIns.menuItemCreator( 'selection', BackgroundIns.getMenuItem().text, 'contextMenuForTextTranslation' );
-BackgroundIns.menuItemCreator( 'page', BackgroundIns.getMenuItem().web, 'contextMenuForWebpageTranslation' );
+BackgroundIns.menuItem( 'selection', BackgroundIns.getMenuItems().text, 'contextMenuForTextTranslation' );
+BackgroundIns.menuItem( 'page', BackgroundIns.getMenuItems().web, 'contextMenuForWebpageTranslation' );
 BackgroundIns.prepareOnclickedEvent();
-BackgroundIns.languageCodeAcquisition( 'languageCode' );
+
