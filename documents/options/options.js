@@ -1,7 +1,7 @@
 
 export class Options {
-  formOpenMethodText;
-  formOpenMethodWebpage;
+  formOpeningMethodText;
+  formOpeningMethodWeb;
   inputSpecifySizeFlag;
   inputNewWindowHeight;
   inputNewWindowWidth;
@@ -12,8 +12,8 @@ export class Options {
   formLanguageCode;
 
   constructor() {
-    this.formOpenMethodText    = document.getElementById( 'formOpenMethodText' );
-    this.formOpenMethodWebpage = document.getElementById( 'formOpenMethodWebpage' );
+    this.formOpeningMethodText    = document.getElementById( 'formOpenMethodText' );
+    this.formOpeningMethodWeb = document.getElementById( 'formOpenMethodWebpage' );
     this.inputSpecifySizeFlag  = document.getElementById( 'inputSpecifySizeFlag' );
     this.inputNewWindowHeight  = document.getElementById( 'inputSizeOfNewWindowHeight' );
     this.inputNewWindowWidth   = document.getElementById( 'inputSizeOfNewWindowWidth' );
@@ -28,52 +28,44 @@ export class Options {
   }
 
   exceptionLog( error ) {
-    console.log( 'Catched an exception: ' + error.message );
+    console.log( 'Catched an exception > ' + error.id + ':' + error.message );
   }
 
   getFormOpeningMethodText() {
-    return this.formOpenMethodText;
+    return this.formOpeningMethodText;
   }
 
   getFormOpeningMethodWeb() {
-    return this.formOpenMethodWebpage;
+    return this.formOpeningMethodWeb;
   }
 
   getFormTranslationService() {
     return this.formTranslationService;
   }
 
-  languageCodeListSwitch( service ) {
-    let targetList;
-    switch ( service ) {
-      case 'Google':
-        this.languageCodeList.google.style.display    = 'flex';
-        this.languageCodeList.microsoft.style.display = 'none';
-        targetList = this.languageCodeList.google;
-        break;
-      case 'Microsoft':
-        this.languageCodeList.google.style.display    = 'none';
-        this.languageCodeList.microsoft.style.display = 'flex';
-        targetList = this.languageCodeList.microsoft;
-        break;
-    }
-    browser.storage.local.get(
-      'languageCode'
-    )
-    .then( ( object ) => {
-      const input = targetList.querySelector( 'input[value="' + object.languageCode+ '"]' );
+  async languageCodeListSwitch( service ) {
+    try {
+      switch ( service ) {
+        case 'google':
+          this.languageCodeList['google'].style.display    = 'flex';
+          this.languageCodeList['microsoft'].style.display = 'none';
+          break;
+        case 'microsoft':
+          this.languageCodeList['google'].style.display    = 'none';
+          this.languageCodeList['microsoft'].style.display = 'flex';
+          break;
+      }
+      const object  = await browser.storage.local.get( 'languageCode' );
+      const input   = this.languageCodeList[service].querySelector( 'input[value="' + object.languageCode+ '"]' );
       input.checked = true;
-    })
-    .catch( ( error ) => {
+      return true;
+    } catch ( error ) {
       this.exceptionLog( error );
-      const input = targetList.querySelector( 'input[value="auto"]' );
+      const input   = this.languageCodeList[service].querySelector( 'input[value="auto"]' );
       input.checked = true;
-      browser.storage.local.set({
-        languageCode: 'auto'
-      })
-      .catch( ( error2 ) => {
-        super.exceptionLog( error2 );
-      });
-    })
+      await browser.storage.local.set({ languageCode: 'auto' })
+      .catch( ( error2 ) => super.exceptionLog( error2 ) );
+      return false;
+    }
   }
 }

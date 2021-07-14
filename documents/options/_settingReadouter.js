@@ -10,53 +10,48 @@ class SettingReadouter extends Options {
     super();
   }
 
-  openingMethod( key, form ) {
-    browser.storage.local.get(
-      key
-    )
-    .then( ( object ) => {
+  async openingMethod( key, form ) {
+    try {
+      const object  = await browser.storage.local.get( key );
       const input   = form.querySelector( 'input[value="' + object[key] + '"]' );
       input.checked = true;
-    })
-    .catch( ( error ) => {
+      return true;
+    } catch ( error ) {
       const input   = form.querySelector( 'input[value="tab"]' );
       input.checked = true;
       super.exceptionLog( error );
-    });
+      return false;
+    }
   }
 
-  specifySize( flag, height, width ) {
-    browser.storage.local.get([
-      flag, height, width
-    ])
-    .then( ( object ) => {
+  async specifySize( flag, height, width ) {
+    try {
+      const object = await browser.storage.local.get([ flag, height, width ]);
       this.inputSpecifySizeFlag.checked = object[flag];
-      if ( object[flag] == true ) {
-        this.inputNewWindowHeight.value = object[height];
-        this.inputNewWindowWidth.value  = object[width];
-      }
-    })
-    .catch( ( error ) => {
+      this.inputNewWindowHeight.value   = object[height];
+      this.inputNewWindowWidth.value    = object[width];
+      return true;
+    } catch ( error ) {
       super.inputSpecifySizeFlag.checked = false;
       super.exceptionLog( error );
-    });
+      return false;
+    }
   }
 
-  translationService( key, form ) {
-    browser.storage.local.get(
-      key
-    )
-    .then( ( object ) => {
+  async translationService( key, form ) {
+    try {
+      const object  = await browser.storage.local.get( key );
       const input   = form.querySelector( 'input[value="' + object[key] + '"]' );
       input.checked = true;
       super.languageCodeListSwitch( object[key] );
-    })
-    .catch( ( error ) => {
-      const input   = form.querySelector( 'input[value="Google"]' );
+      return true;
+    } catch ( error ) {
+      const input   = form.querySelector( 'input[value="google"]' );
       input.checked = true;
-      super.languageCodeListSwitch( 'Google' );
+      super.languageCodeListSwitch( 'google' );
       super.exceptionLog( error );
-    });
+      return false;
+    }
   }
 }
 
