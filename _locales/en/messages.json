@@ -16,65 +16,72 @@
   },
 
 
-  "optionPageBehaviorWhen": {
+  "h2BehaviorWhen": {
     "message": "Behavior when translating"
   },
 
-  "optionPageCaseOfText": {
+  "h3CaseOfText": {
     "message": "Case of text"
   },
 
-  "optionPageCaseOfWebpage": {
+  "h3CaseOfWebpage": {
     "message": "Case of website"
   },
 
-  "optionPageOpenByNewTab": {
+  "spanOpenByNewTabText": {
     "message": "Open by new tab"
   },
 
-  "optionPageOpenByNewWindow": {
+  "sapnOpenByNewWindowText": {
     "message": "Open by new window"
   },
 
-  "optionPageSizeOfNewWindow": {
+  "spanOpenByNewTabWeb": {
+    "message": "Open by new tab"
+  },
+
+  "sapnOpenByNewWindowWeb": {
+    "message": "Open by new window"
+  },
+
+  "h3SizeOfNewWindow": {
     "message": "Size of new window"
   },
 
-  "optionPageSpecifySizeOfWindow": {
+  "spanSpecifySizeOfWindow": {
     "message": "Specify the size of window(Optional)"
   },
 
-  "optionPageWhenSetWH": {
+  "pWhenSetWH": {
     "message": "When set \"width:800 and height:720\", a size of new window is 800x720. This setting is reflected only when checked."
   },
 
-  "optionPageServiceUsedFor": {
+  "h2ServiceUsedFor": {
     "message": "Service used for translation"
   },
 
-  "optionPageSpecifyTranslationService": {
+  "h3SpecifyTranslationService": {
     "message": "Specify a translation service"
   },
 
-  "optionPageDependingOnSelected": {
+  "pDependingOnSelected": {
     "message": "Depending on selected service, some languages are not available."
   },
 
 
-  "optionPageTranslatedLanguage": {
+  "h2TranslatedLanguage": {
     "message": "Translated language"
   },
 
-  "optionPageSpecifyLanguageCode": {
+  "h3SpecifyLanguageCode": {
     "message": "Specify a language code"
   },
 
-  "optionPageIfSetEn": {
+  "pIfSetToEn": {
     "message": "If set to \"en - English\" \u002C texts and websites will be translated into English."
   },
 
-  "optionPageAlphabetIn": {
+  "pAlphabetIn": {
     "message": "Alphabet in [ ] indicates the initial of available services."
   }
-
 }

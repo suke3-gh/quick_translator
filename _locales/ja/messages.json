@@ -16,66 +16,73 @@
   },
 
 
-  "optionPageBehaviorWhen": {
+  "h2BehaviorWhen": {
     "message": "翻訳するときの動作"
   },
 
-  "optionPageCaseOfText": {
+  "h3CaseOfText": {
     "message": "テキストの場合"
   },
 
-  "optionPageCaseOfWebpage": {
+  "h3CaseOfWebpage": {
     "message": "ウェブページの場合"
   },
 
-  "optionPageOpenByNewTab": {
+  "spanOpenByNewTabText": {
     "message": "新しいタブで開く"
   },
 
-  "optionPageOpenByNewWindow": {
+  "spanOpenByNewWindowText": {
     "message": "新しいウィンドウで開く"
   },
 
-  "optionPageSizeOfNewWindow": {
+  "spanOpenByNewTabWeb": {
+    "message": "新しいタブで開く"
+  },
+
+  "spanOpenByNewWindowWeb": {
+    "message": "新しいウィンドウで開く"
+  },
+
+  "h3SizeOfNewWindow": {
     "message": "新しいウィンドウのサイズ"
   },
 
-  "optionPageSpecifySizeOfWindow": {
+  "spanSpecifySizeOfWindow": {
     "message": "ウィンドウのサイズを指定(任意)"
   },
 
-  "optionPageWhenSetWH": {
+  "pWhenSetWH": {
     "message": "\"width:800 height:720\" と設定した時、 新しいウィンドウのサイズは800x720となります。 この設定はチェックを入れているときのみ反映されます。"
   },
 
   
-  "optionPageServiceUsedFor": {
+  "h2ServiceUsedFor": {
     "message": "翻訳に用いるサービス"
   },
 
-  "optionPageSpecifyTranslationService": {
+  "h3SpecifyTranslationService": {
     "message": "翻訳サービスの指定"
   },
   
-  "optionPageDependingOnSelected": {
+  "pDependingOnSelected": {
     "message": "選択したサービスによっては、使用できない言語がいくつかあります。"
   },
 
 
-  "optionPageTranslatedLanguage": {
+  "h2TranslatedLanguage": {
     "message": "翻訳後の言語"
   },
 
-  "optionPageSpecifyLanguageCode": {
+  "h3SpecifyLanguageCode": {
     "message": "言語コードの指定"
   },
 
-  "optionPageIfSetEn": {
+  "pIfSetToEn": {
     "message": "仮に\"en - English\"に設定した場合、テキストやウェブページは英語に翻訳されます。"
   },
 
-  "optionPageAlphabetIn": {
+  "pAlphabetIn": {
     "message": "[ ]の中のアルファベットは利用可能なサービスの頭文字を表しています。"
   }
-
 }
