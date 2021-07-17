@@ -1,3 +1,6 @@
+
+'use strict';
+
 /**
  * module file: _inputDetector.js
  * description: 
@@ -14,134 +17,67 @@ class InputDetector extends Options {
 
     this.divNotification   = document.getElementById( 'divInputNotificationArea' );
     this.notificationCount = Number( 0 );
-
-    this.prepareOpenMethodInput('openMethodText', super.getFormOpeningMethodText());
-    this.prepareSpecifySizeInput();
-    this.prepareServiceInput();
-    this.prepareLanguageCodeInput();
   }
 
-  notification() {
+  async notification() {
     if ( this.notificationCount == 0 ) {
-      new Promise( resolve => {
+      try {
         this.divNotification.style.display = 'flex';
-        setTimeout( resolve , 5000 );
-      })
-      .then( () => {
+        await new Promise( resolve => setTimeout( resolve , 5000 ) );
         this.divNotification.style.display = 'none';
         this.notificationCount             = 1;
-      })
-      .catch( ( error ) => {
-        super.exceptionLog( error )
-      });
+      } catch ( error ) {
+        super.exceptionLog( error );
+      }
     }
   }
 
-  prepareOpenMethodInput( key, form ) {
-    this.formOpenMethodText?.addEventListener( 'input', ( event ) => {
+  prepareCheckBoxInput( key, form ) {
+    form?.addEventListener( 'input', async ( event ) => {
       if ( event.target instanceof HTMLInputElement ) {
-        browser.storage.local.set({
-          openMethodText: event.target.value
-        })
-        .then( () => {
+        try {
+          const flag = event.target.checked ? true : false;
+          await browser.storage.local.set({ [key]: Boolean( flag ) })
           this.notification();
-        })
-        .catch( ( error ) => {
+        } catch ( error ) {
           super.exceptionLog( error );
-        });
-      }
-    }, false );
-    this.formOpenMethodWebpage?.addEventListener( 'input', ( event ) => {
-      if ( event.target instanceof HTMLInputElement ) {
-        browser.storage.local.set({
-          openMethodWebpage: event.target.value
-        })
-        .then( () => {
-          this.notification();
-        })
-        .catch( ( error ) => {
-          super.exceptionLog( error );
-        });
+        }
       }
     }, false );
   }
 
-  prepareSpecifySizeInput() {
-    this.inputSpecifySizeFlag?.addEventListener( 'input', ( event ) => {
+  prepareNumberInput( key, form ) {
+    form?.addEventListener( 'input', async ( event ) => {
       if ( event.target instanceof HTMLInputElement ) {
-        const flag = event.target.checked ? true : false;
-        console.log( flag );
-        browser.storage.local.set({
-          specifySizeFlag: flag
-        })
-        .then( () => {
+        try {
+          await browser.storage.local.set({ [key]: Number( event.target.value ) })
           this.notification();
-        })
-        .catch( ( error ) => {
+        } catch ( error ) {
           super.exceptionLog( error );
-        });
-      }
-    });
-    this.inputNewWindowHeight?.addEventListener( 'input', ( event ) => {
-      if ( event.target instanceof HTMLInputElement ) {
-        browser.storage.local.set({
-          sizeHeight: Number( event.target.value )
-        })
-        .then( () => {
-          this.notification();
-        })
-        .catch( ( error ) => {
-          super.exceptionLog( error );
-        });
-      }
-    });
-    this.inputNewWindowWidth?.addEventListener( 'input', ( event ) => {
-      if ( event.target instanceof HTMLInputElement ) {
-        browser.storage.local.set({
-          sizeWidth: Number( event.target.value )
-        })
-        .then( () => {
-          this.notification();
-        })
-        .catch( ( error ) => {
-          super.exceptionLog( error );
-        });
-      }
-    });
-  }
-
-  prepareServiceInput() {
-    this.formTranslationService?.addEventListener( 'input', ( event ) => {
-      if ( event.target instanceof HTMLInputElement ) {
-        browser.storage.local.set({
-          translationService: event.target.value
-        })
-        .then( () => {
-          super.languageCodeListSwitch( event.target.value );
-          this.notification();
-        })
-        .catch( ( error ) => {
-          super.exceptionLog( error );
-        });
+        }
       }
     }, false );
   }
 
-  prepareLanguageCodeInput() {
-    this.formLanguageCode?.addEventListener( 'input', ( event ) => {
+  prepareRadioInput( key, form ) {
+    form?.addEventListener( 'input', async ( event ) => {
       if ( event.target instanceof HTMLInputElement ) {
-        browser.storage.local.set({
-          languageCode: event.target.value
-        })
-        .then( () => {
+        try {
+          await browser.storage.local.set({ [key]: event.target.value })
           this.notification();
-        })
-        .catch( ( error ) => {
+        } catch ( error ) {
           super.exceptionLog( error );
-        });
+        }
       }
     }, false );
   }
 }
 
-const InputDetectorInstance = new InputDetector();
+const InputDetectorIns = new InputDetector;
+InputDetectorIns.prepareRadioInput( 'openMethodText', InputDetectorIns.getFormOpeningMethodText() );
+InputDetectorIns.prepareRadioInput( 'openMethodWebpage', InputDetectorIns.getFormOpeningMethodWeb() );
+InputDetectorIns.prepareCheckBoxInput( 'specifySizeFlag', InputDetectorIns.getInputSpecifySizeFlag() );
+InputDetectorIns.prepareNumberInput( 'sizeWidth', InputDetectorIns.getInputNewWindowWidth() );
+InputDetectorIns.prepareNumberInput( 'sizeHeight', InputDetectorIns.getInputNewWindowHeight() );
+InputDetectorIns.prepareRadioInput( 'translationService', InputDetectorIns.getFormTranslationService() );
+InputDetectorIns.prepareRadioInput( 'languageCode', InputDetectorIns.getFormLanguageCode() );

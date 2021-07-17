@@ -1,9 +1,12 @@
+
+'use strict';
+
 /**
  * module file: _script_footer.js
  * description: 
  */
 
- import { Page } from './_Page.js';
+ import { Page } from './Page.js';
 
 class Footer extends Page {
 
@@ -12,6 +15,6 @@ class Footer extends Page {
   }
 }
 
-const FooterIns = new Footer();
+const FooterIns = new Footer;
 FooterIns.textAssignment( 'divAddonVersion', 'Add-on version: '+ browser.runtime.getManifest().version );
 FooterIns.textAssignment( 'divLicenseText', 'License: Apache License Version 2.0, CC BY 4.0' );

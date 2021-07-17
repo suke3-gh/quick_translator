@@ -1,4 +1,6 @@
 
+'use strict';
+
 export class Options {
   formOpeningMethodText;
   formOpeningMethodWeb;
@@ -12,11 +14,11 @@ export class Options {
   formLanguageCode;
 
   constructor() {
-    this.formOpeningMethodText    = document.getElementById( 'formOpenMethodText' );
-    this.formOpeningMethodWeb = document.getElementById( 'formOpenMethodWebpage' );
+    this.formOpeningMethodText = document.getElementById( 'formOpenMethodText' );
+    this.formOpeningMethodWeb  = document.getElementById( 'formOpenMethodWebpage' );
     this.inputSpecifySizeFlag  = document.getElementById( 'inputSpecifySizeFlag' );
-    this.inputNewWindowHeight  = document.getElementById( 'inputSizeOfNewWindowHeight' );
     this.inputNewWindowWidth   = document.getElementById( 'inputSizeOfNewWindowWidth' );
+    this.inputNewWindowHeight  = document.getElementById( 'inputSizeOfNewWindowHeight' );
 
     this.formTranslationService = document.getElementById( 'formTranslationService' );
     this.languageCodeList = {
@@ -41,6 +43,22 @@ export class Options {
 
   getFormTranslationService() {
     return this.formTranslationService;
+  }
+
+  getFormLanguageCode() {
+    return this.formLanguageCode;
+  }
+
+  getInputSpecifySizeFlag() {
+    return this.inputSpecifySizeFlag;
+  }
+
+  getInputNewWindowWidth() {
+    return this.inputNewWindowWidth;
+  }
+
+  getInputNewWindowHeight() {
+    return this.inputNewWindowHeight;
   }
 
   async languageCodeListSwitch( service ) {

@@ -161,10 +161,10 @@ class Background {
   async urlAssemblingText() {
     try {
       switch ( this.service ) {
-        case 'Google':
+        case 'google':
           this.url = 'https://translate.google.com/?sl=auto&tl='+this.languageCode+'&text='+this.targetText+'&op=translate';
           break;
-        case 'Microsoft':
+        case 'microsoft':
           this.url = 'https://www.bing.com/translator?from=&to='+this.languageCode+'&text='+this.targetText;
           break;
       }

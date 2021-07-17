@@ -1,4 +1,6 @@
 
+'use strict';
+
 /**
  * module file: _Page.js
  * description: 
@@ -7,7 +9,6 @@
 export class Page {
 
   constructor() {
-
   }
 
   textAssignment( id, text ) {

@@ -1,9 +1,12 @@
+
+'use strict';
+
 /**
  * module file: _Header.js
  * description: 
  */
 
-import { Page } from './_Page.js';
+import { Page } from './Page.js';
 
  class Header extends Page {
   buttonLeft;

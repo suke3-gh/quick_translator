@@ -1,3 +1,6 @@
+
+'use strict';
+
 /**
  * module file: _settingReadouter.js
  * description: 
