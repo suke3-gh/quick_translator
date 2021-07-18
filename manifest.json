@@ -4,33 +4,24 @@
       "strict_min_version": "82.0"
     }
   },
-
   "author": "Keisukes4n",
-
   "background": {
     "scripts": ["main.js"]
   },
-
   "default_locale": "en",
-
   "description": "__MSG_extensionDescription__",
-
   "icons": {
     "32":  "/icons/quick-translator-icon-plain.svg",
     "128": "/icons/quick-translator-icon-plain.svg",
     "256": "/icons/quick-translator-icon-plain.svg"
   },
-
   "manifest_version": 2,
-
   "name": "Quick translator",
-
   "options_ui": {
     "browser_style": true,
     "open_in_tab":   true,
     "page": "/documents/options/index.html"
   },
-
   "browser_action": {
     "default_icon": {
       "32":  "/icons/quick-translator-icon-plain.svg",
@@ -39,8 +30,6 @@
     },
     "default_title": "__MSG_tooltipTitle__"
   },
-
   "permissions": ["menus", "storage", "tabs"],
-
-  "version": "2.1.45"
+  "version": "2.2.46"
 }

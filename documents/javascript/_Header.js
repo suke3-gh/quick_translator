@@ -70,9 +70,9 @@ import { Page } from './Page.js';
         case '':
         case '0px':
           icon.src          = icon.src.replace( 'menu', 'menu-up' );
-          menu.style.height = '70vh';
+          menu.style.height = '80vh';
           break;
-        case '70vh':
+        case '80vh':
           icon.src          = icon.src.replace( 'menu-up', 'menu' );
           menu.style.height = '0px';
           break;
@@ -96,7 +96,7 @@ import { Page } from './Page.js';
             }, 200);
             break;
           case 'down':
-            header.style.height    = '0';
+            header.style.height    = '0px';
             header.style.overflowY = 'hidden';
             break;
         }

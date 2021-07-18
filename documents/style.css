@@ -44,6 +44,7 @@
   overflow-wrap: break-word;
   overflow-x:    hidden;
   padding:       0;
+  width:         100vw;
 }
 
 body a {
@@ -60,6 +61,7 @@ footer {
   align-items: center;
   flex-flow:   column;
   padding:     1.0rem;
+  width:       100vw;
 }
 
 @media screen and ( min-aspect-ratio: 4/3 ) {
@@ -81,20 +83,20 @@ footer > div.item {
  * _header.scss
  */
 header {
-  background: var( --tile-bg-color );
   box-shadow: var( --shadow-param );
   display:    flex;
   flex-flow:  row wrap;
   height:     4.0rem;
-  margin: 0.5rem 5.0vw 0.5rem 5.0vw;
   overflow-y: visible;
   position:   fixed;
   transition: height 200ms ease-out 0ms;
-  width: 90%;
+  width:      100vw;
 }
 
 @media screen and ( min-aspect-ratio: 4/3 ) {
   header {
+    background: var( --tile-bg-color );
+    box-shadow: var( --shadow-param );
     flex-flow:  column;
     height:     100vh;
     overflow-y: scroll;
@@ -105,29 +107,35 @@ header {
   }
 }
 
-header > section.primary {
-  display:         flex;
-  flex-flow:       row;
-  height:          4.0rem;
-  justify-content: space-between;
-  width:           100%;
+header > section.bar {
+  background: var( --body-bg-color );
+  display:    flex;
+  flex-flow:  row;
+  height:     4.0rem;
+  width:      100vw;
 }
 
-header > section.primary > .addon-title {
+@media screen and ( min-aspect-ratio: 4/3 ) {
+  header > section.bar {
+    background: var( --tile-bg-color );
+    width:      auto;
+  }
+}
+
+header > section.bar > .addon-title {
   font-size:   1.6rem;
   font-weight: bold;
   margin:      auto;
 }
 
 @media screen and ( min-aspect-ratio: 4/3 ) {
-  header > section.primary > .addon-title {
+  header > section.bar > .addon-title {
     padding: 1.0rem 0 1.0rem 0;
   }
 }
 
-header > section.primary > .operation-button-left {
+header > section.bar > .operation-button-left {
   align-items:     center;
-  box-shadow:      var( --shadow-param );
   display:         flex;
   flex-flow:       column;
   justify-content: center;
@@ -135,27 +143,26 @@ header > section.primary > .operation-button-left {
 }
 
 @media screen and ( min-aspect-ratio: 4/3 ) {
-  header > section.primary > .operation-button-left {
+  header > section.bar > .operation-button-left {
     display: none;
   }
 }
 
-header > section.primary > .operation-button-left > img {
+header > section.bar > .operation-button-left > img {
   height: 3.0rem;
   width:  3.0rem;
 }
 
-header > section.primary > .operation-button-left > img:hover {
+header > section.bar > .operation-button-left > img:hover {
   background: var( --button-bg-color-hover );
 }
 
-header > section.primary > .operation-button-left > span {
+header > section.bar > .operation-button-left > span {
   font-weight: bold;
 }
 
-header > section.primary > .operation-button-right {
+header > section.bar > .operation-button-right {
   align-items:     center;
-  box-shadow:      var( --shadow-param );
   display:         flex;
   flex-flow:       column;
   justify-content: center;
@@ -163,7 +170,7 @@ header > section.primary > .operation-button-right {
 }
 
 @media screen and ( min-aspect-ratio: 4/3 ) {
-  header > section.primary > .operation-button-right {
+  header > section.bar > .operation-button-right {
     display: none;
   }
 }
@@ -174,7 +181,7 @@ header > section.primary > .operation-button-right {
 main {
   box-sizing: border-box;
   padding:    4.0rem 5.0vw 4.0rem 5.0vw;
-  width:      100vw;
+  width: 100vw;
 }
 
 @media screen and ( min-aspect-ratio: 4/3 ) {
@@ -312,6 +319,10 @@ form.language-code > .list {
   gap:     var( --grid-gap );
   grid:    auto-flow auto / repeat( auto-fill, minmax( 25%, auto ) );
   padding: var( --tile-parts-padding );
+}
+
+form.language-code > .list > .column {
+  width: 25%;
 }
 
 form.language-code > .list > .column > h4 {

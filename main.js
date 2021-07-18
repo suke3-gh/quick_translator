@@ -2,7 +2,7 @@
 'use strict';
 
 class Background {
-  menuItems;
+  itemIds;
   languageCode;
   openingMethod;
   targetText;
@@ -24,7 +24,7 @@ class Background {
     this.windowHeight  = '0';
     this.url           = '';
 
-    this.menuItems = {
+    this.itemIds = {
       text: 'idTranslateText',
       web:  'idTranslateWebpage'
     }
@@ -34,11 +34,11 @@ class Background {
     console.log( 'Catched an exception: ' + error.message );
   }
 
-  getMenuItems() {
-    return this.menuItems;
+  getitemIds() {
+    return this.itemIds;
   }
 
-  menuItem( contextType, itemId, title ) {
+  menusItem( contextType, itemId, title ) {
     browser.menus.create({
       contexts: [contextType],
       id:       itemId,
@@ -55,7 +55,7 @@ class Background {
       ])
       .catch( ( error ) => this.exceptionLog( error ) );
       switch ( info.menuItemId ) {
-        case this.menuItems.text:
+        case this.itemIds.text:
           await Promise.all([
             this.openingMethodSetup( 'openMethodText' ),
             this.targetTextSetup( info.selectionText )
@@ -64,7 +64,7 @@ class Background {
           await this.urlAssemblingText()
           .catch( ( error ) => this.exceptionLog( error ) );
           break;
-        case this.menuItems.web:
+        case this.itemIds.web:
           await Promise.all([
             this.openingMethodSetup( 'openMethodWebpage' ),
             this.targetWebSetup( info.pageUrl )
@@ -221,7 +221,7 @@ class Background {
 }
 
 const BackgroundIns = new Background();
-BackgroundIns.menuItem( 'selection', BackgroundIns.getMenuItems().text, 'contextMenuForTextTranslation' );
-BackgroundIns.menuItem( 'page', BackgroundIns.getMenuItems().web, 'contextMenuForWebpageTranslation' );
+BackgroundIns.menusItem( 'selection', BackgroundIns.getitemIds().text, 'contextMenuForTextTranslation' );
+BackgroundIns.menusItem( 'page', BackgroundIns.getitemIds().web, 'contextMenuForWebpageTranslation' );
 BackgroundIns.prepareOnclickedEvent();
 
