@@ -17,8 +17,8 @@ class Background {
     this.languageCode  = 'en';
     this.openingMethod = 'tab';
     this.targetText    = '';
-    this.targetWeb    = 'https://';
-    this.service       = 'Google';
+    this.targetWeb     = 'https://';
+    this.service       = 'google';
     this.flagKey       = false;
     this.windowWidth   = '0';
     this.windowHeight  = '0';
@@ -46,7 +46,7 @@ class Background {
     });
   }
 
-  prepareOnclickedEvent() {
+  prepareMenusOnclicked() {
     browser.menus.onClicked.addListener( async ( info ) => {
       await Promise.all([
         this.languageCodeSetup( 'languageCode' ),
@@ -78,10 +78,28 @@ class Background {
     });
   }
 
+  prepareBrowserActionOnclicked() {
+    browser.browserAction.onClicked.addListener( async ( tab ) => {
+      await Promise.all([
+        this.languageCodeSetup( 'languageCode' ),
+        this.openingMethodSetup( 'openMethodWebpage' ),
+        this.targetWebSetup( tab.url ),
+        this.serviceSetup( 'translationService' ),
+        this.windowSizeSetup( 'specifySizeFlag', 'sizeWidth', 'sizeHeight' )
+      ])
+      .catch( ( error ) => this.exceptionLog( error ) );
+      await this.urlAssemblingWeb()
+      .catch( ( error ) => this.exceptionLog( error ) );
+      this.urlOpen();
+    });
+  }
+
   async languageCodeSetup( key ) {
     try {
-      const object   = await browser.storage.local.get( key );
-      object[key]    = ( object[key] == 'auto' ) ? browser.i18n.getUILanguage() : object[key];
+      const object = await browser.storage.local.get( key );
+      if ( object[key] == 'auto' || object[key] == undefined ) {
+        object[key]  = browser.i18n.getUILanguage();
+      }
       const fixCodes = [ 'de', 'en', 'es', 'pt' ];
       fixCodes.forEach( code => {
         object[key] = ( object[key].indexOf( code ) != -1 ) ? code : object[key];
@@ -108,7 +126,7 @@ class Background {
   async serviceSetup( key ) {
     try {
       const object = await browser.storage.local.get( key );
-      this.service = object[key] ?? 'Google';
+      this.service = object[key] ?? 'google';
       return true;
     } catch ( error ) {
       this.exceptionLog( error );
@@ -178,10 +196,10 @@ class Background {
   async urlAssemblingWeb() {
     try {
       switch ( this.service ) {
-        case 'Google':
+        case 'google':
           this.url = 'https://translate.google.com/translate?hl='+this.languageCode+'&sl=auto&tl='+this.languageCode+'&u='+this.targetWeb;
           break;
-        case 'Microsoft':
+        case 'microsoft':
           this.url = 'https://www.translatetheweb.com/?from=&to='+this.languageCode+'&a='+this.targetWeb;
           break;
       }
@@ -221,7 +239,8 @@ class Background {
 }
 
 const BackgroundIns = new Background();
-BackgroundIns.menusItem( 'selection', BackgroundIns.getitemIds().text, 'contextMenuForTextTranslation' );
-BackgroundIns.menusItem( 'page', BackgroundIns.getitemIds().web, 'contextMenuForWebpageTranslation' );
-BackgroundIns.prepareOnclickedEvent();
+BackgroundIns.menusItem( 'selection', BackgroundIns.getitemIds().text, 'contextTranslateSelectedText' );
+BackgroundIns.menusItem( 'page', BackgroundIns.getitemIds().web, 'contextTranslateThisWebpage' );
+BackgroundIns.prepareBrowserActionOnclicked();
+BackgroundIns.prepareMenusOnclicked();
 

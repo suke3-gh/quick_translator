@@ -17,11 +17,10 @@ import { Page } from './Page.js';
 
   constructor() {
     super();
-    this.header     = document.getElementById( 'header' );
-    this.menu       = document.getElementById( 'navMenu' );
-    this.menuIcon   = document.getElementById( 'imgMenuIcon' );
-    this.buttonLeft = document.getElementById( 'divOperationButtonLeft' );
-    this.scroll     = {
+    this.header   = document.getElementById( 'header' );
+    this.menu     = document.getElementById( 'navMenu' );
+    this.menuIcon = document.getElementById( 'imgMenuIcon' );
+    this.scroll   = {
       beforeY:  0,
     }
   }
@@ -65,15 +64,13 @@ import { Page } from './Page.js';
     if ( this.menuIcon instanceof HTMLImageElement ) {
       icon = this.menuIcon;
     }
-    this.buttonLeft.addEventListener( 'click', () => {
+    icon.addEventListener( 'click', () => {
       switch ( menu.style.height ) {
         case '':
         case '0px':
-          icon.src          = icon.src.replace( 'menu', 'menu-up' );
           menu.style.height = '80vh';
           break;
         case '80vh':
-          icon.src          = icon.src.replace( 'menu-up', 'menu' );
           menu.style.height = '0px';
           break;
       }
@@ -118,7 +115,6 @@ import { Page } from './Page.js';
       icon = this.menuIcon;
     }
     window.addEventListener( 'resize', () => {
-      icon.src = icon.src.replace( 'menu-up', 'menu' );
       if ( super.currentAspectRatio() < 4/3 ) {
         header.style.height    = '4.0rem';
         header.style.overflowY = 'visible';

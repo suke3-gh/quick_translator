@@ -26,6 +26,8 @@
   --h2-padding: 1.0rem;
   --h3-padding: 0 1.0rem 0 1.0rem;
 
+  --ope-button-width: 20%;
+
   --radio-padding: 1.0rem 0.5rem 1.0rem 0.5rem;
 
   --shadow-param: 0 0 2px rgba( 175, 175, 175, 1 );
@@ -135,11 +137,11 @@ header > section.bar > .addon-title {
 }
 
 header > section.bar > .operation-button-left {
-  align-items:     center;
-  display:         flex;
-  flex-flow:       column;
-  justify-content: center;
-  width:           25%;
+  align-items: center;
+  display:     flex;
+  flex-flow:   row;
+  margin:      0 auto 0 5.0vw;
+  width:       var( --ope-button-width );
 }
 
 @media screen and ( min-aspect-ratio: 4/3 ) {
@@ -162,11 +164,11 @@ header > section.bar > .operation-button-left > span {
 }
 
 header > section.bar > .operation-button-right {
-  align-items:     center;
-  display:         flex;
-  flex-flow:       column;
-  justify-content: center;
-  width:           25%;
+  align-items: center;
+  display:     flex;
+  flex-flow:   row;
+  margin:      0 5.0vw 0 auto;
+  width:       var( --ope-button-width );
 }
 
 @media screen and ( min-aspect-ratio: 4/3 ) {

@@ -1,87 +1,67 @@
 {
-  "contextMenuForWebpageTranslation": {
-    "message": "Traducir esta página web"
-  },
-
-  "contextMenuForTextTranslation": {
+  "contextTranslateSelectedText": {
     "message": "Traducir texto seleccionado"
   },
-
+  "contextTranslateThisWebpage": {
+    "message": "Traducir esta página web"
+  },
   "extensionDescription": {
     "message": "El complemento agrega un elemento para ayudar a la traducción al menú contextual."
   },
-
   "tooltipTitle": {
     "message": "Traducir esta página web"
   },
 
-
   "h2BehaviorWhen": {
     "message": "Comportamiento al traducir"
   },
-
   "h3CaseOfText": {
     "message": "Para texto"
   },
-
   "h3CaseOfWebpage": {
     "message": "Para página web"
   },
-
   "spanOpenByNewTabText": {
     "message": "Abrir en una nueva pestaña"
   },
-
   "spanOpenByNewWindowText": {
     "message": "Abrir en una nueva ventana"
   },
-
   "spanOpenByNewTabWeb": {
     "message": "Abrir en una nueva pestaña"
   },
-
   "spanOpenByNewWindowWeb": {
     "message": "Abrir en una nueva ventana"
   },
-
   "h3SizeOfNewWindow": {
     "message": "Tamaño de la nueva ventana"
   },
-
   "spanSpecifySizeOfWindow": {
     "message": "Especifique el tamaño de la ventana(Opcional)"
   },
-
   "pWhenSetWH": {
     "message": "\"width：800 height：720\" Si está configurado, el tamaño de la nueva ventana será de 800 x 720. Esta configuración se refleja solo cuando está marcada."
   },
 
-
   "h2ServiceUsedFor": {
     "message": "Servicio utilizado para la traducción."
   },
-
   "h3SpecifyTranslationService": {
     "message": "Especificar un servicio de traducción."
   },
-
   "pDependingOnSelected": {
     "message": "Dependiendo del servicio seleccionado, algunos idiomas no están disponibles."
   },
 
-
   "h2TranslatedLanguage": {
     "message": "Lenguaje traducido"
   },
-
   "h3SpecifyLanguageCode": {
     "message": "Especificar código de idioma"
   },
-
   "pIfSetToEn": {
     "message": "Si se establece en \"en - English\", los textos y página web se traducirán al inglés."
   },
-
   "pAlphabetIn": {
     "message": "Las letras en [ ] representan las iniciales de los servicios disponibles."
   }
