@@ -1,6 +1,11 @@
 
 'use strict';
 
+/**
+ * Options.js
+ * description: 
+ */
+
 export class Options {
   formOpeningMethodText;
   formOpeningMethodWeb;
@@ -30,7 +35,7 @@ export class Options {
   }
 
   exceptionLog( error ) {
-    console.log( 'Catched an exception > ' + error.id + ':' + error.message );
+    console.log( 'Catched an exception > ' + error.id + ': ' + error.message );
   }
 
   getFormOpeningMethodText() {

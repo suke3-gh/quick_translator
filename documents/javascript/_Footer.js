@@ -2,7 +2,7 @@
 'use strict';
 
 /**
- * module file: _script_footer.js
+ * _Footer.js
  * description: 
  */
 

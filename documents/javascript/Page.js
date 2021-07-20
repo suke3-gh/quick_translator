@@ -2,7 +2,7 @@
 'use strict';
 
 /**
- * module file: _Page.js
+ * Page.js
  * description: 
  */
 

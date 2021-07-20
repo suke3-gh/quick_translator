@@ -2,7 +2,7 @@
 'use strict';
 
 /**
- * module file: _Header.js
+ * _Header.js
  * description: 
  */
 

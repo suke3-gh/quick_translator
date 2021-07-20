@@ -2,7 +2,7 @@
 'use strict';
 
 /**
- * module file: _multilingual.js
+ * Multilingual.js
  * description: 
  */
 
@@ -22,24 +22,24 @@ class multilingual {
       'spanOpenByNewWindowWeb',
       'h3SizeOfNewWindow',
       'spanSpecifySizeOfWindow',
-      'pWhenSetWH'
+      'pSizeOfNewWindowBecome'
     ];
     this.serviceKeys = [
       'h2ServiceUsedFor',
       'h3SpecifyTranslationService',
-      'pDependingOnSelected'
+      'pSomeLanguagesAreNot'
     ];
     this.languageKeys = [
       'h2TranslatedLanguage',
       'h3SpecifyLanguageCode',
-      'pIfSetToEn',
-      'pAlphabetIn'
+      'pTextAndWebpageWill'
     ];
   }
 
   i18n( array ) {
     array.forEach( ( key ) => {
       document.getElementById( key ).textContent = browser.i18n.getMessage( key );
+      
     });
   }
 

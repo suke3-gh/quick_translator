@@ -2,7 +2,7 @@
 'use strict';
 
 /**
- * module file: _settingReadouter.js
+ * _SettingReadouter.js
  * description: 
  */
 

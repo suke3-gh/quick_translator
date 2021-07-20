@@ -1,0 +1,65 @@
+{
+  "contextTranslateSelectedText": {
+    "message": "Den ausgewählten Text übersetzen"
+  },
+  "contextTranslateThisWebpage": {
+    "message": "Diese Web-Seiten übersetzen"
+  },
+  "extensionDescription": {
+    "message": "Es wurde ein neuer Eintrag zum Kontextmenü hinzugefügt, der bei der Übersetzung hilft."
+  },
+  "tooltipTitle": {
+    "message": "Diese Web-Seiten übersetzen"
+  },
+
+  "h2BehaviorWhen": {
+    "message": "Verhalten während der Übersetzung"
+  },
+  "h3CaseOfText": {
+    "message": "Für Text"
+  },
+  "h3CaseOfWebpage": {
+    "message": "Für Web-Seiten"
+  },
+  "spanOpenByNewTabText": {
+    "message": "In neuem Tab öffnen "
+  },
+  "spanOpenByNewWindowText": {
+    "message": "In einem neuen Fenster öffnen"
+  },
+  "spanOpenByNewTabWeb": {
+    "message": "In neuem Tab öffnen "
+  },
+  "spanOpenByNewWindowWeb": {
+    "message": "In einem neuen Fenster öffnen"
+  },
+  "h3SizeOfNewWindow": {
+    "message": "Neue Fenstergröße"
+  },
+  "spanSpecifySizeOfWindow": {
+    "message": "Fenstergröße angeben (optional)"
+  },
+  "pSizeOfNewWindowBecome": {
+    "message": "Die Größe des neuen Fensters wird 800x720, wenn \"Breite:800 und Höhe:720\" eingestellt ist. Diese Einstellung wird nur angezeigt, wenn sie aktiviert ist."
+  },
+
+  "h2ServiceUsedFor": {
+    "message": "Verwendete Dienste für die Übersetzung"
+  },
+  "h3SpecifyTranslationService": {
+    "message": "Bezeichnung des Übersetzungsdienstes"
+  },
+  "pSomeLanguagesAreNot": {
+    "message": "Je nach dem von Ihnen gewählten Dienst gibt es eine Reihe von Sprachen, die nicht verfügbar sind."
+  },
+
+  "h2TranslatedLanguage": {
+    "message": "Übersetzte Sprache"
+  },
+  "h3SpecifyLanguageCode": {
+    "message": "Sprachcode angeben"
+  },
+  "pTextAndWebpageWill": {
+    "message": "Text und Webseite werden ins Englische übersetzt, wenn sie auf \"en - Englisch\" eingestellt sind."
+  }
+}

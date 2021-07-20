@@ -39,7 +39,7 @@
   "spanSpecifySizeOfWindow": {
     "message": "ウィンドウのサイズを指定(任意)"
   },
-  "pWhenSetWH": {
+  "pSizeOfNewWindowBecome": {
     "message": "\"width:800 height:720\" と設定した時、 新しいウィンドウのサイズは800x720となります。 この設定はチェックを入れているときのみ反映されます。"
   },
   
@@ -49,7 +49,7 @@
   "h3SpecifyTranslationService": {
     "message": "翻訳サービスの指定"
   },
-  "pDependingOnSelected": {
+  "pSomeLanguagesAreNot": {
     "message": "選択したサービスによっては、使用できない言語がいくつかあります。"
   },
 
@@ -59,10 +59,7 @@
   "h3SpecifyLanguageCode": {
     "message": "言語コードの指定"
   },
-  "pIfSetToEn": {
+  "pTextAndWebpageWill": {
     "message": "仮に\"en - English\"に設定した場合、テキストやウェブページは英語に翻訳されます。"
-  },
-  "pAlphabetIn": {
-    "message": "[ ]の中のアルファベットは利用可能なサービスの頭文字を表しています。"
   }
 }

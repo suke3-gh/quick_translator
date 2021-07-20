@@ -39,7 +39,7 @@
   "spanSpecifySizeOfWindow": {
     "message": "Spécifiez la taille de la fenêtre(optionnel)"
   },
-  "pWhenSetWH": {
+  "pSizeOfNewWindowBecome": {
     "message": "\"widht: 800 height: 720\", la taille de la nouvelle fenêtre sera de 800 x 720. Ce paramètre n'est reflété que lorsqu'il est coché."
   },
 
@@ -49,7 +49,7 @@
   "h3SpecifyTranslationService": {
     "message": "Spécifiez un service de traduction"
   },
-  "pDependingOnSelected": {
+  "pSomeLanguagesAreNot": {
     "message": "Selon le service choisi, certaines langues ne sont pas disponibles."
   },
 
@@ -59,10 +59,7 @@
   "h3SpecifyLanguageCode": {
     "message": "Spécifiez le code de langue"
   },
-  "pIfSetToEn": {
+  "pTextAndWebpageWill": {
     "message": "\"en - English\", le texte et le page Web seront traduits en anglais."
-  },
-  "pAlphabetIn": {
-    "message": "Les lettres en [ ] représentent les initiales des services disponibles."
   }
 }

@@ -2,7 +2,7 @@
 'use strict';
 
 /**
- * module file: _inputDetector.js
+ * _InputDetector.js
  * description: 
  */
 

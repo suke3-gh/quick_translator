@@ -183,7 +183,7 @@ header > section.bar > .operation-button-right {
 main {
   box-sizing: border-box;
   padding:    4.0rem 5.0vw 4.0rem 5.0vw;
-  width: 100vw;
+  width:      100vw;
 }
 
 @media screen and ( min-aspect-ratio: 4/3 ) {
