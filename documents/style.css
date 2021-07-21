@@ -132,7 +132,7 @@ header > section.bar > .addon-title {
 
 @media screen and ( min-aspect-ratio: 4/3 ) {
   header > section.bar > .addon-title {
-    padding: 1.0rem 0 1.0rem 0;
+    padding: 2.0rem 0 2.0rem 0;
   }
 }
 

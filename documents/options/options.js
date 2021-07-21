@@ -67,6 +67,7 @@ export class Options {
   }
 
   async languageCodeListSwitch( service ) {
+    console.log( service );
     try {
       switch ( service ) {
         case 'google':

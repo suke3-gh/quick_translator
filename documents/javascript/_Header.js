@@ -14,6 +14,8 @@ import { Page } from './Page.js';
   menu;
   menuIcon;
   scroll;
+  closedMenuHeight;
+  openedMenuHeight;
 
   constructor() {
     super();
@@ -23,6 +25,8 @@ import { Page } from './Page.js';
     this.scroll   = {
       beforeY:  0,
     }
+    this.closedMenuHeight = '0px';
+    this.openedMenuHeight = '80vh';
   }
 
   watchScrollDirection() {
@@ -48,9 +52,8 @@ import { Page } from './Page.js';
       icon = this.menuIcon;
     }
     window.addEventListener( 'scroll', () => {
-      if ( ( super.currentAspectRatio() < 4/3 ) && ( menu.style.height == '70vh' ) ) {
-        icon.src          = icon.src.replace( 'menu-up', 'menu' );
-        menu.style.height = '0px';
+      if ( ( super.currentAspectRatio() < 4/3 ) && ( menu.style.height == this.openedMenuHeight ) ) {
+        menu.style.height = this.closedMenuHeight;
       }
     }, false );
   }
@@ -67,11 +70,11 @@ import { Page } from './Page.js';
     icon.addEventListener( 'click', () => {
       switch ( menu.style.height ) {
         case '':
-        case '0px':
-          menu.style.height = '80vh';
+        case this.closedMenuHeight:
+          menu.style.height = this.openedMenuHeight;
           break;
-        case '80vh':
-          menu.style.height = '0px';
+        case this.openedMenuHeight:
+          menu.style.height = this.closedMenuHeight;
           break;
       }
     }, false );
@@ -118,9 +121,9 @@ import { Page } from './Page.js';
       if ( super.currentAspectRatio() < 4/3 ) {
         header.style.height    = '4.0rem';
         header.style.overflowY = 'visible';
-        menu.style.height      = '0px';
+        menu.style.height      = this.closedMenuHeight;
       } else {
-        header.style.height    = '100vh';  
+        header.style.height    = '100vh';
         header.style.overflowY = 'scroll';
         menu.style.height      = '100vh';
       }

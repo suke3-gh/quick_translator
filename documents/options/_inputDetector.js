@@ -37,7 +37,7 @@ class InputDetector extends Options {
       if ( event.target instanceof HTMLInputElement ) {
         try {
           const flag = event.target.checked ? true : false;
-          await browser.storage.local.set({ [key]: Boolean( flag ) })
+          await browser.storage.local.set({ [key]: Boolean( flag ) });
           this.notification();
         } catch ( error ) {
           super.exceptionLog( error );
@@ -50,7 +50,7 @@ class InputDetector extends Options {
     form?.addEventListener( 'input', async ( event ) => {
       if ( event.target instanceof HTMLInputElement ) {
         try {
-          await browser.storage.local.set({ [key]: Number( event.target.value ) })
+          await browser.storage.local.set({ [key]: Number( event.target.value ) });
           this.notification();
         } catch ( error ) {
           super.exceptionLog( error );
@@ -63,7 +63,21 @@ class InputDetector extends Options {
     form?.addEventListener( 'input', async ( event ) => {
       if ( event.target instanceof HTMLInputElement ) {
         try {
-          await browser.storage.local.set({ [key]: event.target.value })
+          await browser.storage.local.set({ [key]: event.target.value });
+          this.notification();
+        } catch ( error ) {
+          super.exceptionLog( error );
+        }
+      }
+    }, false );
+  }
+
+  prepareServiceInput( key, form ) {
+    form?.addEventListener( 'input', async ( event ) => {
+      if ( event.target instanceof HTMLInputElement ) {
+        try {
+          await browser.storage.local.set({ [key]: event.target.value });
+          this.languageCodeListSwitch( event.target.value );
           this.notification();
         } catch ( error ) {
           super.exceptionLog( error );
@@ -79,5 +93,5 @@ InputDetectorIns.prepareRadioInput( 'openMethodWebpage', InputDetectorIns.getFor
 InputDetectorIns.prepareCheckBoxInput( 'specifySizeFlag', InputDetectorIns.getInputSpecifySizeFlag() );
 InputDetectorIns.prepareNumberInput( 'sizeWidth', InputDetectorIns.getInputNewWindowWidth() );
 InputDetectorIns.prepareNumberInput( 'sizeHeight', InputDetectorIns.getInputNewWindowHeight() );
-InputDetectorIns.prepareRadioInput( 'translationService', InputDetectorIns.getFormTranslationService() );
+InputDetectorIns.prepareServiceInput( 'translationService', InputDetectorIns.getFormTranslationService() );
 InputDetectorIns.prepareRadioInput( 'languageCode', InputDetectorIns.getFormLanguageCode() );
