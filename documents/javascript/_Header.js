@@ -8,15 +8,7 @@
 
 import { Page } from './Page.js';
 
- class Header extends Page {
-  buttonLeft;
-  header;
-  menu;
-  menuIcon;
-  scroll;
-  closedMenuHeight;
-  openedMenuHeight;
-
+class Header extends Page {
   constructor() {
     super();
     this.header   = document.getElementById( 'header' );

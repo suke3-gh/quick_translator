@@ -9,12 +9,8 @@
 import { Options } from './Options.js';
 
 class InputDetector extends Options {
-  divNotification;
-  notificationCount;
-
   constructor() {
     super();
-
     this.divNotification   = document.getElementById( 'divInputNotificationArea' );
     this.notificationCount = Number( 0 );
   }

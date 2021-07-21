@@ -7,10 +7,6 @@
  */
 
 class multilingual {
-  behaviorKeys;
-  serviceKeys;
-  languageKeys;
-
   constructor() {
     this.behaviorKeys = [
       'h2BehaviorWhen',
