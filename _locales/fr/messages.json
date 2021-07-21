@@ -1,81 +1,65 @@
 {
-  "contextMenuForWebpageTranslation": {
-    "message": "Traduire cette page web"
-  },
-
-  "contextMenuForTextTranslation": {
+  "contextTranslateSelectedText": {
     "message": "Traduire le texte sélectionné"
   },
-
+  "contextTranslateThisWebpage": {
+    "message": "Traduire cette page web"
+  },
   "extensionDescription": {
     "message": "Les modules complémentaires ajoutent des éléments pour aider à traduire le menu contextuel."
   },
-
   "tooltipTitle": {
     "message": "Traduire cette page web"
   },
 
-
-  "optionPageBehaviorWhen": {
+  "h2BehaviorWhen": {
     "message": "Comportement de traduction"
   },
-
-  "optionPageCaseOfText": {
+  "h3CaseOfText": {
     "message": "Pour le texte"
   },
-
-  "optionPageCaseOfWebpage": {
+  "h3CaseOfWebpage": {
     "message": "Pour page web"
   },
-
-  "optionPageOpenByNewTab": {
+  "spanOpenByNewTabText": {
     "message": "Ouvrir dans un nouvel onglet"
   },
-
-  "optionPageOpenByNewWindow": {
+  "spanOpenByNewWindowText": {
     "message": "Ouvrir dans une nouvelle fenêtre"
   },
-
-  "optionPageSizeOfNewWindow": {
+  "spanOpenByNewTabWeb": {
+    "message": "Ouvrir dans un nouvel onglet"
+  },
+  "spanOpenByNewWindowWeb": {
+    "message": "Ouvrir dans une nouvelle fenêtre"
+  },
+  "h3SizeOfNewWindow": {
     "message": "Taille de la nouvelle fenêtre"
   },
-
-  "optionPageSpecifySizeOfWindow": {
+  "spanSpecifySizeOfWindow": {
     "message": "Spécifiez la taille de la fenêtre(optionnel)"
   },
-
-  "optionPageWhenSetWH": {
+  "pSizeOfNewWindowBecome": {
     "message": "\"widht: 800 height: 720\", la taille de la nouvelle fenêtre sera de 800 x 720. Ce paramètre n'est reflété que lorsqu'il est coché."
   },
-  
 
-  "optionPageServiceUsedFor": {
+  "h2ServiceUsedFor": {
     "message": "Service utilisé pour la traduction"
   },
-
-  "optionPageSpecifyTranslationService": {
+  "h3SpecifyTranslationService": {
     "message": "Spécifiez un service de traduction"
   },
-
-  "optionPageDependingOnSelected": {
+  "pSomeLanguagesAreNot": {
     "message": "Selon le service choisi, certaines langues ne sont pas disponibles."
   },
 
-
-  "optionPageTranslatedLanguage": {
+  "h2TranslatedLanguage": {
     "message": "Langue traduite"
   },
-
-  "optionPageSpecifyLanguageCode": {
+  "h3SpecifyLanguageCode": {
     "message": "Spécifiez le code de langue"
   },
-
-  "optionPageIfSetEn": {
+  "pTextAndWebpageWill": {
     "message": "\"en - English\", le texte et le page Web seront traduits en anglais."
-  },
-
-  "optionPageAlphabetIn": {
-    "message": "Les lettres en [ ] représentent les initiales des services disponibles."
   }
-
 }

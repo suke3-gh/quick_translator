@@ -1,80 +1,65 @@
 {
-  "contextMenuForWebpageTranslation": {
-    "message": "Translate this web page"
-  },
-
-  "contextMenuForTextTranslation": {
+  "contextTranslateSelectedText": {
     "message": "Translate selected text"
   },
-
+  "contextTranslateThisWebpage": {
+    "message": "Translate this web page"
+  },
   "extensionDescription": {
     "message": "This add-on adds an item to assist translation to the context menu."
   },
-
   "tooltipTitle": {
     "message": "Translate this web page"
   },
 
-
-  "optionPageBehaviorWhen": {
+  "h2BehaviorWhen": {
     "message": "Behavior when translating"
   },
-
-  "optionPageCaseOfText": {
+  "h3CaseOfText": {
     "message": "Case of text"
   },
-
-  "optionPageCaseOfWebpage": {
+  "h3CaseOfWebpage": {
     "message": "Case of website"
   },
-
-  "optionPageOpenByNewTab": {
+  "spanOpenByNewTabText": {
     "message": "Open by new tab"
   },
-
-  "optionPageOpenByNewWindow": {
+  "spanOpenByNewWindowText": {
     "message": "Open by new window"
   },
-
-  "optionPageSizeOfNewWindow": {
+  "spanOpenByNewTabWeb": {
+    "message": "Open by new tab"
+  },
+  "spanOpenByNewWindowWeb": {
+    "message": "Open by new window"
+  },
+  "h3SizeOfNewWindow": {
     "message": "Size of new window"
   },
-
-  "optionPageSpecifySizeOfWindow": {
+  "spanSpecifySizeOfWindow": {
     "message": "Specify the size of window(Optional)"
   },
-
-  "optionPageWhenSetWH": {
-    "message": "When set \"width:800 and height:720\", a size of new window is 800x720. This setting is reflected only when checked."
+  "pSizeOfNewWindowBecome": {
+    "message": "Size of new window become 800x720 when set \"width:800 and height:720\". This setting is reflected only when checked."
   },
 
-  "optionPageServiceUsedFor": {
+  "h2ServiceUsedFor": {
     "message": "Service used for translation"
   },
-
-  "optionPageSpecifyTranslationService": {
+  "h3SpecifyTranslationService": {
     "message": "Specify a translation service"
   },
-
-  "optionPageDependingOnSelected": {
-    "message": "Depending on selected service, some languages are not available."
+  "pSomeLanguagesAreNot": {
+    "message": "Some languages are not available depending on selected service."
   },
 
-
-  "optionPageTranslatedLanguage": {
+  "h2TranslatedLanguage": {
     "message": "Translated language"
   },
-
-  "optionPageSpecifyLanguageCode": {
+  "h3SpecifyLanguageCode": {
     "message": "Specify a language code"
   },
-
-  "optionPageIfSetEn": {
-    "message": "If set to \"en - English\" \u002C texts and websites will be translated into English."
-  },
-
-  "optionPageAlphabetIn": {
-    "message": "Alphabet in [ ] indicates the initial of available services."
+  "pTextAndWebpageWill": {
+    "message": "Text and webpage will be translated into English if set to \"en - English\"."
   }
-
 }

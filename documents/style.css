@@ -1,11 +1,44 @@
 @charset "UTF-8";
 
+:root {
+  --body-bg-color: rgba( 255, 255, 255, 1 );
+  --body-color:    rgba( 63, 63, 63, 1 );
+
+  --button-action-padding: 0.5rem 1.0rem 0.5rem 1.0rem;
+  --button-bg-color:       rgba( 223, 223, 223, 1 );
+  --button-bg-color-hover: rgba( 191, 191, 191, 1 );
+  --button-border:         none;
+  --button-border-radius:  4px;
+  --button-submit-padding: 1.0rem;
+  --button-transition-bg:  background-color 100ms  ease-out 0ms;
+
+  --footer-color:    rgba( 247, 247, 247, 1);
+  --footer-bg-color: rgba( 63, 63, 63, 1 );
+
+  --tile-bg-color:      rgba( 247, 247, 247, 1);
+  --tile-margin:        1.0rem 0 1.0rem 0;
+  --tile-parts-padding: 1.0rem;
+
+  --description-color: rgba( 95, 95, 95, 1 );
+
+  --grid-gap: 1.0rem 1.0rem;
+
+  --h2-padding: 1.0rem;
+  --h3-padding: 0 1.0rem 0 1.0rem;
+
+  --ope-button-width: 20%;
+
+  --radio-padding: 1.0rem 0.5rem 1.0rem 0.5rem;
+
+  --shadow-param: 0 0 2px rgba( 175, 175, 175, 1 );
+}
+
 /**
  * _body.scss
  */
  body {
-	background:    rgb(255, 255, 255);
-  color:         rgb(31, 31, 31);
+	background:    var( --body-bg-color );
+  color:         var( --body-color );
   display:       flex;
   flex-flow:     column;
   height:        100vh;
@@ -13,6 +46,7 @@
   overflow-wrap: break-word;
   overflow-x:    hidden;
   padding:       0;
+  width:         100vw;
 }
 
 body a {
@@ -23,23 +57,22 @@ body a {
  * _footer.scss
  */
 footer {
-  background:  rgb(63, 63, 63);
-  box-sizing:  border-box;
-  box-shadow:  0 0 2px rgb(63, 63, 63);
-  color:       rgb(255, 255, 255);
+  background:  var( --footer-bg-color );
+  color:       var( --footer-color );
   display:     flex;
   align-items: center;
   flex-flow:   column;
   padding:     1.0rem;
+  width:       100vw;
 }
 
 @media screen and ( min-aspect-ratio: 4/3 ) {
   footer {
-    background: rgb(255, 255, 255);
+    background: var( --body-bg-color );
     box-shadow: none;
-    color:      rgb(31, 31, 31);
+    color:      var( --body-color );
     margin:     0 0 0 30%;
-    width:      60%;
+    width:      60vw;
   }
 }
 
@@ -52,19 +85,20 @@ footer > div.item {
  * _header.scss
  */
 header {
-  background: rgb(239, 239, 239);
-  box-shadow: 0 0 2px rgb(63, 63, 63);
+  box-shadow: var( --shadow-param );
   display:    flex;
   flex-flow:  row wrap;
   height:     4.0rem;
   overflow-y: visible;
   position:   fixed;
   transition: height 200ms ease-out 0ms;
-  width:      100%;
+  width:      100vw;
 }
 
 @media screen and ( min-aspect-ratio: 4/3 ) {
   header {
+    background: var( --tile-bg-color );
+    box-shadow: var( --shadow-param );
     flex-flow:  column;
     height:     100vh;
     overflow-y: scroll;
@@ -75,71 +109,70 @@ header {
   }
 }
 
-header > section.primary {
-  box-sizing:      border-box;
-  display:         flex;
-  flex-flow:       row;
-  height:          4.0rem;
-  justify-content: space-between;
-  width:           100%;
+header > section.bar {
+  background: var( --body-bg-color );
+  display:    flex;
+  flex-flow:  row;
+  height:     4.0rem;
+  width:      100vw;
 }
 
-header > section.primary > .addon-title {
-  color:       rgb(63, 63, 63);
+@media screen and ( min-aspect-ratio: 4/3 ) {
+  header > section.bar {
+    background: var( --tile-bg-color );
+    width:      auto;
+  }
+}
+
+header > section.bar > .addon-title {
   font-size:   1.6rem;
   font-weight: bold;
   margin:      auto;
 }
 
 @media screen and ( min-aspect-ratio: 4/3 ) {
-  header > section.primary > .addon-title {
-    padding: 1.0rem 0 1.0rem 0;
+  header > section.bar > .addon-title {
+    padding: 2.0rem 0 2.0rem 0;
   }
 }
 
-header > section.primary > .operation-button-left {
-  align-items:     center;
-  border-right:    rgb(127, 127, 127) solid thin;
-  box-sizing:      border-box;
-  color:           rgb(63, 63, 63);
-  display:         flex;
-  flex-flow:       column;
-  justify-content: center;
-  width:           25%;
+header > section.bar > .operation-button-left {
+  align-items: center;
+  display:     flex;
+  flex-flow:   row;
+  margin:      0 auto 0 5.0vw;
+  width:       var( --ope-button-width );
 }
 
 @media screen and ( min-aspect-ratio: 4/3 ) {
-  header > section.primary > .operation-button-left {
+  header > section.bar > .operation-button-left {
     display: none;
   }
 }
 
-header > section.primary > .operation-button-left > img {
+header > section.bar > .operation-button-left > img {
   height: 3.0rem;
   width:  3.0rem;
 }
 
-header > section.primary > .operation-button-left > img:hover {
-  background: rgb(207, 207, 207);
+header > section.bar > .operation-button-left > img:hover {
+  background: var( --button-bg-color-hover );
 }
 
-header > section.primary > .operation-button-left > span {
+header > section.bar > .operation-button-left > span {
   font-weight: bold;
 }
 
-header > section.primary > .operation-button-right {
-  align-items:     center;
-  border-left:     rgb(127, 127, 127) solid thin;
-  box-sizing:      border-box;
-  color:           rgb(63, 63, 63);
-  display:         flex;
-  flex-flow:       column;
-  justify-content: center;
-  width:           25%;
+header > section.bar > .operation-button-right {
+  align-items: center;
+  display:     flex;
+  flex-flow:   row;
+  margin:      0 5.0vw 0 auto;
+  width:       var( --ope-button-width );
 }
 
 @media screen and ( min-aspect-ratio: 4/3 ) {
-  header > section.primary > .operation-button-right {
+  header > section.bar > .operation-button-right {
     display: none;
   }
 }
@@ -149,61 +182,34 @@ header > section.primary > .operation-button-right {
  */
 main {
   box-sizing: border-box;
-  padding:    4.0rem 2.0rem 4.0rem 2.0rem;
+  padding:    4.0rem 5.0vw 4.0rem 5.0vw;
+  width:      100vw;
 }
 
 @media screen and ( min-aspect-ratio: 4/3 ) {
   main {
-    margin:  0 0 0 30%;
+    margin:  0 0 0 30vw;
     padding: 0 1.0rem 0 1.0rem;
-    width:   60%;
+    width:   60vw;
   }
 }
 
-main h1 {
+main > h1 {
   font-size:  2.0rem;
   text-align: center;
-}
-
-main h2 {
-  border-bottom: rgb(207, 207, 207) solid thin;
-  font-size:     1.6rem;
-  margin:        1.0rem 0 0.5rem 0.5rem;
-  padding:       0 0 0.2rem 0rem;
-}
-
-main h3 {
-  font-size: 1.3rem;
-  margin:    0.5rem 0 0 0;
-  padding:   0 0 0 1.0rem;
-}
-
-main h4 {
-  font-size: 1.2rem;
-  padding:   0 0 0 1.0rem;
-}
-
-main h5 {
-  font-size: 1.1rem;
-  padding:   0 0 0 1.0rem;
-}
-
-main h6 {
-  font-size: 1.0rem;
-  padding:   0 0 0 1.0rem;
 }
 
 /**
  * _nav.menu.scss
  */
 nav.menu {
-  background:   rgb(239, 239, 239);
-  box-shadow:   0 0 2px rgb(63, 63, 63);
+  background:   var( --tile-bg-color );
+  box-shadow:   var( --shadow-param );
   margin:       0.5rem auto 0 2.0rem;
   height:       0px;
   overflow-y:   scroll;
   transition:   height 200ms ease-out 0ms;
-  width:        60%;
+  width:        60vw;
 }
 
 @media screen and ( min-aspect-ratio: 4/3 ) {
@@ -232,17 +238,17 @@ nav.menu > div.categories > ul {
 }
 
 nav.menu > div.categories > ul > a.item {
-  background: rgb(255, 255, 255);
-  box-shadow: 0 0 2px rgb(63, 63, 63);
-  color:      rgb(31, 31, 31);
+  background: var( --button-bg-color );
+  box-shadow: var( --shadow-param );
+  color:      var( --body-color );
   display:    flex;
   margin:     0.5rem 0 0.5rem 0;
   padding:    1.0rem 0.5rem 1.0rem 0.5rem;
-  transition: background 200ms ease-out 0ms;
+  transition: var( --button-transition-bg );
 }
 
 nav.menu > div.categories > ul > .item:hover {
-  background: rgb(223, 223, 223);
+  background: var( --button-bg-color-hover );
 }
 
 nav.menu > div.categories > ul > a.item > img {
@@ -269,10 +275,9 @@ nav.menu > p {
  * option page
  */
 div.inputNotificationArea {
-  background:  rgb(239, 239, 239);
+  background:  var( --tile-bg-color );
   bottom:      1.0rem;
-  box-shadow:  0 0 2px rgb(63, 63, 63);
-  color:       rgb(63, 63, 63);
+  box-shadow:  var( --shadow-param );
   display:     none;
   align-items: center;
   padding:     0.5rem;
@@ -290,82 +295,83 @@ div.inputNotificationArea > span {
 }
 
 main > section.tile {
-  box-shadow: 0 0 2px rgb(63, 63, 63);
-  box-sizing: border-box;
-  margin:     1.0rem;
-  padding:    0.5rem;
+  background: var( --tile-bg-color );
+  box-shadow: var( --shadow-param );
+  margin:     var( --tile-margin );
+}
+
+main > section.tile > h2 {
+  margin:  0;
+  padding: var( --h2-padding );
+}
+
+main > section.tile > h3 {
+  margin:  0;
+  padding: var( --h3-padding );
 }
 
 main > section.tile > p.description-text {
-  color:     rgb(95, 95, 95);
+  color:     var( --description-color );
   font-size: 0.9rem;
+  padding:   0.5rem 1.0rem 0.5rem 1.0rem;
 }
 
-main > section.tile > form.language-code > div {
-  box-sizing:      border-box;
-  display:         flex;
-  flex-flow:       row;
-  justify-content: center;
+form.language-code > .list {
+  display: grid;
+  gap:     var( --grid-gap );
+  grid:    auto-flow auto / repeat( auto-fill, minmax( 25%, auto ) );
+  padding: var( --tile-parts-padding );
 }
 
-main > section.tile > form.language-code > div > .tile {
-  flex:    1 1 25%;
-  padding: 0.5rem;
+form.language-code > .list > .column {
+  width: 25%;
 }
 
-main > section.tile > form.language-code > div > .tile > label {
-  background: rgb(255, 255, 255);
-  display:    block;
-  padding:    0.5rem;
-  transition: background 200ms ease-out 0ms;
+form.language-code > .list > .column > h4 {
+  margin: 0.5rem 0 0.5rem 0;
 }
 
-main > section.tile > form.language-code > div > .tile > label:hover {
-  background: rgb(223, 223, 223);
+form.language-code > .list > .column > label {
+  border-radius: var( --button-border-radius );
+  display:       block;
+  padding:       var( --button-action-padding );
+  transition:    var( --button-transition-bg );
 }
 
-main > section.tile > form.specifySize {
-  padding: 0 0.5rem 0 0.5rem;
+form.language-code > .list > .column > label:hover {
+  background: var( --button-bg-color );
 }
 
-main > section.tile > form.specifySize > label.checkbox {
-  display: inline-block;
-  margin:  0.5rem 0 0.5rem 0;
+form.two-line-grid {
+  display: grid;
+  gap:     var( --grid-gap );
+  grid:    auto-flow auto / repeat( auto-fill, minmax( 45%, auto ) );
+  padding: var( --tile-parts-padding );
 }
 
-main > section.tile > form.specifySize > div.inputSize {
+form.two-line-grid > div.inputSize {
   font-size: large;
 }
 
-main > section.tile > form.specifySize > div.inputSize > input {
+form.two-line-grid > div.inputSize > input {
   font-size: large;
 }
 
-main > section.tile > form.two-choices {
-  box-sizing:      border-box;
-  display:         flex;
-  flex-flow:       row;
-  justify-content: center;
-}
-
-main > section.tile > form.two-choices > label {
+form.two-line-grid > label {
   align-items:   center;
-  background:    rgb(255, 255, 255);
-  border-radius: 4px;
-  box-shadow:    0 0 2px rgb(127, 127, 127);
-  box-sizing:    border-box;
+  background:    var( --button-bg-color );
+  border-radius: var( --button-border-radius );
+  box-shadow:    var( --shadow-param );
   display:       flex;
-  flex:          0 0 calc(50% - 1.0rem);
-  height:        3.0rem;
-  margin:        0.5rem;
-  transition:    background 200ms ease-out 0ms;
+  padding:       var( --radio-padding );
+  transition:    var( --button-transition-bg );
 }
 
-main > section.tile > form.two-choices > label:hover {
-  background:  rgb(223, 223, 223);
+form.two-line-grid > label:hover {
+  background: var( --button-bg-color-hover );
 }
 
-main > section.tile > form.two-choices > label > input {
+form.two-line-grid > label > input {
   margin: 0 0.5rem 0 0.5rem;
 }
 
@@ -388,7 +394,7 @@ div.timestamp {
 
 .guide-setup-thumbnail {
   border-radius: 8px;
-  box-shadow:    0 0 0.1rem rgb(63, 63, 63);
+  box-shadow:    var( --shadow-param );
   padding:       0.5rem;
   width:         50%;
 }

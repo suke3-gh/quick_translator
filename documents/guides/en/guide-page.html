@@ -6,13 +6,13 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="/icons/quick-translator-icon-plain.svg" rel="icon" type="image/svg+xml">
     <link href="/documents/style.css" rel="stylesheet" type="text/css">
-    <script defer src="/documents/javascript/_script_header.js" type="text/javascript"></script>
-    <script defer src="/documents/javascript/_script_footer.js" type="text/javascript"></script>
+    <script defer src="/documents/javascript/_Header.js" type="module"></script>
+    <script defer src="/documents/javascript/_Footer.js" type="module"></script>
     <title>Guide page - en (Quick translator)</title>
   </head>
   <body>
-    <header>
-      <section class="primary">
+    <header id="header">
+      <section class="bar">
         <div class="operation-button-left" id="divOperationButtonLeft">
           <img src="/icons/menu-icon-plain.svg" alt="menu-icon-plain.svg" id="imgMenuIcon">
         </div>
@@ -54,10 +54,9 @@
         <p>Click an icon at upper left side to close this menu.</p>
       </nav>
     </header>
-
     <main>
       <h1>Guide page</h1>
-      <div class="timestamp">Modified date: 2nd December 2020</div>
+      <div class="timestamp">Modified date: 21st July 2021</div>
       <h2>Initial setup</h2>
       <p>
         When this add-on is installed (including reinstallation), the translated language depends on browser's locale. Also translation result is opened in a new tab.<br>
@@ -72,7 +71,7 @@
         <span class="text-bold">A. </span>It seems that the specification of Google translation is changed and it becomes the language used before. It may be resolved if you discard the cache and load the page on the Google Translate page. (Ctrl + F5 key)
       </p>
       <p>
-        <span class="text-bold">Q. </span>I want to erase the icon added to the address bar.<br>
+        <span class="text-bold">Q. </span>I want to erase the icon added to the tools bar.<br>
         <span class="text-bold">A. </span>You can delete only the icon by right-clicking the icon.
       </p>
       <h2>About License</h2>
@@ -81,7 +80,6 @@
         URL of a repository is listed in home page section of this add-on.
       </p>
     </main>
-
     <footer>
       <div class="item" id="divAddonVersion">(Add-on version)</div>
       <div class="item" id="divLicenseText">(License)</div>

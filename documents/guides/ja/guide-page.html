@@ -6,13 +6,13 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="/icons/quick-translator-icon-plain.svg" rel="icon" type="image/svg+xml">
     <link href="/documents/style.css" rel="stylesheet" type="text/css">
-    <script defer src="/documents/javascript/_script_header.js" type="text/javascript"></script>
-    <script defer src="/documents/javascript/_script_footer.js" type="text/javascript"></script>
+    <script defer src="/documents/javascript/_Header.js" type="module"></script>
+    <script defer src="/documents/javascript/_Footer.js" type="module"></script>
     <title>Guide page - ja (Quick translator)</title>
   </head>
   <body>
-    <header>
-      <section class="primary">
+    <header id="header">
+      <section class="bar">
         <div class="operation-button-left" id="divOperationButtonLeft">
           <img src="/icons/menu-icon-plain.svg" alt="menu-icon-plain.svg" id="imgMenuIcon">
         </div>
@@ -51,13 +51,12 @@
             </a>
           </ul>
         </div>
-        <p>左上のアイコンをクリックすることでメニューを閉じることができます。</p>
+        <p>Click an icon at upper left side to close this menu.</p>
       </nav>
     </header>
-
     <main>
       <h1>Guide page</h1>
-      <div class="timestamp">更新日: 2020年12月02日</div>
+      <div class="timestamp">更新日: 2021年07月21日</div>
       <h2>初期セットアップ</h2>
       <p>
         このアドオンを初めてインストールした時(再インストールも含む)、翻訳後の言語はブラウザのロケールによって決まります。また翻訳結果は新しいタブで開かれます。 <br>
@@ -72,7 +71,7 @@
         <span class="text-bold">A. </span>Google翻訳の仕様変更によって以前使用した言語になることがあるようです。 キャッシュを破棄してページを更新すると解決することがあります。 (Ctrl + F5 key) 
       </p>
       <p>
-        <span class="text-bold">Q. </span>アドレスバーに追加されるアイコンを消したい<br>
+        <span class="text-bold">Q. </span>ツールバーに追加されるアイコンを消したい<br>
         <span class="text-bold">A. </span>アイコンを右クリックすることでアイコンのみを削除できます。
       </p>
       <h2>ライセンスについて</h2>
@@ -81,7 +80,6 @@
         リポジトリのURLはアドオンのホームページ欄に記載しています。
       </p>
     </main>
-
     <footer>
       <div class="item" id="divAddonVersion">(Add-on version)</div>
       <div class="item" id="divLicenseText">(License)</div>
