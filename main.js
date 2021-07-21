@@ -2,17 +2,6 @@
 'use strict';
 
 class Background {
-  itemIds;
-  languageCode;
-  openingMethod;
-  targetText;
-  targetWeb;
-  service;
-  windowFlag;
-  windowHeight;
-  windowWidth;
-  url;
-
   constructor() {
     this.languageCode  = 'en';
     this.openingMethod = 'tab';

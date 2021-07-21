@@ -7,17 +7,6 @@
  */
 
 export class Options {
-  formOpeningMethodText;
-  formOpeningMethodWeb;
-  inputSpecifySizeFlag;
-  inputNewWindowHeight;
-  inputNewWindowWidth;
-
-  formTranslationService;
-  languageCodeList;
-
-  formLanguageCode;
-
   constructor() {
     this.formOpeningMethodText = document.getElementById( 'formOpenMethodText' );
     this.formOpeningMethodWeb  = document.getElementById( 'formOpenMethodWebpage' );
@@ -67,7 +56,6 @@ export class Options {
   }
 
   async languageCodeListSwitch( service ) {
-    console.log( service );
     try {
       switch ( service ) {
         case 'google':

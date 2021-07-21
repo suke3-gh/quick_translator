@@ -31,5 +31,5 @@
     "default_title": "__MSG_tooltipTitle__"
   },
   "permissions": ["menus", "storage", "tabs"],
-  "version": "2.2.49"
+  "version": "2.2.50"
 }
